@@ -1,11 +1,24 @@
 {
-  "name": "root",
-  "private": true,
-  "devDependencies": {
-    "lerna": "^3.22.1",
-    "@types/node": "^14.14.6",
-    "typescript": "^4.0.5"
+  "name": "rambda-scripts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "url": "git+https://github.com/selfrefactor/rambda-scripts.git",
+  "scripts": {
+    "lint": "cd src && run lint",
+    "in": "tsc --watch",
+    "x": "jest src/utils/get-coverage-path.spec.ts"
   },
   "dependencies": {
+    
+  },
+  "devDependencies":{
+    "ts-loader": "8.0.5",
+    "ts-jest": "26.4.1",
+    "tslint-fn": "0.2.2",
+    "@types/jest": "26.0.15",
+    "@types/node": "14.14.6",
+    "jest": "26.6.3",
+    "typescript": "4.0.5"
   }
 }
