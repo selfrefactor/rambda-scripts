@@ -11,8 +11,9 @@ import {
   interpolate,
   path,
  } from 'rambdax'
+import { finalFix } from './utils/final-fix'
+import { fixBenchmarkSource } from './utils/fix-benchmark-source'
 const shiki = require('shiki')
-const {indentRight} = require('./utils/indent-right')
 const niketaTheme = shiki.loadTheme(`${__dirname}/assets/TripTank.json`)
 
 const initialResolver = {
@@ -22,7 +23,7 @@ const initialResolver = {
 }
 
 export class ApplyHighlighter {
-  codeToHtml: (x: string) => string
+  codeToHtml: (x: string, language: 'ts'|'js') => string
   resolver: {
     [key: string]: string
   }
@@ -79,32 +80,33 @@ export class ApplyHighlighter {
     return template
   }
 
-  getContent(data){
-    return (prop, language) => {
+  getContent(data:Record<string, string>) {
+    return (prop: string, language: 'js'|'ts') => {
       if(!data[prop]) return ''
-      const sourceWithFixedLength = indentRight(data[prop])
+      const sourceWithFixedLength = data[prop]
+      // const sourceWithFixedLength = indentRight(data[prop])
 
       return this.codeToHtml(sourceWithFixedLength, language)
     }
   }
 
-  getBenchmarkSource(data){
-    const maybeSource = path('benchmarkInfo.benchmarkContent', data)
+  getBenchmarkSource(data: Record<string, string>){
+    const maybeSource = path<string>('benchmarkInfo.benchmarkContent', data)
     if(!maybeSource) return ''
 
-    const sourceWithFixedLength = indentRight(maybeSource)
+    // const sourceWithFixedLength = indentRight(maybeSource)
 
     return this.codeToHtml(
-          fixBenchmarkSource(sourceWithFixedLength),
+          fixBenchmarkSource(maybeSource),
           'js'
         )
   }
 
-  async apply(source) {
-    const iterator = async data => {
+  async apply(source: Record<string, string>[]) {
+    const iterator = async (data: Record<string, string>) => {
       const getContentFn = this.getContent(data)
 
-      const all = {}
+      const all: Record<string, string>= {}
       all.benchmarkSource = this.getBenchmarkSource(data)
       all.rambdaSource = getContentFn('rambdaSource', 'js')
       all.rambdaSpecs = getContentFn('rambdaSpecs', 'js')
@@ -113,10 +115,7 @@ export class ApplyHighlighter {
       all.typing = getContentFn('typing', 'ts')
       all.typescriptDefinitionTest = getContentFn('typescriptDefinitionTest', 'ts')
       
-      const parsedData = piped(
-        all,
-        map(x => this.appendToResolver(x))
-      )
+      const parsedData = map(x => this.appendToResolver(x), all)
 
       return finalFix({...data, ...parsedData})
 
@@ -130,11 +129,11 @@ export class ApplyHighlighter {
 
     const toSave = await mapAsync(iterator, source)
 
-    const resolverObject = {}
+    const resolverObject: Record<string, string> = {}
     forEach((x, prop) => {
       const newKey = remove(['{{', '}}'], prop)
       resolverObject[newKey] = x
-    })(this.resolver)
+    },this.resolver)
 
     return {toSave, resolver: resolverObject}
   }
