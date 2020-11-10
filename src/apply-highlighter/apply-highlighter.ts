@@ -21,30 +21,11 @@ const initialResolver = {
   '{{END}}': '</span></span></code></pre>',
 }
 
-function fixBenchmarkSource(input) {
-  return piped(
-    input,
-    remove([
-      `const R = require('../../dist/rambda.js')`,
-      `const R = require('../../dist/rambda.js');`,
-    ]),
-    trim
-  )
-}
-
-function finalFix(x) {
-  const benchmarkSummary = path('benchmarkInfo.methodSummary', x)
-    ? path('benchmarkInfo.methodSummary', x)
-    : ''
-  if (!benchmarkSummary) return x
-
-  return {
-    ...omit('benchmarkInfo', x),
-    benchmarkSummary,
-  }
-}
-
 export class ApplyHighlighter {
+  codeToHtml: (x: string) => string
+  resolver: {
+    [key: string]: string
+  }
   constructor() {
     this.codeToHtml = () => {
       throw new Error('codeToHtml is not ready')
@@ -59,14 +40,14 @@ export class ApplyHighlighter {
     this.codeToHtml = codeToHtml
   }
 
-  findColor(input) {
+  findColor(input: string) {
     const [colorPart] = match(/color:\s#[a-fA-F0-9]{6,8}/, input)
     if (!colorPart) return
 
     return remove('color: #', colorPart)
   }
 
-  appendToResolver(highlighted) {
+  appendToResolver(highlighted: string) {
     if (!highlighted) return
 
     const found = match(
@@ -93,7 +74,7 @@ export class ApplyHighlighter {
 
     forEach((x, prop) => {
       template = replace(new RegExp(x, 'g'), prop, template)
-    })(initialResolver)
+    },initialResolver)
 
     return template
   }
@@ -158,7 +139,7 @@ export class ApplyHighlighter {
     return {toSave, resolver: resolverObject}
   }
 
-  render(input, resolver) {
+  render(input: string, resolver: object) {
     return interpolate(input, resolver)
   }
 }
