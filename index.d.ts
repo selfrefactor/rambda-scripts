@@ -1,13 +1,4 @@
-interface NiketaClientInput{
-  port: number
-  testing?: boolean
-  emit?: object
+interface Method{
+  rambdaSource: string
 }
-
-interface Message{
-  fileName: string 
-  dir: string
-  hasTypescript: boolean
-  requestLintFile: boolean
-  forceLint: boolean
-}
+export function applyHighlighter(methodData: Method): Promise<object>
