@@ -1,13 +1,11 @@
+import { existsSync, readJson } from 'fs-extra'
 import { 
   mapAsync,
-  omit,
   match,
   remove,
   forEach,
   replace,
-  piped,
   map,
-  trim,
   interpolate,
   path,
  } from 'rambdax'
@@ -141,4 +139,16 @@ export class ApplyHighlighter {
   render(input: string, resolver: object) {
     return interpolate(input, resolver)
   }
+}
+
+export async function applyHighlighter(sourceFilePath: string
+  ): Promise<{toSave: object, resolver: object}>{
+  if(!existsSync(sourceFilePath)) throw new Error('file does not exist')
+  const source = await readJson(sourceFilePath)
+
+  const ApplyHighlighterInstance = new ApplyHighlighter()
+  await ApplyHighlighterInstance.init()
+  const {toSave, resolver} = await ApplyHighlighterInstance.apply(source)
+
+  return {toSave, resolver}
 }
