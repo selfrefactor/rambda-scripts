@@ -1,17 +1,19 @@
 {
   "compilerOptions": {
     "resolveJsonModule": true,
-    "target": "ES2020",                          
-    "module": "commonjs",                     
-    "outDir": "./dist",                        
-    "rootDir": "./src",                       
-    "strict": true,     
-    "declaration": true,                      
-    "noUnusedParameters": true,            
-    "noFallthroughCasesInSwitch": true,    
-    "esModuleInterop": true,                  
-    "skipLibCheck": true,                     
-    "forceConsistentCasingInFileNames": true  
+    "target": "ES2020",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "declaration": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["./src"]
+  "include": [
+    "./src"
+  ]
 }

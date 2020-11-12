@@ -12,7 +12,9 @@ import {
 import { finalFix } from './utils/final-fix'
 import { fixBenchmarkSource } from './utils/fix-benchmark-source'
 const shiki = require('shiki')
-const niketaTheme = shiki.loadTheme(`${__dirname}/assets/TripTank.json`)
+import * as emptyRequiredImport from './assets/theme.json'
+
+const niketaTheme = shiki.loadTheme(`${__dirname}/assets/theme.json`)
 
 const initialResolver = {
   '{{LINE}}': '<span class="line">',
