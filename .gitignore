@@ -3,3 +3,5 @@ coverage
 *.log
 .env
 dist
+src/dynamic-ts-toolbelt/ts-toolbelt
+dist/dynamic-ts-toolbelt/ts-toolbelt
