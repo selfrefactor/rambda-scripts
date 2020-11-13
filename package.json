@@ -1,7 +1,8 @@
 {
   "name": "rambda-scripts",
   "scripts": {
-    "prove": "node files/prove.js",
+    "prove": "cd scripts/consume-typings&&yarn start",
+    "provex": "node files/prove.js",
     "lint": "cd src && run lint",
     "in": "tsc --watch",
     "build": "tsc -p tsconfig.json",
