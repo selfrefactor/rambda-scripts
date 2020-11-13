@@ -6,7 +6,8 @@
     "lint": "cd src && run lint",
     "in": "tsc --watch",
     "build": "tsc -p tsconfig.json",
-    "x": "jest src/utils/get-coverage-path.spec.ts"
+    "x": "jest src/utils/get-coverage-path.spec.ts",
+    "toolbelt": "jest src/dynamic-ts-toolbelt/dynamic-ts-toolbelt.spec.ts"
   },
   "main": "index.js",
   "version": "1.0.0",

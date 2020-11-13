@@ -13,7 +13,7 @@ async function copyToRambdax(){
   )
 }
 
-async function fixWrongExports(files){
+async function fixWrongExports(files: string[]){
   await mapFastAsync(async filePath => {
     const content = (await readFile(filePath)).toString()
 
@@ -29,10 +29,10 @@ async function fixWrongExports(files){
       .join('\n')
 
     await writeFile(filePath, newContent)
-  })(files)
+  }, files)
 }
 
-export async function dynamicTsToolbelt(commitHash){
+export async function dynamicTsToolbelt(commitHash?: string){
   const destinationDir = resolve(__dirname, '../../_ts-toolbelt/src')
 
   await remove(`${ __dirname }/ts-toolbelt`)
