@@ -4,6 +4,14 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "TS",
+      "program": "${workspaceFolder}/src/foo.ts",
+      "preLaunchTask": "build",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Jest",
       "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
       "preLaunchTask": "build",
