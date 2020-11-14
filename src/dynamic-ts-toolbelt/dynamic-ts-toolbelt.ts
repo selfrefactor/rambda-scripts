@@ -2,6 +2,7 @@ import { copy, readFile, remove, writeFile } from 'fs-extra'
 import { log, scanFolder, spawn } from 'helpers-fn'
 import { resolve } from 'path'
 import { mapFastAsync, replace } from 'rambdax'
+import {ALL_PATHS} from "../constants";
 
 async function copyToRambdax(){
   const source = resolve(__dirname, '../../_ts-toolbelt/')
@@ -33,10 +34,10 @@ async function fixWrongExports(files: string[]){
 }
 
 export async function dynamicTsToolbelt(commitHash?: string){
-  const destinationDir = resolve(__dirname, '../../_ts-toolbelt/src')
+  const destinationDir = ALL_PATHS.toolbeltDestination
 
   await remove(`${ __dirname }/ts-toolbelt`)
-  await remove(destinationDir)
+  // await remove(destinationDir)
 
   log('start clone', 'info')
   await spawn({

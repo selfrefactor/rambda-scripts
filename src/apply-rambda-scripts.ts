@@ -1,6 +1,7 @@
 import { existsSync } from 'fs-extra'
 import { resolve } from 'path'
 import { filter } from 'rambdax'
+import {ALL_PATHS} from './constants'
 import {applyHighlighter as applyHighlighterLib} from  './apply-highlighter/apply-highlighter'
 import {dynamicTsToolbelt} from './dynamic-ts-toolbelt/dynamic-ts-toolbelt'
 
@@ -9,18 +10,12 @@ const MODES = ['toolbelt', 'highlighter']
 const WITH_RAMBDAX = process.env.WITH_RAMBDAX === 'ON'
 
 function getMode(mode: string | undefined){
-  if(!mode || !MODES.includes(mode)){
+  const actualMode = mode === undefined ? process.env.RAMBDA_SCRIPTS_MODE : mode
+
+  if(!actualMode || !MODES.includes(actualMode)){
     throw new Error('Unsupported mode')
   }
   return mode
-}
-
-const ALL_PATHS = {
-  documentationFile: resolve(__dirname, '../../rambda/files/index.d.ts'),
-  sourceDir: resolve(__dirname, '../../rambda/source'),
-  destinationDir: resolve(__dirname, '../../rambda/src'),
-  docsDir: resolve(__dirname, '../../rambda-docs/assets'),
-  rambdaxDir: resolve(__dirname, '../../rambdax'),
 }
 
 export function validatePaths(){
@@ -28,7 +23,7 @@ export function validatePaths(){
     if(!WITH_RAMBDAX && prop.startsWith('rambdax')) return true
     return existsSync(filePath)
   } 
-  const validPaths = filter(iterator, ALL_PATHS)
+  const validPaths = filter(iterator, ALL_PATHS )
 
   if(Object.keys(validPaths).length !== Object.keys(ALL_PATHS).length){
     throw new Error('There is invalid path')
@@ -39,13 +34,13 @@ export function validatePaths(){
 async function applyHighlighter(){
 
 }
-async function applyHighlighter(){
+async function applyToolbelt(){
 
 }
 
-async function applyRambdaScripts(){
-  const mode = getMode(process.env.RAMBDA_SCRIPTS_MODE)
+export async function applyRambdaScripts(modeInput ?: string){
+  const mode = getMode(modeInput)
   validatePaths()
+  if(mode === 'toolbelt') return applyToolbelt()
+  console.log(1)
 }
-
-// applyRambdaScripts()
