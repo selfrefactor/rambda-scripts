@@ -12,6 +12,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "sourceMap": true,
+    "inlineSourceMap": true,
     "forceConsistentCasingInFileNames": true
   },
   "include": [
