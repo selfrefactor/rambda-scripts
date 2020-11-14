@@ -1,6 +1,6 @@
-import { piped, remove, trim } from "rambdax";
+import {piped, remove, trim} from 'rambdax'
 
-export function fixBenchmarkSource(input: string): string{
+export function fixBenchmarkSource(input: string): string {
   return piped(
     input,
     remove([

@@ -1,17 +1,17 @@
 {
   "name": "rambda-scripts",
   "scripts": {
-    "prove": "cd scripts/consume-typings&&yarn start",
-    "provex": "node files/prove.js",
     "lint": "cd src && run lint",
     "in": "tsc --watch",
     "build": "tsc -p tsconfig.json",
-    "x": "jest src/utils/get-coverage-path.spec.ts",
-    "toolbelt": "jest src/dynamic-ts-toolbelt/dynamic-ts-toolbelt.spec.ts"
+    "consume": "cd scripts/consume-typings&&yarn start",
+    "usedby": "RAMBDA_SCRIPTS_MODE=usedby jest src/apply-rambda-scripts.spec.ts",
+    "toolbelt": "RAMBDA_SCRIPTS_MODE=toolbelt jest src/apply-rambda-scripts.spec.ts"
   },
   "main": "index.js",
   "version": "1.0.0",
   "dependencies": {
+    "got": "11.8.0",
     "fs-extra": "^9.0.1",
     "helpers-fn": "1.0.0",
     "rambdax": "7.0.1",

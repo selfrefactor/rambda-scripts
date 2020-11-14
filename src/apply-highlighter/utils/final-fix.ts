@@ -1,4 +1,4 @@
-import { omit, path } from "rambdax"
+import {omit, path} from 'rambdax'
 
 export function finalFix(x: object): object {
   const benchmarkSummary = path('benchmarkInfo.methodSummary', x)

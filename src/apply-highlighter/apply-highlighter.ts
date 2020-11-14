@@ -1,5 +1,5 @@
-import { existsSync, readJson } from 'fs-extra'
-import { 
+import {existsSync, readJson} from 'fs-extra'
+import {
   mapAsync,
   match,
   remove,
@@ -8,9 +8,9 @@ import {
   map,
   interpolate,
   path,
- } from 'rambdax'
-import { finalFix } from './utils/final-fix'
-import { fixBenchmarkSource } from './utils/fix-benchmark-source'
+} from 'rambdax'
+import {finalFix} from './utils/final-fix'
+import {fixBenchmarkSource} from './utils/fix-benchmark-source'
 const shiki = require('shiki')
 import * as emptyRequiredImport from './assets/theme.json'
 
@@ -23,9 +23,9 @@ const initialResolver = {
 }
 
 export class ApplyHighlighter {
-  codeToHtml: (x: string, language: 'ts'|'js') => string
+  codeToHtml: (x: string, language: 'ts' | 'js') => string
   resolver: {
-    [key: string]: string
+    [key: string]: string,
   }
   constructor() {
     this.codeToHtml = () => {
@@ -75,14 +75,14 @@ export class ApplyHighlighter {
 
     forEach((x, prop) => {
       template = replace(new RegExp(x, 'g'), prop, template)
-    },initialResolver)
+    }, initialResolver)
 
     return template
   }
 
-  getContent(data:Record<string, string>) {
-    return (prop: string, language: 'js'|'ts') => {
-      if(!data[prop]) return ''
+  getContent(data: Record<string, string>) {
+    return (prop: string, language: 'js' | 'ts') => {
+      if (!data[prop]) return ''
       const sourceWithFixedLength = data[prop]
       // const sourceWithFixedLength = indentRight(data[prop])
 
@@ -90,31 +90,31 @@ export class ApplyHighlighter {
     }
   }
 
-  getBenchmarkSource(data: Record<string, string>){
+  getBenchmarkSource(data: Record<string, string>) {
     const maybeSource = path<string>('benchmarkInfo.benchmarkContent', data)
-    if(!maybeSource) return ''
+    if (!maybeSource) return ''
 
     // const sourceWithFixedLength = indentRight(maybeSource)
 
-    return this.codeToHtml(
-          fixBenchmarkSource(maybeSource),
-          'js'
-        )
+    return this.codeToHtml(fixBenchmarkSource(maybeSource), 'js')
   }
 
   async apply(source: Record<string, string>[]) {
-    const iterator = async (data: Record<string, string>) => {
+    const iterator = async(data: Record<string, string>) => {
       const getContentFn = this.getContent(data)
 
-      const all: Record<string, string>= {}
+      const all: Record<string, string> = {}
       all.benchmarkSource = this.getBenchmarkSource(data)
       all.rambdaSource = getContentFn('rambdaSource', 'js')
       all.rambdaSpecs = getContentFn('rambdaSpecs', 'js')
       all.failedRamdaSpecs = getContentFn('failedRamdaSpecs', 'js')
       all.allTypings = getContentFn('allTypings', 'ts')
       all.typing = getContentFn('typing', 'ts')
-      all.typescriptDefinitionTest = getContentFn('typescriptDefinitionTest', 'ts')
-      
+      all.typescriptDefinitionTest = getContentFn(
+        'typescriptDefinitionTest',
+        'ts'
+      )
+
       const parsedData = map(x => this.appendToResolver(x), all)
 
       return finalFix({...data, ...parsedData})
@@ -133,7 +133,7 @@ export class ApplyHighlighter {
     forEach((x, prop) => {
       const newKey = remove(['{{', '}}'], prop)
       resolverObject[newKey] = x
-    },this.resolver)
+    }, this.resolver)
 
     return {toSave, resolver: resolverObject}
   }
@@ -143,9 +143,10 @@ export class ApplyHighlighter {
   }
 }
 
-export async function applyHighlighter(sourceFilePath: string
-  ): Promise<{toSave: object, resolver: object}>{
-  if(!existsSync(sourceFilePath)) throw new Error('file does not exist')
+export async function applyHighlighter(
+  sourceFilePath: string
+): Promise<{toSave: object, resolver: object}> {
+  if (!existsSync(sourceFilePath)) throw new Error('file does not exist')
   const source = await readJson(sourceFilePath)
 
   const ApplyHighlighterInstance = new ApplyHighlighter()
