@@ -1,8 +1,7 @@
 import {copy, readFile, remove, writeFile} from 'fs-extra'
 import {log, scanFolder, spawn} from 'helpers-fn'
-import {resolve} from 'path'
 import {mapFastAsync, replace} from 'rambdax'
-import {ALL_PATHS, HAS_RAMBDAX, WITH_RAMBDAX} from '../constants'
+import {ALL_PATHS, HAS_RAMBDAX} from '../constants'
 
 async function copyToRambdax() {
   const source = ALL_PATHS.toolbeltDestination
