@@ -1,13 +1,11 @@
 import {omit, path} from 'rambdax'
+import {indentRight} from "./indent-right"
 
-export function finalFix(x: object): object {
-  const benchmarkSummary = path('benchmarkInfo.methodSummary', x)
-    ? path('benchmarkInfo.methodSummary', x)
-    : ''
-  if (!benchmarkSummary) return x
-
+export function finalFix(x: any): object {
+  if (!x.explanation) return x
+  const newExplanation = indentRight(x.explanation)
   return {
-    ...omit('benchmarkInfo', x),
-    benchmarkSummary,
+    ...x,
+    explanation: newExplanation
   }
 }

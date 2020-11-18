@@ -7,9 +7,10 @@ import {
   replace,
   map,
   interpolate,
-  path,
+  path, piped,
 } from 'rambdax'
 import {finalFix} from './utils/final-fix'
+import {normalizeBenchmark} from './utils/normalize-benchmark'
 import {fixBenchmarkSource} from './utils/fix-benchmark-source'
 import {indentRight} from './utils/indent-right'
 const shiki = require('shiki')
@@ -117,8 +118,11 @@ export class ApplyHighlighter {
 
       const parsedData = map(x => this.appendToResolver(x), all)
 
-      return finalFix({...data, ...parsedData})
-
+      return piped(
+          {...data, ...parsedData},
+          normalizeBenchmark,
+                // finalFix
+      )
       /*
         forEach(x => this.appendToResolver(x), all)
         forEach(appendToResolver, all) => `this` issue with Ramda
