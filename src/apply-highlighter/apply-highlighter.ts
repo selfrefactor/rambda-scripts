@@ -11,6 +11,7 @@ import {
 } from 'rambdax'
 import {finalFix} from './utils/final-fix'
 import {fixBenchmarkSource} from './utils/fix-benchmark-source'
+import {indentRight} from './utils/indent-right'
 const shiki = require('shiki')
 import * as emptyRequiredImport from './assets/theme.json'
 
@@ -83,8 +84,7 @@ export class ApplyHighlighter {
   getContent(data: Record<string, string>) {
     return (prop: string, language: 'js' | 'ts') => {
       if (!data[prop]) return ''
-      const sourceWithFixedLength = data[prop]
-      // const sourceWithFixedLength = indentRight(data[prop])
+      const sourceWithFixedLength = indentRight(data[prop])
 
       return this.codeToHtml(sourceWithFixedLength, language)
     }

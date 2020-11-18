@@ -1,4 +1,5 @@
-import {existsSync} from 'fs-extra'
+import {existsSync} from 'fs'
+import {outputJson, readJson} from 'fs-extra'
 import {filter} from 'rambdax'
 import {ALL_PATHS, MODES, WITH_RAMBDAX, DESTINATIONS} from './constants'
 import {ApplyHighlighter} from './apply-highlighter/apply-highlighter'
