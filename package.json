@@ -2,6 +2,8 @@
   "name": "rambda-scripts",
   "scripts": {
     "immutable": "node scripts/immutable-lint/immutable-lint.js",
+    "hjson:parse": "node scripts/parse-hjson/parse-hjson.js",
+    "hjson:fix": "node scripts/parse-hjson/fix-hjson.js",
     "lint": "cd src && run lint",
     "in": "tsc --watch",
     "build": "tsc -p tsconfig.json",
