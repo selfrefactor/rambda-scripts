@@ -16,7 +16,7 @@ const lintSingleFile = async filePath => {
 }
 
 void (async function lintTypingsTests() {
-  const srcPath = resolve(__dirname, '../../source')
+  const srcPath = resolve(__dirname, '../../../rambda/source')
   const allFiles = await scanFolder({folder: srcPath, filterFn})
 
   await mapAsyncLimit(lintSingleFile, 5, allFiles)

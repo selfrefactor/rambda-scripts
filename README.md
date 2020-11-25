@@ -12,6 +12,10 @@ Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on 
 
 `yarn toolbelt`
 
+### Check before release
+
+`yarn consume`
+
 ## TODO
 
 Script to check which TS versions are supported
