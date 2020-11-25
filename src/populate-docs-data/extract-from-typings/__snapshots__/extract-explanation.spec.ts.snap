@@ -1,0 +1,253 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`happy 1`] = `
+Object {
+  "F": "",
+  "T": "",
+  "add": "It adds \`a\` and \`b\`.",
+  "adjust": "It replaces \`index\` in array \`list\` with the result of \`replaceFn(list[i])\`.",
+  "all": "It returns \`true\`, if all members of array \`list\` returns \`true\`, when applied as argument to \`predicate\` function.",
+  "allPass": "It returns \`true\`, if all functions of \`predicates\` return \`true\`, when \`input\` is their argument.",
+  "always": "It returns function that always returns \`x\`.",
+  "and": "Logical AND",
+  "any": "It returns \`true\`, if at least one member of \`list\` returns true, when passed to a \`predicate\` function.",
+  "anyPass": "It accepts list of \`predicates\` and returns a function. This function with its \`input\` will return \`true\`, if any of \`predicates\` returns \`true\` for this \`input\`.",
+  "append": "It adds element \`x\` at the end of \`list\`.",
+  "applySpec": "",
+  "assoc": "It makes a shallow clone of \`obj\` with setting or overriding the property \`prop\` with \`newValue\`.",
+  "assocPath": "It makes a shallow clone of \`obj\` with setting or overriding with \`newValue\` the property found with \`path\`.",
+  "both": "It returns a function with \`input\` argument. 
+
+This function will return \`true\`, if both \`firstCondition\` and \`secondCondition\` return \`true\` when \`input\` is passed as their argument.",
+  "chain": "The method is also known as \`flatMap\`.",
+  "clamp": "Restrict a number \`input\` to be within \`min\` and \`max\` limits.
+
+If \`input\` is bigger than \`max\`, then the result is \`max\`.
+
+If \`input\` is smaller than \`min\`, then the result is \`min\`.",
+  "clone": "It creates a deep copy of the \`input\`, which may contain (nested) Arrays and Objects, Numbers, Strings, Booleans and Dates.",
+  "complement": "It returns \`inverted\` version of \`origin\` function that accept \`input\` as argument.
+
+The return value of \`inverted\` is the negative boolean value of \`origin(input)\`.",
+  "compose": "It performs right-to-left function composition.",
+  "concat": "It returns a new string or array, which is the result of merging \`x\` and \`y\`.",
+  "cond": "It takes list with \`conditions\` and returns a new function \`fn\` that expects \`input\` as argument. 
+
+This function will start evaluating the \`conditions\` in order to find the first winner(order of conditions matter). 
+
+The winner is this condition, which left side returns \`true\` when \`input\` is its argument. Then the evaluation of the right side of the winner will be the final result.
+
+If no winner is found, then \`fn\` returns \`undefined\`.",
+  "converge": "Accepts a converging function and a list of branching functions and returns a new function. When invoked, this new function is applied to some arguments, each branching function is applied to those same arguments. The results of each branching function are passed as arguments to the converging function to produce the return value.",
+  "curry": "It expects a function as input and returns its curried version.",
+  "curryN": "It returns a curried equivalent of the provided function, with the specified arity.",
+  "dec": "It decrements a number.",
+  "defaultTo": "It returns \`defaultValue\`, if all of \`inputArguments\` are \`undefined\`, \`null\` or \`NaN\`.
+
+Else, it returns the first truthy \`inputArguments\` instance(from left to right).",
+  "difference": "It returns the uniq set of all elements in the first list \`a\` not contained in the second list \`b\`.",
+  "dissoc": "It returns a new object that does not contain property \`prop\`.",
+  "divide": "",
+  "drop": "It returns \`howMany\` items dropped from beginning of list or string \`input\`.",
+  "dropLast": "It returns \`howMany\` items dropped from the end of list or string \`input\`.",
+  "dropLastWhile": "",
+  "dropRepeats": "It removes any successive duplicates according to \`R.equals\`.",
+  "dropRepeatsWith": "",
+  "dropWhile": "",
+  "either": "It returns a new \`predicate\` function from \`firstPredicate\` and \`secondPredicate\` inputs.
+
+This \`predicate\` function will return \`true\`, if any of the two input predicates return \`true\`.",
+  "endsWith": "Curried version of \`String.prototype.endsWith\`",
+  "eqProps": "It returns \`true\` if property \`prop\` in \`obj1\` is equal to property \`prop\` in \`obj2\` according to \`R.equals\`.",
+  "equals": "It deeply compares \`x\` and \`y\` and returns \`true\` if they are equal.",
+  "evolve": "It takes object or array of functions as set of rules. These \`rules\` are applied to the \`iterable\` input to produce the result.",
+  "filter": "It filters list or object \`input\` using a \`predicate\` function.",
+  "find": "It returns the first element of \`list\` that satisfy the \`predicate\`.
+
+If there is no such element, it returns \`undefined\`.",
+  "findIndex": "It returns the index of the first element of \`list\` satisfying the \`predicate\` function.
+
+If there is no such element, then \`-1\` is returned.",
+  "findLast": "It returns the last element of \`list\` satisfying the \`predicate\` function.
+
+If there is no such element, then \`undefined\` is returned.",
+  "findLastIndex": "It returns the index of the last element of \`list\` satisfying the \`predicate\` function.
+
+If there is no such element, then \`-1\` is returned.",
+  "flatten": "It deeply flattens an array.",
+  "flip": "It returns function which calls \`fn\` with exchanged first and second argument.",
+  "forEach": "It applies \`iterable\` function over all members of \`list\` and returns \`list\`.",
+  "fromPairs": "It transforms a \`listOfPairs\` to an object.",
+  "groupBy": "It splits \`list\` according to a provided \`groupFn\` function and returns an object.",
+  "groupWith": "It returns separated version of list or string \`input\`, where separation is done with equality \`compareFn\` function.",
+  "has": "It returns \`true\` if \`obj\` has property \`prop\`.",
+  "hasPath": "It will return true, if \`input\` object has truthy \`path\`(calculated with \`R.path\`).",
+  "head": "It returns the first element of list or string \`input\`.",
+  "identical": "It returns \`true\` if its arguments \`a\` and \`b\` are identical.
+
+Otherwise, it returns \`false\`.",
+  "identity": "It just passes back the supplied \`input\` argument.",
+  "ifElse": "It expects \`condition\`, \`onTrue\` and \`onFalse\` functions as inputs and it returns a new function with example name of \`fn\`. 
+
+When \`fn\`\` is called with \`input\` argument, it will return either \`onTrue(input)\` or \`onFalse(input)\` depending on \`condition(input)\` evaluation.",
+  "inc": "It increments a number.",
+  "includes": "If \`input\` is string, then this method work as native \`String.includes\`.
+
+If \`input\` is array, then \`R.equals\` is used to define if \`valueToFind\` belongs to the list.",
+  "indexBy": "It generates object with properties provided by \`condition\` and values provided by \`list\` array.
+
+If \`condition\` is a function, then all list members are passed through it.
+
+If \`condition\` is a string, then all list members are passed through \`R.path(condition)\`.",
+  "indexOf": "It returns the index of the first element of \`list\` equals to \`valueToFind\`.
+
+If there is no such element, it returns \`-1\`.",
+  "init": "It returns all but the last element of list or string \`input\`.",
+  "intersection": "It loops throw \`listA\` and \`listB\` and returns the intersection of the two according to \`R.equals\`.",
+  "intersperse": "It adds a \`separator\` between members of \`list\`.",
+  "is": "It returns \`true\` if \`x\` is instance of \`targetPrototype\`.",
+  "isEmpty": "It returns \`true\` if \`x\` is \`empty\`.",
+  "isNil": "It returns \`true\` if \`x\` is either \`null\` or \`undefined\`.",
+  "join": "It returns a string of all \`list\` instances joined with a \`glue\`.",
+  "keys": "It applies \`Object.keys\` over \`x\` and returns its keys.",
+  "last": "It returns the last element of \`input\`, as the \`input\` can be either a string or an array.",
+  "lastIndexOf": "It returns the last index of \`target\` in \`list\` array.
+
+\`R.equals\` is used to determine equality between \`target\` and members of \`list\`.
+
+If there is no such index, then \`-1\` is returned.",
+  "length": "It returns the \`length\` property of list or string \`input\`.",
+  "lens": "It returns a \`lens\` for the given \`getter\` and \`setter\` functions. 
+
+The \`getter\` **gets** the value of the focus; the \`setter\` **sets** the value of the focus. 
+
+The setter should not mutate the data structure.",
+  "lensIndex": "It returns a lens that focuses on specified \`index\`.",
+  "lensPath": "It returns a lens that focuses on specified \`path\`.",
+  "lensProp": "It returns a lens that focuses on specified property \`prop\`.",
+  "map": "It returns the result of looping through \`iterable\` with \`fn\`.
+
+It works with both array and object.",
+  "match": "Curried version of \`String.prototype.match\` which returns empty array, when there is no match.",
+  "mathMod": "\`R.mathMod\` behaves like the modulo operator should mathematically, unlike the \`%\` operator (and by extension, \`R.modulo\`). So while \`-17 % 5\` is \`-2\`, \`mathMod(-17, 5)\` is \`3\`.",
+  "max": "It returns the greater value between \`x\` and \`y\`.",
+  "maxBy": "It returns the greater value between \`x\` and \`y\` according to \`compareFn\` function.",
+  "mean": "It returns the mean value of \`list\` input.",
+  "median": "It returns the median value of \`list\` input.",
+  "merge": "It creates a copy of \`target\` object with overidden \`newProps\` properties.",
+  "mergeAll": "It merges all objects of \`list\` array sequentially and returns the result.",
+  "mergeDeepRight": "Creates a new object with the own properties of the first object merged with the own properties of the second object. If a key exists in both objects:
+
+  - and both values are objects, the two values will be recursively merged
+  - otherwise the value from the second object will be used.",
+  "mergeLeft": "Same as \`R.merge\`, but in opposite direction.",
+  "min": "It returns the lesser value between \`x\` and \`y\`.",
+  "minBy": "It returns the lesser value between \`x\` and \`y\` according to \`compareFn\` function.",
+  "modulo": "Curried version of \`x%y\`.",
+  "move": "It returns a copy of \`list\` with exchanged \`fromIndex\` and \`toIndex\` elements.",
+  "multiply": "Curried version of \`x*y\`.",
+  "negate": "",
+  "none": "It returns \`true\`, if all members of array \`list\` returns \`false\`, when applied as argument to \`predicate\` function.",
+  "not": "It returns a boolean negated version of \`input\`.",
+  "nth": "Curried version of \`list[index]\`.",
+  "of": "",
+  "omit": "It returns a partial copy of an \`obj\` without \`propsToOmit\` properties.",
+  "once": "It returns a function, which invokes only once \`fn\` function.",
+  "or": "Logical OR",
+  "over": "It returns a copied **Object** or **Array** with modified value received by applying function \`fn\` to \`lens\` focus.",
+  "partial": "It is very similar to \`R.curry\`, but you can pass initial arguments when you create the curried function.
+
+\`R.partial\` will keep returning a function until all the arguments that the function \`fn\` expects are passed.
+The name comes from the fact that you partially inject the inputs.",
+  "partition": "It will return array of two objects/arrays according to \`predicate\` function. The first member holds all instanses of \`input\` that pass the \`predicate\` function, while the second member - those who doesn't.",
+  "path": "If \`pathToSearch\` is \`'a.b'\` then it will return \`1\` if \`obj\` is \`{a:{b:1}}\`.
+
+It will return \`undefined\`, if such path is not found.",
+  "pathEq": "It returns \`true\` if \`pathToSearch\` of \`input\` object is equal to \`target\` value.
+
+\`pathToSearch\` is passed to \`R.path\`, which means that it can be either a string or an array. Also equality between \`target\` and the found value is determined by \`R.equals\`.",
+  "pathOr": "It reads \`obj\` input and returns either \`R.path(pathToSearch, obj)\` result or \`defaultValue\` input.",
+  "paths": "It loops over members of \`pathsToSearch\` as \`singlePath\` and returns the array produced by \`R.path(singlePath, obj)\`.
+
+Because it calls \`R.path\`, then \`singlePath\` can be either string or a list.",
+  "pick": "It returns a partial copy of an \`input\` containing only \`propsToPick\` properties.
+
+\`input\` can be either an object or an array.
+
+String anotation of \`propsToPick\` is one of the differences between \`Rambda\` and \`Ramda\`.",
+  "pickAll": "Same as \`R.pick\` but it won't skip the missing props, i.e. it will assign them to \`undefined\`.",
+  "pipe": "It performs left-to-right function composition.",
+  "pluck": "It returns list of the values of \`property\` taken from the all objects inside \`list\`.",
+  "prepend": "It adds element \`x\` at the beginning of \`list\`.",
+  "product": "",
+  "prop": "It returns the value of property \`propToFind\` in \`obj\`.
+
+If there is no such property, it returns \`undefined\`.",
+  "propEq": "It returns true if \`obj\` has property \`propToFind\` and its value is equal to \`valueToMatch\`.",
+  "propIs": "It returns \`true\` if \`property\` of \`obj\` is from \`target\` type.",
+  "propOr": "It returns either \`defaultValue\` or the value of \`property\` in \`obj\`.",
+  "props": "It takes list with properties \`propsToPick\` and returns a list with property values in \`obj\`.",
+  "range": "It returns list of numbers between \`startInclusive\` to \`endExclusive\` markers.",
+  "reduce": "",
+  "reject": "It has the opposite effect of \`R.filter\`.",
+  "repeat": "",
+  "replace": "It replaces \`strOrRegex\` found in \`str\` with \`replacer\`.",
+  "reverse": "It returns a reversed copy of list or string \`input\`.",
+  "set": "It returns a copied **Object** or **Array** with modified \`lens\` focus set to \`replacer\` value.",
+  "slice": "",
+  "sort": "It returns copy of \`list\` sorted by \`sortFn\` function.",
+  "sortBy": "It returns copy of \`list\` sorted by \`sortFn\` function.",
+  "split": "Curried version of \`String.prototype.split\`",
+  "splitAt": "It splits string or array at a given index.",
+  "splitEvery": "It splits \`input\` into slices of \`sliceLength\`.",
+  "splitWhen": "It splits \`list\` to two arrays according to a \`predicate\` function. 
+
+The first array contains all members of \`list\` before \`predicate\` returns \`true\`.",
+  "startsWith": "Curried version of \`String.prototype.startsWith\`",
+  "subtract": "Curried version of \`x - y\`",
+  "sum": "",
+  "symmetricDifference": "It returns a merged list of \`x\` and \`y\` with all equal elements removed.",
+  "tail": "It returns all but the first element of \`input\`.",
+  "take": "It returns the first \`howMany\` elements of \`input\`.",
+  "takeLast": "It returns the last \`howMany\` elements of \`input\`.",
+  "takeLastWhile": "",
+  "takeWhile": "",
+  "tap": "It applies function \`fn\` to input \`x\` and returns \`x\`. 
+
+One use case is debuging in the middle of \`R.compose\`.",
+  "test": "It determines whether \`str\` matches \`regExpression\`.",
+  "times": "It returns the result of applying function \`fn\` over members of range array.
+
+The range array includes numbers between \`0\` and \`howMany\`(exclusive).",
+  "toLower": "",
+  "toPairs": "It transforms an object to a list.",
+  "toString": "",
+  "toUpper": "",
+  "transpose": "",
+  "trim": "",
+  "tryCatch": "It returns function that runs \`fn\` in \`try/catch\` block. If there was an error, then \`fallback\` is used to return the result. Note that \`fn\` can be value or asynchronous/synchronous function(unlike \`Ramda\` where fallback can only be a synchronous function).",
+  "type": "It accepts any input and it returns its type.",
+  "union": "It takes two lists and return a new list containing a merger of both list with removed duplicates. 
+
+\`R.equals\` is used to compare for duplication, which means that it can be safely used with array of objects.",
+  "uniq": "It returns a new array containing only one copy of each element of \`list\`.",
+  "uniqWith": "It returns a new array containing only one copy of each element in \`list\` according to boolean returning function \`uniqFn\`.",
+  "unless": "The method returns function that will be called with argument \`input\`.
+
+If \`predicate(input)\` returns \`false\`, then the end result will be the outcome of \`whenFalse(input)\`.
+
+In the other case, the final output will be the \`input\` itself.",
+  "update": "It returns a copy of \`list\` with updated element at \`index\` with \`newValue\`.",
+  "values": "With correct input, this is nothing more than \`Object.values(obj)\`. If \`obj\` is not an object, then it returns an empty array.",
+  "view": "It returns the value of \`lens\` focus over \`target\` object.",
+  "where": "It returns \`true\` if all each property in \`conditions\` returns \`true\` when applied to corresponding property in \`input\` object.",
+  "whereEq": "It will return \`true\` if all of \`input\` object fully or partially include \`rule\` object.",
+  "without": "It will return a new array, based on all members of \`source\` list that are not part of \`matchAgainst\` list.",
+  "xor": "Logical XOR",
+  "zip": "It will return a new array containing tuples of equally positions items from both \`x\` and \`y\` lists. 
+
+The returned list will be truncated to match the length of the shortest supplied list.",
+  "zipObj": "It will return a new object with keys of \`keys\` array and values of \`values\` array.",
+  "zipWith": "",
+}
+`;

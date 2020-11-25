@@ -6,7 +6,7 @@ import { extractRawInfo } from './extract-raw-info'
 export function getMethods(withRambdax = false){
   const rawInfo = extractRawInfo(withRambdax)
 
-  return piped(
+  return piped<string[]>(
     rawInfo, map(extractName), filter(Boolean)
   )
 }

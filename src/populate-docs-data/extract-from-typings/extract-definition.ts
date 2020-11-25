@@ -2,14 +2,14 @@ import { head, mapToObject, match, piped, remove, trim } from 'rambdax'
 
 import { getOrigin } from '../../utils'
 
-export function extractDefinition(withRambdax){
+export function extractDefinition(withRambdax: boolean){
   const matches = match(/\/\/ @SINGLE_MARKER\nexport function[^;]+/gm,
     getOrigin(withRambdax))
 
-  const result = mapToObject(singleMatch => {
+  const result = mapToObject<string, Record<string, string>>(singleMatch => {
     const typing = remove('// @SINGLE_MARKER', singleMatch)
 
-    const name = piped(
+    const name = piped<string>(
       typing,
       match(/export function [a-zA-Z]+/),
       head,

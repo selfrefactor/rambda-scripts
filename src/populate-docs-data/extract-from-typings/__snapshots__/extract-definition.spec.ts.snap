@@ -1,0 +1,360 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`happy 1`] = `
+Object {
+  "F": "
+F(): boolean",
+  "T": "
+T(): boolean",
+  "add": "
+add(a: number, b: number): number",
+  "adjust": "
+adjust<T>(index: number, replaceFn: (x: T) => T, list: readonly T[]): readonly T[]",
+  "all": "
+all<T>(predicate: (x: T) => boolean, list: readonly T[]): boolean",
+  "allPass": "
+allPass<T>(predicates: readonly ((x: T) => boolean)[]): (input: T) => boolean",
+  "always": "
+always<T>(x: T): () => T",
+  "and": "
+and<T, U>(x: T, y: U): T | U",
+  "any": "
+any<T>(predicate: (x: T) => boolean, list: readonly T[]): boolean",
+  "anyPass": "
+anyPass<T>(predicates: readonly SafePred<T>[]): SafePred<T>",
+  "append": "
+append<T>(x: T, list: readonly T[]): readonly T[]",
+  "applySpec": "
+applySpec<Spec extends Record<string, (...args: readonly any[]) => any>>(
+  spec: Spec
+): (
+  ...args: Parameters<ValueOfRecord<Spec>>
+) => { readonly [Key in keyof Spec]: ReturnType<Spec[Key]> }",
+  "assoc": "
+assoc<T, U, K extends string>(prop: K, val: T, obj: U): Record<K, T> & U",
+  "assocPath": "
+assocPath<Output>(path: Path, newValue: any, obj: object): Output",
+  "both": "
+both(pred1: Pred, pred2: Pred): Pred",
+  "chain": "
+chain<T, U>(fn: (n: T) => readonly U[], list: readonly T[]): readonly U[]",
+  "clamp": "
+clamp(min: number, max: number, input: number): number",
+  "clone": "
+clone<T>(input: T): T",
+  "complement": "
+complement<T extends readonly any[]>(pred: (...args: T) => boolean): (...args: T) => boolean",
+  "compose": "
+compose<T1>(fn0: () => T1): () => T1",
+  "concat": "
+concat<T>(x: readonly T[], y: readonly T[]): readonly T[]",
+  "cond": "
+cond(conditions: readonly (readonly [Pred, (...a: readonly any[]) => any])[]): (...x: readonly any[]) => any",
+  "converge": "
+converge(after: ((...a: readonly any[]) => any), fns: ReadonlyArray<((...x: readonly any[]) => any)>): (...y: readonly any[]) => any",
+  "curry": "
+curry(fn: (...args: readonly any[]) => any): (...a: readonly any[]) => any",
+  "curryN": "
+curryN(length: number, fn: (...args: readonly any[]) => any): (...a: readonly any[]) => any",
+  "dec": "
+dec(x: number): number",
+  "defaultTo": "
+defaultTo<T>(defaultValue: T): (...inputArguments: readonly (T | null | undefined)[]) => T",
+  "difference": "
+difference<T>(a: readonly T[], b: readonly T[]): readonly T[]",
+  "dissoc": "
+dissoc<T>(prop: string, obj: any): T",
+  "divide": "
+divide(x: number, y: number): number",
+  "drop": "
+drop<T>(howMany: number, input: readonly T[]): readonly T[]",
+  "dropLast": "
+dropLast<T>(howMany: number, input: readonly T[]): readonly T[]",
+  "dropLastWhile": "
+dropLastWhile(predicate: (x: string) => boolean, iterable: string): string",
+  "dropRepeats": "
+dropRepeats<T>(list: readonly T[]): readonly T[]",
+  "dropRepeatsWith": "
+dropRepeatsWith<T>(predicate: (x: T, y: T) => boolean, list: readonly T[]): readonly T[]",
+  "dropWhile": "
+dropWhile(fn: Predicate<string>, iterable: string): string",
+  "either": "
+either(firstPredicate: Pred, secondPredicate: Pred): Pred",
+  "endsWith": "
+endsWith(target: string, str: string): boolean",
+  "eqProps": "
+eqProps<T, U>(prop: string, obj1: T, obj2: U): boolean",
+  "equals": "
+equals<T>(x: T, y: T): boolean",
+  "evolve": "
+evolve<T, U>(rules: ReadonlyArray<(x: T) => U>, list: readonly T[]): readonly U[]",
+  "filter": "
+filter<T>(predicate: Predicate<T>): (input: readonly T[]) => readonly T[]",
+  "find": "
+find<T>(predicate: (x: T) => boolean, list: readonly T[]): T | undefined",
+  "findIndex": "
+findIndex<T>(predicate: (x: T) => boolean, list: readonly T[]): number",
+  "findLast": "
+findLast<T>(fn: (x: T) => boolean, list: readonly T[]): T | undefined",
+  "findLastIndex": "
+findLastIndex<T>(predicate: (x: T) => boolean, list: readonly T[]): number",
+  "flatten": "
+flatten<T>(list: readonly any[]): readonly T[]",
+  "flip": "
+flip<T, U, TResult>(fn: (arg0: T, arg1: U) => TResult): (arg1: U, arg0?: T) => TResult",
+  "forEach": "
+forEach<T>(fn: Iterator<T, void>, list: readonly T[]): readonly T[]",
+  "fromPairs": "
+fromPairs<V>(listOfPairs: readonly KeyValuePair<string, V>[]): { readonly [index: string]: V }",
+  "groupBy": "
+groupBy<T>(groupFn: (x: T) => string, list: readonly T[]): { readonly [index: string]: readonly T[] }",
+  "groupWith": "
+groupWith<T>(compareFn: (x: T, y: T) => boolean): (input: readonly T[]) => readonly (readonly T[])[]",
+  "has": "
+has<T>(prop: string, obj: T): boolean",
+  "hasPath": "
+hasPath<T>(
+  path: string | readonly string[],
+  input: object
+): boolean",
+  "head": "
+head<T>(input: readonly T[]): T | undefined",
+  "identical": "
+identical<T>(x: T, y: T): boolean",
+  "identity": "
+identity<T>(input: T): T",
+  "ifElse": "
+ifElse<T, U>(
+  condition: (x: T) => boolean, 
+  onTrue: (x: T) => U, 
+  onFalse: (x: T) => U, 
+): (x: T) => U",
+  "inc": "
+inc(x: number): number",
+  "includes": "
+includes(valueToFind: string, input: readonly string[] | string): boolean",
+  "indexBy": "
+indexBy<T, K extends string | number = string>(condition: (key: T) => K, list: readonly T[]): { readonly [key in K]: T }",
+  "indexOf": "
+indexOf<T>(valueToFind: T, list: readonly T[]): number",
+  "init": "
+init<T>(input: readonly T[]): readonly T[]",
+  "intersection": "
+intersection<T>(listA: readonly T[], listB: readonly T[]): readonly T[]",
+  "intersperse": "
+intersperse<T>(separator: T, list: readonly T[]): readonly T[]",
+  "is": "
+is(targetPrototype: any, x: any): boolean",
+  "isEmpty": "
+isEmpty<T>(x: T): boolean",
+  "isNil": "
+isNil(x: any): x is null | undefined",
+  "join": "
+join<T>(glue: string, list: readonly T[]): string",
+  "keys": "
+keys<T extends object>(x: T): readonly (keyof T)[]",
+  "last": "
+last(str: string): string",
+  "lastIndexOf": "
+lastIndexOf<T>(target: T, list: readonly T[]): number",
+  "length": "
+length<T>(input: readonly T[]): number",
+  "lens": "
+lens<T, U, V>(getter: (s: T) => U, setter: (a: U, s: T) => V): Lens",
+  "lensIndex": "
+lensIndex(index: number): Lens",
+  "lensPath": "
+lensPath(path: RamdaPath): Lens",
+  "lensProp": "
+lensProp(prop: string): {
+  <T, U>(obj: T): U",
+  "map": "
+map<T, U>(fn: ObjectIterator<T, U>, iterable: Dictionary<T>): Dictionary<U>",
+  "match": "
+match(regExpression: RegExp, str: string): readonly string[]",
+  "mathMod": "
+mathMod(x: number, y: number): number",
+  "max": "
+max<T extends Ord>(x: T, y: T): T",
+  "maxBy": "
+maxBy<T>(compareFn: (input: T) => Ord, x: T, y: T): T",
+  "mean": "
+mean(list: readonly number[]): number",
+  "median": "
+median(list: readonly number[]): number",
+  "merge": "
+merge<O1 extends object, O2 extends object>(target: O1, newProps: O2): Merge<O2, O1, 'flat'>",
+  "mergeAll": "
+mergeAll<T>(list: readonly object[]): T",
+  "mergeDeepRight": "
+mergeDeepRight<O1 extends object, O2 extends object>(x: O1, y: O2): Merge<O2, O1, 'deep'>",
+  "mergeLeft": "
+mergeLeft<O1 extends object, O2 extends object>(target: O1, newProps: O2): Merge<O2, O1, 'flat'>",
+  "min": "
+min<T extends Ord>(x: T, y: T): T",
+  "minBy": "
+minBy<T>(compareFn: (input: T) => Ord, x: T, y: T): T",
+  "modulo": "
+modulo(x: number, y: number): number",
+  "move": "
+move<T>(fromIndex: number, toIndex: number, list: readonly T[]): readonly T[]",
+  "multiply": "
+multiply(x: number, y: number): number",
+  "negate": "
+negate(x: number): number",
+  "none": "
+none<T>(predicate: (x: T) => boolean, list: readonly T[]): boolean",
+  "not": "
+not(input: any): boolean",
+  "nth": "
+nth<T>(index: number, list: readonly T[]): T | undefined",
+  "of": "
+of<T>(x: T): readonly T[]",
+  "omit": "
+omit<T, K extends string>(propsToOmit: readonly K[], obj: T): Omit<T, K>",
+  "once": "
+once<T extends (...args: readonly any[]) => any>(func: T): T",
+  "or": "
+or<T, U>(a: T, b: U): T | U",
+  "over": "
+over<T>(lens: Lens, fn: Arity1Fn, value: T): T",
+  "partial": "
+partial<V0, V1, T>(fn: (x0: V0, x1: V1) => T, args: readonly [V0]): (x1: V1) => T",
+  "partition": "
+partition<T>(
+  predicate: Predicate<T>,
+  input: readonly T[]
+): readonly [readonly T[], readonly T[]]",
+  "path": "
+path<Input, T>(pathToSearch: Path, obj: Input): T | undefined",
+  "pathEq": "
+pathEq(pathToSearch: Path, target: any, input: any): boolean",
+  "pathOr": "
+pathOr<T>(defaultValue: T, pathToSearch: Path, obj: any): T",
+  "paths": "
+paths<Input, T>(pathsToSearch: readonly Path[], obj: Input): readonly (T | undefined)[]",
+  "pick": "
+pick<T, K extends string | number | symbol>(propsToPick: readonly K[], input: T): Pick<T, Exclude<keyof T, Exclude<keyof T, K>>>",
+  "pickAll": "
+pickAll<T, U>(propsToPick: readonly string[], input: T): U",
+  "pipe": "
+pipe<T1>(fn0: () => T1): () => T1",
+  "pluck": "
+pluck<K extends keyof T, T>(property: K, list: readonly T[]): ReadonlyArray<T[K]>",
+  "prepend": "
+prepend<T>(x: T, input: readonly T[]): readonly T[]",
+  "product": "
+product(list: readonly number[]): number",
+  "prop": "
+prop<P extends keyof T, T>(propToFind: P, obj: T): T[P]",
+  "propEq": "
+propEq<K extends string | number>(propToFind: K, valueToMatch: any, obj: Record<K, any>): boolean",
+  "propIs": "
+propIs(type: any, name: string, obj: any): boolean",
+  "propOr": "
+propOr<T, P extends string>(defaultValue: T, property: P, obj: Partial<Record<P, T>> | undefined): T",
+  "props": "
+props<P extends string, T>(propsToPick: readonly P[], obj: Record<P, T>): readonly T[]",
+  "range": "
+range(startInclusive: number, endExclusive: number): readonly number[]",
+  "reduce": "
+reduce<T, TResult>(reducer: (prev: TResult, current: T, i: number) => TResult, initialValue: TResult, list: readonly T[]): TResult",
+  "reject": "
+reject<T>(predicate: Predicate<T>, list: readonly T[]): readonly T[]",
+  "repeat": "
+repeat<T>(x: T): (timesToRepeat: number) => readonly T[]",
+  "replace": "
+replace(strOrRegex: RegExp | string, replacer: string, str: string): string",
+  "reverse": "
+reverse<T>(input: readonly T[]): readonly T[]",
+  "set": "
+set<T, U>(lens: Lens, replacer: U, obj: T): T",
+  "slice": "
+slice(from: number, to: number, input: string): string",
+  "sort": "
+sort<T>(sortFn: (a: T, b: T) => number, list: readonly T[]): readonly T[]",
+  "sortBy": "
+sortBy<T>(sortFn: (a: T) => Ord, list: readonly T[]): readonly T[]",
+  "split": "
+split(separator: string | RegExp): (str: string) => readonly string[]",
+  "splitAt": "
+splitAt<T>(index: number, input: readonly T[]): readonly [readonly T[], readonly T[]]",
+  "splitEvery": "
+splitEvery<T>(sliceLength: number, input: readonly T[]): readonly (readonly T[])[]",
+  "splitWhen": "
+splitWhen<T, U>(predicate: Predicate<T>, list: readonly U[]): readonly (readonly U[])[]",
+  "startsWith": "
+startsWith(target: string, str: string): boolean",
+  "subtract": "
+subtract(x: number, y: number): number",
+  "sum": "
+sum(list: readonly number[]): number",
+  "symmetricDifference": "
+symmetricDifference<T>(x: readonly T[], y: readonly T[]): readonly T[]",
+  "tail": "
+tail<T>(input: readonly T[]): readonly T[]",
+  "take": "
+take<T>(howMany: number, input: readonly T[]): readonly T[]",
+  "takeLast": "
+takeLast<T>(howMany: number, input: readonly T[]): readonly T[]",
+  "takeLastWhile": "
+takeLastWhile(predicate: (x: string) => boolean, input: string): string",
+  "takeWhile": "
+takeWhile(fn: Predicate<string>, iterable: string): string",
+  "tap": "
+tap<T>(fn: (x: T) => void, input: T): T",
+  "test": "
+test(regExpression: RegExp): (str: string) => boolean",
+  "times": "
+times<T>(fn: (i: number) => T, howMany: number): readonly T[]",
+  "toLower": "
+toLower(str: string): string",
+  "toPairs": "
+toPairs<S>(obj: { readonly [k: string]: S } | { readonly [k: number]: S }): readonly (readonly [string, S])[]",
+  "toString": "
+toString<T>(x: T): string",
+  "toUpper": "
+toUpper(str: string): string",
+  "transpose": "
+transpose<T>(list: readonly (readonly T[])[]): readonly (readonly T[])[]",
+  "trim": "
+trim(str: string): string",
+  "tryCatch": "
+tryCatch<T, U>(
+  fn: (input: T) => U,
+  fallback: U
+): (input: T) => U",
+  "type": "
+type(x: any): RambdaTypes",
+  "union": "
+union<T>(x: readonly T[], y: readonly T[]): readonly T[]",
+  "uniq": "
+uniq<T>(list: readonly T[]): readonly T[]",
+  "uniqWith": "
+uniqWith<T, U>(uniqFn: (x: T, y: T) => boolean, list: readonly T[]): readonly T[]",
+  "unless": "
+unless<T, U>(predicate: (x: T) => boolean, whenFalseFn: (x: T) => U, obj: T): U",
+  "update": "
+update<T>(index: number, newValue: T, list: readonly T[]): readonly T[]",
+  "values": "
+values<T extends object, K extends keyof T>(obj: T): readonly T[K][]",
+  "view": "
+view<T, U>(lens: Lens): (target: T) => U",
+  "when": "
+when<T, U>(predicate: (x: T) => boolean, whenTrueFn: (a: T) => U, input: T): T | U",
+  "where": "
+where<T, U>(conditions: T, input: U): boolean",
+  "whereEq": "
+whereEq<T, U>(condition: T, input: U): boolean",
+  "without": "
+without<T>(matchAgainst: readonly T[], source: readonly T[]): readonly T[]",
+  "xor": "
+xor(x: boolean, y: boolean): boolean",
+  "zip": "
+zip<K, V>(x: readonly K[], y: readonly V[]): readonly KeyValuePair<K, V>[]",
+  "zipObj": "
+zipObj<T, K extends string>(keys: readonly K[], values: readonly T[]): { readonly [P in K]: T }",
+  "zipWith": "
+zipWith<T, U, TResult>(fn: (x: T, y: U) => TResult, list1: readonly T[], list2: readonly U[]): readonly TResult[]",
+}
+`;

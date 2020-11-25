@@ -1,5 +1,5 @@
 import { extractExplanation } from './extract-explanation'
 
 test('happy', () => {
-  expect(extractExplanation()).toMatchSnapshot()
+  expect(extractExplanation(false)).toMatchSnapshot()
 })
