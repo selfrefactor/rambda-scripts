@@ -121,14 +121,7 @@ export class ApplyHighlighter {
       return piped(
           {...data, ...parsedData},
           normalizeBenchmark,
-                // finalFix
       )
-      /*
-        forEach(x => this.appendToResolver(x), all)
-        forEach(appendToResolver, all) => `this` issue with Ramda
-
-        R.renamePropsWith
-      */
     }
 
     const toSave = await mapAsync(iterator, source)
