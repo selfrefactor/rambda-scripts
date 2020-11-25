@@ -19,8 +19,8 @@ function withSingleMethod(method: string): FailingTest | false{
   const content: string = readFileSync(outputPath).toString()
   const testContent = readFileSync(getTestPath(method)).toString()
 
-  const [ sk ] = content.split('passing')
-  const goodTests = sk
+  const [ goodTestsRaw ] = content.split('passing')
+  const goodTests = goodTestsRaw
     .split('\n')
     .filter(line => line.includes('✓'))
     .map(line => remove('✓', line).trim())
@@ -29,8 +29,8 @@ function withSingleMethod(method: string): FailingTest | false{
     content.split('passing'),
     ([ first ]) => first,
     x => x.split('\n'),
-    filter(x => x.includes(')')),
-    map(x => x.split(')')[ 1 ].trim())
+    filter((x: string) => x.includes(')')),
+    map((x: string) => x.split(')')[ 1 ].trim())
   )
 
   let flag = false
@@ -82,11 +82,11 @@ function withSingleMethod(method: string): FailingTest | false{
       holder.push(lineToPush)
     }
   })
-  let skipFirstEmptyLine = true
+  let goodTestsRawipFirstEmptyLine = true
 
   const toReturn = holder.filter(x => {
-    if (!x && skipFirstEmptyLine){
-      skipFirstEmptyLine = false
+    if (!x && goodTestsRawipFirstEmptyLine){
+      goodTestsRawipFirstEmptyLine = false
 
       return true
     }
@@ -113,6 +113,11 @@ interface FailingTest{
   diffReason?: string
 }
 
+function failingTestPredicate(x : FailingTest | false): x is FailingTest{
+  if(x === false) return false
+  return true
+}
+
 export async function writeSummary(){
   const dir = `${ BASE }/failing_tests`
   emptyDirSync(dir)
@@ -120,9 +125,9 @@ export async function writeSummary(){
   const allMethods = Object.keys(R)
   const summary: string[] = []
 
-  const allFailingTests: FailingTest[] = allMethods
+  const allFailingTests = allMethods
     .map(method => withSingleMethod(method))
-    .filter(Boolean)
+    .filter(failingTestPredicate)
 
   const summaryJson = mapToObject(x => ({ [ x.method ] : x }), allFailingTests)
   await writeJson(`${ BASE }/summary.json`, summaryJson)

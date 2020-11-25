@@ -50,7 +50,7 @@ async function replaceImports(){
     const content = await readFile(filePath)
     const newContent = replace(
       'require(\'../source\')',
-      'require(\'../../../../dist/rambda.js\')',
+      'require(\'../../../../../rambda/dist/rambda\')',
       content.toString()
     )
 
