@@ -9,4 +9,6 @@ scripts/lint-ts-files/assets
 scripts/lint-ts-files/assets/*
 src/run-ramda-specs/ramda
 src/run-ramda-specs/ramda/*
+src/populate-docs-data/data-rambdax.json
+src/populate-docs-data/data.json
 .idea

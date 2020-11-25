@@ -74,8 +74,7 @@ async function save(input: Save){
   )
 }
 
-export async function populateDocsData(input: { withRambdax: boolean }){
-  const {withRambdax } = input
+export async function populateDocsData(withRambdax: boolean){
   const definitions = extractDefinition(withRambdax)
   const categories = extractCategories(withRambdax)
   const allDefinitions = extractAllDefinitions(withRambdax)

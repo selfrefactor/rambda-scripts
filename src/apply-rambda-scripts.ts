@@ -44,5 +44,5 @@ export async function applyRambdaScripts(modeInput: string) {
   if (mode === 'toolbelt') return dynamicTsToolbelt()
   if (mode === 'usedby') return verifyUsedBy()
   if (mode === 'highlighter') return applyHighlighter()
-  if (mode === 'populate:docs') return populateDocsData()
+  if (mode === 'populate:docs') return populateDocsData(WITH_RAMBDAX)
 }

@@ -5,7 +5,7 @@ import { getMethods } from '../extract-from-typings/get-methods'
 
 export function failedTestsReasons(){
   return mapToObject<string, Record<string, string>>((method:string) => {
-    const explanation = allDifferences[ method ]
+    const explanation = (allDifferences as any)[ method ]
     if (!explanation) return false
 
     return { [ method ] : explanation.reason }
