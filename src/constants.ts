@@ -1,5 +1,6 @@
 import {existsSync} from 'fs'
 import {resolve} from 'path'
+
 export const ALL_PATHS = {
   documentationFile: resolve(__dirname, '../../rambda/files/index.d.ts'),
   toolbeltDestination: resolve(__dirname, '../../rambda/_ts-toolbelt'),
@@ -20,8 +21,10 @@ export const DESTINATIONS = {
   highlighterResolver: resolve(__dirname, '../../rambda-docs/assets/resolver.json'),
 }
 
-export const MODES = ['toolbelt', 'highlighter', 'usedby']
+export const MODES = ['toolbelt', 'highlighter', 'usedby', 'populate:docs']
+
 export const WITH_RAMBDAX = process.env.WITH_RAMBDAX === 'ON'
+
 export const HAS_RAMBDAX = existsSync(
   resolve(__dirname, '../../rambdax/package.json')
 )

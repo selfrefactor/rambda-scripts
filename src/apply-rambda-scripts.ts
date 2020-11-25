@@ -5,6 +5,7 @@ import {ALL_PATHS, MODES, WITH_RAMBDAX, DESTINATIONS} from './constants'
 import {ApplyHighlighter} from './apply-highlighter/apply-highlighter'
 import {dynamicTsToolbelt} from './dynamic-ts-toolbelt/dynamic-ts-toolbelt'
 import {verifyUsedBy} from './verify-used-by/verify-used-by'
+import {populateDocsData} from './populate-docs-data/populate-docs-data'
 
 function getMode(mode: string) {
   if (!mode || !MODES.includes(mode)) {
@@ -43,4 +44,5 @@ export async function applyRambdaScripts(modeInput: string) {
   if (mode === 'toolbelt') return dynamicTsToolbelt()
   if (mode === 'usedby') return verifyUsedBy()
   if (mode === 'highlighter') return applyHighlighter()
+  if (mode === 'populate:docs') return populateDocsData()
 }
