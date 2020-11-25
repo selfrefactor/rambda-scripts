@@ -9,7 +9,7 @@ import { extractExample } from './extract-from-typings/extract-example'
 import { extractExplanation } from './extract-from-typings/extract-explanation'
 import { extractNotes } from './extract-from-typings/extract-notes'
 import { getCategories } from './extract-from-typings/get-categories'
-import { benchmarkInfo as benchmarkInfoMethod } from './extracts/benchmark-info.ts'
+import { benchmarkInfo as benchmarkInfoMethod } from './extracts/benchmark-info'
 import { failedRamdaTests } from './extracts/failed-ramda-tests'
 import { failedTestsCount } from './extracts/failed-tests-count'
 import { failedTestsReasons } from './extracts/failed-tests-reasons'
@@ -17,7 +17,7 @@ import { rambdaSource as rambdaSourceMethod } from './extracts/rambda-source'
 import { rambdaSpecs as rambdaSpecsMethod } from './extracts/rambda-specs'
 import { typingsTests as typingsTestsMethod } from './extracts/typings-tests'
 
-function initiateData(definitions: any[], key: string){
+function initiateData(definitions: Record<string, string>, key: string){
   return map(x => ({ [ key ] : x }), definitions)
 }
 
@@ -27,7 +27,7 @@ interface AppendData {
   input: Record<string, any>
 }
 
-function appendData(appendDataInput: AppendData){
+function appendData(appendDataInput: AppendData): Record<string, string>{
   const { input, prop, hash } = appendDataInput
   return map((x: any, methodName: string) => {
     if (!hash[ methodName ]) return x
@@ -90,8 +90,10 @@ export async function populateDocsData(input: { withRambdax: boolean }){
   const failedSpecsReasons = failedTestsReasons()
   const failedSpecsCount = failedTestsCount()
 
-  const toSave = piped(
-    initiateData(definitions, 'typing'),
+  const pipedInput = initiateData(definitions, 'typing')
+
+  const toSave = piped<any>(
+    pipedInput,
     input =>
       appendData({
         input,

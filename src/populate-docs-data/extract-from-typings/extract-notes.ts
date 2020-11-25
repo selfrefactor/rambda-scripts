@@ -6,7 +6,7 @@ import { extractRawInfo } from './extract-raw-info'
 export function extractNotes(withRambdax: boolean){
   const rawInfo = extractRawInfo(withRambdax)
 
-  return mapToObject(x => {
+  return mapToObject<string, Record<string, string>>(x => {
     const name = extractName(x)
 
     const [ matched ] = match(/Notes:(\n|.)+\*\//m)(x)
@@ -15,5 +15,5 @@ export function extractNotes(withRambdax: boolean){
     const notes = remove([ 'Notes:', '*/' ])(matched)
 
     return { [ name ] : notes.trim() }
-  })(rawInfo)
+  }, rawInfo)
 }

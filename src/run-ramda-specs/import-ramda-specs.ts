@@ -62,8 +62,8 @@ async function replaceImports(){
   return toReturn
 }
 
-export async function importRamdaSpecs(input: Record<string, boolean>){
-  if (input.withInitialStep) await cloneRamda()
+export async function importRamdaSpecs(withInitialStep: boolean){
+  if (withInitialStep) await cloneRamda()
 
   return replaceImports()
 }

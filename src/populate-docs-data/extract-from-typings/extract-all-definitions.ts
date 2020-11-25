@@ -8,7 +8,7 @@ export function extractAllDefinitions(withRambdax: boolean) {
     getOrigin(withRambdax)
   ).map(init)
 
-  const result = mapToObject(singleMatch => {
+  const result = mapToObject<string, Record<string, string>>(singleMatch => {
     const allTypings = piped<string>(singleMatch, remove('// @SINGLE_MARKER'), trim)
 
     const name = piped<string>(
