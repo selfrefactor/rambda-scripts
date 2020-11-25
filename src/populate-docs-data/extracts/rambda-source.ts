@@ -1,11 +1,10 @@
 import { existsSync, readFile } from 'fs-extra'
 import { resolve } from 'path'
-
-import { mapToObjectAsync } from '../../../source/mapToObjectAsync'
+import { mapToObjectAsync } from 'rambdax'
 import { getMethods } from '../extract-from-typings/get-methods'
 
-export async function rambdaSource(withRambdax){
-  return mapToObjectAsync(async method => {
+export async function rambdaSource(withRambdax: boolean){
+  return mapToObjectAsync(async (method:string) => {
     const filePath = resolve(__dirname, `../../../source/${ method }.js`)
     if (!existsSync(filePath)) return false
     const rambdaSpec = await readFile(filePath)

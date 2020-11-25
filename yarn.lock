@@ -4098,6 +4098,11 @@ rambdax@7.0.1:
   resolved "https://registry.yarnpkg.com/rambdax/-/rambdax-7.0.1.tgz#6a1b3184abcf4cf6df5dffc27fc0d71100aa21ec"
   integrity sha512-Xrrp45dg1PLt40LMcjfNyVDcPBndzpR2t+AXGAcc9iqU9lD9bnk/b1B+n4W5tFXoSKDmZmgckcA8ajgVzbtxGA==
 
+rambdax@7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/rambdax/-/rambdax-7.1.0.tgz#138bc13b3dbe445f635e1e3bd94bc6ae24827fe2"
+  integrity sha512-U/fBKF2IrHTLaqCsshQ948fXNrigfU0aE4Cl18y/BqkGM4E/Yg8XYKuAzghlCVq1ybPDJdq8HbGCcnuS8c6CEg==
+
 react-is@^17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"

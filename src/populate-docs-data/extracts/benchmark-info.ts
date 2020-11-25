@@ -1,8 +1,6 @@
 import { existsSync, readFile } from 'fs-extra'
 import { resolve } from 'path'
-import { remove } from 'rambdax'
-
-import { mapToObjectAsync } from '../../../source/mapToObjectAsync'
+import { remove, mapToObjectAsync } from 'rambdax'
 import { getMethods } from '../extract-from-typings/get-methods'
 
 const clean = remove([
@@ -16,7 +14,7 @@ const cleanSummary = remove(' slower')
 
 const FASTEST = '🚀 Fastest'
 
-function getMethodSummary(method, benchmarkSummary){
+function getMethodSummary(method: string, benchmarkSummary: string){
   const line = benchmarkSummary
     .split('\n')
     .find(x => x.trim().startsWith(`*${ method }*`))
