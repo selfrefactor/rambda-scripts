@@ -7,4 +7,6 @@ src/dynamic-ts-toolbelt/ts-toolbelt
 dist/dynamic-ts-toolbelt/ts-toolbelt
 scripts/lint-ts-files/assets
 scripts/lint-ts-files/assets/*
+src/run-ramda-specs/ramda
+src/run-ramda-specs/ramda/*
 .idea

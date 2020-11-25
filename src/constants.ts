@@ -21,7 +21,7 @@ export const DESTINATIONS = {
   highlighterResolver: resolve(__dirname, '../../rambda-docs/assets/resolver.json'),
 }
 
-export const MODES = ['toolbelt', 'highlighter', 'usedby', 'populate:docs']
+export const MODES = ['toolbelt', 'highlighter', 'usedby', 'populate:docs', 'ramda:specs']
 
 export const WITH_RAMBDAX = process.env.WITH_RAMBDAX === 'ON'
 
