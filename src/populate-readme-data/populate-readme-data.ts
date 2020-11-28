@@ -8,7 +8,7 @@ import { getIntro } from './get-intro'
 import { getTail } from './get-tail'
 import { rambdaRepl } from './rambda-repl'
 
-async function getMethodsData(withRambdax){
+async function getMethodsData(withRambdax: boolean){
   const dataFile = withRambdax ? 'data-rambdax.json' : 'data.json'
 
   return readJson(resolve(__dirname, `../populate-docs-data/${ dataFile }`))
@@ -26,7 +26,7 @@ const readmeTemplate = `
 {{tail}}
 `
 
-function getOutputPath(withRambdax){
+function getOutputPath(withRambdax: boolean){
   if (withRambdax){
     const dir = resolve(__dirname, '../../../rambdax')
 
@@ -37,8 +37,8 @@ function getOutputPath(withRambdax){
   return `${ dir }/README.md`
 }
 
-export async function populateReadmeData({ withRambdax }){
-  await buildStep({ withRambdax })
+export async function populateReadmeData(withRambdax: boolean){
+  await buildStep(withRambdax)
 
   const methodsData = await getMethodsData(withRambdax)
 
