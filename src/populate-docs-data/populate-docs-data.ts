@@ -88,7 +88,7 @@ export async function populateDocsData(withRambdax: boolean){
   const failedRamdaSpecs = failedRamdaTests()
   const failedSpecsReasons = failedTestsReasons()
   const failedSpecsCount = failedTestsCount()
-
+  
   const pipedInput = initiateData(definitions, 'typing')
 
   const toSave = piped<any>(
