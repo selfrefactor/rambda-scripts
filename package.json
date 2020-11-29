@@ -1,6 +1,7 @@
 {
   "name": "rambda-scripts",
   "scripts": {
+    "new": "node scripts/add-new-method/add-new-method",
     "immutable": "node scripts/immutable-lint/immutable-lint.js",
     "hjson:parse": "node scripts/parse-hjson/parse-hjson.js",
     "hjson:fix": "node scripts/parse-hjson/fix-hjson.js",
