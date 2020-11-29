@@ -16,6 +16,16 @@ Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on 
 
 `yarn consume`
 
+### Add new method
+
+`yarn new gte`
+
+### Update benchmark summary
+
+If benchmarks are changed, then their summary should also be updated.
+
+`yarn summary`
+
 ## TODO
 
 Script to check which TS versions are supported

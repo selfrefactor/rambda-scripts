@@ -14,6 +14,7 @@
     "lint": "yarn lint:rambda&&yarn lint:tests",
     "lint:rambda": "node scripts/lint/lint.js",
     "lint:tests": "node scripts/lint-ts-files/prepare.js&&node scripts/lint-ts-files/lint-typings-tests.js",
+    "summary": "jest src/read-benchmarks/benchmark-summary.spec.ts",
     "populate:readme": "RAMBDA_SCRIPTS_MODE=populate:readme jest src/apply-rambda-scripts.spec.ts",
     "populate:readme:rambdax": "WITH_RAMBDAX=ON RAMBDA_SCRIPTS_MODE=populate:readme jest src/apply-rambda-scripts.spec.ts",
     "populate:docs": "RAMBDA_SCRIPTS_MODE=populate:docs jest src/apply-rambda-scripts.spec.ts",

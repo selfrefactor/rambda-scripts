@@ -6,7 +6,7 @@ import {resolve} from 'path'
 
 const resultsDir = resolve(
   __dirname,
-  '../run-benchmarks/benchmarks/benchmark_results'
+  '../../scripts/run-benchmarks/benchmarks/benchmark_results'
 )
 
 function parseMethodName(input: string) {
