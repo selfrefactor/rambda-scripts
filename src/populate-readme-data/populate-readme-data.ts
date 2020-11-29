@@ -7,11 +7,12 @@ import { createMethodData } from './create-method-data'
 import { getIntro } from './get-intro'
 import { getTail } from './get-tail'
 import { rambdaRepl } from './rambda-repl'
+import { ALL_PATHS, DESTINATIONS } from '../constants'
 
 async function getMethodsData(withRambdax: boolean){
-  const dataFile = withRambdax ? 'data-rambdax.json' : 'data.json'
+  const filePath = withRambdax ? DESTINATIONS.rambdaxDocsData : DESTINATIONS.docsData
 
-  return readJson(resolve(__dirname, `../populate-docs-data/${ dataFile }`))
+  return readJson(filePath)
 }
 
 const removeDoubleNewLines = replace(/\n{3,5}/g, '\n\n')
@@ -28,13 +29,10 @@ const readmeTemplate = `
 
 function getOutputPath(withRambdax: boolean){
   if (withRambdax){
-    const dir = resolve(__dirname, '../../../rambdax')
-
-    return `${ dir }/README.md`
+    return `${ ALL_PATHS.xBase }/README.md`
   }
-  const dir = resolve(__dirname, '../../')
 
-  return `${ dir }/README.md`
+  return `${ ALL_PATHS.base }/README.md`
 }
 
 export async function populateReadmeData(withRambdax: boolean){

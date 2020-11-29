@@ -22,6 +22,8 @@ export const ALL_PATHS = {
 }
 
 export const DESTINATIONS = {
+  docsData: `${__dirname}/populate-docs-data/data.json`,
+  rambdaxDocsData: `${__dirname}/populate-docs-data/data-rambdax.json`,
   data: resolve(__dirname, '../../rambda-docs/assets/new-data.json'),
   highlighterResolver: resolve(
     __dirname,
