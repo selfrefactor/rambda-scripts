@@ -35,6 +35,7 @@ function getOutputPath(withRambdax: boolean){
 }
 
 export async function populateReadmeData(withRambdax: boolean){
+  console.log({withRambdax})
   await buildStep(withRambdax)
 
   const methodsData = await getMethodsData(withRambdax)

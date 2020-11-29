@@ -1,4 +1,5 @@
 import {existsSync} from 'fs'
+import {log} from 'helpers-fn'
 import {outputJson, readJson} from 'fs-extra'
 import {filter} from 'rambdax'
 import {ALL_PATHS, MODES, WITH_RAMBDAX, DESTINATIONS} from './constants'
@@ -6,6 +7,7 @@ import {ApplyHighlighter} from './apply-highlighter/apply-highlighter'
 import {dynamicTsToolbelt} from './dynamic-ts-toolbelt/dynamic-ts-toolbelt'
 import {verifyUsedBy} from './verify-used-by/verify-used-by'
 import {populateDocsData} from './populate-docs-data/populate-docs-data'
+import {populateReadmeData} from './populate-readme-data/populate-readme-data'
 
 function getMode(mode: string) {
   if (!mode || !MODES.includes(mode)) {
@@ -49,4 +51,7 @@ export async function applyRambdaScripts(modeInput: string) {
   if (mode === 'usedby') return verifyUsedBy()
   if (mode === 'highlighter') return applyHighlighter()
   if (mode === 'populate:docs') return populateDocsData(WITH_RAMBDAX)
+  if (mode === 'populate:readme') return populateReadmeData(WITH_RAMBDAX)
+
+  log(`Such mode '${mode}' doesn't exists`, 'error')
 }
