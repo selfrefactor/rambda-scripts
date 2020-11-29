@@ -2,6 +2,7 @@ node_modules
 coverage
 *.log
 dist
+scripts/run-benchmarks/**/*.json
 scripts/consume-typings/consume-typings.js
 src/dynamic-ts-toolbelt/ts-toolbelt
 dist/dynamic-ts-toolbelt/ts-toolbelt
