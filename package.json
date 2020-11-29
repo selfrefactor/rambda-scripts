@@ -5,6 +5,7 @@
     "hjson:parse": "node scripts/parse-hjson/parse-hjson.js",
     "hjson:fix": "node scripts/parse-hjson/fix-hjson.js",
     "benchmarks": "node scripts/run-benchmarks/run-benchmarks-spec.js",
+    "benchmarksx": "node scripts/run-benchmarks/run-complex-benchmarks-spec.js",
     "lintx": "cd src && run lint",
     "in": "tsc --watch",
     "build": "tsc -p tsconfig.json",

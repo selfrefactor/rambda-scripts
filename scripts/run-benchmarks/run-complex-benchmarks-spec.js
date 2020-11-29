@@ -1,23 +1,13 @@
-/*
-import { build } from '../utils'
-import {
-  runAllComplexBenchmarks,
-  runSingleComplexBenchmark,
-} from './run-complex-benchmarks'
-
+const { runAllComplexBenchmarks, runSingleComplexBenchmark } = require('./run-complex-benchmarks')
 
 const RUN_ALL = false
+const method = 'forEach'
 
-test('all benchmarks', async () => {
-  if (!RUN_ALL) return
-  await build()
+void async function runBenchmarks(){
+  if (!RUN_ALL){
+    await runSingleComplexBenchmark(method)
+    return
+  }
+
   await runAllComplexBenchmarks()
-})
-
-test('single benchmark', async () => {
-  if (RUN_ALL) return
-  await build()
-  await runSingleComplexBenchmark('forEach')
-})
-
-*/
+}()

@@ -1,10 +1,10 @@
 process.env.BENCHMARK_FOLDER =
   'scripts/run-benchmarks/benchmarks/benchmark_complex_results'
-import { createComplexBenchmark, scanFolder } from 'helpers-fn'
-import { parse, resolve } from 'path'
-import { mapAsync } from 'rambdax'
+const { createComplexBenchmark, scanFolder  } = require('helpers-fn')
+const { parse, resolve  } = require('path')
+const { mapAsync  } = require('rambdax')
 
-const benchmarksDir = resolve(__dirname, '../../source/complex_benchmarks')
+const benchmarksDir = resolve(__dirname, '../../../rambda/source/complex_benchmarks')
 
 async function getAllBenchmarks(){
   const files = await scanFolder({ folder : benchmarksDir })
@@ -14,13 +14,16 @@ async function getAllBenchmarks(){
     .map(filePath => parse(filePath).name)
 }
 
-export async function runSingleComplexBenchmark(singleMethod){
+async function runSingleComplexBenchmark(singleMethod){
   const required = require(`${ benchmarksDir }/${ singleMethod }.js`)
   createComplexBenchmark(required)
 }
 
-export async function runAllComplexBenchmarks(){
+async function runAllComplexBenchmarks(){
   const methodsWithBenchmarks = await getAllBenchmarks()
 
   await mapAsync(runSingleComplexBenchmark, methodsWithBenchmarks)
 }
+
+exports.runAllComplexBenchmarks = runAllComplexBenchmarks
+exports.runSingleComplexBenchmark = runSingleComplexBenchmark
