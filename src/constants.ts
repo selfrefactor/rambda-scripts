@@ -13,6 +13,7 @@ export const ALL_PATHS = {
   toolbeltDestination: `${base}/_ts-toolbelt`,
   rambdaxToolbeltDestination: `${xBase}/_ts-toolbelt`,
   source: `${base}/source`,
+  output: `${base}/src`,
   dataSource: `${base}/scripts/populate-docs-data/data.json`,
   rambdaxDataSource: `${base}/scripts/populate-docs-data/data-rambdax.json`,
   sourceDestination: `${base}/src`,

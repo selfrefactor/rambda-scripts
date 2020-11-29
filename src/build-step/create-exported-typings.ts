@@ -1,11 +1,11 @@
 import { outputFile } from 'fs-extra'
-import { resolve } from 'path'
 import { map, replace, trim } from 'rambdax'
+import { ALL_PATHS } from '../constants'
 
 import { getRambdaData, getRambdaxData, intro } from '../utils'
 const fixToolbeltImport = replace('../_ts-toolbelt', './_ts-toolbelt')
 
-function attachExports({ methodName, allTypings }){
+function attachExports({ methodName, allTypings }: {methodName:string, allTypings: string}){
   return allTypings
     .split('\n')
     .map(line =>
@@ -13,13 +13,10 @@ function attachExports({ methodName, allTypings }){
     .join('\n')
 }
 
-/**
- * Retrieves the values at given paths of an object.
- */
 export async function createExportedTypings(withRambdax = false){
   let toSave = intro
 
-  const applyForSingleMethod = (x, methodName) => {
+  const applyForSingleMethod = (x: any, methodName: string) => {
     const allTypings = attachExports({
       methodName,
       allTypings : x.allTypings,
@@ -47,8 +44,8 @@ export async function createExportedTypings(withRambdax = false){
   map(applyForSingleMethod, methodsData)
 
   const output = withRambdax ?
-    resolve(__dirname, '../../../rambdax/index.d.ts') :
-    resolve(__dirname, '../../index.d.ts')
+    `${ALL_PATHS.xBase}/index.d.ts` :
+    `${ALL_PATHS.base}/index.d.ts`
 
   const finalVersion = fixToolbeltImport(toSave)
   await outputFile(output, finalVersion)
