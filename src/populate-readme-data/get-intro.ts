@@ -4,11 +4,11 @@ import { log } from 'helpers-fn'
 import { resolve } from 'path'
 import { interpolate } from 'rambdax'
 import * as Ramda from 'ramda'
+import { ALL_PATHS } from '../constants'
 
-import { devDependencies } from '../../package'
 import { getRambdaMethods, getSeparator} from '../utils'
 
-function getInstallInfo(withRambdax){
+function getInstallInfo(withRambdax: boolean){
   const installInfoTemplate = `## ➤ Install
 
 - **yarn add {{lib}}**
@@ -117,7 +117,7 @@ async function getTreeShakingInfo(){
   return compared.ramdaVsRambda
 }
 
-async function getIntroContent(withRambdax){
+async function getIntroContent(withRambdax: boolean){
   const rambdaTreeShakingInfo = await getTreeShakingInfo()
 
   const filePath = withRambdax ?
@@ -138,7 +138,7 @@ async function getIntroContent(withRambdax){
   })
 }
 
-async function getIntroEnd(withRambdax){
+async function getIntroEnd(withRambdax: boolean){
   const introEndContent = (await readFile(`${ __dirname }/assets/INTRO_END.md`)).toString()
   const suggestPR = `
 > If you need more **Ramda** methods in **Rambda**, you may either submit a \`PR\` or check the extended version of **Rambda** - [Rambdax](https://github.com/selfrefactor/rambdax). In case of the former, you may want to consult with [Rambda contribution guidelines.](CONTRIBUTING.md)
@@ -147,14 +147,14 @@ async function getIntroEnd(withRambdax){
   return interpolate(introEndContent, {suggestPR: withRambdax ? '\n': '\n' + suggestPR + '\n'})
 }
 
-
-export async function getIntro(withRambdax){
+export async function getIntro(withRambdax: boolean){
   const introContent = await getIntroContent(withRambdax)
   const usedByContent = await readFile(`${ __dirname }/assets/USED_BY.md`)
   const summaryContent = await readFile(resolve(__dirname, '../read-benchmarks/summary.txt'))
   const introEndContent = await getIntroEnd(withRambdax)
   const missingMethods = await getMissingMethods()
   const installInfo = getInstallInfo(withRambdax)
+  const {devDependencies} = await readJson(`${ALL_PATHS.base}/package.json`)
 
   return interpolate(templateIntro, {
     benchmarksSeparator: getSeparator('benchmarks'),

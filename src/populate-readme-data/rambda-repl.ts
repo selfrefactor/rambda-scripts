@@ -5,7 +5,7 @@ const getConsoleLog = includes('console.log')
 const getResultVariableLog = either(includes('const result ='),
   includes('const result='))
 
-function attachResultVariable(input){
+function attachResultVariable(input: string){
   const [ firstLineRaw, ...otherLines ] = input.split('\n')
   const firstLine = `const result = ${ firstLineRaw }`
 
@@ -14,7 +14,7 @@ function attachResultVariable(input){
     [ firstLine, ...otherLines ].join('\n')
 }
 
-export function rambdaRepl(input){
+export function rambdaRepl(input: string){
   const consoleLogFlag = getConsoleLog(input)
   const resultVariableFlag = getResultVariableLog(input)
   const flag = resultVariableFlag || consoleLogFlag

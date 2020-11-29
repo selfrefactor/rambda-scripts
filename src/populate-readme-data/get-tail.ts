@@ -103,7 +103,7 @@ const myLibraries = `
 </table>
 `.trim()
 
-export async function getTail(withRambdax){
+export async function getTail(withRambdax: boolean){
   const changelogSource = withRambdax ?
     `${ __dirname }/assets/CHANGELOG_RAMBDAX.md` :
     `${ __dirname }/assets/CHANGELOG.md`
