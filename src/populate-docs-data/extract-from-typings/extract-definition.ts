@@ -14,7 +14,7 @@ export function extractDefinition(withRambdax: boolean){
       match(/export function [a-zA-Z]+/),
       head,
       trim,
-      remove('export ')
+      remove('export function ')
     )
 
     return { [ name ] : remove('export function ', typing) }

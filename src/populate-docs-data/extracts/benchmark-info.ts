@@ -1,6 +1,7 @@
 import { existsSync, readFile } from 'fs-extra'
 import { resolve } from 'path'
 import { remove, mapToObjectAsync } from 'rambdax'
+import { ALL_PATHS } from '../../constants'
 import { getMethods } from '../extract-from-typings/get-methods'
 
 const clean = remove([
@@ -48,9 +49,9 @@ export async function benchmarkInfo(){
   ).toString()
 
   const result = await mapToObjectAsync(async (method:string) => {
-    const filePath = resolve(__dirname,
-      `../../../source/benchmarks/${ method }.js`)
+    const filePath = `${ALL_PATHS.source}/benchmarks/${ method }.js`
     const okExists = existsSync(filePath)
+
     if (!okExists) return false
     const benchmarkContentRaw = await readFile(filePath)
     const benchmarkContent = clean(benchmarkContentRaw.toString().trim())
