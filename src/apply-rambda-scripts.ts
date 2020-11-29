@@ -15,14 +15,18 @@ function getMode(mode: string) {
 }
 
 export function validatePaths() {
+  const wrongPaths: string[] = []
   const iterator = (filePath: string, prop: string) => {
     if (!WITH_RAMBDAX && prop.startsWith('rambdax')) return true
-    return existsSync(filePath)
+    if(existsSync(filePath)) return true
+
+    wrongPaths.push(prop)
+    return false
   }
   const validPaths = filter(iterator, ALL_PATHS)
 
   if (Object.keys(validPaths).length !== Object.keys(ALL_PATHS).length) {
-    throw new Error('There is invalid path')
+    throw new Error(`There are invalid paths ${wrongPaths}`)
   }
 }
 

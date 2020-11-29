@@ -1,5 +1,4 @@
 import { outputFile, readJson } from 'fs-extra'
-import { resolve } from 'path'
 import { interpolate, map, replace } from 'rambdax'
 
 import { buildStep } from '../build-step/build-step'
