@@ -1,25 +1,23 @@
 import {existsSync} from 'fs'
 import {resolve} from 'path'
 
+const base = resolve(__dirname, '../../rambda')
+const xBase = resolve(__dirname, '../../rambdax')
+const docsBase = resolve(__dirname, '../../rambda-docs')
+
 export const ALL_PATHS = {
-  documentationFile: resolve(__dirname, '../../rambda/files/index.d.ts'),
-  toolbeltDestination: resolve(__dirname, '../../rambda/_ts-toolbelt'),
-  rambdaxToolbeltDestination: resolve(
-    __dirname,
-    '../../rambdax/_ts-toolbelt'
-  ),
-  source: resolve(__dirname, '../../rambda/source'),
-  dataSource: resolve(
-    __dirname,
-    '../../rambda/scripts/populate-docs-data/data.json'
-  ),
-  rambdaxDataSource: resolve(
-    __dirname,
-    '../../rambda/scripts/populate-docs-data/data-rambdax.json'
-  ),
-  sourceDestination: resolve(__dirname, '../../rambda/src'),
-  docsDir: resolve(__dirname, '../../rambda-docs/assets'),
-  rambdaxDir: resolve(__dirname, '../../rambdax'),
+  base,
+  xBase,
+  docsBase,
+  documentationFile: `${base}/files/index.d.ts`,
+  toolbeltDestination: `${base}/_ts-toolbelt`,
+  rambdaxToolbeltDestination: `${xBase}/_ts-toolbelt`,
+  source: `${base}/source`,
+  dataSource: `${base}/scripts/populate-docs-data/data.json`,
+  rambdaxDataSource: `${base}/scripts/populate-docs-data/data-rambdax.json`,
+  sourceDestination: `${base}/src`,
+  docsDir: `${docsBase}/assets`,
+  rambdaxDir: xBase,
 }
 
 export const DESTINATIONS = {

@@ -8,8 +8,7 @@ import {
 import {scanFolder} from 'helpers-fn'
 import {parse, resolve} from 'path'
 import {filter, mapAsync, pick, pipedAsync, remove} from 'rambdax'
-
-import {devDependencies} from '../../../rambda/package'
+import {ALL_PATHS} from '../constants'
 import {getRambdaMethods} from '../utils'
 import {createExportedTypings} from './create-exported-typings'
 
@@ -66,6 +65,7 @@ async function rambdaxBuildStep() {
     'rollup-plugin-sourcemaps',
   ]
 
+  const {devDependencies} = await readJson(`${ALL_PATHS.base}/package.json`)
   const rambdaxDeps = pick(buildDeps, devDependencies)
   const tsToolbelt = resolve(__dirname, '../../_ts-toolbelt')
   const sourceFileDir = resolve(__dirname, '../../source')
