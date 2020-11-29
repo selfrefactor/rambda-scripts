@@ -29,7 +29,7 @@ export async function createExportedTypings(withRambdax = false){
     const explanation = x.explanation
       .split('\n')
       .map(trim)
-      .map(a => ` * ${ a }`)
+      .map((a: string) => ` * ${ a }`)
       .join('\n')
 
     const methodData = `/**\n${ explanation }\n */\n${ allTypings }`

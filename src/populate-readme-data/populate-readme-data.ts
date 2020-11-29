@@ -42,7 +42,7 @@ export async function populateReadmeData(withRambdax: boolean){
 
   const methodsData = await getMethodsData(withRambdax)
 
-  const methods = map(x => {
+  const methods = map((x: any) => {
     if (!x.example) return x
     const replLink = rambdaRepl(x.example)
 
@@ -50,10 +50,10 @@ export async function populateReadmeData(withRambdax: boolean){
       ...x,
       replLink,
     }
-  })(methodsData)
+  }, methodsData)
 
   const sortedMethods = Object.keys(methods)
-    .map(key => ({
+    .map((key: string) => ({
       ...methods[ key ],
       methodName : key,
     }))

@@ -7,7 +7,7 @@ import {
 } from 'fs-extra'
 import {scanFolder} from 'helpers-fn'
 import {parse} from 'path'
-import {filter, mapAsync, pick, pipedAsync, remove} from 'rambdax'
+import {filter, mapAsync, pick, piped, pipedAsync, remove} from 'rambdax'
 import {ALL_PATHS} from '../constants'
 import {getRambdaMethods} from '../utils'
 import {createExportedTypings} from './create-exported-typings'
@@ -17,10 +17,10 @@ import {createExportedTypings} from './create-exported-typings'
 const rambdaxMethodsAsInternals = ['isFunction', 'isPromise', 'maybe']
 
 async function createMainFile(
-  allMethods: string
+  allMethods: string[]
 ) {
   const content = allMethods
-    .map(x => `export * from './src/${x}'`)
+    .map((x: string) => `export * from './src/${x}'`)
     .join('\n')
 
   await outputFile(`${ALL_PATHS.base}/rambda.js`, `${content}\n`)
@@ -78,9 +78,11 @@ async function rambdaxBuildStep() {
   await copy(tsToolbelt, tsToolbeltOutput)
 
   const allMethods: string[] = []
+
+  const files = await scanFolder({folder: sourceFileDir})
+
   await pipedAsync(
-    sourceFileDir,
-    async dir => scanFolder({folder: dir}),
+    files,
     filter((x: any) => {
       if (x.endsWith('/testUtils.js')) return false
       if (x.endsWith('.spec.js')) return false
@@ -112,9 +114,10 @@ async function rambdaBuildStep() {
   const output = ALL_PATHS.output 
   await removeFS(output)
 
+  const files = await scanFolder({folder: sourceFileDir})
+
   await pipedAsync(
-    sourceFileDir,
-    async dir => scanFolder({folder: dir}),
+    files,
     filter((x: any) => {
       if (x.endsWith('.spec.js')) return false
       if (x.endsWith('/testUtils.js')) return false
