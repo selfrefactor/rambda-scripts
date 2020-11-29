@@ -1,7 +1,7 @@
 import { interpolate } from 'rambdax'
 import { getMethodSeparator } from '../utils'
 
-function createFailedSpec(method){
+function createFailedSpec(method: any){
   const summaryTemplate = `
 <details>
 
@@ -31,7 +31,7 @@ function createFailedSpec(method){
   return interpolate(templateToUse, method)
 }
 
-function createRambdaSpecReadme(method){
+function createRambdaSpecReadme(method: any){
   const summaryTemplate = `
 <details>
 
@@ -47,7 +47,7 @@ function createRambdaSpecReadme(method){
   return interpolate(summaryTemplate, method)
 }
 
-function createRambdaSourceReadme(method){
+function createRambdaSourceReadme(method: any){
   const summaryTemplate = `
 <details>
 
@@ -63,7 +63,7 @@ function createRambdaSourceReadme(method){
   return interpolate(summaryTemplate, method)
 }
 
-function createTypescriptTest(method){
+function createTypescriptTest(method: any){
   const summaryTemplate = `
 <details>
 
@@ -79,7 +79,7 @@ function createTypescriptTest(method){
   return interpolate(summaryTemplate, method)
 }
 
-function createBenchmarkInfo(method){
+function createBenchmarkInfo(method: any){
   const summaryTemplate = `
 <details>
 
@@ -95,7 +95,7 @@ function createBenchmarkInfo(method){
   return interpolate(summaryTemplate, method.benchmarkInfo)
 }
 
-function attachAllTypings(method){
+function attachAllTypings(method: any){
   const allTypingsTemplate = `
 <details>
 
@@ -111,30 +111,30 @@ function attachAllTypings(method){
   return interpolate(allTypingsTemplate, method)
 }
 
-const createExampleReadme = ({ example }) => `
+const createExampleReadme = ({ example }: {example: string}) => `
 \`\`\`javascript
 ${ example }
 \`\`\`
 `
 
-const createNoteReadme = ({ notes }) => `
+const createNoteReadme = ({ notes }: {notes: string}) => `
 
 > :boom: ${ notes }
 `
 
-const attachTyping = ({ typing }) => `
+const attachTyping = ({ typing }: {typing: string}) => `
 \`\`\`typescript
 ${ typing }
 \`\`\`
 \n`
 
-const getIntro = ({ methodName }) => [ `### ${ methodName }`, '\n\n' ]
+const getIntro = ({ methodName }: {methodName: string}) => [ `### ${ methodName }`, '\n\n' ]
 
-function createReplReadme({ replLink, methodName }){
+function createReplReadme({ replLink, methodName }: {replLink: string, methodName: string}){
   return `\n<a title="redirect to Rambda Repl site" href="${ replLink }">Try this <strong>R.${ methodName }</strong> example in Rambda REPL</a>`
 }
 
-export function createMethodData(method, withRambdax){
+export function createMethodData(method: any, withRambdax: boolean){
   const data = getIntro(method)
   const extended = !withRambdax
 
