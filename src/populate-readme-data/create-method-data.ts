@@ -79,7 +79,10 @@ function createTypescriptTest(method: any){
   return interpolate(summaryTemplate, method)
 }
 
-function createBenchmarkInfo(method: any){
+/*
+  Due to README.md size issue in Github
+*/
+function createBenchmarkInfoDeprecated(method: any){
   const summaryTemplate = `
 <details>
 
@@ -154,8 +157,8 @@ export function createMethodData(method: any, withRambdax: boolean){
     data.push(createTypescriptTest(method))
   }
 
-  if (method.benchmarkInfo && extended)
-    data.push(createBenchmarkInfo(method))
+  // if (method.benchmarkInfo && extended)
+  //   data.push(createBenchmarkInfo(method))
   if (method.failedSpecsReasons && extended)
     data.push(createFailedSpec(method))
 
