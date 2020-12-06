@@ -21,7 +21,8 @@ export function validatePaths() {
   const iterator = (filePath: string, prop: string) => {
     if (!WITH_RAMBDAX && prop.startsWith('rambdax')) return true
     if(existsSync(filePath)) return true
-
+    if(prop.toLowerCase().includes('datasource')) return true
+    
     wrongPaths.push(prop)
     return false
   }

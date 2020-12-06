@@ -153,9 +153,9 @@ export function createMethodData(method: any, withRambdax: boolean){
     data.push(createRambdaSourceReadme(method))
   if (method.rambdaSpecs) data.push(createRambdaSpecReadme(method))
 
-  if (method.typescriptDefinitionTest && extended){
-    data.push(createTypescriptTest(method))
-  }
+  // if (method.typescriptDefinitionTest && extended){
+  //   data.push(createTypescriptTest(method))
+  // }
 
   // if (method.benchmarkInfo && extended)
   //   data.push(createBenchmarkInfo(method))
