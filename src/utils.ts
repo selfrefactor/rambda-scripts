@@ -2,7 +2,7 @@ import { readFileSync } from 'fs'
 import { readJson } from 'fs-extra'
 import { spawn } from 'helpers-fn'
 import { resolve } from 'path'
-import { ALL_PATHS } from './constants'
+import { PATHS } from './constants'
 
 export function getSeparator(label: string){
   return `[![---------------](https://raw.githubusercontent.com/selfrefactor/rambda/master/files/separator.png)](#-${label})`
@@ -37,8 +37,9 @@ export async function getRambdaxMethods(){
 }
 
 export const BOTH_LIBRARIES = readFileSync(
-  ALL_PATHS.documentationFile
+  PATHS.documentationFile
 ).toString()
+
 export const [ intro ] = BOTH_LIBRARIES.split('// API_MARKER')
 
 const [ rambda ] = BOTH_LIBRARIES.split('// RAMBDAX_MARKER_START')

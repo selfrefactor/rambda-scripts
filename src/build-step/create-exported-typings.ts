@@ -1,6 +1,6 @@
 import { outputFile } from 'fs-extra'
 import { map, replace, trim } from 'rambdax'
-import { ALL_PATHS } from '../constants'
+import { PATHS, X_PATHS } from '../constants'
 
 import { getRambdaData, getRambdaxData, intro } from '../utils'
 const fixToolbeltImport = replace('../_ts-toolbelt', './_ts-toolbelt')
@@ -44,8 +44,8 @@ export async function createExportedTypings(withRambdax = false){
   map(applyForSingleMethod, methodsData)
 
   const output = withRambdax ?
-    `${ALL_PATHS.xBase}/index.d.ts` :
-    `${ALL_PATHS.base}/index.d.ts`
+    `${X_PATHS.xBase}/index.d.ts` :
+    `${PATHS.base}/index.d.ts`
 
   const finalVersion = fixToolbeltImport(toSave)
   await outputFile(output, finalVersion)

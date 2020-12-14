@@ -2,7 +2,7 @@ import {existsSync} from 'fs'
 import {log} from 'helpers-fn'
 import {outputJson, readJson} from 'fs-extra'
 import {filter} from 'rambdax'
-import {ALL_PATHS, MODES, WITH_RAMBDAX, DESTINATIONS} from './constants'
+import {PATHS, X_PATHS, MODES, WITH_RAMBDAX, DESTINATIONS} from './constants'
 import {ApplyHighlighter} from './apply-highlighter/apply-highlighter'
 import {dynamicTsToolbelt} from './dynamic-ts-toolbelt/dynamic-ts-toolbelt'
 import {verifyUsedBy} from './verify-used-by/verify-used-by'
@@ -19,22 +19,27 @@ function getMode(mode: string) {
 export function validatePaths() {
   const wrongPaths: string[] = []
   const iterator = (filePath: string, prop: string) => {
-    if (!WITH_RAMBDAX && prop.startsWith('rambdax')) return true
     if(existsSync(filePath)) return true
-    if(prop.toLowerCase().includes('datasource')) return true
     
     wrongPaths.push(prop)
     return false
   }
-  const validPaths = filter(iterator, ALL_PATHS)
+  const validPaths = filter(iterator, PATHS)
 
-  if (Object.keys(validPaths).length !== Object.keys(ALL_PATHS).length) {
+  if (Object.keys(validPaths).length !== Object.keys(PATHS).length) {
+    throw new Error(`There are invalid paths ${wrongPaths}`)
+  }
+  if(!WITH_RAMBDAX) return
+
+  const validRambdaxPaths = filter(iterator, X_PATHS)
+
+  if (Object.keys(validRambdaxPaths).length !== Object.keys(X_PATHS).length) {
     throw new Error(`There are invalid paths ${wrongPaths}`)
   }
 }
 
 async function applyHighlighter() {
-  const source = await readJson(WITH_RAMBDAX ? ALL_PATHS.rambdaxDataSource: ALL_PATHS.dataSource)
+  const source = await readJson(WITH_RAMBDAX ? DESTINATIONS.rambdaxDataSource: DESTINATIONS.dataSource)
 
   const ApplyHighlighterInstance = new ApplyHighlighter()
   await ApplyHighlighterInstance.init()

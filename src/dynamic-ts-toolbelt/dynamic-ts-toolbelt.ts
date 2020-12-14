@@ -1,11 +1,11 @@
 import {copy, readFile, remove, writeFile} from 'fs-extra'
 import {log, scanFolder, spawn} from 'helpers-fn'
 import {mapFastAsync, replace} from 'rambdax'
-import {ALL_PATHS, HAS_RAMBDAX} from '../constants'
+import {PATHS, X_PATHS, HAS_RAMBDAX} from '../constants'
 
 async function copyToRambdax() {
-  const source = ALL_PATHS.toolbeltDestination
-  const destination = ALL_PATHS.rambdaxToolbeltDestination
+  const source = PATHS.toolbeltDestination
+  const destination = X_PATHS.rambdaxToolbeltDestination
 
   await copy(source, destination, {overwrite: true})
   log('Applied to Rambdax','info')
@@ -29,7 +29,7 @@ async function fixWrongExports(files: string[]) {
 }
 
 export async function dynamicTsToolbelt(commitHash?: string) {
-  const destinationDir = `${ALL_PATHS.toolbeltDestination}/src`
+  const destinationDir = `${PATHS.toolbeltDestination}/src`
 
   await remove(`${__dirname}/ts-toolbelt`)
   await remove(destinationDir)

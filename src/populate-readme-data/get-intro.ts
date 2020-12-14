@@ -4,7 +4,7 @@ import { log } from 'helpers-fn'
 import { resolve } from 'path'
 import { interpolate } from 'rambdax'
 import * as Ramda from 'ramda'
-import { ALL_PATHS } from '../constants'
+import { PATHS } from '../constants'
 
 import { getRambdaMethods, getSeparator} from '../utils'
 
@@ -154,7 +154,7 @@ export async function getIntro(withRambdax: boolean){
   const introEndContent = await getIntroEnd(withRambdax)
   const missingMethods = await getMissingMethods()
   const installInfo = getInstallInfo(withRambdax)
-  const {devDependencies} = await readJson(`${ALL_PATHS.base}/package.json`)
+  const {devDependencies} = await readJson(`${PATHS.base}/package.json`)
 
   return interpolate(templateIntro, {
     benchmarksSeparator: getSeparator('benchmarks'),

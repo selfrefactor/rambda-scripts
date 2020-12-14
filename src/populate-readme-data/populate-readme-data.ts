@@ -1,12 +1,11 @@
 import { outputFile, readJson } from 'fs-extra'
 import { interpolate, map, replace } from 'rambdax'
-
 import { buildStep } from '../build-step/build-step'
 import { createMethodData } from './create-method-data'
 import { getIntro } from './get-intro'
 import { getTail } from './get-tail'
 import { rambdaRepl } from './rambda-repl'
-import { ALL_PATHS, DESTINATIONS } from '../constants'
+import { PATHS, X_PATHS, DESTINATIONS } from '../constants'
 
 async function getMethodsData(withRambdax: boolean){
   const filePath = withRambdax ? DESTINATIONS.rambdaxDocsData : DESTINATIONS.docsData
@@ -28,10 +27,10 @@ const readmeTemplate = `
 
 function getOutputPath(withRambdax: boolean){
   if (withRambdax){
-    return `${ ALL_PATHS.xBase }/README.md`
+    return `${ X_PATHS.xBase }/README.md`
   }
 
-  return `${ ALL_PATHS.base }/README.md`
+  return `${ PATHS.base }/README.md`
 }
 
 export async function populateReadmeData(withRambdax: boolean){

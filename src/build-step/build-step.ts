@@ -8,7 +8,7 @@ import {
 import {scanFolder} from 'helpers-fn'
 import {parse} from 'path'
 import {filter, mapAsync, pick, piped, pipedAsync, remove} from 'rambdax'
-import {ALL_PATHS} from '../constants'
+import {PATHS, X_PATHS} from '../constants'
 import {getRambdaMethods} from '../utils'
 import {createExportedTypings} from './create-exported-typings'
 
@@ -23,7 +23,7 @@ async function createMainFile(
     .map((x: string) => `export * from './src/${x}'`)
     .join('\n')
 
-  await outputFile(`${ALL_PATHS.base}/rambda.js`, `${content}\n`)
+  await outputFile(`${PATHS.base}/rambda.js`, `${content}\n`)
 }
 
 async function createMainFileRambdax({
@@ -43,7 +43,7 @@ async function createMainFileRambdax({
 }
 
 async function rambdaxBuildStep() {
-  const rambdaxOutput = `${ALL_PATHS.xBase}/src`
+  const rambdaxOutput = `${X_PATHS.xBase}/src`
   await removeFS(rambdaxOutput)
 
   const rambdaMethods = await getRambdaMethods()
@@ -61,12 +61,12 @@ async function rambdaxBuildStep() {
     'rollup-plugin-sourcemaps',
   ]
 
-  const {devDependencies} = await readJson(`${ALL_PATHS.base}/package.json`)
+  const {devDependencies} = await readJson(`${PATHS.base}/package.json`)
   const rambdaxDeps = pick(buildDeps, devDependencies)
-  const tsToolbelt = ALL_PATHS.toolbeltDestination
-  const sourceFileDir = ALL_PATHS.source
-  const tsToolbeltOutput = `${ALL_PATHS.xBase}/_ts-toolbelt`
-  const packageJsonOutput = `${ALL_PATHS.xBase}/package.json`
+  const tsToolbelt = PATHS.toolbeltDestination
+  const sourceFileDir = PATHS.source
+  const tsToolbeltOutput = `${X_PATHS.xBase}/_ts-toolbelt`
+  const packageJsonOutput = `${X_PATHS.xBase}/package.json`
   const packageJson = await readJson(packageJsonOutput)
   const newPackageJson = {
     ...packageJson,
@@ -97,21 +97,21 @@ async function rambdaxBuildStep() {
       if (isValidMethod) allMethods.push(name)
 
       const [, fileName] = x.split('source/')
-      await copy(x, `${ALL_PATHS.xBase}/src/${fileName}`)
+      await copy(x, `${X_PATHS.xBase}/src/${fileName}`)
     })
   )
 
   await createMainFileRambdax({
     allMethods,
     rambdaMethods,
-    dir: ALL_PATHS.xBase,
+    dir: X_PATHS.xBase,
   })
 }
 
 async function rambdaBuildStep() {
   const rambdaMethods = await getRambdaMethods()
-  const sourceFileDir = ALL_PATHS.source
-  const output = ALL_PATHS.output 
+  const sourceFileDir = PATHS.source
+  const output = PATHS.output 
   await removeFS(output)
 
   const files = await scanFolder({folder: sourceFileDir})
