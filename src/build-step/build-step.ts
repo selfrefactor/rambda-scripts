@@ -7,8 +7,8 @@ import {
 } from 'fs-extra'
 import {scanFolder} from 'helpers-fn'
 import {parse} from 'path'
-import {filter, mapAsync, pick, piped, pipedAsync, remove} from 'rambdax'
-import {PATHS, X_PATHS} from '../constants'
+import {filter, mapAsync, pick, pipedAsync, remove} from 'rambdax'
+import {PATHS, X_PATHS, SOURCES} from '../constants'
 import {getRambdaMethods} from '../utils'
 import {createExportedTypings} from './create-exported-typings'
 
@@ -149,9 +149,21 @@ async function rambdaBuildStep() {
   )
 }
 
+async function syncChangelog(withRambdax: boolean){
+  const source = withRambdax ? SOURCES.rambdaxChangelog : SOURCES.changelog
+  const destinationBase = withRambdax ? X_PATHS.xBase: PATHS.base
+
+  await copy( 
+    source,
+    `${destinationBase}/CHANGELOG.md`
+  )
+}
+
 export async function buildStep(withRambdax: boolean) {
   await createExportedTypings(withRambdax)
 
   if (withRambdax) await rambdaxBuildStep()
   await rambdaBuildStep()
+
+  await syncChangelog(withRambdax)
 }

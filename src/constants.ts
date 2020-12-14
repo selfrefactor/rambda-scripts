@@ -24,6 +24,8 @@ export const X_PATHS = {
 }
 
 export const DESTINATIONS = {
+  changelog: `${base}/CHANGELOG.md`,
+  rambdaxChangelog: `${xBase}/CHANGELOG.md`,
   dataSource: `${__dirname}/populate-docs-data/data.json`,
   rambdaxDataSource: `${__dirname}/populate-docs-data/data-rambdax.json`,
   docsData: `${__dirname}/populate-docs-data/data.json`,
@@ -33,6 +35,11 @@ export const DESTINATIONS = {
     __dirname,
     '../../rambda-docs/assets/resolver.json'
   ),
+}
+
+export const SOURCES = {
+  changelog: `${__dirname}/populate-readme-data/assets/CHANGELOG.md`,
+  rambdaxChangelog: `${__dirname}/populate-readme-data/assets/CHANGELOG_RAMBDAX.md`,
 }
 
 export const MODES = [
