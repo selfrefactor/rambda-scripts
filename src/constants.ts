@@ -5,6 +5,8 @@ const base = resolve(__dirname, '../../rambda')
 const xBase = resolve(__dirname, '../../rambdax')
 const docsBase = resolve(__dirname, '../../rambda-docs')
 
+export const BULLET = '❯' // ❯ ➤
+
 export const PATHS = {
   base,
   docsBase,

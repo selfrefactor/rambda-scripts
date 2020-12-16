@@ -4,12 +4,12 @@ import { log } from 'helpers-fn'
 import { resolve } from 'path'
 import { interpolate } from 'rambdax'
 import * as Ramda from 'ramda'
-import { PATHS } from '../constants'
+import { PATHS, BULLET } from '../constants'
 
 import { getRambdaMethods, getSeparator} from '../utils'
 
 function getInstallInfo(withRambdax: boolean){
-  const installInfoTemplate = `## ➤ Install
+  const installInfoTemplate = `## ${BULLET} Install
 
 - **yarn add {{lib}}**
 
@@ -34,7 +34,7 @@ import {compose, add} from 'https://raw.githubusercontent.com/selfrefactor/{{lib
 async function getMissingMethods(){
   const rambdaMethods = await getRambdaMethods()
   const missingMethodsTemplate = `
-## ➤ Missing Ramda methods
+## ${BULLET} Missing Ramda methods
 
 <details>
 <summary>
@@ -71,7 +71,7 @@ const templateIntro = `
 {{installInfo}}
 {{introEnd}}
 
-## ➤ Benchmarks
+## ${BULLET} Benchmarks
 
 <details>
 
@@ -94,7 +94,7 @@ method | Rambda | Ramda | Lodash
 
 {{benchmarksSeparator}}
 
-## ➤ Used by
+## ${BULLET} Used by
 
 {{usedBy}}
 
@@ -117,20 +117,27 @@ async function getTreeShakingInfo(){
   return compared.ramdaVsRambda
 }
 
-async function getIntroContent(withRambdax: boolean){
-  const rambdaTreeShakingInfo = await getTreeShakingInfo()
-
+async function getIntroBaseContent(withRambdax: boolean, advantages: string){
   const filePath = withRambdax ?
-    `${ __dirname }/assets/INTRO_RAMBDAX.md` :
-    `${ __dirname }/assets/INTRO.md`
+  `${ __dirname }/assets/INTRO_RAMBDAX.md` :
+  `${ __dirname }/assets/INTRO.md`
 
+  const template = (await readFile(filePath)).toString()
+  const content = interpolate(template, {bullet: BULLET, advantages})
+
+  return content
+}
+
+async function getIntroContent(withRambdax: boolean ){
+  const rambdaTreeShakingInfo = await getTreeShakingInfo()
   const advantagesFilePath = withRambdax ?
     `${ __dirname }/assets/ADVANTAGES_RAMBDAX.md` :
     `${ __dirname }/assets/ADVANTAGES.md`
+
   const advantagesTemplate = (await readFile(advantagesFilePath)).toString()
 
   const advantages = interpolate(advantagesTemplate, { rambdaTreeShakingInfo })
-  const content = (await readFile(filePath)).toString()
+  const content = await getIntroBaseContent(withRambdax, advantages)
 
   return interpolate(content, {
     rambdaTreeShakingInfo,

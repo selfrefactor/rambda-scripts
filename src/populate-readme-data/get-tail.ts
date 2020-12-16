@@ -1,5 +1,6 @@
 import { readFile } from 'fs-extra'
 import { forEach, interpolate } from 'rambdax'
+import { BULLET } from '../constants'
 import { getSeparator } from '../utils'
 
 const mostInfluentialContributors = {
@@ -20,7 +21,7 @@ const mostInfluentialContributors = {
 
 function getAdditionalInfo(){
   const additionalInfoTemplate = `
-## ➤ Additional info
+## ${BULLET} Additional info
 
 > Most influential contributors
 
@@ -58,7 +59,7 @@ function getAdditionalInfo(){
 }
 
 const templateTail = `
-## ➤ CHANGELOG
+## ${BULLET} CHANGELOG
 
 {{changelog}}
 

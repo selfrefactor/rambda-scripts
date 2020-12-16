@@ -9,7 +9,7 @@ Extended version of Rambda(utility library) - [Documentation](https://selfrefact
 [![dependencies Status](https://david-dm.org/selfrefactor/rambdax/status.svg)](https://david-dm.org/selfrefactor/rambdax)
 ![Library size](https://img.shields.io/bundlephobia/minzip/rambdax)
 
-## ➤ Differences between Rambda and Rambdax
+## {{bullet}} Differences between Rambda and Rambdax
 
 Rambdax passthrough all [Rambda](https://github.com/selfrefactor/rambda) methods and introduce some new functions.
 
@@ -17,7 +17,7 @@ The idea of **Rambdax** is to extend **Rambda** without worring for **Ramda** co
 
 [![---------------](https://raw.githubusercontent.com/selfrefactor/rambda/master/files/separator.png)](#-differences-between-rambda-and-rambdax)
 
-## ➤ Example use
+## {{bullet}} Example use
 
 ```javascript
 import { composeAsync, filter, delay, mapAsync } from 'rambdax'
@@ -40,7 +40,7 @@ You can test this example in <a href="https://rambda.now.sh?const%20result%20%3D
 
 [![---------------](https://raw.githubusercontent.com/selfrefactor/rambda/master/files/separator.png)](#-example-use)
 
-## ➤ Rambdax's advantages
+## {{bullet}} Rambdax's advantages
 
 {{advantages}}
 
