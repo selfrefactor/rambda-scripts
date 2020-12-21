@@ -47,7 +47,7 @@ function getAdditionalInfo(){
 
 > Releases
 
-[Rambda's releases](https://github.com/selfrefactor/rambda/releases) are used mostly for testing purposes, so it is not advisable to be used.
+[Rambda's releases](https://github.com/selfrefactor/rambda/releases) before **6.4.0** were used mostly for testing purposes.
 `
   let contributors = ''
 
