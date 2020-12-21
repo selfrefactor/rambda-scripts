@@ -13,6 +13,7 @@
     "consume": "cd scripts/consume-typings&&yarn start",
     "lint": "yarn lint:rambda&&yarn lint:tests",
     "lint:rambda": "node scripts/lint/lint.js",
+    "tag": "node scripts/github-release/github-release.js",
     "lint:tests": "node scripts/lint-ts-files/prepare.js&&node scripts/lint-ts-files/lint-typings-tests.js",
     "summary": "jest src/read-benchmarks/benchmark-summary.spec.ts",
     "populate:readme": "RAMBDA_SCRIPTS_MODE=populate:readme jest src/apply-rambda-scripts.spec.ts",
