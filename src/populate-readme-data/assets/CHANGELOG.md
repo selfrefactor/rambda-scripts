@@ -1,3 +1,5 @@
+WIP 6.6.0
+
 6.5.1
 
 Fix wrong versions in changelog

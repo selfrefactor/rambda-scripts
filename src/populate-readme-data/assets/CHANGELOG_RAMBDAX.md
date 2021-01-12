@@ -1,3 +1,17 @@
+WIP 7.2.0
+
+- R.produceAsync returns promise even if all rules are synchronous.
+
+- `R.defaultTo` no longer accepts infinite inputs, thus it follows Ramda implementation.
+
+- `R.equals` supports equality of functions.
+
+- `R.pipe` doesn't use `R.compose`.
+
+- Close [Issue #561](https://github.com/selfrefactor/rambda/issues/561) - export several internal TS interfaces and types
+
+- Add `CHANGELOG.md` file in release files list
+
 7.1.0
 
 - Add `R.tryCatchAsync`
