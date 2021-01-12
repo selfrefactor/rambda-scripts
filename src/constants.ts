@@ -58,3 +58,5 @@ export const WITH_RAMBDAX = process.env.WITH_RAMBDAX === 'ON'
 export const HAS_RAMBDAX = existsSync(
   resolve(__dirname, '../../rambdax/package.json')
 )
+
+export const GITHUB_README_LIMIT = 0.5

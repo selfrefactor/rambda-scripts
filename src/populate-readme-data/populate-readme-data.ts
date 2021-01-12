@@ -1,3 +1,4 @@
+import { statSync } from 'fs'
 import { outputFile, readJson } from 'fs-extra'
 import { interpolate, map, replace } from 'rambdax'
 import { buildStep } from '../build-step/build-step'
@@ -5,7 +6,18 @@ import { createMethodData } from './create-method-data'
 import { getIntro } from './get-intro'
 import { getTail } from './get-tail'
 import { rambdaRepl } from './rambda-repl'
-import { PATHS, X_PATHS, DESTINATIONS } from '../constants'
+import { PATHS, X_PATHS, DESTINATIONS, GITHUB_README_LIMIT } from '../constants'
+
+function getFileSize(filePath: string) {
+  const stats = statSync(filePath);
+  const fileSizeInBytes = stats.size;
+  const fileSizeInMegabytes = fileSizeInBytes / 1000000;
+  
+  
+  if(GITHUB_README_LIMIT < fileSizeInMegabytes){
+    throw new Error(`Github has a limit for README.md`)
+  }
+}
 
 async function getMethodsData(withRambdax: boolean){
   const filePath = withRambdax ? DESTINATIONS.rambdaxDocsData : DESTINATIONS.docsData
@@ -70,6 +82,6 @@ export async function populateReadmeData(withRambdax: boolean){
 
   const finalReadme = removeDoubleNewLines(readme)
   await outputFile(output, finalReadme)
-
+  getFileSize(output)
   return finalReadme
 }
