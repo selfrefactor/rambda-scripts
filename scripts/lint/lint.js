@@ -1,6 +1,6 @@
 const { spawn, scanFolder } = require('helpers-fn')
 const { resolve } = require('path')
-const { mapAsync, remove } = require('rambdax')
+const { mapAsyncLimit, remove } = require('rambdax')
 
 const base = resolve(__dirname, '../../../rambda/')
 
@@ -21,5 +21,5 @@ void async function lint(){
     ...sourceFiles,
     `${base}/rambda.js`
   ]
-  await mapAsync(lintFile, allFiles)
+  await mapAsyncLimit(lintFile, 5, allFiles)
 }()
