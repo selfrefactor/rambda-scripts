@@ -6,7 +6,29 @@ Contains most scripts required to build `Rambda/Rambdax` related files.
 
 Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on the same file system level.
 
-### Github releases
+## Release steps
+
+1. Build readme
+
+`yarn out`
+
+2. Build output
+
+`yarn build`
+
+3. Test output
+
+`yarn consume`
+
+4. Publish to NPM
+
+`run bump minor/patch`
+
+4. Publish to Github
+
+`yarn github`
+
+## Github releases
 
 1. Install - For Arch linux: `yay -S github-cli`
 
@@ -16,7 +38,7 @@ Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on 
 
 4. Now from `rambda` repo after NPM version is published, run `yarn release`
 
-## Script
+## Scripts
 
 ### Dynamic TSToolbelt
 
