@@ -1,5 +1,6 @@
 import { statSync } from 'fs'
 import { outputFile, readJson } from 'fs-extra'
+import { log } from 'helpers-fn'
 import { interpolate, map, replace } from 'rambdax'
 import { buildStep } from '../build-step/build-step'
 import { createMethodData } from './create-method-data'
@@ -12,7 +13,7 @@ function getFileSize(filePath: string) {
   const stats = statSync(filePath);
   const fileSizeInBytes = stats.size;
   const fileSizeInMegabytes = fileSizeInBytes / 1000000;
-  
+  log(`Size - ${fileSizeInMegabytes}MB`, 'foo')
   
   if(GITHUB_README_LIMIT < fileSizeInMegabytes){
     throw new Error(`Github has a limit for README.md`)

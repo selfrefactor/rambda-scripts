@@ -1,4 +1,5 @@
 import { interpolate } from 'rambdax'
+import { BLACKLIST_METHODS } from '../constants'
 import { getMethodSeparator } from '../utils'
 
 function createFailedSpec(method: any){
@@ -79,10 +80,7 @@ function createTypescriptTest(method: any){
   return interpolate(summaryTemplate, method)
 }
 
-/*
-  Due to README.md size issue in Github
-*/
-function createBenchmarkInfoDeprecated(method: any){
+function createBenchmarkInfo(method: any){
   const summaryTemplate = `
 <details>
 
@@ -139,28 +137,43 @@ function createReplReadme({ replLink, methodName }: {replLink: string, methodNam
 
 export function createMethodData(method: any, withRambdax: boolean){
   const data = getIntro(method)
-  const extended = !withRambdax
+  const isLong = !BLACKLIST_METHODS.includes(method.methodName)
+  const isExtraLong = isLong && !withRambdax
 
-  if (method.typing) data.push(attachTyping(method))
-  if (method.explanation) data.push(method.explanation)
-  if (method.explanation) data.push('\n')
+  if (method.typing && isLong) data.push(attachTyping(method))
+  if (method.explanation){
+    data.push(method.explanation)
+    data.push('\n')
+  } 
+  
   if (method.notes) data.push(createNoteReadme(method))
   if (method.example) data.push(createExampleReadme(method))
-  if (method.replLink) data.push(createReplReadme(method))
-  if (method.replLink) data.push('\n')
-  if (method.allTypings) data.push(attachAllTypings(method))
-  if (method.rambdaSource && extended)
+  
+  if (method.replLink){
+    data.push(createReplReadme(method))
+    data.push('\n')
+  } 
+
+  if (method.allTypings&& isExtraLong){
+    data.push(attachAllTypings(method))
+  }
+  if (method.rambdaSource && isLong){
     data.push(createRambdaSourceReadme(method))
-  if (method.rambdaSpecs) data.push(createRambdaSpecReadme(method))
+  }
+  if (method.rambdaSpecs && isLong){
+    data.push(createRambdaSpecReadme(method))
+  } 
 
-  // if (method.typescriptDefinitionTest && extended){
-  //   data.push(createTypescriptTest(method))
+  if (method.typescriptDefinitionTest && isExtraLong){
+    data.push(createTypescriptTest(method))
+  }
+
+  if (method.benchmarkInfo && isExtraLong){
+    data.push(createBenchmarkInfo(method))
+  }
+  // if (method.failedSpecsReasons && isLong){
+  //   data.push(createFailedSpec(method))
   // }
-
-  // if (method.benchmarkInfo && extended)
-  //   data.push(createBenchmarkInfo(method))
-  if (method.failedSpecsReasons && extended)
-    data.push(createFailedSpec(method))
 
   data.push(`\n${getMethodSeparator(method.methodName)}\n`)
 

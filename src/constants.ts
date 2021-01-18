@@ -60,3 +60,33 @@ export const HAS_RAMBDAX = existsSync(
 )
 
 export const GITHUB_README_LIMIT = 0.5
+
+export const BLACKLIST_METHODS = [
+  'compose',
+  'curry',
+  'curryN',
+  'dec',
+  'dissoc',
+  'divide',
+  'dropLastWhile',
+  'dropRepeatsWith',
+  'dropWhile',
+  'eqProps',
+  'flip',
+  'fromPairs',
+  'groupBy',
+  'identical',
+  'inc',
+  'indexBy',
+  'indexOf',
+  'intersection',
+  'intersperse',
+  'is',
+  'mathMod',
+  'modulo',
+  'multiply',
+  'negate',
+  'pipe',
+  'subtract',
+  'takeWhile',
+]
