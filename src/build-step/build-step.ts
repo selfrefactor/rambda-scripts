@@ -57,6 +57,7 @@ async function rambdaxBuildStep() {
     '@rollup/plugin-node-resolve',
     '@rollup/plugin-replace',
     'rollup',
+    'rollup-plugin-uglify',
     'rollup-plugin-cleanup',
     'rollup-plugin-sourcemaps',
   ]
