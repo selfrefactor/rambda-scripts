@@ -1,4 +1,6 @@
-WIP 7.2.0
+7.2.0
+
+- Approve [PR #61](https://github.com/selfrefactor/rambda/pull/61) - fix wrong `R.isValid` typings
 
 - R.produceAsync returns promise even if all rules are synchronous.
 

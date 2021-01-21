@@ -24,11 +24,41 @@ Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on 
 
 `run bump minor/patch`
 
-5. Publish to Github
+5. Fix package.hjson
+
+`yarn deps`
+
+6. Publish to Github
 
 `yarn github`
 
-6. Update documentation site
+7. Update documentation site
+
+`yarn docsify`
+
+## Rambdax release steps
+
+1. Build readme
+
+`yarn x`
+
+2. Build output
+
+inside Rambda folder
+
+`yarn`
+
+`yarn build`
+
+3. Test output
+
+`yarn consume`
+
+4. Publish to NPM
+
+`run bump minor/patch`
+
+5. Update documentation site
 
 `yarn docsify`
 
