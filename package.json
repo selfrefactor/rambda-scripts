@@ -1,6 +1,7 @@
 {
 	"name": "rambda-scripts",
 	"scripts": {
+		"piped": "node scripts/build-multiple-types/build-multiple-types piped",
 		"benchmarks": "node scripts/run-benchmarks/run-benchmarks-spec.js",
 		"benchmarksx": "node scripts/run-benchmarks/run-complex-benchmarks-spec.js",
 		"build": "tsc -p tsconfig.json",
