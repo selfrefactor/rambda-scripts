@@ -24,15 +24,11 @@ Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on 
 
 `run bump minor/patch`
 
-5. Fix package.hjson
-
-`yarn deps`
-
-6. Publish to Github
+5. Publish to Github
 
 `yarn github`
 
-7. Update documentation site
+6. Update documentation site
 
 `yarn docsify`
 
