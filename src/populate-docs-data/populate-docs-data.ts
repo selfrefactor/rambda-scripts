@@ -1,6 +1,7 @@
 import { existsSync, outputJSON } from 'fs-extra'
 import { resolve } from 'path'
 import { map, piped } from 'rambdax'
+import { DESTINATIONS } from '../constants'
 
 import { extractAllDefinitions } from './extract-from-typings/extract-all-definitions'
 import { extractCategories } from './extract-from-typings/extract-categories'
@@ -62,13 +63,13 @@ async function save(input: Save){
     `${ docsDir }/categories-rambdax.json` :
     `${ docsDir }/categories.json`
 
-  // const docsOutput = withRambdax ?
-  //   `${ docsDir }/data-rambdax.json` :
-  //   `${ docsDir }/data.json`
+  const docsOutput = withRambdax ?
+    DESTINATIONS.rambdaxDocsFile :
+    DESTINATIONS.docsFile
 
-  // await outputJSON(
-  //   docsOutput, toSave, { spaces : 2 }
-  // )
+  await outputJSON(
+    docsOutput, toSave, { spaces : 2 }
+  )
   await outputJSON(
     categoriesOutput, categories, { spaces : 2 }
   )

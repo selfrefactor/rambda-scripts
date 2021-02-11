@@ -5,7 +5,7 @@ const base = resolve(__dirname, '../../rambda')
 const xBase = resolve(__dirname, '../../rambdax')
 const docsBase = resolve(__dirname, '../../rambda-docs')
 
-export const BULLET = '❯' // ❯ ➤
+export const BULLET = '❯' // ➤
 
 export const PATHS = {
   base,
@@ -32,7 +32,8 @@ export const DESTINATIONS = {
   rambdaxDataSource: `${__dirname}/populate-docs-data/data-rambdax.json`,
   docsData: `${__dirname}/populate-docs-data/data.json`,
   rambdaxDocsData: `${__dirname}/populate-docs-data/data-rambdax.json`,
-  data: resolve(__dirname, '../../rambda-docs/assets/new-data.json'),
+  docsFile: resolve(__dirname, '../../rambda-docs/assets/data.json'),
+  rambdaxDocsFile: resolve(__dirname, '../../rambda-docs/assets/data-rambdax.json'),
 }
 
 export const SOURCES = {
