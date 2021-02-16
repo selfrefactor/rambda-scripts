@@ -12,7 +12,7 @@ module.exports = {
   ],
   rules: {
     'functional/prefer-readonly-type': [
-      1
+      2
     ]
   },
 }
