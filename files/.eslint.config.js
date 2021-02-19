@@ -12,7 +12,14 @@ module.exports = {
   ],
   rules: {
     'functional/prefer-readonly-type': [
-      2
+      2, {
+        allowLocalMutation: false,
+        allowMutableReturnType: true,
+        checkImplicit: false,
+        ignoreClass: false,
+        ignoreInterface: false,
+        ignoreCollections: false,
+      }
     ]
   },
 }
