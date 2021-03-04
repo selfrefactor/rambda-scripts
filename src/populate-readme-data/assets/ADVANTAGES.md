@@ -41,7 +41,7 @@ R.pick('a,b', {a: 1 , b: 2, c: 3} })
 
 ### Speed
 
-**Rambda** is generally more performant than `Ramda` as the [benchmarks](#benchmarks) can prove that.
+**Rambda** is generally more performant than `Ramda` as the [benchmarks](#-benchmarks) can prove that.
 
 ### Support
 
