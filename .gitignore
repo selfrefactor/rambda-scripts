@@ -4,12 +4,10 @@ scripts/consume-typings/package-lock.json
 scripts/lint-ts-files/assets
 scripts/lint-ts-files/assets/*
 scripts/run-benchmarks/**/*.json
-src/dynamic-ts-toolbelt/ts-toolbelt
 src/populate-docs-data/data-rambdax.json
 src/populate-docs-data/data.json
 src/run-ramda-specs/ramda
 src/run-ramda-specs/ramda/*
-dist/dynamic-ts-toolbelt/ts-toolbelt
 node_modules
 coverage
 *.log

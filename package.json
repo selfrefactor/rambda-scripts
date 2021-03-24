@@ -19,7 +19,6 @@
 		"populate:readme": "RAMBDA_SCRIPTS_MODE=populate:readme jest src/apply-rambda-scripts.spec.ts",
 		"populate:readme:rambdax": "WITH_RAMBDAX=ON RAMBDA_SCRIPTS_MODE=populate:readme jest src/apply-rambda-scripts.spec.ts",
 		"summary": "jest src/read-benchmarks/benchmark-summary.spec.ts",
-		"toolbelt": "RAMBDA_SCRIPTS_MODE=toolbelt jest src/apply-rambda-scripts.spec.ts",
 		"usedby": "RAMBDA_SCRIPTS_MODE=usedby jest src/apply-rambda-scripts.spec.ts"
 	},
 	"main": "index.js",

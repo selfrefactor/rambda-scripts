@@ -4,7 +4,7 @@ Contains most scripts required to build `Rambda/Rambdax` related files.
 
 ## Requirements
 
-Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on the same file system level.
+Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on the same level in the file system.
 
 ## Release steps
 
@@ -69,10 +69,6 @@ inside Rambda folder
 4. Now from `rambda` repo after NPM version is published, run `yarn release`
 
 ## Scripts
-
-### Dynamic TSToolbelt
-
-`yarn toolbelt`
 
 ### Check before release
 

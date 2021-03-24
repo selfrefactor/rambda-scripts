@@ -4,7 +4,7 @@
     "test": "tsc --lib esnext,dom consume-typings.ts&&node consume-typings.js"
   },
   "dependencies": {
-    "rambda": "file:./../../../rambda/",
+    "rambda": "6.7.0-beta.0",
     "rambdax": "file:./../../../rambdax/"
   }
 }

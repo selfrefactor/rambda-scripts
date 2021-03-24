@@ -64,9 +64,7 @@ async function rambdaxBuildStep() {
 
   const {devDependencies} = await readJson(`${PATHS.base}/package.json`)
   const rambdaxDeps = pick(buildDeps, devDependencies)
-  const tsToolbelt = PATHS.toolbeltDestination
   const sourceFileDir = PATHS.source
-  const tsToolbeltOutput = `${X_PATHS.xBase}/_ts-toolbelt`
   const packageJsonOutput = `${X_PATHS.xBase}/package.json`
   const packageJson = await readJson(packageJsonOutput)
   const newPackageJson = {
@@ -75,8 +73,6 @@ async function rambdaxBuildStep() {
   }
 
   await outputJson(packageJsonOutput, newPackageJson, {spaces: 2})
-  await removeFS(tsToolbeltOutput)
-  await copy(tsToolbelt, tsToolbeltOutput)
 
   const allMethods: string[] = []
 

@@ -1,9 +1,7 @@
 import {existsSync} from 'fs'
 import {log} from 'helpers-fn'
-import {outputJson, readJson} from 'fs-extra'
 import {filter} from 'rambdax'
-import {PATHS, X_PATHS, MODES, WITH_RAMBDAX, DESTINATIONS} from './constants'
-import {dynamicTsToolbelt} from './dynamic-ts-toolbelt/dynamic-ts-toolbelt'
+import {PATHS, X_PATHS, MODES, WITH_RAMBDAX} from './constants'
 import {verifyUsedBy} from './verify-used-by/verify-used-by'
 import {populateDocsData} from './populate-docs-data/populate-docs-data'
 import {populateReadmeData} from './populate-readme-data/populate-readme-data'
@@ -41,7 +39,6 @@ export async function applyRambdaScripts(modeInput: string) {
   const mode = getMode(modeInput)
   validatePaths()
 
-  if (mode === 'toolbelt') return dynamicTsToolbelt()
   if (mode === 'usedby') return verifyUsedBy()
   if (mode === 'populate:docs') return populateDocsData(WITH_RAMBDAX)
   if (mode === 'populate:readme') return populateReadmeData(WITH_RAMBDAX)

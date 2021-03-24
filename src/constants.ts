@@ -11,7 +11,6 @@ export const PATHS = {
   base,
   docsBase,
   documentationFile: `${base}/files/index.d.ts`,
-  toolbeltDestination: `${base}/_ts-toolbelt`,
   source: `${base}/source`,
   output: `${base}/src`,
   sourceDestination: `${base}/src`,
@@ -20,7 +19,6 @@ export const PATHS = {
 
 export const X_PATHS = {
   xBase,
-  rambdaxToolbeltDestination: `${xBase}/_ts-toolbelt`,
   docsDir: `${docsBase}/assets`,
   rambdaxDir: xBase,
 }
@@ -42,7 +40,6 @@ export const SOURCES = {
 }
 
 export const MODES = [
-  'toolbelt',
   'usedby',
   'populate:docs',
   'populate:readme',
