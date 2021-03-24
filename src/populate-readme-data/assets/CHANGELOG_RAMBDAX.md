@@ -1,10 +1,12 @@
-WIP 7.3.0
+7.3.0
 
 - Change `R.piped` typings to mimic that of `R.pipe`. Main difference is that `R.pipe` is focused on unary functions.
 
-- Wrong logic where `R.without` use `R.includes` while it should use the array version of `R.includes`
+- Fix wrong logic when `R.without` use `R.includes` while it should use array version of `R.includes`.
 
-- Use uglify plugin for UMD bundle
+- Use uglify plugin for UMD bundle.
+
+- Remove `dist` folder from `.gitignore` in order to fix `Deno` broken package. [Issue #570](https://github.com/selfrefactor/rambda/issues/570)
 
 7.2.0
 
