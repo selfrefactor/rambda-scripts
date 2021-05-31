@@ -41,6 +41,7 @@ export const SOURCES = {
 
 export const MODES = [
   'usedby',
+  'readonly',
   'populate:docs',
   'populate:readme',
   'ramda:specs',

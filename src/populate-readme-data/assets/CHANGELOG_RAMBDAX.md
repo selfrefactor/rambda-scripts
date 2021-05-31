@@ -1,3 +1,8 @@
+WIP 7.3.1
+
+- Wrong arguments order in `R.removeIndex` - [Issue #66](https://github.com/selfrefactor/rambdax/issues/66)
+
+
 7.3.0
 
 - Change `R.piped` typings to mimic that of `R.pipe`. Main difference is that `R.pipe` is focused on unary functions.
@@ -7,6 +12,17 @@
 - Use uglify plugin for UMD bundle.
 
 - Remove `dist` folder from `.gitignore` in order to fix `Deno` broken package. [Issue #570](https://github.com/selfrefactor/rambda/issues/570)
+
+- Remove `ts-toolbelt` types from Typescript definitions. Most affected are the following methods, which lose one of its curried definitions:
+
+1. R.maxBy
+2. R.minBy
+3. R.pathEq
+4. R.viewOr
+5. R.when
+6. R.merge
+7. R.mergeDeepRight
+8. R.mergeLeft
 
 7.2.0
 
