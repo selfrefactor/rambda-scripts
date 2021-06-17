@@ -2,7 +2,6 @@ WIP 7.3.1
 
 - Wrong arguments order in `R.removeIndex` - [Issue #66](https://github.com/selfrefactor/rambdax/issues/66)
 
-
 7.3.0
 
 - Change `R.piped` typings to mimic that of `R.pipe`. Main difference is that `R.pipe` is focused on unary functions.
