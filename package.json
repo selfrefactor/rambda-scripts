@@ -20,7 +20,7 @@
 		"populate:readme:rambdax": "WITH_RAMBDAX=ON RAMBDA_SCRIPTS_MODE=populate:readme jest src/apply-rambda-scripts.spec.ts",
 		"summary": "jest src/read-benchmarks/benchmark-summary.spec.ts",
 		"usedby": "RAMBDA_SCRIPTS_MODE=usedby jest src/apply-rambda-scripts.spec.ts",
-		"usedby": "RAMBDA_SCRIPTS_MODE=usedby jest src/apply-rambda-scripts.spec.ts"
+		"readonly": "RAMBDA_SCRIPTS_MODE=readonly jest src/apply-rambda-scripts.spec.ts"
 	},
 	"main": "index.js",
 	"version": "1.0.0",
