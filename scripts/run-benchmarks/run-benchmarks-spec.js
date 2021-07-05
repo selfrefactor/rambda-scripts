@@ -1,7 +1,7 @@
 const { runAllBenchmarks, runSingleBenchmark } = require('./run-benchmarks')
 
 const RUN_ALL = false
-const method = 'map'
+const method = 'type'
 
 void async function runBenchmarks(){
   if (!RUN_ALL){
