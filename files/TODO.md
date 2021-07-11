@@ -1,5 +1,9 @@
 ## R.objOf misses documentation but it is published
 
+## missing explanation about `immutable.ts`
+
+## 
+
 ## declare shorter readme for npm
 
 ## git clone command in context of github codespaces
