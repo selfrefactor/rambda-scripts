@@ -16,10 +16,6 @@ Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on 
 
 `yarn build`
 
-3. Test output
-
-`yarn consume`
-
 4. Publish to NPM
 
 `run bump minor/patch`
@@ -31,6 +27,10 @@ Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on 
 6. Update documentation site
 
 `yarn docsify`
+
+7. After NPM publish manual check
+
+Manual check for Typescript definitions
 
 ## Rambdax release steps
 
