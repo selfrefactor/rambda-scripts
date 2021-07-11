@@ -6,7 +6,6 @@
 		"benchmark:multi": "node scripts/run-benchmarks/run-mutiple-benchmarks-spec.js",
 		"benchmarkx": "node scripts/run-benchmarks/run-complex-benchmarks-spec.js",
 		"build": "tsc -p tsconfig.json",
-		"consume": "cd scripts/consume-typings&&yarn start",
 		"github": "node scripts/github-release/github-release.js",
 		"immutable": "node scripts/immutable-lint/immutable-lint.js",
 		"in": "tsc --watch",
