@@ -40,8 +40,18 @@ const foo: Foo = {
   bar: ['1', '2', '3'],
 }
 
-const readonlyNumberArray: readonly number[] = [1, 2, 3];
-reduce<number, readonly number[]>((acc, x) => [...acc, x], [])(readonlyNumberArray)
+const numberArray = [1, 2, 3];
+
+const result = reduce(
+  (acc, elem, i) => {
+    acc // $ExpectType number
+    elem // $ExpectType number
+    i // $ExpectType number
+    return acc + elem
+  },
+  1,
+  numberArray
+)
 
 // const curried = partialCurry<Input, PartialInput, string|number>(fn, {a:1, b:'foo'});  
 // curried // $ExpectType (input: Pick<Input, "c">) => string | number

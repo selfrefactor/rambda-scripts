@@ -1,3 +1,9 @@
+# Consume typings
+
+Post factum manual test
+
+---
+
 {
   "scripts": {
     "start": "npm install --force&&yarn test",
