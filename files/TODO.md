@@ -1,5 +1,7 @@
 ## R.objOf misses documentation but it is published
 
+## git clone command in context of github codespaces
+
 ## R.uniq
 
 const list = Array(10000).fill('').map(() => String(Math.floor(Math.random() * 1000)))
