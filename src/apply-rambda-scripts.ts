@@ -38,7 +38,7 @@ export function validatePaths() {
 
 export async function applyRambdaScripts(modeInput: string) {
   const mode = getMode(modeInput)
-  validatePaths()
+  // validatePaths()
 
   if (mode === 'usedby') return verifyUsedBy()
   if (mode === 'readonly') return readonlyTask()
