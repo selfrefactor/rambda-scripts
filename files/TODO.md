@@ -1,5 +1,7 @@
 ## R.objOf misses documentation but it is published
 
+## declare shorter readme for npm
+
 ## git clone command in context of github codespaces
 
 ## R.uniq
