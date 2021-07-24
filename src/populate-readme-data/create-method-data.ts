@@ -137,10 +137,10 @@ function createReplReadme({ replLink, methodName }: {replLink: string, methodNam
 
 export function createMethodData(method: any, withRambdax: boolean){
   const data = getIntro(method)
-  const isLong = !BLACKLIST_METHODS.includes(method.methodName)
-  const isExtraLong = isLong && !withRambdax
+  const isAllowed = !BLACKLIST_METHODS.includes(method.methodName)
+  const isRamdaOnly = isAllowed && !withRambdax
 
-  if (method.typing && isLong) data.push(attachTyping(method))
+  if (method.typing && isAllowed) data.push(attachTyping(method))
   if (method.explanation){
     data.push(method.explanation)
     data.push('\n')
@@ -154,24 +154,24 @@ export function createMethodData(method: any, withRambdax: boolean){
     data.push('\n')
   } 
 
-  if (method.allTypings&& isExtraLong){
+  if (method.allTypings&& isRamdaOnly){
     data.push(attachAllTypings(method))
   }
-  if (method.rambdaSource && isLong){
+  if (method.rambdaSource && isAllowed){
     data.push(createRambdaSourceReadme(method))
   }
-  if (method.rambdaSpecs && isLong){
+  if (method.rambdaSpecs && isAllowed){
     data.push(createRambdaSpecReadme(method))
   } 
 
-  if (method.typescriptDefinitionTest && isExtraLong){
+  if (method.typescriptDefinitionTest && isRamdaOnly){
     data.push(createTypescriptTest(method))
   }
 
-  if (method.benchmarkInfo && isExtraLong){
+  if (method.benchmarkInfo && isRamdaOnly){
     data.push(createBenchmarkInfo(method))
   }
-  // if (method.failedSpecsReasons && isLong){
+  // if (method.failedSpecsReasons && isAllowed){
   //   data.push(createFailedSpec(method))
   // }
 
