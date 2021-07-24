@@ -1,8 +1,12 @@
 7.3.0
 
-- `R.has` use `Object.prototype.hasOwnProperty`- [Issue #572](https://github.com/selfrefactor/rambda/issues/572)
+- Expose `immutable.ts` typings which are Rambda typings with `readonly` statements - [Issue #565](https://github.com/selfrefactor/rambda/issues/565), [Rambdax issue #69](https://github.com/selfrefactor/rambdax/issues/69)
 
-- Expose `immutable.ts` typings which are Rambda typings with `readonly` statements - [Issue #565](https://github.com/selfrefactor/rambda/issues/565)
+- Add `R.rejectIndexed` and `R.partitionIndexed` methods - [Rambdax issue #67](https://github.com/selfrefactor/rambdax/issues/67)
+
+- Expose `R.mapObject`, `R.mapArray`, `R.filterObject` and `R.filterArray` - [Issue #578](https://github.com/selfrefactor/rambda/issues/578)
+
+- `R.has` use `Object.prototype.hasOwnProperty`- [Issue #572](https://github.com/selfrefactor/rambda/issues/572)
 
 - Fix `R.intersection` wrong order compared to Ramda.
 
@@ -15,8 +19,6 @@
 - Fix wrong logic when `R.without` use `R.includes` while it should use array version of `R.includes`.
 
 - Use uglify plugin for UMD bundle.
-
-- Remove `dist` folder from `.gitignore` in order to fix `Deno` broken package. [Issue #570](https://github.com/selfrefactor/rambda/issues/570)
 
 - Remove `ts-toolbelt` types from Typescript definitions. Most affected are the following methods, which lose one of its curried definitions:
 

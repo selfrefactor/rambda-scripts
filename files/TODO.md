@@ -2,6 +2,10 @@
 
 ## missing explanation about `immutable.ts`
 
+## publish rambdax to deno
+
+Remove `dist` folder from `.gitignore` in order to fix `Deno` broken package. [Issue #570](https://github.com/selfrefactor/rambda/issues/570)
+
 ## 
 
 ## declare shorter readme for npm
