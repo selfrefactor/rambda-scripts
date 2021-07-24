@@ -8,7 +8,7 @@
 		"github": "node scripts/github-release/github-release.js",
 		"immutable": "yarn immutable:rambda && immutable:rambdax",
 		"immutable:rambda": "node scripts/immutable-lint/immutable-lint.js",
-		"immutable:rambdax": "node scripts/immutable-lint/immutable-lint.js",
+		"immutable:rambdax": "WITH_RAMBDAX=ON node scripts/immutable-lint/immutable-lint.js",
 		"in": "tsc --watch",
 		"lint": "yarn lint:rambda&&yarn lint:tests",
 		"lint:rambda": "node scripts/lint/lint.js",
