@@ -1,24 +1,12 @@
-## missing explanation about `immutable.ts`
-
-## publish rambdax to deno
-
-Remove `dist` folder from `.gitignore` in order to fix `Deno` broken package. [Issue #570](https://github.com/selfrefactor/rambda/issues/570)
-
-## 
-
-## declare shorter readme for npm
-
 ## git clone command in context of github codespaces
 
 ## R.uniq
 
 const list = Array(10000).fill('').map(() => String(Math.floor(Math.random() * 1000)))
 
+## publish rambdax to deno(remove on next rambdax release)
+
 ## Add lint staged
-
-npm version 6.7.0-beta.0
-
-npm publish --tag beta
 
 ## Dictionary - type vs interface
 
@@ -67,10 +55,6 @@ but
 const parse = pipe(split('.'), last) is correct
 ```
 
-## Wrong use of releases
-
-Use github CLI as it offers API to make a release
-
 ## Deno info
 
 To use directly in [Deno](https://deno.land):
@@ -80,12 +64,7 @@ import * as R from "https://deno.land/x/rambda/rambda.js";
 
 ## Other
 
-strip `readonly` from docs typings
-
-add function to typings
-
 create pipeline for `rambda-docs` typings file
-
 ---
 
 Methods to add:  

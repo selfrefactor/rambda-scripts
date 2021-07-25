@@ -38,15 +38,15 @@ const readmeTemplate = `
 {{tail}}
 `
 
-function getOutputPath(withRambdax: boolean){
+function getOutputPath(withRambdax: boolean, npmReadme: boolean){
   if (withRambdax){
     return `${ X_PATHS.xBase }/README.md`
   }
 
-  return `${ PATHS.base }/README.md`
+  return npmReadme ? `${ PATHS.base }/README.md` : `${ PATHS.base }/.github/README.md`
 }
 
-export async function populateReadmeData(withRambdax: boolean){
+export async function populateReadmeData(withRambdax: boolean, npmReadme: boolean){
   await buildStep(withRambdax)
 
   const methodsData = await getMethodsData(withRambdax)
@@ -68,7 +68,7 @@ export async function populateReadmeData(withRambdax: boolean){
     }))
     .sort((x, y) =>
       x.methodName.toLowerCase() > y.methodName.toLowerCase() ? 1 : -1)
-    .map(method => createMethodData(method, withRambdax))
+    .map(method => createMethodData(method, withRambdax, npmReadme))
 
   const intro = await getIntro(withRambdax)
   const tail = await getTail(withRambdax)
@@ -79,7 +79,7 @@ export async function populateReadmeData(withRambdax: boolean){
   }
 
   const readme = interpolate(readmeTemplate, templateData).trim()
-  const output = getOutputPath(withRambdax)
+  const output = getOutputPath(withRambdax, npmReadme)
 
   const finalReadme = removeDoubleNewLines(readme)
   await outputFile(output, finalReadme)

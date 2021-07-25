@@ -1,7 +1,7 @@
 import {existsSync} from 'fs'
 import {log} from 'helpers-fn'
 import {filter} from 'rambdax'
-import {PATHS, X_PATHS, MODES, WITH_RAMBDAX} from './constants'
+import {PATHS, X_PATHS, MODES, WITH_RAMBDAX, NPM_README} from './constants'
 import {verifyUsedBy} from './verify-used-by/verify-used-by'
 import {readonlyTask} from './readonly-task/readonly-task'
 import {populateDocsData} from './populate-docs-data/populate-docs-data'
@@ -43,7 +43,7 @@ export async function applyRambdaScripts(modeInput: string) {
   if (mode === 'usedby') return verifyUsedBy()
   if (mode === 'readonly') return readonlyTask()
   if (mode === 'populate:docs') return populateDocsData(WITH_RAMBDAX)
-  if (mode === 'populate:readme') return populateReadmeData(WITH_RAMBDAX)
+  if (mode === 'populate:readme') return populateReadmeData(WITH_RAMBDAX, NPM_README)
 
   log(`Such mode '${mode}' doesn't exists`, 'error')
 }

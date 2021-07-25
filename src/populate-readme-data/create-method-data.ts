@@ -1,8 +1,8 @@
-import { interpolate } from 'rambdax'
-import { BLACKLIST_METHODS } from '../constants'
-import { getMethodSeparator } from '../utils'
+import {interpolate} from 'rambdax'
+import {BLACKLIST_METHODS} from '../constants'
+import {getMethodSeparator} from '../utils'
 
-function createFailedSpec(method: any){
+function createFailedSpec(method: any) {
   const summaryTemplate = `
 <details>
 
@@ -25,14 +25,14 @@ function createFailedSpec(method: any){
 > :boom: Reason for the failure: {{failedSpecsReasons}}
 `
 
-  const templateToUse = method.failedRamdaSpecs ?
-    summaryTemplate :
-    shortSummaryTemplate
+  const templateToUse = method.failedRamdaSpecs
+    ? summaryTemplate
+    : shortSummaryTemplate
 
   return interpolate(templateToUse, method)
 }
 
-function createRambdaSpecReadme(method: any){
+function createRambdaSpecReadme(method: any) {
   const summaryTemplate = `
 <details>
 
@@ -48,7 +48,7 @@ function createRambdaSpecReadme(method: any){
   return interpolate(summaryTemplate, method)
 }
 
-function createRambdaSourceReadme(method: any){
+function createRambdaSourceReadme(method: any) {
   const summaryTemplate = `
 <details>
 
@@ -64,7 +64,7 @@ function createRambdaSourceReadme(method: any){
   return interpolate(summaryTemplate, method)
 }
 
-function createTypescriptTest(method: any){
+function createTypescriptTest(method: any) {
   const summaryTemplate = `
 <details>
 
@@ -80,7 +80,7 @@ function createTypescriptTest(method: any){
   return interpolate(summaryTemplate, method)
 }
 
-function createBenchmarkInfo(method: any){
+function createBenchmarkInfo(method: any) {
   const summaryTemplate = `
 <details>
 
@@ -96,7 +96,7 @@ function createBenchmarkInfo(method: any){
   return interpolate(summaryTemplate, method.benchmarkInfo)
 }
 
-function attachAllTypings(method: any){
+function attachAllTypings(method: any) {
   const allTypingsTemplate = `
 <details>
 
@@ -112,63 +112,76 @@ function attachAllTypings(method: any){
   return interpolate(allTypingsTemplate, method)
 }
 
-const createExampleReadme = ({ example }: {example: string}) => `
+const createExampleReadme = ({example}: {example: string}) => `
 \`\`\`javascript
-${ example }
+${example}
 \`\`\`
 `
 
-const createNoteReadme = ({ notes }: {notes: string}) => `
+const createNoteReadme = ({notes}: {notes: string}) => `
 
-> :boom: ${ notes }
+> :boom: ${notes}
 `
 
-const attachTyping = ({ typing }: {typing: string}) => `
+const attachTyping = ({typing}: {typing: string}) => `
 \`\`\`typescript
-${ typing }
+${typing}
 \`\`\`
 \n`
 
-const getIntro = ({ methodName }: {methodName: string}) => [ `### ${ methodName }`, '\n\n' ]
+const getIntro = ({methodName}: {methodName: string}) => [
+  `### ${methodName}`,
+  '\n\n',
+]
 
-function createReplReadme({ replLink, methodName }: {replLink: string, methodName: string}){
-  return `\n<a title="redirect to Rambda Repl site" href="${ replLink }">Try this <strong>R.${ methodName }</strong> example in Rambda REPL</a>`
+function createReplReadme({
+  replLink,
+  methodName,
+}: {
+  replLink: string,
+  methodName: string,
+}) {
+  return `\n<a title="redirect to Rambda Repl site" href="${replLink}">Try this <strong>R.${methodName}</strong> example in Rambda REPL</a>`
 }
 
-export function createMethodData(method: any, withRambdax: boolean){
+export function createMethodData(
+  method: any,
+  withRambdax: boolean,
+  npmReadme: boolean
+) {
   const data = getIntro(method)
   const isAllowed = !BLACKLIST_METHODS.includes(method.methodName)
   const isRamdaOnly = isAllowed && !withRambdax
 
   if (method.typing && isAllowed) data.push(attachTyping(method))
-  if (method.explanation){
+  if (method.explanation) {
     data.push(method.explanation)
     data.push('\n')
-  } 
-  
-  if (method.notes) data.push(createNoteReadme(method))
-  if (method.example) data.push(createExampleReadme(method))
-  
-  if (method.replLink){
+  }
+
+  if (method.notes && !npmReadme) data.push(createNoteReadme(method))
+  if (method.example && !npmReadme) data.push(createExampleReadme(method))
+
+  if (method.replLink && !npmReadme) {
     data.push(createReplReadme(method))
     data.push('\n')
-  } 
+  }
 
-  if (method.allTypings&& isRamdaOnly){
+  if (method.allTypings && isRamdaOnly) {
     data.push(attachAllTypings(method))
   }
-  if (method.rambdaSource && isAllowed){
+  if (method.rambdaSource && isAllowed) {
     data.push(createRambdaSourceReadme(method))
   }
-  if (method.rambdaSpecs && isAllowed){
+  if (method.rambdaSpecs && isAllowed) {
     data.push(createRambdaSpecReadme(method))
-  } 
+  }
 
-  if (method.typescriptDefinitionTest && isRamdaOnly){
+  if (method.typescriptDefinitionTest && isRamdaOnly) {
     data.push(createTypescriptTest(method))
   }
 
-  if (method.benchmarkInfo && isRamdaOnly){
+  if (method.benchmarkInfo && isRamdaOnly) {
     data.push(createBenchmarkInfo(method))
   }
   // if (method.failedSpecsReasons && isAllowed){
