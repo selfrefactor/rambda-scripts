@@ -16,9 +16,7 @@ import {createExportedTypings} from './create-exported-typings'
 // ============================================
 const rambdaxMethodsAsInternals = ['isFunction', 'isPromise', 'maybe']
 
-async function createMainFile(
-  allMethods: string[]
-) {
+async function createMainFile(allMethods: string[]) {
   const content = allMethods
     .map((x: string) => `export * from './src/${x}'`)
     .join('\n')
@@ -42,11 +40,16 @@ async function createMainFileRambdax({
   await outputFile(`${dir}/rambdax.js`, `${content}\n`)
 }
 
+const RAMBDA_METHODS_WITHOUT_SOURCE = ['mapObjIndexed']
+
 async function rambdaxBuildStep() {
   const rambdaxOutput = `${X_PATHS.xBase}/src`
   await removeFS(rambdaxOutput)
 
-  const rambdaMethods = await getRambdaMethods()
+  const rambdaMethods = (await getRambdaMethods()).filter(
+    x => !RAMBDA_METHODS_WITHOUT_SOURCE.includes(x)
+  )
+
   const buildDeps = [
     '@babel/core',
     '@babel/plugin-proposal-object-rest-spread',
@@ -108,7 +111,7 @@ async function rambdaxBuildStep() {
 async function rambdaBuildStep() {
   const rambdaMethods = await getRambdaMethods()
   const sourceFileDir = PATHS.source
-  const output = PATHS.output 
+  const output = PATHS.output
   await removeFS(output)
 
   const files = await scanFolder({folder: sourceFileDir})
@@ -139,21 +142,16 @@ async function rambdaBuildStep() {
     filter(Boolean),
     filter((x: any) => !rambdaxMethodsAsInternals.includes(x)),
     async allMethods => {
-      await createMainFile(
-        allMethods
-      )
+      await createMainFile(allMethods)
     }
   )
 }
 
-async function syncChangelog(withRambdax: boolean){
+async function syncChangelog(withRambdax: boolean) {
   const source = withRambdax ? SOURCES.rambdaxChangelog : SOURCES.changelog
-  const destinationBase = withRambdax ? X_PATHS.xBase: PATHS.base
+  const destinationBase = withRambdax ? X_PATHS.xBase : PATHS.base
 
-  await copy( 
-    source,
-    `${destinationBase}/CHANGELOG.md`
-  )
+  await copy(source, `${destinationBase}/CHANGELOG.md`)
 }
 
 export async function buildStep(withRambdax: boolean) {
