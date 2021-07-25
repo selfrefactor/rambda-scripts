@@ -1,5 +1,3 @@
-## git clone command in context of github codespaces
-
 ## R.uniq
 
 const list = Array(10000).fill('').map(() => String(Math.floor(Math.random() * 1000)))
@@ -74,7 +72,7 @@ Methods to add:
 - pickBy
 - pathSatisfies
 - gte
-- mapObjIndexed(types from @types/ramda)
+- mapObjIndexed(types from @types/ramda | added but types are not from there)
 
 https://github.com/smartprocure/futil-js#differentlast
 https://github.com/smartprocure/futil-js#whentruthy
@@ -116,8 +114,6 @@ Add R.mapToList which takes object and returns a list
 R.renamePropsWith
 
 Use new `Promise.allSettled`
-
-More usage of $ExpectError
 
 Add marker/category for Rambdax methods that doesn't belong to Rambda
 

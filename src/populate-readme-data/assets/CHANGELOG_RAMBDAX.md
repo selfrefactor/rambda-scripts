@@ -1,6 +1,8 @@
-WIP 7.4.0
+7.4.0
 
 - Add `R.objOf` method
+
+- Add `R.mapObjIndexed` method
 
 7.3.0
 
