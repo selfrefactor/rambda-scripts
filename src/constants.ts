@@ -85,5 +85,7 @@ export const BLACKLIST_METHODS = [
   'subtract',
   'takeWhile',
   'mapIndexed',
+  'objOf',
+  'mapObjIndexed',
   'filterIndexed',
 ]
