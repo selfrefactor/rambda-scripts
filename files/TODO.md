@@ -1,5 +1,3 @@
-## R.objOf misses documentation but it is published
-
 ## missing explanation about `immutable.ts`
 
 ## publish rambdax to deno

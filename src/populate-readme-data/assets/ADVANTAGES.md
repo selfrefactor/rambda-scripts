@@ -4,6 +4,8 @@ Typescript definitions are included in the library, in comparison to **Ramda**, 
 
 Still, you need to be aware that functional programming features in `Typescript` are in development, which means that using **R.compose/R.pipe** can be problematic.
 
+> Alternative TS definitions are available as `rambda/immutable`. These are Rambda definitions linted with ESLint `functional/prefer-readonly-type` plugin.
+
 ### Smaller size
 
 The size of a library affects not only the build bundle size but also the dev bundle size and build time. This is important advantage, expecially for big projects.

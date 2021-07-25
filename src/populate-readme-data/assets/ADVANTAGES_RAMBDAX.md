@@ -21,8 +21,6 @@ R.pick('a,b', {a: 1 , b: 2, c: 3} })
 
 `Rambdax` implements some methods from `Ramda` community projects, such as `R.lensSatisfies`, `R.lensEq` and `R.viewOr`.
 
-### Support
+### Alternative TS definitions
 
-Most of the valid issues are fixed within 2-3 days.
-
-Closing the issue is usually accompanied by publishing a new patch version of `Rambdax` to NPM.
+Alternative TS definitions are available as `rambdax/immutable`. These are Rambdax definitions linted with ESLint `functional/prefer-readonly-type` plugin.
