@@ -3,6 +3,7 @@ import { resolve } from 'path'
 import { remove, mapToObjectAsync } from 'rambdax'
 import { PATHS } from '../../constants'
 import { getMethods } from '../extract-from-typings/get-methods'
+import { benchmarkSummary as benchmarkSummaryMethod } from '../../read-benchmarks/benchmark-summary'
 
 const clean = remove([
   'const _ = require(\'lodash\')',
@@ -44,6 +45,8 @@ function getMethodSummary(method: string, benchmarkSummary: string){
 }
 
 export async function benchmarkInfo(){
+  console.log(`benchmarkInfo` )
+  await benchmarkSummaryMethod()
   const benchmarkSummary = (
     await readFile(resolve(__dirname, '../../read-benchmarks/summary.txt'))
   ).toString()

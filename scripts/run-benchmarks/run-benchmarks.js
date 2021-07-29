@@ -65,6 +65,7 @@ function extractWinnerLoser(input){
 }
 
 async function runAllBenchmarks(){
+  console.log('run.all.benchmarks')
   console.time('run.all.benchmarks')
   const methodsWithBenchmarks = await getAllBenchmarks()
   const winnerChanged = []
