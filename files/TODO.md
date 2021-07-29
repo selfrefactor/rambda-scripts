@@ -1,6 +1,6 @@
-## R.uniq
+## Rambdax + RxJS 
 
-const list = Array(10000).fill('').map(() => String(Math.floor(Math.random() * 1000)))
+simulate rxjs api and benchmark it
 
 ## publish rambdax to deno(remove on next rambdax release)
 
