@@ -75,20 +75,24 @@ async function runSingleBenchmark(methodName, disableOldFormat = false) {
   let knownLength = undefined
   const iterable = async index => {
     if (knownLength !== undefined && index >= knownLength) return
-    console.time(methodName)
+    const label = `${methodName}-${index}`
+    console.time(label)
     const {newKnownLength, benchmarkResult} = await applyRunBenchmark({
       methodName,
       length: knownLength,
       index,
       filePath,
     })
-    console.timeEnd(methodName)
-    if (newKnownLength) knownLength = newKnownLength
+    console.timeEnd(label)
+    if (newKnownLength){
+      console.log(`newKnownLength`, newKnownLength )
+      knownLength = newKnownLength
+    } 
 
     data[`${methodName}-${index}`] = benchmarkResult
   }
 
-  if (RUN_INDEXES) await mapAsync(iterable, range(0, 20))
+  if (RUN_INDEXES) await mapAsync(iterable, range(0, 30))
 
   const onEnd = async () => {
     await outputJson(`${finalDir}/${methodName}.json`, data, {spaces: 2})
