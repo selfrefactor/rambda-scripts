@@ -3,7 +3,7 @@ scripts/consume-typings/consume-typings.js
 scripts/consume-typings/package-lock.json
 scripts/lint-ts-files/assets
 scripts/lint-ts-files/assets/*
-scripts/run-benchmarks/**/*.json
+scripts/run-benchmarks/benchmarks/**/*.json
 src/populate-docs-data/data-rambdax.json
 src/populate-docs-data/data.json
 src/run-ramda-specs/ramda

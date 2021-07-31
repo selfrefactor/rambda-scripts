@@ -2,6 +2,7 @@ const {existsSync} = require('fs')
 const {readJson, outputJson, emptyDir} = require('fs-extra')
 const {resolve} = require('path')
 const {mapAsync, range} = require('rambdax')
+const { snakeCase } = require('string-fn')
 const {createBenchmark} = require('./modules/create-benchmark')
 
 const benchmarksDir = resolve(__dirname, '../../../rambda/source/benchmarks')
@@ -32,7 +33,7 @@ async function applyRunBenchmark({methodName, length, index, filePath}) {
     }
   })
   await createBenchmark(applyableTests, methodName)
-  const outputFilePath = `${outputDir}/${methodName}.json`
+  const outputFilePath = `${outputDir}/${snakeCase(methodName)}.json`
   const benchmarkResult = await readJson(outputFilePath)
   return {
     benchmarkResult,

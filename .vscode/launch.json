@@ -11,7 +11,10 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/scripts/run-benchmarks/run-complex-benchmarks-spec.js"
+      "program": "${workspaceFolder}/scripts/run-benchmarks/run-complex-benchmarks-spec.js",
+      "env": {
+        "METHOD": "indexOf"
+      }
     }
   ]
 }
