@@ -14,6 +14,8 @@ https://github.com/selfrefactor/rambda/issues/459#issuecomment-771519978
 
 https://github.com/verydanny/vcslack/blob/master/src/api.ts
 
+## lastIndexOf
+
 ## update repl
 
 ## isValid with functions
@@ -67,6 +69,7 @@ create pipeline for `rambda-docs` typings file
 
 Methods to add:  
 
+- whereAny
 - uniqBy
 - propSatisfies
 - pickBy
