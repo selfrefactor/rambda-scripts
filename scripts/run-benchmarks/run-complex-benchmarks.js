@@ -3,7 +3,6 @@ const {readJson, outputJson, emptyDir} = require('fs-extra')
 const {resolve} = require('path')
 const {mapAsync, range} = require('rambdax')
 const {createBenchmark} = require('./modules/create-benchmark')
-const {replaceInFile} = require('./modules/replace-in-file')
 
 const benchmarksDir = resolve(__dirname, '../../../rambda/source/benchmarks')
 const outputDir = resolve(__dirname, '../../benchmark-results')
@@ -13,7 +12,6 @@ const allIndexesDir = resolve(__dirname, 'benchmarks/benchmark_results')
 async function applyRunBenchmark({methodName, length, index, filePath}) {
   const {tests, modes, applyBenchmark} = require(filePath)
 
-  console.log(index, 'index applyRunBenchmark')
   const applyableTests = tests.map(singleTest => {
     if (index === -1) {
       return {
@@ -36,7 +34,6 @@ async function applyRunBenchmark({methodName, length, index, filePath}) {
   await createBenchmark(applyableTests, methodName)
   const outputFilePath = `${outputDir}/${methodName}.json`
   const benchmarkResult = await readJson(outputFilePath)
-  console.log(index, length, 'done')
   return {
     benchmarkResult,
     newKnownLength: length === undefined ? modes.length : undefined,
@@ -56,16 +53,15 @@ async function runSingleBenchmark(methodName) {
   const data = {}
   let knownLength = undefined
   const iterable = async index => {
-    console.log(`iterable index`, index)
     if (knownLength !== undefined && index >= knownLength) return
-    console.log(`iterable index after`, index)
+    console.time(methodName)
     const {newKnownLength, benchmarkResult} = await applyRunBenchmark({
       methodName,
       length: knownLength,
       index,
       filePath,
     })
-    console.log(`knownLimit,done`, knownLength, newKnownLength)
+    console.timeEnd(methodName)
     if (newKnownLength) knownLength = newKnownLength
 
     data[`${methodName}-${index}`] = benchmarkResult
