@@ -1,6 +1,7 @@
 const {existsSync} = require('fs')
-const {readJson, outputJson, emptyDir} = require('fs-extra')
-const {resolve} = require('path')
+const {readJson, readFile, outputJson, emptyDir} = require('fs-extra')
+const { scanFolder } = require('helpers-fn')
+const {resolve, parse} = require('path')
 const {mapAsync, range} = require('rambdax')
 const { snakeCase } = require('string-fn')
 const {createBenchmark} = require('./modules/create-benchmark')
@@ -46,11 +47,28 @@ const RUN_INDEXES = process.env.RAMBDA_RUN_INDEXES !== 'OFF'
 console.log(`RUN_INDEXES`, RUN_INDEXES)
 console.log(`RUN_ALL`, RUN_ALL)
 
+async function applyOldFormat(filePath, methodName){
+  const required = require(filePath)
+  await createBenchmark(required, methodName)
+  const outputFilePath = `${outputDir}/${snakeCase(methodName)}.json`
+  const benchmarkResult = await readJson(outputFilePath)
+  const benchmarkResultFilePath = `${allIndexesDir}/${methodName}.json`
+  await outputJson(benchmarkResultFilePath, benchmarkResult, {
+    spaces: 2,
+  })
+}
+
 async function runSingleBenchmark(methodName) {
   const filePath = `${benchmarksDir}/${methodName}.js`
   if (!existsSync(filePath)) {
     throw new Error(`!existsSync(filePath) ${filePath}`)
   }
+  const fileContent = (await readFile(filePath)).toString()
+  const isNewFormat = fileContent.includes('const modes =')
+  if(!isNewFormat){
+    return applyOldFormat(filePath, methodName)
+  }
+
   const data = {}
   let knownLength = undefined
   const iterable = async index => {
@@ -93,4 +111,18 @@ async function runSingleBenchmark(methodName) {
   await onEnd()
 }
 
+async function getAllBenchmarks(){
+  const files = await scanFolder({ folder : benchmarksDir })
+
+  return files
+    .filter(filePath => !filePath.includes('benchmark_results'))
+    .map(filePath => parse(filePath).name)
+}
+
+async function runAllBenchmarks(){
+  const all = await getAllBenchmarks()
+  console.log(`all benchmarks: ${all}`)
+}
+
+exports.runAllBenchmarks = runAllBenchmarks
 exports.runSingleBenchmark = runSingleBenchmark

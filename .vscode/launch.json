@@ -13,7 +13,10 @@
       ],
       "program": "${workspaceFolder}/scripts/run-benchmarks/run-complex-benchmarks-spec.js",
       "env": {
-        "METHOD": "indexOf"
+        "METHOD": "add",
+        "RAMBDA_UPDATE_ALL_BENCHMARKS": "ON",
+        "RAMBDA_RUN_INDEXES": "ON",
+        "RAMBDA_RUN_ALL": "ON"
       }
     }
   ]
