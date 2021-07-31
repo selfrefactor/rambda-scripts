@@ -56,9 +56,10 @@ async function applyOldFormat(filePath, methodName){
   await outputJson(benchmarkResultFilePath, benchmarkResult, {
     spaces: 2,
   })
+  await emptyDir(outputDir)
 }
 
-async function runSingleBenchmark(methodName) {
+async function runSingleBenchmark(methodName, disableOldFormat = false) {
   const filePath = `${benchmarksDir}/${methodName}.js`
   if (!existsSync(filePath)) {
     throw new Error(`!existsSync(filePath) ${filePath}`)
@@ -66,6 +67,7 @@ async function runSingleBenchmark(methodName) {
   const fileContent = (await readFile(filePath)).toString()
   const isNewFormat = fileContent.includes('const modes =')
   if(!isNewFormat){
+    if(disableOldFormat) return
     return applyOldFormat(filePath, methodName)
   }
 
@@ -115,12 +117,20 @@ async function getAllBenchmarks(){
   const files = await scanFolder({ folder : benchmarksDir })
 
   return files
-    .filter(filePath => !filePath.includes('benchmark_results'))
+    .filter(filePath => {
+      if(filePath.includes('benchmark_results')) return false
+      if(filePath.includes('_utils')) return false
+      return true
+    })
     .map(filePath => parse(filePath).name)
 }
 
-async function runAllBenchmarks(){
+async function runAllBenchmarks(disableOldFormat){
   const all = await getAllBenchmarks()
+  const iterable = async methodName => {
+    await runSingleBenchmark(methodName, disableOldFormat)
+  }
+  await mapAsync(iterable, all)
   console.log(`all benchmarks: ${all}`)
 }
 

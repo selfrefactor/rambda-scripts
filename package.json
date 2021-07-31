@@ -2,10 +2,9 @@
 	"name": "rambda-scripts",
 	"scripts": {
 		"piped": "node scripts/build-multiple-types/build-multiple-types piped",
-		"benchmark": "node scripts/run-benchmarks/run-benchmarks-spec.js",
-		"benchmark:all": "RUN_ALL=ON node scripts/run-benchmarks/run-benchmarks-spec.js",
-		"benchmarkx": "RAMBDA_RUN_ALL=ON RAMBDA_RUN_INDEXES=ON node scripts/run-benchmarks/run-complex-benchmarks-spec.js",
-		"benchmarkxx": "METHOD=indexOf yarn benchmarkx",
+		"benchmark:all": "RAMBDA_UPDATE_NEW_BENCHMARKS=ON RAMBDA_UPDATE_ALL_BENCHMARKS=ON node scripts/run-benchmarks/run-complex-benchmarks-spec.js",
+		"benchmark": "RAMBDA_UPDATE_NEW_BENCHMARKS=ON RAMBDA_RUN_ALL=ON RAMBDA_RUN_INDEXES=ON node scripts/run-benchmarks/run-complex-benchmarks.spec.js",
+		"benchmarkx": "METHOD=indexOf yarn benchmarkx",
 		"build": "tsc -p tsconfig.json",
 		"github": "node scripts/github-release/github-release.js",
 		"immutable": "yarn immutable:rambda && yarn immutable:rambdax",
