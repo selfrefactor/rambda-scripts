@@ -13,9 +13,9 @@
       ],
       "program": "${workspaceFolder}/scripts/run-benchmarks/run-complex-benchmarks-spec.js",
       "env": {
-        "METHOD": "add",
+        "METHOD": "includes",
         "RAMBDA_UPDATE_NEW_BENCHMARKS": "ON",
-        "RAMBDA_UPDATE_ALL_BENCHMARKS": "ON",
+        "RAMBDA_UPDATE_ALL_BENCHMARKS": "OFF",
         "RAMBDA_RUN_INDEXES": "ON",
         "RAMBDA_RUN_ALL": "ON"
       }

@@ -5,6 +5,7 @@
 		"benchmark": "RAMBDA_UPDATE_NEW_BENCHMARKS=ON RAMBDA_RUN_ALL=OFF RAMBDA_RUN_INDEXES=ON node scripts/run-benchmarks/run-complex-benchmarks-spec.js",
 		"benchmarkx": "METHOD=indexOf yarn benchmark",
 		"benchmark:all": "RAMBDA_UPDATE_NEW_BENCHMARKS=ON RAMBDA_UPDATE_ALL_BENCHMARKS=ON node scripts/run-benchmarks/run-complex-benchmarks-spec.js",
+		"check-benchmark": "node scripts/run-benchmarks/check-benchmark-spec.js",
 		"build": "tsc -p tsconfig.json",
 		"github": "node scripts/github-release/github-release.js",
 		"immutable": "yarn immutable:rambda && yarn immutable:rambdax",

@@ -1,15 +1,64 @@
 const {existsSync} = require('fs')
 const {readJson, readFile, outputJson, emptyDir} = require('fs-extra')
-const { scanFolder } = require('helpers-fn')
+const {scanFolder} = require('helpers-fn')
 const {resolve, parse} = require('path')
-const {mapAsync, range} = require('rambdax')
-const { snakeCase } = require('string-fn')
+const {mapAsync, range, equals, map} = require('rambdax')
+const {snakeCase, kebabCase} = require('string-fn')
 const {createBenchmark} = require('./modules/create-benchmark')
 
 const benchmarksDir = resolve(__dirname, '../../../rambda/source/benchmarks')
 const outputDir = resolve(__dirname, '../../benchmark-results')
 const finalDir = resolve(__dirname, 'benchmark-results')
 const allIndexesDir = resolve(__dirname, 'benchmarks/benchmark_results')
+
+function checkSingleResults({index, filePath}) {
+  if (index === -1) return
+  const {tests, modes, applyBenchmark} = require(filePath)
+  const currentMode = modes[index]
+  if (!currentMode) return
+  const allResults = tests.map(singleTest => {
+    const result = applyBenchmark(singleTest.fn, currentMode)
+
+    return {
+      label: singleTest.label,
+      result,
+    }
+  })
+  const labels = allResults.map(({label}) => label)
+
+  const firstResult = equals(allResults[0].result, allResults[1].result)
+  if (tests.length === 3) {
+    const secondResult = equals(allResults[1].result, allResults[2].result)
+    return {firstResult, secondResult, labels}
+  }
+  return {result: firstResult, labels, allResults}
+}
+
+async function checkResults({filePath: filePathInput, methodName}) {
+  const filePath = filePathInput ? filePathInput : `${benchmarksDir}/${methodName}.js`
+
+  const {
+    modes: {length: modesLength},
+  } = require(filePath)
+
+  const iterable = index => {
+    return checkSingleResults({
+      index,
+      filePath,
+    })
+  }
+
+  const allResults = await map(iterable, range(0, modesLength))
+  const warnings = allResults.filter(({result, firstResult, secondResult}) =>
+    [result, firstResult, secondResult].includes(false)
+  )
+  console.log(`allResults`, allResults)
+  console.log(`warnings`, warnings)
+  const resultFilePath = `${outputDir}/results-check-${kebabCase(
+    methodName
+  )}.json`
+  await outputJson(resultFilePath, {warnings, allResults, numWarnings: warnings.length}, {spaces: 2})
+}
 
 async function applyRunBenchmark({methodName, length, index, filePath}) {
   const {tests, modes, applyBenchmark} = require(filePath)
@@ -44,10 +93,10 @@ async function applyRunBenchmark({methodName, length, index, filePath}) {
 
 const RUN_ALL = process.env.RAMBDA_RUN_ALL !== 'OFF'
 const RUN_INDEXES = process.env.RAMBDA_RUN_INDEXES !== 'OFF'
-console.log(`RUN_INDEXES`, RUN_INDEXES)
-console.log(`RUN_ALL`, RUN_ALL)
+console.log(`will run with index mode`, RUN_INDEXES)
+console.log(`will have final round with all indexes`, RUN_ALL)
 
-async function applyOldFormat(filePath, methodName){
+async function applyOldFormat(filePath, methodName) {
   const required = require(filePath)
   await createBenchmark(required, methodName)
   const outputFilePath = `${outputDir}/${snakeCase(methodName)}.json`
@@ -66,10 +115,11 @@ async function runSingleBenchmark(methodName, disableOldFormat = false) {
   }
   const fileContent = (await readFile(filePath)).toString()
   const isNewFormat = fileContent.includes('const modes =')
-  if(!isNewFormat){
-    if(disableOldFormat) return
+  if (!isNewFormat) {
+    if (disableOldFormat) return
     return applyOldFormat(filePath, methodName)
   }
+  await checkResults({filePath, methodName})
 
   const data = {}
   let knownLength = undefined
@@ -84,10 +134,10 @@ async function runSingleBenchmark(methodName, disableOldFormat = false) {
       filePath,
     })
     console.timeEnd(label)
-    if (newKnownLength){
-      console.log(`newKnownLength`, newKnownLength )
+    if (newKnownLength) {
+      console.log(`newKnownLength`, newKnownLength)
       knownLength = newKnownLength
-    } 
+    }
 
     data[`${methodName}-${index}`] = benchmarkResult
   }
@@ -117,26 +167,27 @@ async function runSingleBenchmark(methodName, disableOldFormat = false) {
   await onEnd()
 }
 
-async function getAllBenchmarks(){
-  const files = await scanFolder({ folder : benchmarksDir })
+async function getAllBenchmarks() {
+  const files = await scanFolder({folder: benchmarksDir})
 
   return files
     .filter(filePath => {
-      if(filePath.includes('benchmark_results')) return false
-      if(filePath.includes('_utils')) return false
+      if (filePath.includes('benchmark_results')) return false
+      if (filePath.includes('_utils')) return false
       return true
     })
     .map(filePath => parse(filePath).name)
 }
 
-async function runAllBenchmarks(disableOldFormat){
+async function runAllBenchmarks(disableOldFormat) {
   const all = await getAllBenchmarks()
   const iterable = async methodName => {
     await runSingleBenchmark(methodName, disableOldFormat)
   }
   await mapAsync(iterable, all)
-  console.log(`all benchmarks: ${all}`)
 }
 
 exports.runAllBenchmarks = runAllBenchmarks
 exports.runSingleBenchmark = runSingleBenchmark
+exports.checkResults = checkResults
+exports.benchmarksDir = benchmarksDir
