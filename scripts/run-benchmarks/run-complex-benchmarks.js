@@ -1,29 +1,63 @@
-process.env.BENCHMARK_FOLDER =
-  'scripts/run-benchmarks/benchmarks/benchmark_complex_results'
-const { createComplexBenchmark, scanFolder  } = require('helpers-fn')
-const { parse, resolve  } = require('path')
-const { mapAsync  } = require('rambdax')
+const { existsSync } = require('fs')
+const { readJson, outputJson, emptyDir } = require('fs-extra')
+const { resolve  } = require('path')
+const { mapAsync, range  } = require('rambdax')
+const { createBenchmark } = require('./modules/create-benchmark')
+const { replaceInFile } = require('./modules/replace-in-file')
 
-const benchmarksDir = resolve(__dirname, '../../../rambda/source/complex_benchmarks')
+const benchmarksDir = resolve(__dirname, '../../../rambda/source/benchmarks')
+const outputDir = resolve(__dirname, '../../benchmark-results')
+const finalDir = resolve(__dirname, 'benchmark-results')
+const allIndexesDir = resolve(__dirname, 'benchmarks/benchmark_results')
 
-async function getAllBenchmarks(){
-  const files = await scanFolder({ folder : benchmarksDir })
+async function applyRunBenchmark({methodName, limit, index, filePath}){
+  if(limit !== undefined && index > limit - 1) return {done: true}
 
-  return files
-    .filter(filePath => !filePath.includes('benchmark_results'))
-    .map(filePath => parse(filePath).name)
+  await replaceInFile({
+    filePath,
+    target: /const\sINDEX.+/,
+    replacer: `const INDEX = ${index}`,
+  })
+  const required = require(filePath)
+  
+  console.log(index, 'required')
+
+  await createBenchmark(required.tests, methodName)
+  const outputFilePath = `${ outputDir }/${ methodName }.json`
+  const benchmarkResult = await readJson(outputFilePath)
+  console.log(index, 'done')
+  return {benchmarkResult, newKnownLimit: limit === undefined ? required.len : undefined}
 }
 
-async function runSingleComplexBenchmark(singleMethod){
-  const required = require(`${ benchmarksDir }/${ singleMethod }.js`)
-  createComplexBenchmark(required)
+async function runSingleBenchmark(methodName){
+  const filePath = `${ benchmarksDir }/${ methodName }.js`
+  if(!existsSync(filePath)){
+    throw new Error(`!existsSync(filePath) ${filePath}`)
+  }
+  const data = {}
+  let knownLimit = undefined
+  let shouldStop = undefined
+  const iterable = async (index) => {
+    if(shouldStop) return
+    const {newKnownLimit, benchmarkResult, done} =await applyRunBenchmark({methodName, limit: knownLimit, index, filePath})
+    if(done){
+      shouldStop = true
+      return
+    } 
+    if(newKnownLimit) knownLimit = newKnownLimit
+    
+    data[`${methodName}-${index}`] = benchmarkResult
+    console.log(index, 'done')
+  }
+  
+  await mapAsync(iterable, range(0, 20))
+
+  const {benchmarkResult} =await applyRunBenchmark({methodName, limit: 0, index:-1, filePath})
+  data[`${methodName}-ALL`] = benchmarkResult
+
+  await outputJson(`${ finalDir }/${ methodName }.json`, data, {spaces: 2})
+  await outputJson(`${ allIndexesDir }/${ methodName }.json`, benchmarkResult, {spaces: 2})
+  await emptyDir(outputDir)
 }
 
-async function runAllComplexBenchmarks(){
-  const methodsWithBenchmarks = await getAllBenchmarks()
-
-  await mapAsync(runSingleComplexBenchmark, methodsWithBenchmarks)
-}
-
-exports.runAllComplexBenchmarks = runAllComplexBenchmarks
-exports.runSingleComplexBenchmark = runSingleComplexBenchmark
+exports.runSingleBenchmark = runSingleBenchmark

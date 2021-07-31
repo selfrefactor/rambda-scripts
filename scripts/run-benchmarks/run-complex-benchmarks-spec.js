@@ -1,13 +1,7 @@
-const { runAllComplexBenchmarks, runSingleComplexBenchmark } = require('./run-complex-benchmarks')
+const { runSingleBenchmark } = require('./run-complex-benchmarks')
 
-const RUN_ALL = false
-const method = 'forEach'
+const method = process.env.METHOD ?? 'uniq'
 
 void async function runBenchmarks(){
-  if (!RUN_ALL){
-    await runSingleComplexBenchmark(method)
-    return
-  }
-
-  await runAllComplexBenchmarks()
+  await runSingleBenchmark(method)
 }()
