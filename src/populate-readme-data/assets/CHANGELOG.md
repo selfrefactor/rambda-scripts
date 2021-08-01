@@ -1,3 +1,7 @@
+6.10.0 
+
+Improve performance of `R.uniqWith`
+
 6.9.0
 
 - Fix slow `R.uniq` methods - [Issue #581](https://github.com/selfrefactor/rambda/issues/581)

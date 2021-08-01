@@ -20,5 +20,17 @@
         "RAMBDA_RUN_ALL": "ON"
       }
     }
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "Check method",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/scripts/run-benchmarks/check-benchmark-spec.js",
+      "env": {
+        "METHOD": "uniqWith"
+      }
+    }
   ]
 }

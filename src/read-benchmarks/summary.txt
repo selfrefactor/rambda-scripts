@@ -1,6 +1,6 @@
- *add* | 🚀 Fastest | 26.91% slower | 85.31% slower
- *adjust* | 🚀 Fastest | 3.2% slower | 🔳
- *all* | 🚀 Fastest | 93.1% slower | 🔳
+ *add* | 🚀 Fastest | 21.52% slower | 82.15% slower
+ *adjust* | 8.48% slower | 🚀 Fastest | 🔳
+ *all* | 🚀 Fastest | 93.69% slower | 🔳
  *allPass* | 🚀 Fastest | 98.56% slower | 🔳
  *and* | 🚀 Fastest | 89.09% slower | 🔳
  *any* | 🚀 Fastest | 92.87% slower | 45.82% slower
@@ -23,6 +23,7 @@
  *flatten* | 🚀 Fastest | 95.26% slower | 10.27% slower
  *ifElse* | 🚀 Fastest | 58.56% slower | 🔳
  *includes* | 6.14% slower | 🚀 Fastest | 🔳
+ *indexOf* | 🚀 Fastest | 82.37% slower | 🔳
  *indexOf* | 🚀 Fastest | 82.2% slower | 🔳
  *init* | 🚀 Fastest | 92.24% slower | 13.3% slower
  *is* | 🚀 Fastest | 57.69% slower | 🔳
@@ -53,7 +54,7 @@
  *takeLast* | 🚀 Fastest | 93.39% slower | 19.22% slower
  *test* | 🚀 Fastest | 82.34% slower | 🔳
  *type* | 🚀 Fastest | 48.6% slower | 🔳
- *uniq* | 🚀 Fastest | 88.46% slower | 🔳
+ *uniq* | 🚀 Fastest | 88.4% slower | 🔳
  *uniqWith* | 14.23% slower | 🚀 Fastest | 🔳
  *update* | 🚀 Fastest | 52.35% slower | 🔳
  *view* | 🚀 Fastest | 76.15% slower | 🔳

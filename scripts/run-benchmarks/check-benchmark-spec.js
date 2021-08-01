@@ -1,4 +1,4 @@
-const {checkResults } = require('./run-complex-benchmarks')
+const {checkResults } = require('./modules/check-method')
 
 const method = process.env.METHOD ?? 'uniq'
 console.log(`method`, method )

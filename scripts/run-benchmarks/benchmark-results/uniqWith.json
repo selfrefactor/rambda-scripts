@@ -1,0 +1,137 @@
+{
+  "uniqWith-0": {
+    "name": "UNIQ_WITH",
+    "date": "2021-08-01T08:58:12.023Z",
+    "version": null,
+    "results": [
+      {
+        "name": "Rambda",
+        "ops": 729206,
+        "margin": 1.94,
+        "percentSlower": 9.52
+      },
+      {
+        "name": "Ramda",
+        "ops": 805891,
+        "margin": 1.79,
+        "percentSlower": 0
+      }
+    ],
+    "fastest": {
+      "name": "Ramda",
+      "index": 1
+    },
+    "slowest": {
+      "name": "Rambda",
+      "index": 0
+    }
+  },
+  "uniqWith-1": {
+    "name": "UNIQ_WITH",
+    "date": "2021-08-01T08:58:22.971Z",
+    "version": null,
+    "results": [
+      {
+        "name": "Rambda",
+        "ops": 24585,
+        "margin": 1.95,
+        "percentSlower": 14.61
+      },
+      {
+        "name": "Ramda",
+        "ops": 28790,
+        "margin": 1.73,
+        "percentSlower": 0
+      }
+    ],
+    "fastest": {
+      "name": "Ramda",
+      "index": 1
+    },
+    "slowest": {
+      "name": "Rambda",
+      "index": 0
+    }
+  },
+  "uniqWith-2": {
+    "name": "UNIQ_WITH",
+    "date": "2021-08-01T08:58:33.684Z",
+    "version": null,
+    "results": [
+      {
+        "name": "Rambda",
+        "ops": 273818,
+        "margin": 1.67,
+        "percentSlower": 18.08
+      },
+      {
+        "name": "Ramda",
+        "ops": 334239,
+        "margin": 1.36,
+        "percentSlower": 0
+      }
+    ],
+    "fastest": {
+      "name": "Ramda",
+      "index": 1
+    },
+    "slowest": {
+      "name": "Rambda",
+      "index": 0
+    }
+  },
+  "uniqWith-3": {
+    "name": "UNIQ_WITH",
+    "date": "2021-08-01T08:58:44.636Z",
+    "version": null,
+    "results": [
+      {
+        "name": "Rambda",
+        "ops": 716602,
+        "margin": 3.26,
+        "percentSlower": 13.8
+      },
+      {
+        "name": "Ramda",
+        "ops": 831344,
+        "margin": 3.07,
+        "percentSlower": 0
+      }
+    ],
+    "fastest": {
+      "name": "Ramda",
+      "index": 1
+    },
+    "slowest": {
+      "name": "Rambda",
+      "index": 0
+    }
+  },
+  "uniqWith-4": {
+    "name": "UNIQ_WITH",
+    "date": "2021-08-01T08:58:55.372Z",
+    "version": null,
+    "results": [
+      {
+        "name": "Rambda",
+        "ops": 498617,
+        "margin": 2.68,
+        "percentSlower": 0
+      },
+      {
+        "name": "Ramda",
+        "ops": 498450,
+        "margin": 3.38,
+        "percentSlower": 0.03
+      }
+    ],
+    "fastest": {
+      "name": "Rambda",
+      "index": 0
+    },
+    "slowest": {
+      "name": "Ramda",
+      "index": 1
+    }
+  }
+}
