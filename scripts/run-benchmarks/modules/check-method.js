@@ -28,9 +28,9 @@ function checkSingleResults({index, filePath}) {
   const firstResult = equals(allResults[0].result, allResults[1].result)
   if (tests.length === 3) {
     const secondResult = equals(allResults[1].result, allResults[2].result)
-    return {firstResult, secondResult, labels}
+    return {firstResult, secondResult, labels, index}
   }
-  return {result: firstResult, labels, allResults}
+  return {result: firstResult, labels, allResults, index}
 }
 
 async function checkResults({filePath: filePathInput, methodName}) {
@@ -53,7 +53,6 @@ async function checkResults({filePath: filePathInput, methodName}) {
   const warnings = allResults.filter(({result, firstResult, secondResult}) =>
     [result, firstResult, secondResult].includes(false)
   )
-  console.log(`allResults`, allResults)
   console.log(`warnings`, warnings)
   const resultFilePath = `${outputDir}/results-check-${kebabCase(
     methodName

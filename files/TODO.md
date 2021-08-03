@@ -1,3 +1,5 @@
+## Separate README for docsify
+
 ## Rambdax + RxJS 
 
 simulate rxjs api and benchmark it

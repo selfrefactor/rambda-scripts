@@ -1,0 +1,137 @@
+{
+  "all-0": {
+    "name": "ALL",
+    "date": "2021-08-03T07:32:23.328Z",
+    "version": null,
+    "results": [
+      {
+        "name": "Rambda",
+        "ops": 297116,
+        "margin": 1.33,
+        "percentSlower": 0
+      },
+      {
+        "name": "Ramda",
+        "ops": 282191,
+        "margin": 2.53,
+        "percentSlower": 5.02
+      }
+    ],
+    "fastest": {
+      "name": "Rambda",
+      "index": 0
+    },
+    "slowest": {
+      "name": "Ramda",
+      "index": 1
+    }
+  },
+  "all-1": {
+    "name": "ALL",
+    "date": "2021-08-03T07:32:34.225Z",
+    "version": null,
+    "results": [
+      {
+        "name": "Rambda",
+        "ops": 535278,
+        "margin": 2.12,
+        "percentSlower": 0
+      },
+      {
+        "name": "Ramda",
+        "ops": 415322,
+        "margin": 3.73,
+        "percentSlower": 22.41
+      }
+    ],
+    "fastest": {
+      "name": "Rambda",
+      "index": 0
+    },
+    "slowest": {
+      "name": "Ramda",
+      "index": 1
+    }
+  },
+  "all-2": {
+    "name": "ALL",
+    "date": "2021-08-03T07:32:45.112Z",
+    "version": null,
+    "results": [
+      {
+        "name": "Rambda",
+        "ops": 553559,
+        "margin": 3.27,
+        "percentSlower": 0
+      },
+      {
+        "name": "Ramda",
+        "ops": 453229,
+        "margin": 1.65,
+        "percentSlower": 18.12
+      }
+    ],
+    "fastest": {
+      "name": "Rambda",
+      "index": 0
+    },
+    "slowest": {
+      "name": "Ramda",
+      "index": 1
+    }
+  },
+  "all-3": {
+    "name": "ALL",
+    "date": "2021-08-03T07:32:55.982Z",
+    "version": null,
+    "results": [
+      {
+        "name": "Rambda",
+        "ops": 484880,
+        "margin": 1.43,
+        "percentSlower": 0
+      },
+      {
+        "name": "Ramda",
+        "ops": 443991,
+        "margin": 1.85,
+        "percentSlower": 8.43
+      }
+    ],
+    "fastest": {
+      "name": "Rambda",
+      "index": 0
+    },
+    "slowest": {
+      "name": "Ramda",
+      "index": 1
+    }
+  },
+  "all-ALL": {
+    "name": "ALL",
+    "date": "2021-08-03T07:33:07.173Z",
+    "version": null,
+    "results": [
+      {
+        "name": "Rambda",
+        "ops": 109980,
+        "margin": 1.95,
+        "percentSlower": 6.5
+      },
+      {
+        "name": "Ramda",
+        "ops": 117623,
+        "margin": 0.78,
+        "percentSlower": 0
+      }
+    ],
+    "fastest": {
+      "name": "Ramda",
+      "index": 1
+    },
+    "slowest": {
+      "name": "Rambda",
+      "index": 0
+    }
+  }
+}
