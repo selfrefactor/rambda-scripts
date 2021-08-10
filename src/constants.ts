@@ -88,4 +88,6 @@ export const BLACKLIST_METHODS = [
   'objOf',
   'mapObjIndexed',
   'filterIndexed',
+  'filterIndexed',
+  'partitionIndexed'
 ]
