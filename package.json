@@ -1,6 +1,7 @@
 {
 	"name": "rambda-scripts",
 	"scripts": {
+		"dev": "jest src/populate-readme-data/rambda-repl.spec.ts --watch",
 		"piped": "node scripts/build-multiple-types/build-multiple-types piped",
 		"benchmark": "node scripts/run-benchmarks/run-complex-benchmarks-spec.js",
 		"benchmarkx": "METHOD=indexOf yarn benchmark",

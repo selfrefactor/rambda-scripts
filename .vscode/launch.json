@@ -19,7 +19,7 @@
         "RAMBDA_RUN_INDEXES": "ON",
         "RAMBDA_RUN_ALL": "ON"
       }
-    }
+    },
     {
       "type": "pwa-node",
       "request": "launch",

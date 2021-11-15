@@ -1,6 +1,12 @@
 6.10.0 
 
-Improve performance of `R.uniqWith`
+- Missing logic in `R.equals` to compare sets - [Issue #599](https://github.com/selfrefactor/rambda/issues/599)
+
+- `R.type` can return `Set` as result.
+
+- Improve performance of `R.uniqWith`
+
+- Wrong `R.update` if index is `-1` - [PR #593](https://github.com/selfrefactor/rambda/pull/593)
 
 6.9.0
 

@@ -1,4 +1,17 @@
-## Separate README for docsify
+## Shorter pipe/compose 
+
+Now we can remove custom code because of these long typings
+
+## Deno import
+
+To use directly in [Deno](https://deno.land):
+```javascript
+import * as R from "https://deno.land/x/ramda/index.js";
+```
+
+## Use new export API
+
+https://github.com/ramda/ramda/pull/2999/files
 
 ## Rambdax + RxJS 
 
@@ -7,6 +20,12 @@ simulate rxjs api and benchmark it
 ## publish rambdax to deno(remove on next rambdax release)
 
 ## Add lint staged
+
+## Improve TS
+
+https://github.com/iter-tools/iter-tools
+
+https://github1s.com/mobily/ts-belt/blob/HEAD/src/Dict/index.ts(not so useful but as reference)
 
 ## Dictionary - type vs interface
 

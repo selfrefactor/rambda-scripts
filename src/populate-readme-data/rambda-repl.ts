@@ -6,12 +6,19 @@ const getResultVariableLog = either(includes('const result ='),
   includes('const result='))
 
 function attachResultVariable(input: string){
-  const [ firstLineRaw, ...otherLines ] = input.split('\n')
-  const firstLine = `const result = ${ firstLineRaw }`
+  let lineToAttach: unknown = undefined
 
-  return otherLines.length === 0 ?
-    firstLine :
-    [ firstLine, ...otherLines ].join('\n')
+  input.split('\n').forEach(
+    (line, i) => {
+      if(line.startsWith('//')) return
+      lineToAttach = i
+    } 
+  )
+  if(lineToAttach === undefined) return input
+
+  return input.split('\n').map(
+    (line, i) => i === lineToAttach ? `const result = ${line}` : line
+  ).join('\n')
 }
 
 export function rambdaRepl(input: string){
