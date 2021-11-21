@@ -4,6 +4,8 @@
 
 - `R.type` can return `Set` as result.
 
+- Handle multiple inputs with `R.allPass` and `R.anyPass` - [Issue #604](https://github.com/selfrefactor/rambda/issues/604)
+
 - Fix `R.length` wrong logic with inputs as `{length: 123}` - [Issue #606](https://github.com/selfrefactor/rambda/issues/606)
 
 - Improve performance of `R.uniqWith`
