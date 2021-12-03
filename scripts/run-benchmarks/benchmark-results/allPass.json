@@ -1,20 +1,20 @@
 {
   "allPass-0": {
     "name": "ALL_PASS",
-    "date": "2021-12-03T21:32:09.198Z",
+    "date": "2021-12-03T23:31:07.581Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 243187,
-        "margin": 1.49,
+        "ops": 223424,
+        "margin": 1.4,
         "percentSlower": 0
       },
       {
         "name": "Ramda",
-        "ops": 20262,
-        "margin": 2.24,
-        "percentSlower": 91.67
+        "ops": 18058,
+        "margin": 1.83,
+        "percentSlower": 91.92
       }
     ],
     "fastest": {
@@ -28,20 +28,20 @@
   },
   "allPass-1": {
     "name": "ALL_PASS",
-    "date": "2021-12-03T21:32:20.248Z",
+    "date": "2021-12-03T23:31:18.910Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 224811,
-        "margin": 3.32,
+        "ops": 182472,
+        "margin": 1.41,
         "percentSlower": 0
       },
       {
         "name": "Ramda",
-        "ops": 31679,
-        "margin": 0.63,
-        "percentSlower": 85.91
+        "ops": 19135,
+        "margin": 0.5,
+        "percentSlower": 89.51
       }
     ],
     "fastest": {
@@ -55,20 +55,20 @@
   },
   "allPass-2": {
     "name": "ALL_PASS",
-    "date": "2021-12-03T21:32:31.551Z",
+    "date": "2021-12-03T23:31:29.959Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 190515,
-        "margin": 3.06,
+        "ops": 204820,
+        "margin": 1.36,
         "percentSlower": 0
       },
       {
         "name": "Ramda",
-        "ops": 15806,
-        "margin": 5.17,
-        "percentSlower": 91.7
+        "ops": 18606,
+        "margin": 0.99,
+        "percentSlower": 90.92
       }
     ],
     "fastest": {
@@ -82,20 +82,20 @@
   },
   "allPass-3": {
     "name": "ALL_PASS",
-    "date": "2021-12-03T21:32:42.870Z",
+    "date": "2021-12-03T23:31:40.875Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 228746,
-        "margin": 2.57,
+        "ops": 216506,
+        "margin": 1.25,
         "percentSlower": 0
       },
       {
         "name": "Ramda",
-        "ops": 21436,
-        "margin": 1.2,
-        "percentSlower": 90.63
+        "ops": 18578,
+        "margin": 0.56,
+        "percentSlower": 91.42
       }
     ],
     "fastest": {
@@ -109,20 +109,20 @@
   },
   "allPass-ALL": {
     "name": "ALL_PASS",
-    "date": "2021-12-03T21:32:54.176Z",
+    "date": "2021-12-03T23:31:51.970Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 64305,
-        "margin": 4,
+        "ops": 47735,
+        "margin": 1.83,
         "percentSlower": 0
       },
       {
         "name": "Ramda",
-        "ops": 7802,
-        "margin": 2.98,
-        "percentSlower": 87.87
+        "ops": 4351,
+        "margin": 1.82,
+        "percentSlower": 90.89
       }
     ],
     "fastest": {
