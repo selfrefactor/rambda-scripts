@@ -66,7 +66,9 @@ async function runSingleBenchmark(methodName, disableOldFormat = false) {
     if (disableOldFormat) return
     return applyOldFormat(filePath, methodName)
   }
+  console.log(`methodName is being checked`, methodName)
   await checkResults({filePath, methodName})
+  console.log(`methodName is fine`, methodName)
 
   const data = {}
   let knownLength = undefined

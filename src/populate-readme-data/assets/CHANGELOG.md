@@ -1,6 +1,6 @@
 6.10.0 
 
-- Improve typings of `R.compose` and `R.pipe` - [PR #602](https://github.com/selfrefactor/rambda/pull/602)
+- REMOVE Improve typings of `R.compose` and `R.pipe` - [PR #602](https://github.com/selfrefactor/rambda/pull/602)
 
 - Add missing logic in `R.equals` to compare sets - [Issue #599](https://github.com/selfrefactor/rambda/issues/599)
 
