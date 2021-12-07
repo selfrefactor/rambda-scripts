@@ -9,6 +9,10 @@ To use directly in [Deno](https://deno.land):
 import * as R from "https://deno.land/x/ramda/index.js";
 ```
 
+## Test internal curry
+
+check foo again foo with internal curry
+
 ## Use new export API
 
 https://github.com/ramda/ramda/pull/2999/files

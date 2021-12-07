@@ -1,0 +1,134 @@
+{
+  "compose-0": {
+    "name": "COMPOSE",
+    "date": "2021-12-07T19:56:21.712Z",
+    "version": null,
+    "results": [
+      {
+        "name": "Rambda",
+        "ops": 271295,
+        "margin": 0.51,
+        "percentSlower": 23.25
+      },
+      {
+        "name": "Ramda",
+        "ops": 274113,
+        "margin": 0.41,
+        "percentSlower": 22.45
+      },
+      {
+        "name": "Lodash",
+        "ops": 353472,
+        "margin": 0.39,
+        "percentSlower": 0
+      }
+    ],
+    "fastest": {
+      "name": "Lodash",
+      "index": 2
+    },
+    "slowest": {
+      "name": "Rambda",
+      "index": 0
+    }
+  },
+  "compose-1": {
+    "name": "COMPOSE",
+    "date": "2021-12-07T19:56:38.288Z",
+    "version": null,
+    "results": [
+      {
+        "name": "Rambda",
+        "ops": 130503,
+        "margin": 0.4,
+        "percentSlower": 13.39
+      },
+      {
+        "name": "Ramda",
+        "ops": 130852,
+        "margin": 0.22,
+        "percentSlower": 13.16
+      },
+      {
+        "name": "Lodash",
+        "ops": 150683,
+        "margin": 0.45,
+        "percentSlower": 0
+      }
+    ],
+    "fastest": {
+      "name": "Lodash",
+      "index": 2
+    },
+    "slowest": {
+      "name": "Rambda",
+      "index": 0
+    }
+  },
+  "compose-2": {
+    "name": "COMPOSE",
+    "date": "2021-12-07T19:56:54.749Z",
+    "version": null,
+    "results": [
+      {
+        "name": "Rambda",
+        "ops": 696257,
+        "margin": 0.5,
+        "percentSlower": 57.21
+      },
+      {
+        "name": "Ramda",
+        "ops": 702489,
+        "margin": 0.21,
+        "percentSlower": 56.83
+      },
+      {
+        "name": "Lodash",
+        "ops": 1627168,
+        "margin": 1.48,
+        "percentSlower": 0
+      }
+    ],
+    "fastest": {
+      "name": "Lodash",
+      "index": 2
+    },
+    "slowest": {
+      "name": "Rambda",
+      "index": 0
+    }
+  },
+  "compose-ALL": {
+    "name": "COMPOSE",
+    "date": "2021-12-07T19:57:11.396Z",
+    "version": null,
+    "results": [
+      {
+        "name": "Rambda",
+        "ops": 74633,
+        "margin": 1.96,
+        "percentSlower": 23.65
+      },
+      {
+        "name": "Ramda",
+        "ops": 77374,
+        "margin": 0.2,
+        "percentSlower": 20.84
+      },
+      {
+        "name": "Lodash",
+        "ops": 97746,
+        "margin": 1.39,
+        "percentSlower": 0
+      }
+    ],
+    "fastest": {
+      "name": "Lodash",
+      "index": 2
+    },
+    "slowest": {
+      "name": "Rambda",
+      "index": 0
+    }
+  }
+}

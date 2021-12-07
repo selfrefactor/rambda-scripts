@@ -62,6 +62,7 @@ async function runSingleBenchmark(methodName, disableOldFormat = false) {
   }
   const fileContent = (await readFile(filePath)).toString()
   const isNewFormat = fileContent.includes('const modes =')
+  console.log(`isNewFormat`, isNewFormat, methodName)
   if (!isNewFormat) {
     if (disableOldFormat) return
     return applyOldFormat(filePath, methodName)
