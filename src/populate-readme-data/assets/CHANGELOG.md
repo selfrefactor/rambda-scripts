@@ -7,6 +7,13 @@ Related commit in `@types/ramda` - https://github.com/DefinitelyTyped/Definitely
 There are several other changes in `@types/ramda` as stated in [this comment](https://github.com/ramda/ramda/issues/2976#issuecomment-990408945). This leads to change of typings for the following methods in **Rambda**:
 
 -- R.unless
+-- R.toString
+
+- `R.startsWith/R.endsWith` now support lists as inputs. This way, it matches current Ramda behavior.
+
+- Make `R.lastIndexOf` follow the logic of `R.indexOf`
+
+- Add `Error` as a return type for `R.type`, because Ramda.type also supports it.
 
 - Add missing logic in `R.equals` to compare sets - [Issue #599](https://github.com/selfrefactor/rambda/issues/599)
 

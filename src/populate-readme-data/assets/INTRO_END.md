@@ -12,6 +12,8 @@
 
 - Ramda's **clamp** work with strings, while Rambda's method work only with numbers.
 
+- Ramda's **indexOf/lastIndexOf** work with strings and lists, while Rambda's method work only with lists as iterable input.
+
 - Error handling, when wrong inputs are provided, may not be the same. This difference will be better documented once all brute force tests are completed.
 
 - Typescript definitions between `rambda` and `@types/ramda` may vary.
