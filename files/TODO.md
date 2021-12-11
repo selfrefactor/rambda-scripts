@@ -1,6 +1,3 @@
-## Shorter pipe/compose 
-
-Now we can remove custom code because of these long typings
 
 ## Deno import
 
@@ -8,14 +5,9 @@ To use directly in [Deno](https://deno.land):
 ```javascript
 import * as R from "https://deno.land/x/ramda/index.js";
 ```
-
 ## Test internal curry
 
 check foo again foo with internal curry
-
-## Use new export API
-
-https://github.com/ramda/ramda/pull/2999/files
 
 ## Rambdax + RxJS 
 
@@ -25,12 +17,6 @@ simulate rxjs api and benchmark it
 
 ## Add lint staged
 
-## Improve TS
-
-https://github.com/iter-tools/iter-tools
-
-https://github1s.com/mobily/ts-belt/blob/HEAD/src/Dict/index.ts(not so useful but as reference)
-
 ## Dictionary - type vs interface
 
 https://github.com/selfrefactor/rambda/issues/459#issuecomment-771519978
@@ -38,10 +24,6 @@ https://github.com/selfrefactor/rambda/issues/459#issuecomment-771519978
 ## R.resolve
 
 https://github.com/verydanny/vcslack/blob/master/src/api.ts
-
-## lastIndexOf
-
-## update repl
 
 ## isValid with functions
 
@@ -64,22 +46,6 @@ ok(repos)([x => {
 
 ## Update https://github.com/selfrefactor/rambda-tree-shaking
 
-## identical-spec.ts
-
-    in curried version Typescript correctly catch errors
-    but it doesn't do so in the standart definition
-    
-    identical({a:1},{b:2})
-    identical({a:1})({b:2})
-
-## typings of last and head
-
-```
-const parse = pipe(split('.'), head) is wrong
-but
-const parse = pipe(split('.'), last) is correct
-```
-
 ## Deno info
 
 To use directly in [Deno](https://deno.land):
@@ -87,12 +53,7 @@ To use directly in [Deno](https://deno.land):
 import * as R from "https://deno.land/x/rambda/rambda.js";
 ```
 
-## Other
-
-create pipeline for `rambda-docs` typings file
----
-
-Methods to add:  
+## Methods to add:  
 
 - whereAny
 - uniqBy
@@ -133,7 +94,7 @@ https://github.com/MartinPavlik/ramda-async/blob/master/index.ts
 
 - R.mapKeys (name inspiration from https://github.com/AlexGalays/spacelift#objectmapvalues)
 
-fetch contributors github's avatars
+add avatars to contributors section 
 
 Add explanation to missing Ramda methods
 
@@ -143,7 +104,7 @@ R.renamePropsWith
 
 Use new `Promise.allSettled`
 
-Add marker/category for Rambdax methods that doesn't belong to Rambda
+Add category in the new docs site for Rambdax methods that doesn't belong to Rambda
 
 repl needs `const result =` and not all methods are correct
 

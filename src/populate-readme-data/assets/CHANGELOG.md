@@ -8,26 +8,43 @@ There are several other changes in `@types/ramda` as stated in [this comment](ht
 
 -- R.unless
 -- R.toString
+-- R.ifElse
+-- R.always
+-- R.complement
+-- R.cond
+-- R.is
+-- R.sortBy
+-- R.dissoc
+-- R.toPairs
+-- R.assoc
+-- R.toLower
+-- R.toUpper
 
 - `R.startsWith/R.endsWith` now support lists as inputs. This way, it matches current Ramda behavior.
 
-- Make `R.lastIndexOf` follow the logic of `R.indexOf`
+- Change export declarations in `package.json` based on [this blog post](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5-beta/#packagejson-exports-imports-and-self-referencing) and [this merged Ramda's PR](https://github.com/ramda/ramda/pull/2999). This also led to renaming of `babel.config.js` to `babel.config.cjs`. 
 
-- Add `Error` as a return type for `R.type`, because Ramda.type also supports it.
+- Remove unused typing for `R.chain`.
+
+- Make `R.lastIndexOf` follow the logic of `R.indexOf`.
+
+- Change `R.type` logic to Ramda logic. This way, `R.type` can return `Error` and `Set` as results.
 
 - Add missing logic in `R.equals` to compare sets - [Issue #599](https://github.com/selfrefactor/rambda/issues/599)
 
 - Improve list cloning - [Issue #595](https://github.com/selfrefactor/rambda/issues/595)
 
-- `R.type` can return `Set` as result.
-
 - Handle multiple inputs with `R.allPass` and `R.anyPass` - [Issue #604](https://github.com/selfrefactor/rambda/issues/604)
 
-- Fix `R.length` wrong logic with inputs as `{length: 123}` - [Issue #606](https://github.com/selfrefactor/rambda/issues/606)
+- Fix `R.length` wrong logic with inputs as `{length: 123}` - [Issue #606](https://github.com/selfrefactor/rambda/issues/606).
 
-- Improve performance of `R.uniqWith`
+- Improve non-curry typings of `R.merge` by using types from [mobily/ts-belt](https://github.com/mobily/ts-belt).
+
+- Improve performance of `R.uniqWith`.
 
 - Wrong `R.update` if index is `-1` - [PR #593](https://github.com/selfrefactor/rambda/pull/593)
+
+- Make `R.eqProps` safe for falsy inputs - based on [this opened Ramda PR](https://github.com/ramda/ramda/pull/2943).
 
 6.9.0
 
