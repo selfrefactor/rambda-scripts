@@ -26,6 +26,8 @@ There are several other changes in `@types/ramda` as stated in [this comment](ht
 
 - Remove unused typing for `R.chain`.
 
+- `R.map`/`R.filter` no longer accept bad inputs as iterable. This way, Rambda behaves more like Ramda, which also throws.
+
 - Make `R.lastIndexOf` follow the logic of `R.indexOf`.
 
 - Change `R.type` logic to Ramda logic. This way, `R.type` can return `Error` and `Set` as results.
@@ -45,6 +47,10 @@ There are several other changes in `@types/ramda` as stated in [this comment](ht
 - Wrong `R.update` if index is `-1` - [PR #593](https://github.com/selfrefactor/rambda/pull/593)
 
 - Make `R.eqProps` safe for falsy inputs - based on [this opened Ramda PR](https://github.com/ramda/ramda/pull/2943).
+
+- Incorrect benchmarks for `R.pipe/R.compose` - [Issue #608](https://github.com/selfrefactor/rambda/issues/608)
+
+- Fix `R.last/R.head` typings - [Issue #609](https://github.com/selfrefactor/rambda/issues/609) 
 
 6.9.0
 

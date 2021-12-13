@@ -61,7 +61,7 @@
   },
   "endsWith": {
     "count": 4,
-    "reason": "Rambda method doesn't support arrays"
+    "reason": "unknown"
   },
   "equals": {
     "count": 14,
@@ -197,7 +197,7 @@
   },
   "startsWith": {
     "count": 4,
-    "reason": "Rambda method doesn't support arrays"
+    "reason": "unknown"
   },
   "where": {
     "count": 2,
