@@ -1,0 +1,11 @@
+
+
+  nAry
+    ✓ turns multiple-argument function into a nullary one
+    ✓ turns multiple-argument function into a ternary one
+    ✓ creates functions of arity less than or equal to ten
+    ✓ throws if n is greater than ten
+
+
+  4 passing (47ms)
+

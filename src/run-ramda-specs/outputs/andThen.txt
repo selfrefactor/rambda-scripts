@@ -1,0 +1,11 @@
+
+
+  andThen
+    ✓ invokes then on the promise with the function passed to it
+    ✓ flattens promise returning functions
+    ✓ throws a typeError if the then method does not exist
+    ✓ is not dependent on a particular promise implementation
+
+
+  4 passing (37ms)
+

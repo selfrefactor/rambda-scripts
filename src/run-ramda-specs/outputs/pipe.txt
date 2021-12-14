@@ -1,63 +1,26 @@
+/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/test/pipe.js:104
+undefined
+      ^
 
+Error [ERR_REQUIRE_ESM]: require() of ES Module /home/deyan/repos/rambda/dist/rambda.js from /home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/test/pipe.js not supported.
+rambda.js is treated as an ES module file as it is a .js file whose nearest parent package.json contains "type": "module" which declares all .js files in that package scope as ES modules.
+Instead rename rambda.js to end in .cjs, change the requiring code to use dynamic import() which is available in all CommonJS modules, or change "type": "module" to "type": "commonjs" in /home/deyan/repos/rambda/package.json to treat all .js files as CommonJS (using .mjs for all ES modules instead).
 
-  pipe
-    ✓ is a variadic function
-    1) performs left-to-right function composition
-    2) passes context to functions
-    ✓ throws if given no arguments
-    3) can be applied to one argument
-
-
-  2 passing (121ms)
-  3 failing
-
-  1) pipe
-       performs left-to-right function composition:
-
-      AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
-
-'0' !== '2'
-
-      + expected - actual
-
-      -0
-      +2
-      
-      at strictEqual (test/shared/eq.js:8:10)
-      at Context.eq (test/pipe.js:18:5)
-      at processImmediate (internal/timers.js:456:21)
-
-  2) pipe
-       passes context to functions:
-
-      AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
-
-'NaN' !== '40'
-
-      + expected - actual
-
-      -NaN
-      +40
-      
-      at strictEqual (test/shared/eq.js:8:10)
-      at Context.eq (test/pipe.js:39:5)
-      at processImmediate (internal/timers.js:456:21)
-
-  3) pipe
-       can be applied to one argument:
-
-      AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
-
-'0' !== '3'
-
-      + expected - actual
-
-      -0
-      +3
-      
-      at strictEqual (test/shared/eq.js:8:10)
-      at Context.eq (test/pipe.js:55:5)
-      at processImmediate (internal/timers.js:456:21)
-
-
-
+    at Object.newLoader [as .js] (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/pirates/lib/index.js:104:7)
+    at Object.<anonymous> (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/test/pipe.js:7:1)
+    at Module._compile (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/pirates/lib/index.js:99:24)
+    at Object.newLoader [as .js] (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/pirates/lib/index.js:104:7)
+    at /home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/mocha.js:330:36
+    at Array.forEach (<anonymous>)
+    at Mocha.loadFiles (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/mocha.js:327:14)
+    at Mocha.run (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/mocha.js:804:10)
+    at Object.exports.singleRun (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/cli/run-helpers.js:207:16)
+    at exports.runMocha (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/cli/run-helpers.js:300:13)
+    at Object.exports.handler (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/cli/run.js:296:3)
+    at Object.runCommand (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/node_modules/yargs/lib/command.js:242:26)
+    at Object.parseArgs [as _parseArgs] (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/node_modules/yargs/yargs.js:1087:28)
+    at Object.parse (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/node_modules/yargs/yargs.js:566:25)
+    at Object.exports.main (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/cli/cli.js:63:6)
+    at Object.<anonymous> (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/bin/_mocha:10:23) {
+  code: 'ERR_REQUIRE_ESM'
+}

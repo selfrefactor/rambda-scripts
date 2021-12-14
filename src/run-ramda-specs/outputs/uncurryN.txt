@@ -1,0 +1,13 @@
+
+
+  uncurryN
+    ✓ accepts an arity
+    ✓ returns a function of the specified arity
+    ✓ forwards extra arguments
+    ✓ works with ordinary uncurried functions
+    ✓ works with ramda-curried functions
+    ✓ returns a function that supports R.__ placeholder
+
+
+  6 passing (56ms)
+

@@ -1,0 +1,11 @@
+
+
+  uniqBy
+    ✓ returns a set from any array based on predicate
+    ✓ keeps elements from the left
+    ✓ returns an empty array for an empty array
+    ✓ has R.equals semantics
+
+
+  4 passing (54ms)
+

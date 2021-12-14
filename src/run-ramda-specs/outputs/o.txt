@@ -1,0 +1,13 @@
+
+
+  o
+    ✓ is not a variadic function
+    ✓ is a curried function
+    ✓ performs right-to-left function composition
+    o properties
+      ✓ composes two functions
+      ✓ associative
+
+
+  5 passing (98ms)
+

@@ -1,0 +1,1 @@
+[31mError: No test files found: "test/_curry2.js"[39m

@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-var R = require('../../../../dist/rambda.js');
+var R = require('../../../../../rambda/dist/rambda');
 var eq = require('./shared/eq');
 describe('deep clone integers, strings and booleans', function() {
   it('clones integers', function() {
@@ -17,8 +17,20 @@ describe('deep clone integers, strings and booleans', function() {
   it('clones booleans', function() {
     eq(R.clone(true), true);
   });
-});
 describe('deep clone objects', function() {
+  it('clones shallow object', function() {
+    var obj = {a: 1, b: 'ramda', c: true, d: new Date(2013, 11, 25)};
+    var clone = R.clone(obj);
+    obj.c = false;
+    obj.d.setDate(31);
+    eq(clone, {a: 1, b: 'ramda', c: true, d: new Date(2013, 11, 25)});
+  });
+  it('clones deep object', function() {
+    var obj = {a: {b: {c: 'ramda'}}};
+    var clone = R.clone(obj);
+    obj.a.b.c = null;
+    eq(clone, {a: {b: {c: 'ramda'}}});
+  });
   it('clones objects with circular references', function() {
     var x = {c: null};
     var y = {a: x};
@@ -38,12 +50,141 @@ describe('deep clone objects', function() {
     x.c.b = 1;
     assert.notDeepEqual(clone.c.b, x.c.b);
   });
+  it('clone instances', function() {
+    var Obj = function(x) {
+      this.x = x;
+    };
+    Obj.prototype.get = function() {
+      return this.x;
+    };
+    Obj.prototype.set = function(x) {
+      this.x = x;
+    };
+    var obj = new Obj(10);
+    eq(obj.get(), 10);
+    var clone = R.clone(obj);
+    eq(clone.get(), 10);
+    assert.notStrictEqual(obj, clone);
+    obj.set(11);
+    eq(obj.get(), 11);
+    eq(clone.get(), 10);
+  });
+  it('only own properties be copied', function() {
+    function Obj() {
+      this.x = 'own property';
+    }
+    Obj.prototype = {
+      y: 'not own property'
+    };
+    const obj = new Obj();
+    const cloneObj = R.clone(obj);
+    eq(Object.keys(obj), Object.keys(cloneObj));
+  });
+  it('the prototype should keep the same', function() {
+    function Obj() {}
+    Obj.prototype = {
+      x: 'prototype property'
+    };
+    const obj = new Obj();
+    const cloneObj = R.clone(obj);
+    eq(Object.getPrototypeOf(obj), Object.getPrototypeOf(cloneObj));
+  });
 });
 describe('deep clone arrays', function() {
+  it('clones shallow arrays', function() {
+    var list = [1, 2, 3];
+    var clone = R.clone(list);
+    list.pop();
+    eq(clone, [1, 2, 3]);
+  });
+  it('clones deep arrays', function() {
+    var list = [1, [1, 2, 3], [[[5]]]];
+    var clone = R.clone(list);
+    assert.notStrictEqual(list, clone);
+    assert.notStrictEqual(list[2], clone[2]);
+    assert.notStrictEqual(list[2][0], clone[2][0]);
+    eq(clone, [1, [1, 2, 3], [[[5]]]]);
+  });
+});
+describe('deep clone typed arrays', function() {
+  it('clones Uint16Array', function() {
+    var array = new Uint16Array([1, 2, 3]);
+    var clone = R.clone(array);
+    assert.notStrictEqual(array, clone);
+    eq(clone, new Uint16Array([1, 2, 3]));
+  });
+  it('clones Int8Array', function() {
+    var array = new Int8Array([1,2,3]);
+    var clone = R.clone(array);
+    assert.notStrictEqual(array, clone);
+    eq(clone, new Int8Array([1,2,3]));
+  });
+  it('clones Uint8Array', function() {
+    var array = new Uint8Array([1,2,3]);
+    var clone = R.clone(array);
+    assert.notStrictEqual(array, clone);
+    eq(clone, new Uint8Array([1,2,3]));
+  });
+  it('clones Uint8ClampedArray', function() {
+    var array = new Uint8ClampedArray([1,2,3]);
+    var clone = R.clone(array);
+    assert.notStrictEqual(array, clone);
+    eq(clone, new Uint8ClampedArray([1,2,3]));
+  });
+  it('clones Int16Array', function() {
+    var array = new Int16Array([1,2,3]);
+    var clone = R.clone(array);
+    assert.notStrictEqual(array, clone);
+    eq(clone, new Int16Array([1,2,3]));
+  });
+  it('clones Uint16Array', function() {
+    var array = new Uint16Array([1,2,3]);
+    var clone = R.clone(array);
+    assert.notStrictEqual(array, clone);
+    eq(clone, new Uint16Array([1,2,3]));
+  });
+  it('clones Int32Array', function() {
+    var array = new Int32Array([1,2,3]);
+    var clone = R.clone(array);
+    assert.notStrictEqual(array, clone);
+    eq(clone, new Int32Array([1,2,3]));
+  });
+  it('clones Uint32Array', function() {
+    var array = new Uint32Array([1,2,3]);
+    var clone = R.clone(array);
+    assert.notStrictEqual(array, clone);
+    eq(clone, new Uint32Array([1,2,3]));
+  });
+  it('clones Float32Array', function() {
+    var array = new Float32Array([1,2,3]);
+    var clone = R.clone(array);
+    assert.notStrictEqual(array, clone);
+    eq(clone, new Float32Array([1,2,3]));
+  });
+  it('clones Float64Array', function() {
+    var array = new Float64Array([1,2,3]);
+    var clone = R.clone(array);
+    assert.notStrictEqual(array, clone);
+    eq(clone, new Float64Array([1,2,3]));
+  });
 });
 describe('deep clone functions', function() {
+  it('keep reference to function', function() {
+    var fn = function(x) { return x + x;};
+    var list = [{a: fn}];
+    var clone = R.clone(list);
+    eq(clone[0].a(10), 20);
+    eq(list[0].a, clone[0].a);
+  });
 });
 describe('built-in types', function() {
+  it('clones Date object', function() {
+    var date = new Date(2014, 10, 14, 23, 59, 59, 999);
+    var clone = R.clone(date);
+    assert.notStrictEqual(date, clone);
+    eq(clone, new Date(2014, 10, 14, 23, 59, 59, 999));
+    eq(clone.getDay(), 5); // friday
+  });
   it('clones RegExp object', function() {
     R.forEach(function(pattern) {
       var clone = R.clone(pattern);
@@ -57,6 +198,18 @@ describe('built-in types', function() {
   });
 });
 describe('deep clone deep nested mixed objects', function() {
+  it('clones array with objects', function() {
+    var list = [{a: {b: 1}}, [{c: {d: 1}}]];
+    var clone = R.clone(list);
+    list[1][0] = null;
+    eq(clone, [{a: {b: 1}}, [{c: {d: 1}}]]);
+  });
+  it('clones array with arrays', function() {
+    var list = [[1], [[3]]];
+    var clone = R.clone(list);
+    list[1][0] = null;
+    eq(clone, [[1], [[3]]]);
+  });
   it('clones array with mutual ref object', function() {
     var obj = {a: 1};
     var list = [{b: obj}, {b: obj}];

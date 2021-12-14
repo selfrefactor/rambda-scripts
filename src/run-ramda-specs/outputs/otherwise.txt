@@ -1,0 +1,10 @@
+
+
+  otherwise
+    ✓ catches failed promises
+    ✓ does nothing to successfully resolved promises
+    ✓ throws a typeError if the then method does not exist
+
+
+  3 passing (52ms)
+

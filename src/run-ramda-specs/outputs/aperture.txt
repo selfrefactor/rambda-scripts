@@ -1,0 +1,10 @@
+
+
+  aperture
+    ✓ creates a list of n-tuples from a list
+    ✓ returns an empty list when `n` > `list.length`
+    ✓ can act as a transducer
+
+
+  3 passing (45ms)
+

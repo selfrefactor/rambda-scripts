@@ -1,0 +1,17 @@
+
+
+  juxt
+    ✓ works with no functions and no values
+    ✓ works with no functions and some values
+    ✓ works with 1 function and no values
+    ✓ works with 1 function and 1 value
+    ✓ works with 1 function and some values
+    ✓ works with some functions and no values
+    ✓ works with some functions and 1 value
+    ✓ works with some functions and some values
+    ✓ retains the highest arity
+    ✓ returns a curried function
+
+
+  10 passing (44ms)
+

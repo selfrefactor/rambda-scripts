@@ -1,4 +1,4 @@
-var R = require('../../../../dist/rambda.js');
+var R = require('../../../../../rambda/dist/rambda');
 var eq = require('./shared/eq');
 
 var albums = [
@@ -16,6 +16,19 @@ var albums = [
   {title: 'The Magic Flute', artist: 'John Eliot Gardiner', genre: 'Classical'}
 ];
 describe('sortBy', function() {
+  it('sorts by a simple property of the objects', function() {
+    var sortedAlbums = R.sortBy(R.prop('title'), albums);
+    eq(sortedAlbums.length, albums.length);
+    eq(sortedAlbums[0].title, 'A Farewell to Kings');
+    eq(sortedAlbums[11].title, 'Timeout');
+  });
+  it('preserves object identity', function() {
+    var a = {value: 'a'};
+    var b = {value: 'b'};
+    var result = R.sortBy(R.prop('value'), [b, a]);
+    eq(result[0], a);
+    eq(result[1], b);
+  });
   it('sorts array-like object', function() {
     var args = (function() { return arguments; }('c', 'a', 'b'));
     var result = R.sortBy(R.identity, args);
@@ -23,4 +36,3 @@ describe('sortBy', function() {
     eq(result[1], 'b');
     eq(result[2], 'c');
   });
-});

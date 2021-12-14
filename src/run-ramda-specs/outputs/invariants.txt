@@ -1,0 +1,10 @@
+
+
+  invariants
+    ✓ -- applying function f with length n (where n > 0) to no arguments gives function with length n
+    ✓ -- applying function f with length n (where n > 0) to R.__ gives function with length n
+    ✓ -- applying function f with length n (where n > 1) to any value other than R.__ gives function with length n - 1
+
+
+  3 passing (46ms)
+

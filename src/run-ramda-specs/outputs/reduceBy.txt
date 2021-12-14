@@ -1,0 +1,12 @@
+
+
+  reduceBy
+    ✓ splits the list into groups according to the grouping function
+    ✓ splits the list into mutation-free groups
+    ✓ returns an empty object if given an empty array
+    ✓ can act as a transducer
+    ✓ short circuits with reduced
+
+
+  5 passing (51ms)
+

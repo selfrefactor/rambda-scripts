@@ -1,0 +1,10 @@
+
+
+  call
+    ✓ returns the result of calling its first argument with the remaining arguments
+    ✓ accepts one or more arguments
+    ✓ provides no way to specify context
+
+
+  3 passing (29ms)
+

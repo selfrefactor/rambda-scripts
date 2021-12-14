@@ -1,0 +1,10 @@
+
+
+  partialObject
+    ✓ caches the initially supplied arguments
+    ✓ works regardless of property order
+    ✓ merges deeply right
+
+
+  3 passing (41ms)
+

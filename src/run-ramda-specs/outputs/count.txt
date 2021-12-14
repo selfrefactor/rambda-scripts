@@ -1,0 +1,10 @@
+
+
+  count
+    ✓ counts items in a list that match a filter
+    ✓ returns zero when no element matches
+    ✓ returns zero for an empty list
+
+
+  3 passing (31ms)
+

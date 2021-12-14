@@ -1,0 +1,10 @@
+
+
+  pipeWith
+    ✓ performs left-to-right function composition with function applying
+    ✓ performs left-to-right function while not nil result
+    ✓ performs left-to-right function using promise chaining
+
+
+  3 passing (48ms)
+

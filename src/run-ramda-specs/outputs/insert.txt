@@ -1,0 +1,10 @@
+
+
+  insert
+    ✓ inserts an element into the given list
+    ✓ inserts another list as an element
+    ✓ appends to the end of the list if the index is too large
+
+
+  3 passing (33ms)
+

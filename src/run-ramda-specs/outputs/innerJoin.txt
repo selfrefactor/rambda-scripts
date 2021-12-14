@@ -1,0 +1,9 @@
+
+
+  innerJoin
+    ✓ only returns elements from the first list
+    ✓ does not remove duplicates
+
+
+  2 passing (36ms)
+

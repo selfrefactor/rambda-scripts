@@ -1,0 +1,13 @@
+
+
+  liftN
+    ✓ returns a function
+    ✓ limits a variadic function to the specified arity
+    ✓ can lift functions of any arity
+    ✓ works with other functors such as "Maybe"
+    ✓ interprets [a] as a functor
+    ✓ interprets ((->) r) as a functor
+
+
+  6 passing (41ms)
+

@@ -1,0 +1,12 @@
+
+
+  reduceRight
+    ✓ folds lists in the right order
+    ✓ folds subtract over arrays in the right order
+    ✓ folds simple functions over arrays with the supplied accumulator
+    ✓ returns the accumulator for an empty array
+    ✓ short circuits with reduced
+
+
+  5 passing (46ms)
+

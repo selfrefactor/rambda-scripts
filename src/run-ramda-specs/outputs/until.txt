@@ -1,0 +1,10 @@
+
+
+  until
+    ✓ applies fn until pred is satisfied
+    ✓ works with lists
+    ✓ ignores fn if predicate is always true
+
+
+  3 passing (56ms)
+

@@ -1,0 +1,10 @@
+
+
+  composeWith
+    ✓ performs right-to-left function composition with function applying
+    ✓ performs right-to-left function while not nil result
+    ✓ performs right-to-left function using promise chaining
+
+
+  3 passing (38ms)
+

@@ -1,0 +1,10 @@
+
+
+  thunkify
+    ✓ returns a function with the same arity as the given function
+    ✓ returns a function that expects arguments and returns a new invoker function
+    ✓ calls the original function with the provided arguments when all were supplied
+
+
+  3 passing (60ms)
+

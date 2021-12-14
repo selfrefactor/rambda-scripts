@@ -1,0 +1,12 @@
+
+
+  useWith
+    ✓ takes a list of function and returns a function
+    ✓ passes the arguments received to their respective functions
+    ✓ passes additional arguments to the main function
+    ✓ has the correct arity
+    ✓ passes context to its functions
+
+
+  5 passing (52ms)
+

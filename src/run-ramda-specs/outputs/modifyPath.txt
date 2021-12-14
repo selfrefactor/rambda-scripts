@@ -1,0 +1,11 @@
+
+
+  modifyPath
+    ✓ creates a new object by applying the `transformation` function to the given `properties` of the `object`
+    ✓ returns the original object if object does not contain the key
+    ✓ is not destructive
+    ✓ throws error for non-function transformations
+
+
+  4 passing (47ms)
+

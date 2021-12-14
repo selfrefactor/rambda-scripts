@@ -1,0 +1,8 @@
+
+
+  pair
+    ✓ creates a two-element array
+
+
+  1 passing (42ms)
+

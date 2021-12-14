@@ -1,0 +1,11 @@
+
+
+  unwind
+    ✓ returns list of destructed object if key is present as list in the object
+    ✓ returns a list containing only the original object if the key is not present in the object
+    ✓ returns a list containing only the original object if the the value for that key is not iterable
+    ✓ does not treat a String as a list
+
+
+  4 passing (56ms)
+

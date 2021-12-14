@@ -1,0 +1,10 @@
+
+
+  keysIn
+    ✓ returns an array of the given object's keys
+    ✓ includes the given object's prototype properties
+    ✓ works for primitives
+
+
+  3 passing (39ms)
+

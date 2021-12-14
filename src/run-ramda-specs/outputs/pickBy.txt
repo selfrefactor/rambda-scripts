@@ -1,0 +1,12 @@
+
+
+  pickBy
+    ✓ creates a copy of the object
+    ✓ when returning truthy, keeps the key
+    ✓ when returning falsy, keeps the key
+    ✓ is called with (val,key,obj)
+    ✓ retrieves prototype properties
+
+
+  5 passing (45ms)
+

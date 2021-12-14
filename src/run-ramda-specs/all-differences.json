@@ -59,10 +59,6 @@
     "count": 9,
     "reason": "Rambda method work only with objects and arrays"
   },
-  "endsWith": {
-    "count": 4,
-    "reason": "unknown"
-  },
   "equals": {
     "count": 14,
     "reason": "Rambda method doesn't support recursive data structures, objects with same enumerable properties, map/weakmap type of variables | Ramda dispatches to `equals` method recursively | Rambda method doesn't support equality of functions"
@@ -194,10 +190,6 @@
   "without": {
     "count": 2,
     "reason": "Ramda method act as a transducer | Ramda method pass to `equals` method"
-  },
-  "startsWith": {
-    "count": 4,
-    "reason": "unknown"
   },
   "where": {
     "count": 2,

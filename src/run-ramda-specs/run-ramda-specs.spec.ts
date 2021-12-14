@@ -6,11 +6,11 @@ import { runRamdaSpecs } from './run-ramda-specs'
 import { runSingleSpec } from './_modules/run-specs'
 
 jest.setTimeout(ms('12 minutes'))
-const RUN_ALL = false
+const RUN_ALL = true
+const WITH_INITIAL_STEP = true
 
 test('run single spec', async () => {
   if (RUN_ALL) return
-  const WITH_INITIAL_STEP = false
 
   await build()
   await importRamdaSpecs(WITH_INITIAL_STEP)
@@ -20,6 +20,5 @@ test('run single spec', async () => {
 test('run all specs', async () => {
   if (!RUN_ALL) return
   await build()
-  const withInitialStep = false
-  await runRamdaSpecs({ withInitialStep })
+  await runRamdaSpecs({ withInitialStep: WITH_INITIAL_STEP })
 })

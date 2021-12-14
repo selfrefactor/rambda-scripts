@@ -1,0 +1,9 @@
+
+
+  applyTo
+    ✓ applies the function to its first argument
+    ✓ has length 2
+
+
+  2 passing (36ms)
+

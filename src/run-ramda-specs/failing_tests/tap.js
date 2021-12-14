@@ -1,10 +1,24 @@
-var R = require('../../../../dist/rambda.js');
+var R = require('../../../../../rambda/dist/rambda');
 var eq = require('./shared/eq');
 var listXf = require('./helpers/listXf');
 var _curry2 = require('rambda/internal/_curry2');
 
 describe('tap', function() {
   var pushToList = _curry2(function(lst, x) { lst.push(x); });
+  it('returns a function that always returns its argument', function() {
+    var f = R.tap(R.identity);
+    eq(typeof f, 'function');
+    eq(f(100), 100);
+    eq(f(undefined), undefined);
+    eq(f(null), null);
+  });
+  it("may take a function as the first argument that executes with tap's argument", function() {
+    var sideEffect = 0;
+    eq(sideEffect, 0);
+    var rv = R.tap(function(x) { sideEffect = 'string ' + x; }, 200);
+    eq(rv, 200);
+    eq(sideEffect, 'string 200');
+  });
   it('can act as a transducer', function() {
     var sideEffect = [];
     var numbers = [1,2,3,4,5];
@@ -20,4 +34,3 @@ describe('tap', function() {
       xf: listXf
     });
   });
-});

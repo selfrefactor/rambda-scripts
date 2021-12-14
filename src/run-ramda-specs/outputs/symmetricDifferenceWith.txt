@@ -1,0 +1,10 @@
+
+
+  symmetricDifferenceWith
+    ✓ combines two lists into the set of all elements unique to either list based on the passed-in equality predicate
+    ✓ does not allow duplicates in the output even if the input lists had duplicates
+    ✓ does not return a "sparse" array
+
+
+  3 passing (50ms)
+

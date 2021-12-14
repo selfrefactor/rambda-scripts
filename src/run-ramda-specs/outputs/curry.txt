@@ -1,121 +1,26 @@
+/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/test/curry.js:104
+    eq(g(_, _, _)(_, _)(_)(1, 2, 3), [1, 2, 3]);
+      ^
 
+Error [ERR_REQUIRE_ESM]: require() of ES Module /home/deyan/repos/rambda/dist/rambda.js from /home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/test/curry.js not supported.
+rambda.js is treated as an ES module file as it is a .js file whose nearest parent package.json contains "type": "module" which declares all .js files in that package scope as ES modules.
+Instead rename rambda.js to end in .cjs, change the requiring code to use dynamic import() which is available in all CommonJS modules, or change "type": "module" to "type": "commonjs" in /home/deyan/repos/rambda/package.json to treat all .js files as CommonJS (using .mjs for all ES modules instead).
 
-  curry
-    ✓ curries a single value
-    ✓ curries multiple values
-    ✓ allows further currying of a curried function
-    1) properly reports the length of the curried function
-    2) preserves context
-    3) supports R.__ placeholder
-    4) supports @@functional/placeholder
-    ✓ forwards extra arguments
-
-  curry properties
-    ✓ curries multiple values (77ms)
-    5) curries with placeholder
-
-
-  5 passing (154ms)
-  5 failing
-
-  1) curry
-       properly reports the length of the curried function:
-
-      AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
-
-'0' !== '4'
-
-      + expected - actual
-
-      -0
-      +4
-      
-      at strictEqual (test/shared/eq.js:8:10)
-      at Context.eq (test/curry.js:32:5)
-      at processImmediate (internal/timers.js:456:21)
-
-  2) curry
-       preserves context:
-
-      AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
-
-'NaN' !== '42'
-
-      + expected - actual
-
-      -NaN
-      +42
-      
-      at strictEqual (test/shared/eq.js:8:10)
-      at Context.eq (test/curry.js:45:5)
-      at processImmediate (internal/timers.js:456:21)
-
-  3) curry
-       supports R.__ placeholder:
-     TypeError: g(...) is not a function
-      at Context.<anonymous> (test/curry.js:59:8)
-      at processImmediate (internal/timers.js:456:21)
-
-  4) curry
-       supports @@functional/placeholder:
-     TypeError: g(...) is not a function
-      at Context.<anonymous> (test/curry.js:89:8)
-      at processImmediate (internal/timers.js:456:21)
-
-  5) curry properties
-       curries with placeholder:
-     TypeError: Failed after 1 tests and 6 shrinks. rngState: 092adf40e5689c137b; Counterexample: Function of arity3; {}; {}; 0; Exception: g(...) is not a function
-      at /home/s/repos/rambda/scripts/run-ramda-specs/ramda/test/curry.js:143:7
-      at Object.bind (node_modules/jsverify/lib/functor.js:48:11)
-      at test (node_modules/jsverify/lib/jsverify.js:212:20)
-      at /home/s/repos/rambda/scripts/run-ramda-specs/ramda/node_modules/jsverify/lib/jsverify.js:151:13
-      at Cons.consFold [as fold] (node_modules/lazy-seq/index.js:225:10)
-      at Object.fold (node_modules/lazy-seq/index.js:440:17)
-      at shrinkResult (node_modules/jsverify/lib/jsverify.js:150:25)
-      at /home/s/repos/rambda/scripts/run-ramda-specs/ramda/node_modules/jsverify/lib/jsverify.js:233:16
-      at Object.bind (node_modules/jsverify/lib/functor.js:63:12)
-      at test (node_modules/jsverify/lib/jsverify.js:212:20)
-      at /home/s/repos/rambda/scripts/run-ramda-specs/ramda/node_modules/jsverify/lib/jsverify.js:151:13
-      at Cons.consFold [as fold] (node_modules/lazy-seq/index.js:225:10)
-      at Object.fold (node_modules/lazy-seq/index.js:440:17)
-      at shrinkResult (node_modules/jsverify/lib/jsverify.js:150:25)
-      at /home/s/repos/rambda/scripts/run-ramda-specs/ramda/node_modules/jsverify/lib/jsverify.js:233:16
-      at Object.bind (node_modules/jsverify/lib/functor.js:63:12)
-      at test (node_modules/jsverify/lib/jsverify.js:212:20)
-      at /home/s/repos/rambda/scripts/run-ramda-specs/ramda/node_modules/jsverify/lib/jsverify.js:151:13
-      at Cons.consFold [as fold] (node_modules/lazy-seq/index.js:225:10)
-      at Object.fold (node_modules/lazy-seq/index.js:440:17)
-      at shrinkResult (node_modules/jsverify/lib/jsverify.js:150:25)
-      at /home/s/repos/rambda/scripts/run-ramda-specs/ramda/node_modules/jsverify/lib/jsverify.js:233:16
-      at Object.bind (node_modules/jsverify/lib/functor.js:63:12)
-      at test (node_modules/jsverify/lib/jsverify.js:212:20)
-      at /home/s/repos/rambda/scripts/run-ramda-specs/ramda/node_modules/jsverify/lib/jsverify.js:151:13
-      at Cons.consFold [as fold] (node_modules/lazy-seq/index.js:225:10)
-      at Object.fold (node_modules/lazy-seq/index.js:440:17)
-      at shrinkResult (node_modules/jsverify/lib/jsverify.js:150:25)
-      at /home/s/repos/rambda/scripts/run-ramda-specs/ramda/node_modules/jsverify/lib/jsverify.js:233:16
-      at Object.bind (node_modules/jsverify/lib/functor.js:63:12)
-      at test (node_modules/jsverify/lib/jsverify.js:212:20)
-      at /home/s/repos/rambda/scripts/run-ramda-specs/ramda/node_modules/jsverify/lib/jsverify.js:151:13
-      at Cons.consFold [as fold] (node_modules/lazy-seq/index.js:225:10)
-      at Object.fold (node_modules/lazy-seq/index.js:440:17)
-      at shrinkResult (node_modules/jsverify/lib/jsverify.js:150:25)
-      at /home/s/repos/rambda/scripts/run-ramda-specs/ramda/node_modules/jsverify/lib/jsverify.js:233:16
-      at Object.bind (node_modules/jsverify/lib/functor.js:63:12)
-      at test (node_modules/jsverify/lib/jsverify.js:212:20)
-      at /home/s/repos/rambda/scripts/run-ramda-specs/ramda/node_modules/jsverify/lib/jsverify.js:151:13
-      at Cons.consFold [as fold] (node_modules/lazy-seq/index.js:225:10)
-      at Object.fold (node_modules/lazy-seq/index.js:440:17)
-      at shrinkResult (node_modules/jsverify/lib/jsverify.js:150:25)
-      at /home/s/repos/rambda/scripts/run-ramda-specs/ramda/node_modules/jsverify/lib/jsverify.js:233:16
-      at Object.bind (node_modules/jsverify/lib/functor.js:63:12)
-      at test (node_modules/jsverify/lib/jsverify.js:212:20)
-      at /home/s/repos/rambda/scripts/run-ramda-specs/ramda/node_modules/jsverify/lib/jsverify.js:240:13
-      at loop (node_modules/jsverify/lib/jsverify.js:316:26)
-      at check (node_modules/jsverify/lib/jsverify.js:332:34)
-      at checkThrow (node_modules/jsverify/lib/jsverify.js:354:34)
-      at Context.<anonymous> (node_modules/jsverify/lib/jsverify.js:400:14)
-      at processImmediate (internal/timers.js:456:21)
-
-
-
+    at Object.newLoader [as .js] (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/pirates/lib/index.js:104:7)
+    at Object.<anonymous> (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/test/curry.js:3:1)
+    at Module._compile (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/pirates/lib/index.js:99:24)
+    at Object.newLoader [as .js] (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/pirates/lib/index.js:104:7)
+    at /home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/mocha.js:330:36
+    at Array.forEach (<anonymous>)
+    at Mocha.loadFiles (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/mocha.js:327:14)
+    at Mocha.run (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/mocha.js:804:10)
+    at Object.exports.singleRun (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/cli/run-helpers.js:207:16)
+    at exports.runMocha (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/cli/run-helpers.js:300:13)
+    at Object.exports.handler (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/cli/run.js:296:3)
+    at Object.runCommand (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/node_modules/yargs/lib/command.js:242:26)
+    at Object.parseArgs [as _parseArgs] (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/node_modules/yargs/yargs.js:1087:28)
+    at Object.parse (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/node_modules/yargs/yargs.js:566:25)
+    at Object.exports.main (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/cli/cli.js:63:6)
+    at Object.<anonymous> (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/bin/_mocha:10:23) {
+  code: 'ERR_REQUIRE_ESM'
+}

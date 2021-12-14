@@ -1,0 +1,15 @@
+
+
+  dissocPath
+    ✓ makes a shallow clone of an object, omitting only what is necessary for the path
+    ✓ does not try to omit inner properties that do not exist
+    ✓ leaves an empty object when all properties omitted
+    ✓ leaves an empty array when all indexes are omitted
+    ✓ flattens properties from prototype
+    ✓ accepts empty path
+    ✓ allow integer to be used as key for object
+    ✓ support remove null/undefined value path
+
+
+  8 passing (36ms)
+

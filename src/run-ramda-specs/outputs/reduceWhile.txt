@@ -1,0 +1,10 @@
+
+
+  reduceWhile
+    ✓ reduces until its predicate fails
+    ✓ returns its accumulator when given an empty array
+    ✓ short circuits with reduced
+
+
+  3 passing (47ms)
+

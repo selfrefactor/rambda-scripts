@@ -1,4 +1,4 @@
-var R = require('../../../../dist/rambda.js');
+var R = require('../../../../../rambda/dist/rambda');
 var eq = require('./shared/eq');
 
 describe('keys', function() {
@@ -7,6 +7,14 @@ describe('keys', function() {
   C.prototype.x = function() { return 'x'; };
   C.prototype.y = 'y';
   var cobj = new C();
+  it("returns an array of the given object's own keys", function() {
+    eq(R.keys(obj).sort(), ['a', 'b', 'c', 'd', 'e', 'f']);
+  });
+  it('works with hasOwnProperty override', function() {
+    eq(R.keys({
+      hasOwnProperty: false
+    }), ['hasOwnProperty']);
+  });
   it('works for primitives', function() {
     eq(R.keys(null), []);
     eq(R.keys(undefined), []);
@@ -18,4 +26,6 @@ describe('keys', function() {
     eq(R.keys(Infinity), []);
     eq(R.keys([]), []);
   });
-});
+  it("does not include the given object's prototype properties", function() {
+    eq(R.keys(cobj).sort(), ['a', 'b']);
+  });

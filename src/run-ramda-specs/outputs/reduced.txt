@@ -1,0 +1,10 @@
+
+
+  reduced
+    ✓ wraps a value
+    ✓ flags value as reduced
+    ✓ short-circuits reduce
+
+
+  3 passing (52ms)
+

@@ -1,9 +1,13 @@
 var assert = require('assert');
-var jsv = require('jsverify');
 
-var R = require('../../../../dist/rambda.js');
+var R = require('../../../../../rambda/dist/rambda');
 var eq = require('./shared/eq');
+var fc = require('fast-check');
 describe('compose', function() {
+  it('is a variadic function', function() {
+    eq(typeof R.compose, 'function');
+    eq(R.compose.length, 0);
+  });
   it('performs right-to-left function composition', function() {
     //  f :: (String, Number?) -> ([Number] -> [Number])
     var f = R.compose(R.map, R.multiply, parseInt);
@@ -29,21 +33,34 @@ describe('compose', function() {
     };
     eq(context.a(5), 40);
   });
+  it('throws if given no arguments', function() {
+    assert.throws(
+      function() { R.compose(); },
+      function(err) {
+        return err.constructor === Error &&
+               err.message === 'compose requires at least one argument';
+      }
+    );
+  });
   it('can be applied to one argument', function() {
     var f = function(a, b, c) { return [a, b, c]; };
     var g = R.compose(f);
     eq(g.length, 3);
     eq(g(1, 2, 3), [1, 2, 3]);
   });
-});
 describe('compose properties', function() {
-  jsv.property('composes two functions', jsv.fn(), jsv.fn(), jsv.nat, function(f, g, x) {
-    return R.equals(R.compose(f, g)(x), f(g(x)));
-  jsv.property('associative',  jsv.fn(), jsv.fn(), jsv.fn(), jsv.nat, function(f, g, h, x) {
-    var result = f(g(h(x)));
-    return R.all(R.equals(result), [
-      R.compose(f, g, h)(x),
-      R.compose(f, R.compose(g, h))(x),
-      R.compose(R.compose(f, g), h)(x)
-    ]);
-});
+  it('composes two functions', function() {
+    fc.assert(fc.property(fc.func(fc.nat()), fc.func(fc.nat()), fc.nat(), function(f, g, x) {
+      return R.equals(R.compose(f, g)(x), f(g(x)));
+    }));
+  });
+  it('associative', function() {
+    fc.assert(fc.property(fc.func(fc.nat()), fc.func(fc.nat()), fc.func(fc.nat()), fc.nat(), function(f, g, h, x) {
+      var result = f(g(h(x)));
+      return R.all(R.equals(result), [
+        R.compose(f, g, h)(x),
+        R.compose(f, R.compose(g, h))(x),
+        R.compose(R.compose(f, g), h)(x)
+      ]);
+    }));
+  });

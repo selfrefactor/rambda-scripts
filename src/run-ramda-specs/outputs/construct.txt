@@ -1,0 +1,12 @@
+
+
+  construct
+    ✓ turns a constructor function into one that can be called without `new`
+    ✓ can be used to create Date object
+    ✓ supports constructors with no arguments
+    ✓ does not support constructor with greater than ten arguments
+    ✓ returns a curried function
+
+
+  5 passing (34ms)
+

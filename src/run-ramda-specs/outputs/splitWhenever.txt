@@ -1,0 +1,8 @@
+
+
+  splitWhenever
+    ✓ Splits an array into slices, whenever the predicate returns true
+
+
+  1 passing (59ms)
+

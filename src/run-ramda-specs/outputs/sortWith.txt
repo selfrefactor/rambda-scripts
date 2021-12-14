@@ -1,0 +1,13 @@
+
+
+  sortWith
+    ✓ sorts by a simple property of the objects
+    ✓ sorts by multiple properties of the objects
+    ✓ sorts by 3 properties of the objects
+    ✓ sorts by multiple properties using ascend and descend
+    ✓ preserves object identity
+    ✓ sorts array-like object
+
+
+  6 passing (52ms)
+

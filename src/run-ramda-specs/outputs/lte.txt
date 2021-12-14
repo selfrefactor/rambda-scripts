@@ -1,0 +1,8 @@
+
+
+  lte
+    ✓ reports whether one item is less than or equal to another
+
+
+  1 passing (36ms)
+

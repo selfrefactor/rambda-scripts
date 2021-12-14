@@ -1,0 +1,9 @@
+
+
+  eqBy
+    ✓ determines whether two values map to the same value in the codomain
+    ✓ has R.equals semantics
+
+
+  2 passing (32ms)
+
