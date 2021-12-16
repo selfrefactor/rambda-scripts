@@ -80,6 +80,7 @@ export const BLACKLIST_METHODS = [
   'mathMod',
   'modulo',
   'multiply',
+  'groupWith',
   'negate',
   'pipe',
   'subtract',
@@ -88,6 +89,7 @@ export const BLACKLIST_METHODS = [
   'objOf',
   'mapObjIndexed',
   'filterIndexed',
-  'filterIndexed',
+  'identical',
+  'converge',
   'partitionIndexed'
 ]

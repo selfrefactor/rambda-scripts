@@ -4,7 +4,7 @@
 		"dev": "jest src/populate-readme-data/rambda-repl.spec.ts --watch",
 		"piped": "node scripts/build-multiple-types/build-multiple-types piped",
 		"benchmark": "node scripts/run-benchmarks/run-complex-benchmarks-spec.js",
-		"benchmarkx": "METHOD=indexOf yarn benchmark",
+		"benchmarkx": "METHOD=pipe yarn benchmark",
 		"benchmark:all": "RAMBDA_UPDATE_NEW_BENCHMARKS=ON RAMBDA_UPDATE_ALL_BENCHMARKS=ON node scripts/run-benchmarks/run-complex-benchmarks-spec.js",
 		"check-benchmark": "node scripts/run-benchmarks/check-benchmark-spec.js",
 		"build": "tsc -p tsconfig.json",
