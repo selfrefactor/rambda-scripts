@@ -40,7 +40,7 @@
  *over* | 🚀 Fastest | 56.23% slower | 🔳
  *path* | 37.81% slower | 77.81% slower | 🚀 Fastest
  *pick* | 🚀 Fastest | 19.07% slower | 80.2% slower
- *pipe* | 7.26% slower | 🚀 Fastest | 🔳
+ *pipe* | 0.87% slower | 🚀 Fastest | 🔳
  *prop* | 🚀 Fastest | 87.95% slower | 🔳
  *propEq* | 🚀 Fastest | 91.92% slower | 🔳
  *range* | 🚀 Fastest | 61.8% slower | 57.44% slower

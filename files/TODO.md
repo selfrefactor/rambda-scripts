@@ -1,3 +1,15 @@
+## Typescript version test
+
+Need to know which TS version is compatible with to-be-published Rambda typings
+
+## Rambdax TS
+
+This line
+```
+Important - Rambda version `7.0.0`(or higher) requires Typescript version `4.2.2`(or higher).
+```
+
+need to be dynamic
 
 ## Deno import
 

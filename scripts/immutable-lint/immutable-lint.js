@@ -27,7 +27,7 @@ void (async function immutableLint() {
   const cwd = resolve(__dirname, '../../')
 
   const command = `node node_modules/eslint/bin/eslint.js -c files/.eslint.config.js ${filePath} --fix`
-
+    console.log(`command`, command)
   await exec({
     cwd,
     command,

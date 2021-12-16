@@ -1,8 +1,11 @@
 ### Typescript included
 
+
 Typescript definitions are included in the library, in comparison to **Ramda**, where you need to additionally install `@types/ramda`.
 
 Still, you need to be aware that functional programming features in `Typescript` are in development, which means that using **R.compose/R.pipe** can be problematic.
+
+Important - Rambda version `7.0.0`(or higher) requires Typescript version `4.2.2`(or higher).
 
 > Alternative TS definitions are available as `rambda/immutable`. These are Rambda definitions linted with ESLint `functional/prefer-readonly-type` plugin.
 
