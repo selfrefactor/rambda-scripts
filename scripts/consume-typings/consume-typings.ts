@@ -1,4 +1,5 @@
-import { add, applySpec, reject, and, transpose, move, union, reduce } from 'rambda/immutable'
+// import { add, applySpec, reject, and, transpose, move, union, reduce } from 'rambda/immutable'
+import { add, applySpec, reject, and, transpose, move, union, reduce } from 'rambda'
 // import {sortByProps} from 'rambdax'
 // "rambda": "file:./../../../rambda/",
 

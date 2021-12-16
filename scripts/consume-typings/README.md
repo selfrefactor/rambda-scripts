@@ -1,6 +1,6 @@
 # Consume typings
 
-Post factum manual test
+Post fact manual test
 
 ---
 
@@ -14,3 +14,8 @@ Post factum manual test
     "rambdax": "file:./../../../rambdax/"
   }
 }
+
+
+```
+    "rambda": "https://github.com/selfrefactor/rambda#7.0.0-alpha",
+```
