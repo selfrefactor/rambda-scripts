@@ -1,0 +1,27 @@
+{
+  "name": "VIEW",
+  "date": "2021-07-29T09:06:56.085Z",
+  "version": null,
+  "results": [
+    {
+      "name": "Rambda",
+      "ops": 5356772,
+      "margin": 1.78,
+      "percentSlower": 0
+    },
+    {
+      "name": "Ramda",
+      "ops": 1277776,
+      "margin": 1.69,
+      "percentSlower": 76.15
+    }
+  ],
+  "fastest": {
+    "name": "Rambda",
+    "index": 0
+  },
+  "slowest": {
+    "name": "Ramda",
+    "index": 1
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "ASSOC",
+  "date": "2021-07-29T08:55:59.482Z",
+  "version": null,
+  "results": [
+    {
+      "name": "Rambda",
+      "ops": 5086620,
+      "margin": 2.25,
+      "percentSlower": 72.32
+    },
+    {
+      "name": "Ramda",
+      "ops": 7336981,
+      "margin": 1.55,
+      "percentSlower": 60.08
+    },
+    {
+      "name": "Lodash.set",
+      "ops": 18378887,
+      "margin": 1.89,
+      "percentSlower": 0
+    }
+  ],
+  "fastest": {
+    "name": "Lodash.set",
+    "index": 2
+  },
+  "slowest": {
+    "name": "Rambda",
+    "index": 0
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "REPLACE",
+  "date": "2021-07-29T09:04:32.281Z",
+  "version": null,
+  "results": [
+    {
+      "name": "Rambda",
+      "ops": 3073190,
+      "margin": 4.22,
+      "percentSlower": 33.45
+    },
+    {
+      "name": "Ramda",
+      "ops": 3048532,
+      "margin": 5.55,
+      "percentSlower": 33.99
+    },
+    {
+      "name": "Lodash",
+      "ops": 4617953,
+      "margin": 3.94,
+      "percentSlower": 0
+    }
+  ],
+  "fastest": {
+    "name": "Lodash",
+    "index": 2
+  },
+  "slowest": {
+    "name": "Ramda",
+    "index": 1
+  }
+}

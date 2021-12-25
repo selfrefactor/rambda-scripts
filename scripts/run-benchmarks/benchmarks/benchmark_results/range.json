@@ -1,0 +1,33 @@
+{
+  "name": "RANGE",
+  "date": "2021-07-29T09:03:43.153Z",
+  "version": null,
+  "results": [
+    {
+      "name": "Rambda",
+      "ops": 32942933,
+      "margin": 3.94,
+      "percentSlower": 0
+    },
+    {
+      "name": "Ramda",
+      "ops": 12585138,
+      "margin": 4.48,
+      "percentSlower": 61.8
+    },
+    {
+      "name": "Lodash",
+      "ops": 14019378,
+      "margin": 5.79,
+      "percentSlower": 57.44
+    }
+  ],
+  "fastest": {
+    "name": "Rambda",
+    "index": 0
+  },
+  "slowest": {
+    "name": "Ramda",
+    "index": 1
+  }
+}

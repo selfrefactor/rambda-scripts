@@ -1,0 +1,33 @@
+{
+  "name": "PATH",
+  "date": "2021-07-29T09:02:48.166Z",
+  "version": null,
+  "results": [
+    {
+      "name": "Rambda",
+      "ops": 15828127,
+      "margin": 3.93,
+      "percentSlower": 37.81
+    },
+    {
+      "name": "Ramda",
+      "ops": 5648665,
+      "margin": 7.23,
+      "percentSlower": 77.81
+    },
+    {
+      "name": "Lodash",
+      "ops": 25452620,
+      "margin": 3.12,
+      "percentSlower": 0
+    }
+  ],
+  "fastest": {
+    "name": "Lodash",
+    "index": 2
+  },
+  "slowest": {
+    "name": "Ramda",
+    "index": 1
+  }
+}

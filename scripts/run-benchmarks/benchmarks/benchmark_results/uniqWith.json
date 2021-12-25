@@ -1,0 +1,27 @@
+{
+  "name": "UNIQ_WITH",
+  "date": "2021-12-03T23:39:17.319Z",
+  "version": null,
+  "results": [
+    {
+      "name": "Rambda",
+      "ops": 9151,
+      "margin": 1.15,
+      "percentSlower": 25.38
+    },
+    {
+      "name": "Ramda",
+      "ops": 12263,
+      "margin": 0.62,
+      "percentSlower": 0
+    }
+  ],
+  "fastest": {
+    "name": "Ramda",
+    "index": 1
+  },
+  "slowest": {
+    "name": "Rambda",
+    "index": 0
+  }
+}

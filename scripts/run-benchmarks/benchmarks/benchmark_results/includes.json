@@ -1,0 +1,27 @@
+{
+  "name": "INCLUDES",
+  "date": "2021-12-15T10:24:25.732Z",
+  "version": null,
+  "results": [
+    {
+      "name": "Rambda",
+      "ops": 8216,
+      "margin": 1.02,
+      "percentSlower": 0
+    },
+    {
+      "name": "Ramda",
+      "ops": 1263,
+      "margin": 1.36,
+      "percentSlower": 84.63
+    }
+  ],
+  "fastest": {
+    "name": "Rambda",
+    "index": 0
+  },
+  "slowest": {
+    "name": "Ramda",
+    "index": 1
+  }
+}

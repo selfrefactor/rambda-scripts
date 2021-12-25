@@ -1,0 +1,27 @@
+{
+  "name": "ALL",
+  "date": "2021-12-15T10:18:21.965Z",
+  "version": null,
+  "results": [
+    {
+      "name": "Rambda",
+      "ops": 128884,
+      "margin": 11.84,
+      "percentSlower": 0
+    },
+    {
+      "name": "Ramda",
+      "ops": 126546,
+      "margin": 5.28,
+      "percentSlower": 1.81
+    }
+  ],
+  "fastest": {
+    "name": "Rambda",
+    "index": 0
+  },
+  "slowest": {
+    "name": "Ramda",
+    "index": 1
+  }
+}

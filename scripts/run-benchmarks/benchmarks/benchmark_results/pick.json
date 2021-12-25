@@ -1,0 +1,33 @@
+{
+  "name": "PICK",
+  "date": "2021-07-29T09:03:04.706Z",
+  "version": null,
+  "results": [
+    {
+      "name": "Rambda",
+      "ops": 6649427,
+      "margin": 5.67,
+      "percentSlower": 0
+    },
+    {
+      "name": "Ramda",
+      "ops": 5381151,
+      "margin": 5.09,
+      "percentSlower": 19.07
+    },
+    {
+      "name": "Lodash",
+      "ops": 1316323,
+      "margin": 1.72,
+      "percentSlower": 80.2
+    }
+  ],
+  "fastest": {
+    "name": "Rambda",
+    "index": 0
+  },
+  "slowest": {
+    "name": "Lodash",
+    "index": 2
+  }
+}
