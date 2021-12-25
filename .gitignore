@@ -1,3 +1,4 @@
+benchmarks-results
 scripts/build-multiple-types/output.txt
 scripts/consume-typings/consume-typings.js
 scripts/consume-typings/package-lock.json
