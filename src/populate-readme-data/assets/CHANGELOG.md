@@ -7,17 +7,29 @@ Related commit in `@types/ramda` - https://github.com/DefinitelyTyped/Definitely
 There are several other changes in `@types/ramda` as stated in [this comment](https://github.com/ramda/ramda/issues/2976#issuecomment-990408945). This leads to change of typings for the following methods in **Rambda**:
 
 -- R.unless
+
 -- R.toString
+
 -- R.ifElse
+
 -- R.always
+
 -- R.complement
+
 -- R.cond
+
 -- R.is
+
 -- R.sortBy
+
 -- R.dissoc
+
 -- R.toPairs
+
 -- R.assoc
+
 -- R.toLower
+
 -- R.toUpper
 
 - One more reason for the braking change is changing of export declarations in `package.json` based on [this blog post](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5-beta/#packagejson-exports-imports-and-self-referencing) and [this merged Ramda's PR](https://github.com/ramda/ramda/pull/2999). This also led to renaming of `babel.config.js` to `babel.config.cjs`. 
