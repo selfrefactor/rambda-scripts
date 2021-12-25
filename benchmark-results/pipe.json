@@ -1,0 +1,27 @@
+{
+  "name": "PIPE",
+  "date": "2021-12-16T09:17:37.623Z",
+  "version": null,
+  "results": [
+    {
+      "name": "Rambda",
+      "ops": 88919,
+      "margin": 0.65,
+      "percentSlower": 0.87
+    },
+    {
+      "name": "Ramda",
+      "ops": 89699,
+      "margin": 0.6,
+      "percentSlower": 0
+    }
+  ],
+  "fastest": {
+    "name": "Ramda",
+    "index": 1
+  },
+  "slowest": {
+    "name": "Rambda",
+    "index": 0
+  }
+}

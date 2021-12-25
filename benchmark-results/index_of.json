@@ -1,0 +1,27 @@
+{
+  "name": "INDEX_OF",
+  "date": "2021-12-15T10:25:32.118Z",
+  "version": null,
+  "results": [
+    {
+      "name": "Rambda",
+      "ops": 14383,
+      "margin": 1.07,
+      "percentSlower": 0
+    },
+    {
+      "name": "Ramda",
+      "ops": 3362,
+      "margin": 1.32,
+      "percentSlower": 76.63
+    }
+  ],
+  "fastest": {
+    "name": "Rambda",
+    "index": 0
+  },
+  "slowest": {
+    "name": "Ramda",
+    "index": 1
+  }
+}

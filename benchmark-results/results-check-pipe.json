@@ -1,0 +1,79 @@
+{
+  "warnings": [
+    {
+      "result": false,
+      "labels": [
+        "Rambda",
+        "Ramda"
+      ],
+      "allResults": [
+        {
+          "label": "Rambda",
+          "result": "587-FOO"
+        },
+        {
+          "label": "Ramda",
+          "result": "588-FOO"
+        }
+      ],
+      "index": 1
+    }
+  ],
+  "allResults": [
+    {
+      "result": true,
+      "labels": [
+        "Rambda",
+        "Ramda"
+      ],
+      "allResults": [
+        {
+          "label": "Rambda",
+          "result": 101
+        },
+        {
+          "label": "Ramda",
+          "result": 101
+        }
+      ],
+      "index": 0
+    },
+    {
+      "result": false,
+      "labels": [
+        "Rambda",
+        "Ramda"
+      ],
+      "allResults": [
+        {
+          "label": "Rambda",
+          "result": "587-FOO"
+        },
+        {
+          "label": "Ramda",
+          "result": "588-FOO"
+        }
+      ],
+      "index": 1
+    },
+    {
+      "result": true,
+      "labels": [
+        "Rambda",
+        "Ramda"
+      ],
+      "allResults": [
+        {
+          "label": "Rambda",
+          "result": "the name's bar, foo bar"
+        },
+        {
+          "label": "Ramda",
+          "result": "the name's bar, foo bar"
+        }
+      ],
+      "index": 2
+    }
+  ],
+  "numWarnings": 1
+}
