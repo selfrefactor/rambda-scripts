@@ -2422,7 +2422,7 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-helpers-fn@1.6.0:
+helpers-fn@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/helpers-fn/-/helpers-fn-1.6.0.tgz#93be63a5a8440b78504d4c726d135cc14aee16ae"
   integrity sha512-MqtsCOlG6X0m6tOYJGqciR16NanSjuhKkF2JP2hBPi0Dxc+z9xvnOaw5TckQ4Xv+WiNBBNUpD/7eekR26EC/DA==
