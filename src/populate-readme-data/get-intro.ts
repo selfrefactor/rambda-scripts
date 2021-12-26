@@ -128,15 +128,21 @@ async function getIntroBaseContent(withRambdax: boolean, advantages: string){
   return content
 }
 
+const typescriptInfoTemplate = `
+Important - {{library}} version \`{{version}}\`(or higher) requires Typescript version \`4.2.2\`(or higher).
+`
+
 async function getIntroContent(withRambdax: boolean ){
   const rambdaTreeShakingInfo = await getTreeShakingInfo()
   const advantagesFilePath = withRambdax ?
     `${ __dirname }/assets/ADVANTAGES_RAMBDAX.md` :
     `${ __dirname }/assets/ADVANTAGES.md`
 
+  const typescriptInfo = interpolate(typescriptInfoTemplate, {version: withRambdax ? '8.0.0': `7.0.0`, library: withRambdax ?'Rambdax': 'Rambda'})
+
   const advantagesTemplate = (await readFile(advantagesFilePath)).toString()
 
-  const advantages = interpolate(advantagesTemplate, { rambdaTreeShakingInfo })
+  const advantages = interpolate(advantagesTemplate, { rambdaTreeShakingInfo, rambdaTypescriptInfo:typescriptInfo })
   const content = await getIntroBaseContent(withRambdax, advantages)
 
   return interpolate(content, {
