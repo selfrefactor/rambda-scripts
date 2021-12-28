@@ -36,7 +36,11 @@ There are several other changes in `@types/ramda` as stated in [this comment](ht
 
 - Add `R.apply`, `R.bind` and `R.unapply`
 
-- Fix missing return value in `R.debounce/R.throttle` - [Issue #76](https://github.com/selfrefactor/rambdax/issues/76)
+- Fix missing return value in `R.throttle` - [Issue #76](https://github.com/selfrefactor/rambdax/issues/76)
+
+- Add `R.findAsync` - [Issue #65](https://github.com/selfrefactor/rambdax/issues/65)
+
+- Fix `R.debounce` typings as the method actually doesn't return a result.
 
 - `R.startsWith/R.endsWith` now support lists as inputs. This way, it matches current Ramda behavior. 
 
