@@ -1,3 +1,9 @@
+## Repl issues
+
+- r.produce example trigger output with new line chars
+
+- undefined is represented as 'undefined'
+
 ## Deno import
 
 To use directly in [Deno](https://deno.land):
