@@ -1,5 +1,5 @@
 // import { add, applySpec, reject, and, transpose, move, union, reduce } from 'rambda/immutable'
-import { add, applySpec, reject, and, transpose, move, union, reduce } from 'rambda'
+import { add, applySpec, reject, and, transpose, move, union, reduce } from 'rambdax'
 // import {sortByProps} from 'rambdax'
 // "rambda": "file:./../../../rambda/",
 
@@ -54,10 +54,10 @@ const result = reduce(
   numberArray
 )
 
-// const curried = partialCurry<Input, PartialInput, string|number>(fn, {a:1, b:'foo'});  
+// const curried = partialCurry<Input, PartialInput, string|number>(fn, {a:1, b:'foo'});
 // curried // $ExpectType (input: Pick<Input, "c">) => string | number
 
-// const result = curried({c:false}) 
+// const result = curried({c:false})
 // result// $ExpectType string | number
 
 // const partialInput = {a:1}

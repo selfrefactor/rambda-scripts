@@ -18,4 +18,5 @@ Post fact manual test
 
 ```
     "rambda": "https://github.com/selfrefactor/rambda#7.0.0-alpha",
+    "rambdax": "https://github.com/selfrefactor/rambdax#8.0.0-alpha",
 ```

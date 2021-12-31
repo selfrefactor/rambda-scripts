@@ -18,6 +18,8 @@
 		"lint:rambda": "node scripts/lint/lint.js",
 		"lint:tests": "node scripts/lint-ts-files/prepare.js&&node scripts/lint-ts-files/lint-typings-tests.js",
 		"lintx": "cd src && run lint",
+		"fix-docsify:rambda": "node scripts/fix-docsify/fix-docsify.js",
+		"fix-docsify:rambdax": "WITH_RAMBDAX=ON node scripts/fix-docsify/fix-docsify.js",
 		"new": "node scripts/add-new-method/add-new-method",
 		"populate:docs": "RAMBDA_SCRIPTS_MODE=populate:docs jest src/apply-rambda-scripts.spec.ts",
 		"populate:docs:rambdax": "WITH_RAMBDAX=ON RAMBDA_SCRIPTS_MODE=populate:docs jest src/apply-rambda-scripts.spec.ts",

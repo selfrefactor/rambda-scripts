@@ -1,3 +1,7 @@
+## docsify issues
+
+https://github.com/selfrefactor/rambda/pull/618
+
 ## Repl issues
 
 - r.produce example trigger output with new line chars
@@ -14,7 +18,7 @@ import * as R from "https://deno.land/x/ramda/index.js";
 
 check foo again foo with internal curry
 
-## Rambdax + RxJS 
+## Rambdax + RxJS
 
 simulate rxjs api and benchmark it
 
@@ -35,7 +39,7 @@ https://github.com/verydanny/vcslack/blob/master/src/api.ts
 only arrow function works
 
 ```
-ok(repos)(fn)  
+ok(repos)(fn)
   // ok(repos)(x => {
   //     console.log({x})
   //   })
@@ -58,7 +62,7 @@ To use directly in [Deno](https://deno.land):
 import * as R from "https://deno.land/x/rambda/rambda.js";
 ```
 
-## Methods to add:  
+## Methods to add:
 
 - whereAny
 - uniqBy
@@ -99,7 +103,7 @@ https://github.com/MartinPavlik/ramda-async/blob/master/index.ts
 
 - R.mapKeys (name inspiration from https://github.com/AlexGalays/spacelift#objectmapvalues)
 
-add avatars to contributors section 
+add avatars to contributors section
 
 Add explanation to missing Ramda methods
 
