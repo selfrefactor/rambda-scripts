@@ -10,6 +10,7 @@
 		"check-ts": "node scripts/find-lowest-ts-version/find-lowest-ts-version.js",
 		"build": "tsc -p tsconfig.json",
 		"github": "node scripts/github-release/github-release.js",
+		"githubx": "WITH_RAMBDAX=ON node scripts/github-release/github-release.js",
 		"immutable": "yarn immutable:rambda && yarn immutable:rambdax",
 		"immutable:rambda": "node scripts/immutable-lint/immutable-lint.js",
 		"immutable:rambdax": "WITH_RAMBDAX=ON node scripts/immutable-lint/immutable-lint.js",
