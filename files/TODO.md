@@ -1,12 +1,6 @@
-## docsify issues
+## Async type
 
-https://github.com/selfrefactor/rambda/pull/618
-
-## Repl issues
-
-- r.produce example trigger output with new line chars
-
-- undefined is represented as 'undefined'
+I would consider having one type for asynchronous functions as having both `Promise` and `Async` is confusing.
 
 ## Deno import
 
@@ -14,6 +8,7 @@ To use directly in [Deno](https://deno.land):
 ```javascript
 import * as R from "https://deno.land/x/ramda/index.js";
 ```
+
 ## Test internal curry
 
 check foo again foo with internal curry
