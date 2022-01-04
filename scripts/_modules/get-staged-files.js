@@ -1,7 +1,7 @@
-const { execCommand } = require('helpers-fn');
+const { exec } = require('helpers-fn');
 
 async function getStagedFiles(cwd) {
-  const [execResult] = await execCommand({
+  const [execResult] = await exec({
     command: 'git diff --staged --diff-filter=ACMR --name-only -z',
     cwd,
   });

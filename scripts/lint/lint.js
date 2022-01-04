@@ -19,11 +19,8 @@ async function lintFile(filePath){
 }
 
 async function getFiles(){
-  if(LINT_STAGED_ONLY){
-    const files = await getStagedFiles(base)
-console.log(`files`, files)
-return files
-  }
+  if(LINT_STAGED_ONLY) return getStagedFiles(base)
+
   return scanFolder({ folder: `${base}/source`})
 }
 
@@ -33,5 +30,5 @@ void async function lint(){
     ...sourceFiles,
     `${base}/rambda.js`
   ]
-  // await mapAsyncLimit(lintFile, 5, allFiles)
+  await mapAsyncLimit(lintFile, 5, allFiles)
 }()

@@ -17,6 +17,7 @@
 		"in": "tsc --watch",
 		"lint": "yarn lint:rambda&&yarn lint:tests",
 		"lint:rambda": "node scripts/lint/lint.js",
+		"lint:rambda:staged": "LINT_STAGED_ONLY=ON node scripts/lint/lint.js",
 		"lint:tests": "node scripts/lint-ts-files/prepare.js && node scripts/lint-ts-files/lint-typings-tests.js",
 		"lintx": "cd src && run lint",
 		"fix-docsify:rambda": "node scripts/fix-docsify/fix-docsify.js",
