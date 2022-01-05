@@ -1,6 +1,6 @@
 const { spawn, scanFolder } = require('helpers-fn')
 const { resolve } = require('path')
-const { mapAsyncLimit, remove } = require('rambdax')
+const { mapAsyncLimit, remove, intersection } = require('rambdax')
 const { getStagedFiles } = require('../_modules/get-staged-files')
 
 const base = resolve(__dirname, '../../../rambda/')
@@ -19,9 +19,12 @@ async function lintFile(filePath){
 }
 
 async function getFiles(){
-  if(LINT_STAGED_ONLY) return getStagedFiles(base)
-
-  return scanFolder({ folder: `${base}/source`})
+  const files = await scanFolder({ folder: `${base}/source`})
+  if(!LINT_STAGED_ONLY) return files
+  
+  const stagedFiles = await getStagedFiles(base)
+  
+  return intersection(stagedFiles, files)
 }
 
 void async function lint(){
