@@ -19,12 +19,15 @@ async function lintFile(filePath){
 }
 
 async function getFiles(){
-  const files = await scanFolder({ folder: `${base}/source`})
+  const filesRaw = await scanFolder({ folder: `${base}/source`})
+  const files = filesRaw.filter(x => x.endsWith('.js'))
+
   if(!LINT_STAGED_ONLY) return files
   
-  const stagedFiles = await getStagedFiles(base)
+  const stagedFilesRaw = await getStagedFiles(base)
+  const stagedFiles = stagedFilesRaw.filter(x => x.endsWith('.js'))
   
-  return intersection(stagedFiles, files)
+  return (intersection(stagedFiles, files))
 }
 
 void async function lint(){

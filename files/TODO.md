@@ -19,8 +19,6 @@ simulate rxjs api and benchmark it
 
 ## publish rambdax to deno(remove on next rambdax release)
 
-## Add lint staged
-
 ## Dictionary - type vs interface
 
 https://github.com/selfrefactor/rambda/issues/459#issuecomment-771519978

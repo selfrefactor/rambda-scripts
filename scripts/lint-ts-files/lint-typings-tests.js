@@ -5,6 +5,8 @@ const {copy} = require('fs-extra')
 const {parse} = require('path')
 const {mapAsyncLimit} = require('rambdax')
 
+const LINT_STAGED_ONLY = process.env.LINT_STAGED_ONLY === 'ON'
+
 const filterFn = x => x.endsWith('-spec.ts')
 
 const lintSingleFile = async filePath => {
@@ -17,9 +19,18 @@ const lintSingleFile = async filePath => {
   console.timeEnd(name)
 }
 
-void (async function lintTypingsTests() {
+async function getFiles(){
   const srcPath = resolve(__dirname, '../../../rambda/source')
-  const allFiles = await scanFolder({folder: srcPath, filterFn})
+  const files = await scanFolder({folder: srcPath, filterFn})
+  if(!LINT_STAGED_ONLY) return files
+  
+  const stagedFilesRaw = await getStagedFiles(base)
+  const stagedFiles = stagedFilesRaw.filter(x => x.endsWith('.js'))
+  
+  return intersection(stagedFiles, files)
+}
 
+void (async function lintTypingsTests() {
+  const allFiles = await getFiles()
   await mapAsyncLimit(lintSingleFile, 5, allFiles)
 })()
