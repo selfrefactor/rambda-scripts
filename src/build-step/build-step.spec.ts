@@ -1,10 +1,10 @@
-import { ms } from 'string-fn'
+import {ms} from 'string-fn'
 
-import { buildStep } from './build-step'
+import {buildStep} from './build-step'
 
 jest.setTimeout(ms('30 seconds'))
 
-test('happy', async () => {
+test('happy', async() => {
   const withRambdax = false
   await buildStep(withRambdax)
 })

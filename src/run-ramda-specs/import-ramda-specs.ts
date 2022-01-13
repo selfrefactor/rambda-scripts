@@ -1,56 +1,57 @@
-import { outputFile, readFile } from 'fs-extra'
-import { execSafe, scanFolder, spawn } from 'helpers-fn'
-import { parse } from 'path'
-import { mapAsync, replace } from 'rambdax'
+import {outputFile, readFile} from 'fs-extra'
+import {execSafe, scanFolder, spawn} from 'helpers-fn'
+import {parse} from 'path'
+import {mapAsync, replace} from 'rambdax'
 
-import { getRambdaMethods } from '../utils'
+import {getRambdaMethods} from '../utils'
 
-const cloneCommandInputs = 'clone --depth 1 https://github.com/ramda/ramda'.split(' ')
+const cloneCommandInputs =
+  'clone --depth 1 https://github.com/ramda/ramda'.split(' ')
 
-async function cloneRamda(){
+async function cloneRamda() {
   await execSafe({
-    command : 'rm -rf ramda',
-    cwd     : __dirname,
+    command: 'rm -rf ramda',
+    cwd: __dirname,
   })
 
   await spawn({
-    cwd     : __dirname,
-    command : 'git',
-    inputs  : cloneCommandInputs,
+    cwd: __dirname,
+    command: 'git',
+    inputs: cloneCommandInputs,
   })
 
   await spawn({
-    cwd     : `${ __dirname }/ramda`,
-    command : 'npm',
-    inputs  : [ 'i' ],
+    cwd: `${__dirname}/ramda`,
+    command: 'npm',
+    inputs: ['i'],
   })
 }
 
-async function replaceImports(){
+async function replaceImports() {
   const rambdaMethods = await getRambdaMethods()
 
   // Because Ramda pattern for spec name has exception
   // ============================================
-  const toReturn = [ 'lenses' ]
+  const toReturn = ['lenses']
 
-  const allFiles = await scanFolder({ folder : `${ __dirname }/ramda/test` })
+  const allFiles = await scanFolder({folder: `${__dirname}/ramda/test`})
   const goodFiles = allFiles.filter(filePath => {
     if (!filePath.endsWith('.js')) return false
 
     // Because Ramda pattern for spec name has exception
     // ============================================
     if (filePath.endsWith('lenses.js')) return true
-    const { name } = parse(filePath)
+    const {name} = parse(filePath)
     toReturn.push(name)
 
     return rambdaMethods.includes(name)
   })
 
-  const replaceImport = async function (filePath: string){
+  const replaceImport = async function(filePath: string) {
     const content = await readFile(filePath)
     const newContent = replace(
-      'require(\'../source\')',
-      'require(\'../../../../../rambda/dist/rambda\')',
+      "require('../source')",
+      "require('../../../../../rambda/dist/rambda')",
       content.toString()
     )
 
@@ -62,7 +63,7 @@ async function replaceImports(){
   return toReturn
 }
 
-export async function importRamdaSpecs(withInitialStep: boolean){
+export async function importRamdaSpecs(withInitialStep: boolean) {
   if (withInitialStep) await cloneRamda()
 
   return replaceImports()

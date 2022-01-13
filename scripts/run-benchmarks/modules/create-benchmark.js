@@ -1,29 +1,34 @@
-const { add, complete, cycle, save, suite } = require('benny')
-const { ok } = require('rambdax')
-const { snakeCase, constantCase } = require('string-fn')
+const {add, complete, cycle, save, suite} = require('benny')
+const {ok} = require('rambdax')
+const {snakeCase, constantCase} = require('string-fn')
 
 const folder = 'benchmark-results'
 
-async function createBenchmark(tests, suiteLabel){
-  ok(tests, suiteLabel)([ {
-    label : String,
-    fn    : Function,
-  } ], String)
-  if(tests.length > 3) throw new Error(`tests.length > 3 ${tests.length}`)
+async function createBenchmark(tests, suiteLabel) {
+  ok(tests, suiteLabel)(
+    [
+      {
+        label: String,
+        fn: Function,
+      },
+    ],
+    String
+  )
+  if (tests.length > 3) throw new Error(`tests.length > 3 ${tests.length}`)
 
-  if(tests.length === 1) {
+  if (tests.length === 1) {
     return suite(
       constantCase(suiteLabel),
       add(tests[0].label, tests[0].fn),
       cycle(),
       complete(),
       save({
-        file : snakeCase(suiteLabel),
+        file: snakeCase(suiteLabel),
         folder,
       })
     )
   }
-  if(tests.length === 2) {
+  if (tests.length === 2) {
     return suite(
       constantCase(suiteLabel),
       add(tests[0].label, tests[0].fn),
@@ -31,7 +36,7 @@ async function createBenchmark(tests, suiteLabel){
       cycle(),
       complete(),
       save({
-        file : snakeCase(suiteLabel),
+        file: snakeCase(suiteLabel),
         folder,
       })
     )
@@ -45,7 +50,7 @@ async function createBenchmark(tests, suiteLabel){
     cycle(),
     complete(),
     save({
-      file : snakeCase(suiteLabel),
+      file: snakeCase(suiteLabel),
       folder,
     })
   )

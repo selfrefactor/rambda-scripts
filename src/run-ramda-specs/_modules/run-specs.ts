@@ -1,13 +1,13 @@
 const allDifferences = require('../all-differences.json')
-import { readFileSync } from 'fs'
-import { exec, log } from 'helpers-fn'
-import { resolve } from 'path'
-import { glue, map, mapAsync } from 'rambdax'
+import {readFileSync} from 'fs'
+import {exec, log} from 'helpers-fn'
+import {resolve} from 'path'
+import {glue, map, mapAsync} from 'rambdax'
 
 const baseDir = resolve(__dirname, '../outputs')
 const ramdaDir = resolve(__dirname, '../ramda')
 
-const getOutputPath = (x: string) => `${ baseDir }/${ x }.txt`
+const getOutputPath = (x: string) => `${baseDir}/${x}.txt`
 
 const getCommand = (x: string) => {
   const outputPath = getOutputPath(x)
@@ -19,8 +19,8 @@ const getCommand = (x: string) => {
   @babel/register 
   --reporter
   spec 
-  test/${ x }.js
-  > ${ outputPath } 2>&1
+  test/${x}.js
+  > ${outputPath} 2>&1
   `)
 
   return {
@@ -29,28 +29,31 @@ const getCommand = (x: string) => {
   }
 }
 
-const KNOWN_FAILING_TESTS = map<{count: number}, number>((x) => x.count, allDifferences)
+const KNOWN_FAILING_TESTS = map<{count: number}, number>(
+  x => x.count,
+  allDifferences
+)
 
-function getNumberFailing(testOutput: string){
-  const [ line ] = testOutput.split('\n').filter(x => x.includes('failing'))
-  const [ numberFailing ] = line.split('failing')
+function getNumberFailing(testOutput: string) {
+  const [line] = testOutput.split('\n').filter(x => x.includes('failing'))
+  const [numberFailing] = line.split('failing')
 
   return Number(numberFailing.trim())
 }
 
-export async function runSingleSpec(method: string){
-  console.log({ methodToRun : method })
-  const { command, outputPath } = getCommand(method)
+export async function runSingleSpec(method: string) {
+  console.log({methodToRun: method})
+  const {command, outputPath} = getCommand(method)
 
   await exec({
-    cwd   : ramdaDir,
-    onLog : () => {},
+    cwd: ramdaDir,
+    onLog: () => {},
     command,
   })
 
   const testOutput = readFileSync(outputPath).toString()
-  if (!testOutput.includes('failing')){
-    log(`All tests are passing for method 'R.${ method }'`, 'success')
+  if (!testOutput.includes('failing')) {
+    log(`All tests are passing for method 'R.${method}'`, 'success')
 
     return true
   }
@@ -58,10 +61,10 @@ export async function runSingleSpec(method: string){
   const numberFailing = getNumberFailing(testOutput)
 
   if (
-    !KNOWN_FAILING_TESTS[ method ] ||
-    numberFailing > KNOWN_FAILING_TESTS[ method ]
-  ){
-    log(`'${ method }' has '${ numberFailing }' tests`, 'error')
+    !KNOWN_FAILING_TESTS[method] ||
+    numberFailing > KNOWN_FAILING_TESTS[method]
+  ) {
+    log(`'${method}' has '${numberFailing}' tests`, 'error')
 
     return false
   }
@@ -69,6 +72,9 @@ export async function runSingleSpec(method: string){
   return true
 }
 
-export async function runSpecs(methodsWithSpecs: string[]){
-  return mapAsync(async (method: string) => runSingleSpec(method), methodsWithSpecs)
+export async function runSpecs(methodsWithSpecs: string[]) {
+  return mapAsync(
+    async(method: string) => runSingleSpec(method),
+    methodsWithSpecs
+  )
 }

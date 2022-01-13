@@ -1,25 +1,25 @@
-import { readFile } from 'fs-extra'
-import { forEach, interpolate } from 'rambdax'
-import { BULLET } from '../constants'
-import { getSeparator } from '../utils'
+import {readFile} from 'fs-extra'
+import {forEach, interpolate} from 'rambdax'
+import {BULLET} from '../constants'
+import {getSeparator} from '../utils'
 
 const mostInfluentialContributors = {
-  'farwayer' :
+  farwayer:
     'improving performance in R.find, R.filter; give the idea how to make benchmarks more reliable;',
-  'thejohnfreeman' : 'add R.assoc, R.chain;',
-  'helmuthdu'      : 'add R.clone; help improve code style;',
-  'jpgorman'       : 'add R.zip, R.reject, R.without, R.addIndex;',
-  'ku8ar'          :
+  thejohnfreeman: 'add R.assoc, R.chain;',
+  helmuthdu: 'add R.clone; help improve code style;',
+  jpgorman: 'add R.zip, R.reject, R.without, R.addIndex;',
+  ku8ar:
     'add R.slice, R.propOr, R.identical, R.propIs and several math related methods; introduce the idea to display missing Ramda methods;',
-  'romgrk'    : 'add R.groupBy, R.indexBy, R.findLast, R.findLastIndex;',
-  'squidfunk' :
+  romgrk: 'add R.groupBy, R.indexBy, R.findLast, R.findLastIndex;',
+  squidfunk:
     'add R.assocPath, R.symmetricDifference, R.difference, R.intersperse;',
-  'synthet1c'   : 'add all lenses methods; add R.applySpec, R.converge;',
-  'vlad-zhukov' :
+  synthet1c: 'add all lenses methods; add R.applySpec, R.converge;',
+  'vlad-zhukov':
     'help with configuring Rollup, Babel; change export file to use ES module exports;',
 }
 
-function getAdditionalInfo(){
+function getAdditionalInfo() {
   const additionalInfoTemplate = `
 ## ${BULLET} Additional info
 
@@ -52,10 +52,10 @@ function getAdditionalInfo(){
   let contributors = ''
 
   forEach((reason, contributor) => {
-    contributors += `- [@${ contributor }](https://github.com/${ contributor }) - ${ reason }\n\n`
+    contributors += `- [@${contributor}](https://github.com/${contributor}) - ${reason}\n\n`
   }, mostInfluentialContributors)
 
-  return interpolate(additionalInfoTemplate, { contributors })
+  return interpolate(additionalInfoTemplate, {contributors})
 }
 
 const templateTail = `
@@ -104,18 +104,18 @@ const myLibraries = `
 </table>
 `.trim()
 
-export async function getTail(withRambdax: boolean){
-  const changelogSource = withRambdax ?
-    `${ __dirname }/assets/CHANGELOG_RAMBDAX.md` :
-    `${ __dirname }/assets/CHANGELOG.md`
+export async function getTail(withRambdax: boolean) {
+  const changelogSource = withRambdax
+    ? `${__dirname}/assets/CHANGELOG_RAMBDAX.md`
+    : `${__dirname}/assets/CHANGELOG.md`
 
   const changelogContent = await readFile(changelogSource)
 
   return interpolate(templateTail, {
-    additionalInfoSeparator : getSeparator('additional-info'),
-    additionalInfo : getAdditionalInfo(),
+    additionalInfoSeparator: getSeparator('additional-info'),
+    additionalInfo: getAdditionalInfo(),
     myLibraries,
-    changelogSeparator : getSeparator('changelog'),
-    changelog      : changelogContent.toString(),
+    changelogSeparator: getSeparator('changelog'),
+    changelog: changelogContent.toString(),
   })
 }

@@ -1,25 +1,25 @@
 const allDifferences = require('../all-differences.json')
-import * as  R from 'rambda'
-import { emptyDirSync, writeJson } from 'fs-extra'
-import { getIndent, indent } from 'string-fn'
-import { readFileSync, writeFileSync, existsSync } from 'fs'
-import { remove, replace, map, filter, piped, mapToObject } from 'rambdax'
-import { resolve } from 'path'
+import * as R from 'rambda'
+import {emptyDirSync, writeJson} from 'fs-extra'
+import {getIndent, indent} from 'string-fn'
+import {readFileSync, writeFileSync, existsSync} from 'fs'
+import {remove, replace, map, filter, piped, mapToObject} from 'rambdax'
+import {resolve} from 'path'
 
 const BASE = resolve(__dirname, '../')
-const OUTPUT = `${ BASE }/failing_tests`
+const OUTPUT = `${BASE}/failing_tests`
 
-const getOutputPath = (x:string) => `${ BASE }/outputs/${ x }.txt`
-const getTestPath = (x:string) => `${ BASE }/ramda/test/${ x }.js`
+const getOutputPath = (x: string) => `${BASE}/outputs/${x}.txt`
+const getTestPath = (x: string) => `${BASE}/ramda/test/${x}.js`
 
-function withSingleMethod(method: string): FailingTest | false{
+function withSingleMethod(method: string): FailingTest | false {
   const outputPath = getOutputPath(method)
   if (!existsSync(outputPath)) return false
 
   const content: string = readFileSync(outputPath).toString()
   const testContent = readFileSync(getTestPath(method)).toString()
 
-  const [ goodTestsRaw ] = content.split('passing')
+  const [goodTestsRaw] = content.split('passing')
   const goodTests = goodTestsRaw
     .split('\n')
     .filter(line => line.includes('✓'))
@@ -27,10 +27,10 @@ function withSingleMethod(method: string): FailingTest | false{
 
   const badTests = piped<string[]>(
     content.split('passing'),
-    ([ first ]) => first,
+    ([first]) => first,
     x => x.split('\n'),
     filter((x: string) => x.includes(')')),
-    map((x: string) => x.split(')')[ 1 ].trim())
+    map((x: string) => x.split(')')[1].trim())
   )
 
   let flag = false
@@ -41,7 +41,7 @@ function withSingleMethod(method: string): FailingTest | false{
   const holder: string[] = []
 
   testContent.split('\n').forEach(line => {
-    if (badTests[ badCounter ] && line.includes(badTests[ badCounter ])){
+    if (badTests[badCounter] && line.includes(badTests[badCounter])) {
       indentCount = getIndent(line)
 
       holder.push(line)
@@ -50,20 +50,20 @@ function withSingleMethod(method: string): FailingTest | false{
       return flag = false
     }
 
-    if (goodTests[ counter ] && line.includes(goodTests[ counter ])){
+    if (goodTests[counter] && line.includes(goodTests[counter])) {
       indentCount = getIndent(line)
 
       return flag = true
     }
 
-    if (line === `${ indent('});', indentCount) }` && !flagBad){
+    if (line === `${indent('});', indentCount)}` && !flagBad) {
       counter++
       flagBad = false
 
       return flag = false
     }
 
-    if (line === `${ indent('});', indentCount) }` && flagBad){
+    if (line === `${indent('});', indentCount)}` && flagBad) {
       if (!flag) holder.push(line)
 
       badCounter++
@@ -72,12 +72,10 @@ function withSingleMethod(method: string): FailingTest | false{
       return flag = false
     }
 
-    if (!flag){
-      const lineToPush = line.includes('../source') ?
-        replace(
-          '../source', 'rambda', line
-        ) :
-        line
+    if (!flag) {
+      const lineToPush = line.includes('../source')
+        ? replace('../source', 'rambda', line)
+        : line
 
       holder.push(lineToPush)
     }
@@ -85,7 +83,7 @@ function withSingleMethod(method: string): FailingTest | false{
   let goodTestsRawipFirstEmptyLine = true
 
   const toReturn = holder.filter(x => {
-    if (!x && goodTestsRawipFirstEmptyLine){
+    if (!x && goodTestsRawipFirstEmptyLine) {
       goodTestsRawipFirstEmptyLine = false
 
       return true
@@ -94,32 +92,32 @@ function withSingleMethod(method: string): FailingTest | false{
     return x
   })
 
-  writeFileSync(`${ OUTPUT }/${ method }.js`, toReturn.join('\n'))
+  writeFileSync(`${OUTPUT}/${method}.js`, toReturn.join('\n'))
 
-  const differencePayload = allDifferences[ method ] ?
-    { diffReason : allDifferences[ method ].reason } :
-    {}
+  const differencePayload = allDifferences[method]
+    ? {diffReason: allDifferences[method].reason}
+    : {}
 
   return {
     ...differencePayload,
     method,
-    content : toReturn.join('\n'),
+    content: toReturn.join('\n'),
   }
 }
 
-interface FailingTest{
-  content: string
-  method: string
-  diffReason?: string
+interface FailingTest {
+  content: string,
+  method: string,
+  diffReason?: string,
 }
 
-function failingTestPredicate(x : FailingTest | false): x is FailingTest{
-  if(x === false) return false
+function failingTestPredicate(x: FailingTest | false): x is FailingTest {
+  if (x === false) return false
   return true
 }
 
-export async function writeSummary(){
-  const dir = `${ BASE }/failing_tests`
+export async function writeSummary() {
+  const dir = `${BASE}/failing_tests`
   emptyDirSync(dir)
 
   const allMethods = Object.keys(R)
@@ -129,19 +127,19 @@ export async function writeSummary(){
     .map(method => withSingleMethod(method))
     .filter(failingTestPredicate)
 
-  const summaryJson = mapToObject(x => ({ [ x.method ] : x }), allFailingTests)
-  await writeJson(`${ BASE }/summary.json`, summaryJson)
+  const summaryJson = mapToObject(x => ({[x.method]: x}), allFailingTests)
+  await writeJson(`${BASE}/summary.json`, summaryJson)
 
   allFailingTests.forEach((input: FailingTest) => {
-    const { content, method, diffReason } = input
-    const reasoning = diffReason ?
-      `\nReason for failing:  ${ diffReason }\n` :
-      ''
+    const {content, method, diffReason} = input
+    const reasoning = diffReason
+      ? `\nReason for failing:  ${diffReason}\n`
+      : ''
 
-    const toAdd = `> ${ method }\n${ reasoning }\n\`\`\`javascript\n${ content }\n\`\`\`\n\n`
+    const toAdd = `> ${method}\n${reasoning}\n\`\`\`javascript\n${content}\n\`\`\`\n\n`
 
     summary.push(toAdd)
   })
 
-  writeFileSync(`${ BASE }/_SUMMARY.md`, summary.join(''))
+  writeFileSync(`${BASE}/_SUMMARY.md`, summary.join(''))
 }

@@ -1,6 +1,6 @@
-import { WITH_RAMBDAX } from '../constants'
-import { getIntro } from './get-intro'
+import {WITH_RAMBDAX} from '../constants'
+import {getIntro} from './get-intro'
 
-test('happy', async () => {
+test('happy', async() => {
   expect(await getIntro(WITH_RAMBDAX)).toMatchSnapshot()
 })

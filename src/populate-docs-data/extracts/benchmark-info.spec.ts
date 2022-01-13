@@ -1,5 +1,5 @@
-import { benchmarkInfo } from './benchmark-info'
+import {benchmarkInfo} from './benchmark-info'
 
-test('happy', async () => {
+test('happy', async() => {
   expect(await benchmarkInfo()).toMatchSnapshot()
 })

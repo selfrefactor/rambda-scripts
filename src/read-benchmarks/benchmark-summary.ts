@@ -17,16 +17,19 @@ function parseMethodName(input: string) {
   return `${methodName} (curried)`
 }
 
-function readResults(file: string): {name: string, results: {name: string}[]}{
+function readResults(file: string): {
+  name: string,
+  results: {name: string}[],
+} {
   const {results, name} = readJsonSync(`${resultsDir}/${file}`)
 
   return {results, name}
 }
 
-interface SummaryCounter{
-  ramda: number
-  rambda: number
-  lodash: number
+interface SummaryCounter {
+  ramda: number,
+  rambda: number,
+  lodash: number,
 }
 
 export async function benchmarkSummary() {
@@ -51,10 +54,15 @@ export async function benchmarkSummary() {
     })
 
     const columns = [rambda, ramda, lodash]
-      .map((x: undefined|Record<string, number>) => {
+      .map((x: undefined | Record<string, number>) => {
         if (!x) return '🔳'
         if (x.percentSlower === 0) {
-          const winner = piped<keyof SummaryCounter>(x.name, split('.'), head, toLower)
+          const winner = piped<keyof SummaryCounter>(
+            x.name,
+            split('.'),
+            head,
+            toLower
+          )
           summaryCounter[winner]++
         }
 

@@ -1,20 +1,20 @@
-import { anyFalse, mapToObject, match, remove, trim } from 'rambdax'
+import {anyFalse, mapToObject, match, remove, trim} from 'rambdax'
 
-import { extractName } from './extract-name'
-import { extractRawInfo } from './extract-raw-info'
+import {extractName} from './extract-name'
+import {extractRawInfo} from './extract-raw-info'
 
-export function extractCategories(withRambdax: boolean){
+export function extractCategories(withRambdax: boolean) {
   const rawInfo = extractRawInfo(withRambdax)
 
   return mapToObject<string, any>(x => {
     const name = extractName(x)
-    const [ matched ] = match(/Categories:(\n|.)+Notes:/m)(x)
+    const [matched] = match(/Categories:(\n|.)+Notes:/m)(x)
     if (anyFalse(matched, name)) return false
 
-    const categories = remove([ 'Categories:', 'Notes:' ])(matched)
+    const categories = remove(['Categories:', 'Notes:'])(matched)
 
     if (!categories) return false
 
-    return { [ name ] : categories.split(',').map(trim) }
+    return {[name]: categories.split(',').map(trim)}
   }, rawInfo)
 }

@@ -1,5 +1,5 @@
-import { createExportedTypings } from './create-exported-typings'
+import {createExportedTypings} from './create-exported-typings'
 
-test('happy', async () => {
+test('happy', async() => {
   expect(await createExportedTypings()).toMatchSnapshot()
 })

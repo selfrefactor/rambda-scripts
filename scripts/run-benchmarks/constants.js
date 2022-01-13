@@ -1,4 +1,4 @@
-const { resolve } = require("path")
+const {resolve} = require('path')
 
 const benchmarksDir = resolve(__dirname, '../../../rambda/source/benchmarks')
 const outputDir = resolve(__dirname, '../../benchmark-results')

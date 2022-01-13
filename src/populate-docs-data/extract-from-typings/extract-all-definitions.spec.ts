@@ -1,4 +1,4 @@
-import { extractAllDefinitions } from './extract-all-definitions'
+import {extractAllDefinitions} from './extract-all-definitions'
 
 test('happy', () => {
   expect(extractAllDefinitions(false)).toMatchSnapshot()

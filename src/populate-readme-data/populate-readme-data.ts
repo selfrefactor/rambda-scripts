@@ -1,27 +1,34 @@
-import { statSync } from 'fs'
-import { outputFile, readJson } from 'fs-extra'
-import { log } from 'helpers-fn'
-import { interpolate, map, replace } from 'rambdax'
-import { buildStep } from '../build-step/build-step'
-import { createMethodData } from './create-method-data'
-import { getIntro } from './get-intro'
-import { getTail } from './get-tail'
-import { rambdaRepl } from './rambda-repl'
-import { PATHS, X_PATHS, DESTINATIONS, GITHUB_README_LIMIT } from '../constants'
+import {statSync} from 'fs'
+import {outputFile, readJson} from 'fs-extra'
+import {log} from 'helpers-fn'
+import {interpolate, map, replace} from 'rambdax'
+import {buildStep} from '../build-step/build-step'
+import {createMethodData} from './create-method-data'
+import {getIntro} from './get-intro'
+import {getTail} from './get-tail'
+import {rambdaRepl} from './rambda-repl'
+import {
+  PATHS,
+  X_PATHS,
+  DESTINATIONS,
+  GITHUB_README_LIMIT,
+} from '../constants'
 
 function getFileSize(filePath: string) {
-  const stats = statSync(filePath);
-  const fileSizeInBytes = stats.size;
-  const fileSizeInMegabytes = fileSizeInBytes / 1000000;
+  const stats = statSync(filePath)
+  const fileSizeInBytes = stats.size
+  const fileSizeInMegabytes = fileSizeInBytes / 1000000
   log(`Size - ${fileSizeInMegabytes}MB`, 'foo')
-  
-  if(GITHUB_README_LIMIT < fileSizeInMegabytes){
+
+  if (GITHUB_README_LIMIT < fileSizeInMegabytes) {
     throw new Error(`Github has a limit for README.md`)
   }
 }
 
-async function getMethodsData(withRambdax: boolean){
-  const filePath = withRambdax ? DESTINATIONS.rambdaxDocsData : DESTINATIONS.docsData
+async function getMethodsData(withRambdax: boolean) {
+  const filePath = withRambdax
+    ? DESTINATIONS.rambdaxDocsData
+    : DESTINATIONS.docsData
 
   return readJson(filePath)
 }
@@ -38,15 +45,20 @@ const readmeTemplate = `
 {{tail}}
 `
 
-function getOutputPath(withRambdax: boolean, npmReadme: boolean){
-  if (withRambdax){
-    return `${ X_PATHS.xBase }/README.md`
+function getOutputPath(withRambdax: boolean, npmReadme: boolean) {
+  if (withRambdax) {
+    return `${X_PATHS.xBase}/README.md`
   }
 
-  return npmReadme ? `${ PATHS.base }/README.md` : `${ PATHS.base }/.github/README.md`
+  return npmReadme
+    ? `${PATHS.base}/README.md`
+    : `${PATHS.base}/.github/README.md`
 }
 
-export async function populateReadmeData(withRambdax: boolean, npmReadme: boolean){
+export async function populateReadmeData(
+  withRambdax: boolean,
+  npmReadme: boolean
+) {
   await buildStep(withRambdax)
   const methodsData = await getMethodsData(withRambdax)
 
@@ -62,11 +74,12 @@ export async function populateReadmeData(withRambdax: boolean, npmReadme: boolea
 
   const sortedMethods = Object.keys(methods)
     .map((key: string) => ({
-      ...methods[ key ],
-      methodName : key,
+      ...methods[key],
+      methodName: key,
     }))
     .sort((x, y) =>
-      x.methodName.toLowerCase() > y.methodName.toLowerCase() ? 1 : -1)
+      x.methodName.toLowerCase() > y.methodName.toLowerCase() ? 1 : -1
+    )
     .map(method => createMethodData(method, withRambdax, npmReadme))
 
   const intro = await getIntro(withRambdax)
@@ -74,7 +87,7 @@ export async function populateReadmeData(withRambdax: boolean, npmReadme: boolea
   const templateData = {
     intro,
     tail,
-    methods : sortedMethods.join('\n\n'),
+    methods: sortedMethods.join('\n\n'),
   }
 
   const readme = interpolate(readmeTemplate, templateData).trim()

@@ -5,8 +5,13 @@ const {parse} = require('path')
 const {mapAsync, range} = require('rambdax')
 const {snakeCase} = require('string-fn')
 const {createBenchmark} = require('./modules/create-benchmark')
-const {outputDir, allIndexesDir, benchmarksDir, finalDir} = require('./constants')
-const { checkResults } = require('./modules/check-method')
+const {
+  outputDir,
+  allIndexesDir,
+  benchmarksDir,
+  finalDir,
+} = require('./constants')
+const {checkResults} = require('./modules/check-method')
 
 async function applyRunBenchmark({methodName, length, index, filePath}) {
   const {tests, modes, applyBenchmark} = require(filePath)

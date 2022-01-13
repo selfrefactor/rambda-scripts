@@ -17,8 +17,8 @@ function getMode(mode: string) {
 export function validatePaths() {
   const wrongPaths: string[] = []
   const iterator = (filePath: string, prop: string) => {
-    if(existsSync(filePath)) return true
-    
+    if (existsSync(filePath)) return true
+
     wrongPaths.push(prop)
     return false
   }
@@ -27,11 +27,13 @@ export function validatePaths() {
   if (Object.keys(validPaths).length !== Object.keys(PATHS).length) {
     throw new Error(`There are invalid paths ${wrongPaths}`)
   }
-  if(!WITH_RAMBDAX) return
+  if (!WITH_RAMBDAX) return
 
   const validRambdaxPaths = filter(iterator, X_PATHS)
 
-  if (Object.keys(validRambdaxPaths).length !== Object.keys(X_PATHS).length) {
+  if (
+    Object.keys(validRambdaxPaths).length !== Object.keys(X_PATHS).length
+  ) {
     throw new Error(`There are invalid paths ${wrongPaths}`)
   }
 }
@@ -43,7 +45,8 @@ export async function applyRambdaScripts(modeInput: string) {
   if (mode === 'usedby') return verifyUsedBy()
   if (mode === 'readonly') return readonlyTask()
   if (mode === 'populate:docs') return populateDocsData(WITH_RAMBDAX)
-  if (mode === 'populate:readme') return populateReadmeData(WITH_RAMBDAX, NPM_README)
+  if (mode === 'populate:readme')
+    return populateReadmeData(WITH_RAMBDAX, NPM_README)
 
   log(`Such mode '${mode}' doesn't exists`, 'error')
 }

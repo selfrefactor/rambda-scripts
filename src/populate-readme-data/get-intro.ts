@@ -1,14 +1,14 @@
-import { existsSync } from 'fs'
-import { readFile, readJson } from 'fs-extra'
-import { log } from 'helpers-fn'
-import { resolve } from 'path'
-import { interpolate } from 'rambdax'
+import {existsSync} from 'fs'
+import {readFile, readJson} from 'fs-extra'
+import {log} from 'helpers-fn'
+import {resolve} from 'path'
+import {interpolate} from 'rambdax'
 import * as Ramda from 'ramda'
-import { PATHS, BULLET } from '../constants'
+import {PATHS, BULLET} from '../constants'
 
-import { getRambdaMethods, getSeparator} from '../utils'
+import {getRambdaMethods, getSeparator} from '../utils'
 
-function getInstallInfo(withRambdax: boolean){
+function getInstallInfo(withRambdax: boolean) {
   const installInfoTemplate = `## ${BULLET} Install
 
 - **yarn add {{lib}}**
@@ -28,10 +28,13 @@ import {compose, add} from 'https://raw.githubusercontent.com/selfrefactor/{{lib
 {{separator}}
 `
 
-  return interpolate(installInfoTemplate, { lib : withRambdax ? 'rambdax' : 'rambda', separator: getSeparator('install') })
+  return interpolate(installInfoTemplate, {
+    lib: withRambdax ? 'rambdax' : 'rambda',
+    separator: getSeparator('install'),
+  })
 }
 
-async function getMissingMethods(){
+async function getMissingMethods() {
   const rambdaMethods = await getRambdaMethods()
   const missingMethodsTemplate = `
 ## ${BULLET} Missing Ramda methods
@@ -53,7 +56,7 @@ async function getMissingMethods(){
       if (rambdaMethods.includes(ramdaMethod)) return false
       counter++
 
-      return `- ${ ramdaMethod }\n`
+      return `- ${ramdaMethod}\n`
     })
     .filter(Boolean)
     .join('')
@@ -61,7 +64,7 @@ async function getMissingMethods(){
   return interpolate(missingMethodsTemplate, {
     missingMethods,
     counter,
-    separator: getSeparator('missing-ramda-methods')
+    separator: getSeparator('missing-ramda-methods'),
   })
 }
 
@@ -101,12 +104,14 @@ method | Rambda | Ramda | Lodash
 {{usedBySeparator}}
 `
 
-async function getTreeShakingInfo(){
+async function getTreeShakingInfo() {
   const fallback = '2'
-  const comparedPath = resolve(__dirname,
-    '../../../rambda-tree-shaking/compared.json')
+  const comparedPath = resolve(
+    __dirname,
+    '../../../rambda-tree-shaking/compared.json'
+  )
 
-  if (!existsSync(comparedPath)){
+  if (!existsSync(comparedPath)) {
     log('Using fallback in tree shaking info', 'box')
 
     return fallback
@@ -117,10 +122,13 @@ async function getTreeShakingInfo(){
   return compared.ramdaVsRambda
 }
 
-async function getIntroBaseContent(withRambdax: boolean, advantages: string){
-  const filePath = withRambdax ?
-  `${ __dirname }/assets/INTRO_RAMBDAX.md` :
-  `${ __dirname }/assets/INTRO.md`
+async function getIntroBaseContent(
+  withRambdax: boolean,
+  advantages: string
+) {
+  const filePath = withRambdax
+    ? `${__dirname}/assets/INTRO_RAMBDAX.md`
+    : `${__dirname}/assets/INTRO.md`
 
   const template = (await readFile(filePath)).toString()
   const content = interpolate(template, {bullet: BULLET, advantages})
@@ -132,17 +140,23 @@ const typescriptInfoTemplate = `
 Important - {{library}} version \`{{version}}\`(or higher) requires Typescript version \`4.2.2\`(or higher).
 `
 
-async function getIntroContent(withRambdax: boolean ){
+async function getIntroContent(withRambdax: boolean) {
   const rambdaTreeShakingInfo = await getTreeShakingInfo()
-  const advantagesFilePath = withRambdax ?
-    `${ __dirname }/assets/ADVANTAGES_RAMBDAX.md` :
-    `${ __dirname }/assets/ADVANTAGES.md`
+  const advantagesFilePath = withRambdax
+    ? `${__dirname}/assets/ADVANTAGES_RAMBDAX.md`
+    : `${__dirname}/assets/ADVANTAGES.md`
 
-  const typescriptInfo = interpolate(typescriptInfoTemplate, {version: withRambdax ? '8.0.0': `7.0.0`, library: withRambdax ?'Rambdax': 'Rambda'})
+  const typescriptInfo = interpolate(typescriptInfoTemplate, {
+    version: withRambdax ? '8.0.0' : `7.0.0`,
+    library: withRambdax ? 'Rambdax' : 'Rambda',
+  })
 
   const advantagesTemplate = (await readFile(advantagesFilePath)).toString()
 
-  const advantages = interpolate(advantagesTemplate, { rambdaTreeShakingInfo, rambdaTypescriptInfo:typescriptInfo })
+  const advantages = interpolate(advantagesTemplate, {
+    rambdaTreeShakingInfo,
+    rambdaTypescriptInfo: typescriptInfo,
+  })
   const content = await getIntroBaseContent(withRambdax, advantages)
 
   return interpolate(content, {
@@ -151,19 +165,25 @@ async function getIntroContent(withRambdax: boolean ){
   })
 }
 
-async function getIntroEnd(withRambdax: boolean){
-  const introEndContent = (await readFile(`${ __dirname }/assets/INTRO_END.md`)).toString()
+async function getIntroEnd(withRambdax: boolean) {
+  const introEndContent = (
+    await readFile(`${__dirname}/assets/INTRO_END.md`)
+  ).toString()
   const suggestPR = `
 > If you need more **Ramda** methods in **Rambda**, you may either submit a \`PR\` or check the extended version of **Rambda** - [Rambdax](https://github.com/selfrefactor/rambdax). In case of the former, you may want to consult with [Rambda contribution guidelines.](CONTRIBUTING.md)
 `.trim()
 
-  return interpolate(introEndContent, {suggestPR: withRambdax ? '\n': '\n' + suggestPR + '\n'})
+  return interpolate(introEndContent, {
+    suggestPR: withRambdax ? '\n' : '\n' + suggestPR + '\n',
+  })
 }
 
-export async function getIntro(withRambdax: boolean){
+export async function getIntro(withRambdax: boolean) {
   const introContent = await getIntroContent(withRambdax)
-  const usedByContent = await readFile(`${ __dirname }/assets/USED_BY.md`)
-  const summaryContent = await readFile(resolve(__dirname, '../read-benchmarks/summary.txt'))
+  const usedByContent = await readFile(`${__dirname}/assets/USED_BY.md`)
+  const summaryContent = await readFile(
+    resolve(__dirname, '../read-benchmarks/summary.txt')
+  )
   const introEndContent = await getIntroEnd(withRambdax)
   const missingMethods = await getMissingMethods()
   const installInfo = getInstallInfo(withRambdax)
@@ -172,13 +192,13 @@ export async function getIntro(withRambdax: boolean){
   return interpolate(templateIntro, {
     benchmarksSeparator: getSeparator('benchmarks'),
     usedBySeparator: getSeparator('used-by'),
-    introEnd      : introEndContent,
+    introEnd: introEndContent,
     missingMethods,
     installInfo,
-    intro         : introContent.toString(),
-    summary       : summaryContent.toString(),
-    usedBy        : usedByContent.toString(),
-    lodashVersion : devDependencies.lodash,
-    ramdaVersion  : devDependencies.ramda,
+    intro: introContent.toString(),
+    summary: summaryContent.toString(),
+    usedBy: usedByContent.toString(),
+    lodashVersion: devDependencies.lodash,
+    ramdaVersion: devDependencies.ramda,
   })
 }

@@ -1,6 +1,6 @@
-import { mapAsync , filter } from 'rambdax'
+import {mapAsync, filter} from 'rambdax'
 import got from 'got'
-import { log } from 'helpers-fn'
+import {log} from 'helpers-fn'
 
 const links = [
   'https://raw.githubusercontent.com/Nozbe/WatermelonDB/master/package.json',
@@ -11,17 +11,19 @@ const links = [
   'https://raw.githubusercontent.com/G07cha/MineflayerArmorManager/master/package.json',
 ]
 
-const iterator = async (url: string) => {
+const iterator = async(url: string) => {
   const {body} = await got(url)
   const {dependencies, devDependencies} = JSON.parse(body)
 
-  const predicate = (_: string, dependencyName: string) => ['rambda', 'rambdax'].includes(dependencyName)
+  const predicate = (_: string, dependencyName: string) =>
+    ['rambda', 'rambdax'].includes(dependencyName)
   const found = filter(predicate, {...devDependencies, ...dependencies})
 
-  if(found=== undefined) throw new Error(`${url} should be removed from used.by list`)
+  if (found === undefined)
+    throw new Error(`${url} should be removed from used.by list`)
   log(url, 'success')
 }
 
-export async function verifyUsedBy(){
+export async function verifyUsedBy() {
   await mapAsync(iterator, links)
 }

@@ -1,7 +1,7 @@
-import { extractRawInfo } from './extract-raw-info'
+import {extractRawInfo} from './extract-raw-info'
 
 test('happy', () => {
-  const [ result ] = extractRawInfo()
+  const [result] = extractRawInfo()
   expect(result).toMatchInlineSnapshot(`
     "/*
     Method: add

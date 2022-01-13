@@ -1,13 +1,13 @@
-import { mapToObject } from 'rambdax'
+import {mapToObject} from 'rambdax'
 
 import allDifferences from '../../run-ramda-specs/all-differences.json'
-import { getMethods } from '../extract-from-typings/get-methods'
+import {getMethods} from '../extract-from-typings/get-methods'
 
-export function failedTestsCount(){
+export function failedTestsCount() {
   return mapToObject<string, Record<string, string>>((method: string) => {
-    const explanation = (allDifferences as any)[ method ]
+    const explanation = (allDifferences as any)[method]
     if (!explanation) return false
 
-    return { [ method ] : explanation.count }
+    return {[method]: explanation.count}
   }, getMethods())
 }

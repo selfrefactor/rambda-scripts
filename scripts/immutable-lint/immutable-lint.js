@@ -21,13 +21,15 @@ void (async function immutableLint() {
   )
   await outputFile(
     jsFilePath,
-    `module.exports = require('./dist/${WITH_RAMBDAX ? 'rambdax' : 'rambda'}.js')`
+    `module.exports = require('./dist/${
+      WITH_RAMBDAX ? 'rambdax' : 'rambda'
+    }.js')`
   )
   await copy(filePathOrigin, filePath)
   const cwd = resolve(__dirname, '../../')
 
   const command = `node node_modules/eslint/bin/eslint.js -c files/.eslint.config.js ${filePath} --fix`
-    console.log(`command`, command)
+  console.log(`command`, command)
   await exec({
     cwd,
     command,

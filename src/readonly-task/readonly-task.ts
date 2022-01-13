@@ -1,8 +1,8 @@
-import { replace } from 'rambdax'
-import {writeFile, readFile } from 'fs-extra'
-import { PATHS } from '../constants'
+import {replace} from 'rambdax'
+import {writeFile, readFile} from 'fs-extra'
+import {PATHS} from '../constants'
 
-export async function readonlyTask(){
+export async function readonlyTask() {
   const filePath = `${PATHS.base}/index.d.ts`
   const output = `${PATHS.base}/non-strict.ts`
   const content = (await readFile(filePath)).toString()

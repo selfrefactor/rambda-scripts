@@ -31,7 +31,10 @@ export const DESTINATIONS = {
   docsData: `${__dirname}/populate-docs-data/data.json`,
   rambdaxDocsData: `${__dirname}/populate-docs-data/data-rambdax.json`,
   docsFile: resolve(__dirname, '../../rambda-docs/assets/data.json'),
-  rambdaxDocsFile: resolve(__dirname, '../../rambda-docs/assets/data-rambdax.json'),
+  rambdaxDocsFile: resolve(
+    __dirname,
+    '../../rambda-docs/assets/data-rambdax.json'
+  ),
 }
 
 export const SOURCES = {

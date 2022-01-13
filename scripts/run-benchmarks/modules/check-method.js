@@ -11,7 +11,7 @@ function checkSingleResults({index, filePath}) {
   const allResults = tests.map(singleTest => {
     try {
       const result = applyBenchmark(singleTest.fn, currentMode)
-  
+
       return {
         label: singleTest.label,
         result,
@@ -19,7 +19,10 @@ function checkSingleResults({index, filePath}) {
     } catch (error) {
       return {
         label: singleTest.label,
-        result: error && error.message? `ERROR: ${error.message}` : 'UNKNOWN ERROR'
+        result:
+          error && error.message
+            ? `ERROR: ${error.message}`
+            : 'UNKNOWN ERROR',
       }
     }
   })
