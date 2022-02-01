@@ -2,6 +2,21 @@
 
 I would consider having one type for asynchronous functions as having both `Promise` and `Async` is confusing.
 
+## R.contains
+
+R.contains({a:1}, {a:1, b:2}) => true
+
+## 0.28
+
+r.count
+r.modify - no
+modifyPath - no arrays
+r.on
+r.whereAny
+r.partialObject
+
+https://ramdajs.com/docs/#collectBy
+
 ## Deno import
 
 To use directly in [Deno](https://deno.land):
