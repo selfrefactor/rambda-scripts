@@ -1,8 +1,10 @@
-7.1.0
+WIP 7.1.0
 
 - Replace `Async` with `Promise` as return type of `R.type`. 
 
-- Rambda doesn't work with `pnpm` due to wrong export configuration - [Issue #619](https://github.com/selfrefactor/rambda/issues/619)
+7.0.2
+
+Rambda doesn't work with `pnpm` due to wrong export configuration - [Issue #619](https://github.com/selfrefactor/rambda/issues/619)
 
 7.0.1
 
