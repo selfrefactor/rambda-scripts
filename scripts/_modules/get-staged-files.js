@@ -7,7 +7,7 @@ async function getStagedFiles(cwd) {
   })
   if (!execResult) return []
 
-  return execResult.split('\x00').filter(Boolean)
+  return execResult.split('\x00').filter(Boolean).map(x => `${cwd}/${x}`)
 }
 
 exports.getStagedFiles = getStagedFiles
