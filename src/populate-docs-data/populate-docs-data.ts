@@ -69,6 +69,8 @@ async function save(input: Save) {
   await outputJSON(categoriesOutput, categories, {spaces: 2})
 }
 
+const pipedMethod: any = piped 
+
 export async function populateDocsData(withRambdax: boolean) {
   const definitions = extractDefinition(withRambdax)
   const categories = extractCategories(withRambdax)
@@ -86,7 +88,7 @@ export async function populateDocsData(withRambdax: boolean) {
 
   const pipedInput = initiateData(definitions, 'typing')
 
-  const toSave = piped<any>(
+  const toSave = pipedMethod(
     pipedInput,
     input =>
       appendData({

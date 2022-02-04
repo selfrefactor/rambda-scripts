@@ -57,7 +57,7 @@ export async function benchmarkSummary() {
       .map((x: undefined | Record<string, number>) => {
         if (!x) return '🔳'
         if (x.percentSlower === 0) {
-          const winner = piped<keyof SummaryCounter>(
+          const winner = piped<any, any, any, any>(
             x.name,
             split('.'),
             head,

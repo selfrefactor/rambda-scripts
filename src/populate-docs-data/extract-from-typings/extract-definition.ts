@@ -11,7 +11,7 @@ export function extractDefinition(withRambdax: boolean) {
   const result = mapToObject<string, Record<string, string>>(singleMatch => {
     const typing = remove('// @SINGLE_MARKER', singleMatch)
 
-    const name = piped<string>(
+    const name = piped(
       typing,
       match(/export function [a-zA-Z]+/),
       head,

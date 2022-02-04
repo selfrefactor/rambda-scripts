@@ -1,5 +1,5 @@
 import {mapAsync, filter} from 'rambdax'
-import got from 'got'
+// import got from 'got'
 import {log} from 'helpers-fn'
 
 const links = [
@@ -12,15 +12,15 @@ const links = [
 ]
 
 const iterator = async(url: string) => {
-  const {body} = await got(url)
-  const {dependencies, devDependencies} = JSON.parse(body)
+  // const {body} = await got(url)
+  // const {dependencies, devDependencies} = JSON.parse(body)
 
-  const predicate = (_: string, dependencyName: string) =>
-    ['rambda', 'rambdax'].includes(dependencyName)
-  const found = filter(predicate, {...devDependencies, ...dependencies})
+  // const predicate = (_: string, dependencyName: string) =>
+  //   ['rambda', 'rambdax'].includes(dependencyName)
+  // const found = filter(predicate, {...devDependencies, ...dependencies})
 
-  if (found === undefined)
-    throw new Error(`${url} should be removed from used.by list`)
+  // if (found === undefined)
+  //   throw new Error(`${url} should be removed from used.by list`)
   log(url, 'success')
 }
 
