@@ -95,7 +95,6 @@ export const BLACKLIST_METHODS = [
   'intersperse',
   'is',
   'mapIndexed',
-  'mapIndexed',
   'mapObjIndexed',
   'mapObjIndexed',
   'mathMod',
@@ -113,6 +112,7 @@ export const BLACKLIST_METHODS = [
   'rejectIndexed',
   'subtract',
   'takeWhile',
+  'tryCatch',
   'tryCatchAsync',
   'xnor',
 ]
