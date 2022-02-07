@@ -7,6 +7,7 @@
 ![Commit activity](https://img.shields.io/github/commit-activity/y/selfrefactor/rambda)
 ![All contributors](https://img.shields.io/github/contributors/selfrefactor/rambda)
 ![Library size](https://img.shields.io/bundlephobia/minzip/rambda)
+[![install size](https://packagephobia.com/badge?p=rambda)](https://packagephobia.com/result?p=rambda)
 
 ## {{bullet}} Example use
 
