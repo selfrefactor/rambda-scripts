@@ -1,6 +1,8 @@
 WIP 7.1.0
 
-- Replace `Async` with `Promise` as return type of `R.type`. 
+- Replace `Async` with `Promise` as return type of `R.type`.
+
+- Add new types as Typescript output for `R.type` - "Map", "WeakMap", "Generator", "GeneratorFunction", "BigInt", "ArrayBuffer"
 
 7.0.2
 

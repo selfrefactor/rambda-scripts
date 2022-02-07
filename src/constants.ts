@@ -65,6 +65,7 @@ export const BLACKLIST_METHODS = [
   'curry',
   'clamp',
   'and',
+  'type',
   'or',
   'concat',
   'complement',
