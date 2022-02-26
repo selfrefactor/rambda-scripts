@@ -1,7 +1,3 @@
-## Async type
-
-I would consider having one type for asynchronous functions as having both `Promise` and `Async` is confusing.
-
 ## R.contains
 
 R.contains({a:1}, {a:1, b:2}) => true
