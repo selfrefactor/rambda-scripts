@@ -4,6 +4,14 @@ WIP 7.1.0
 
 - Add new types as Typescript output for `R.type` - "Map", "WeakMap", "Generator", "GeneratorFunction", "BigInt", "ArrayBuffer"
 
+- Add new methods after `Ramda` version upgrade to `0.28.0`:
+
+-- R.count
+-- R.modifyPath(no arrays support)
+-- R.on
+-- R.whereAny
+-- R.partialObject
+
 7.0.3
 
 Rambda.none has wrong logic - [Issue #625](https://github.com/selfrefactor/rambda/issues/625)

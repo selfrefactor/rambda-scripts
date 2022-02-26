@@ -1,8 +1,14 @@
 WIP 8.1.0
 
+- Rambda.none has wrong logic - [Issue #625](https://github.com/selfrefactor/rambda/issues/625)
+
 - Replace `Async` with `Promise` as return type of `R.type`. 
 
 - Remove `isFunction` method
+
+- Add `R.contains` method
+
+- Change `R.count` logic to match the new `Ramda.count` method. Instead of counting for target value, the counting is done by predicate function.
 
 8.0.1
 
