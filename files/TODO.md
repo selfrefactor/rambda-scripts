@@ -1,3 +1,7 @@
+## R.equalsProps
+
+R.equalsProps(a,b,properties)
+
 ## R.merge
 
 is removed
@@ -8,31 +12,15 @@ R.contains({a:1}, {a:1, b:2}) => true
 
 ## 0.28
 
-r.count
-r.modify - no
-modifyPath - no arrays
-r.on
-r.whereAny
-r.partialObject
-
 https://ramdajs.com/docs/#collectBy
 
-## Deno import
+## Deno import documentation and publish script
 
-To use directly in [Deno](https://deno.land):
-```javascript
-import * as R from "https://deno.land/x/ramda/index.js";
-```
+- publish rambdax to deno(remove on next rambdax release)
 
 ## Test internal curry
 
-check foo again foo with internal curry
-
-## Rambdax + RxJS
-
-simulate rxjs api and benchmark it
-
-## publish rambdax to deno(remove on next rambdax release)
+check foo against foo with internal curry
 
 ## Dictionary - type vs interface
 
@@ -62,13 +50,6 @@ ok(repos)([x => {
 ```
 
 ## Update https://github.com/selfrefactor/rambda-tree-shaking
-
-## Deno info
-
-To use directly in [Deno](https://deno.land):
-```javascript
-import * as R from "https://deno.land/x/rambda/rambda.js";
-```
 
 ## Methods to add:
 
