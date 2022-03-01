@@ -9,6 +9,7 @@ const LINT_STAGED_ONLY = process.env.LINT_STAGED_ONLY === 'ON'
 
 async function lintFile(filePath) {
   const relativeFilePath = remove(base, filePath)
+  console.log(`lint command -`, `run lintfile ${relativeFilePath}`)
   console.time(relativeFilePath)
   await spawn({
     cwd: base,
@@ -32,6 +33,7 @@ async function getFiles() {
 
 void (async function lint() {
   const sourceFiles = await getFiles()
+  console.log(`to lint`, sourceFiles.length)
   const allFiles = [...sourceFiles, `${base}/rambda.js`]
   await mapAsyncLimit(lintFile, 5, allFiles)
 })()
