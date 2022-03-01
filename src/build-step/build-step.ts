@@ -16,12 +16,14 @@ import {createExportedTypings} from './create-exported-typings'
 // ============================================
 const rambdaxMethodsAsInternals = ['isFunction', 'isPromise', 'maybe']
 
+const denoComment = '/// <reference types="./index.d.ts" />'
+
 async function createMainFile(allMethods: string[]) {
   const content = allMethods
-    .map((x: string) => `export * from './src/${x}'`)
+    .map((x: string) => `export * from './src/${x}.js'`)
     .join('\n')
 
-  await outputFile(`${PATHS.base}/rambda.js`, `${content}\n`)
+  await outputFile(`${PATHS.base}/rambda.js`, `${denoComment}\n${content}\n`)
 }
 
 async function createMainFileRambdax({

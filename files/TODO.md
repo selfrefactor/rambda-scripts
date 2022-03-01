@@ -1,3 +1,13 @@
+## Lint
+
+ "node/file-extension-in-import": [
+    1,
+    "always",
+    {
+      "tryExtensions": [".js"],
+    }
+  ],
+
 ## R.equalsProps
 
 R.equalsProps(a,b,properties)

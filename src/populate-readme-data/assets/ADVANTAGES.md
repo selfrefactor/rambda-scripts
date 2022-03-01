@@ -6,7 +6,25 @@ Still, you need to be aware that functional programming features in `Typescript`
 
 {{rambdaTypescriptInfo}}
 
-> Alternative TS definitions are available as `rambda/immutable`. These are Rambda definitions linted with ESLint `functional/prefer-readonly-type` plugin.
+#### Immutable TS definitions
+
+You can use immutable version of Rambda definitions, which is linted with ESLint `functional/prefer-readonly-type` plugin.
+
+```
+import {add} from 'rambda/immutable'
+```
+
+### Deno support
+
+While `Ramda` is available for `Deno` users, `Rambda` provides you with included TS definitions:
+
+```
+import * as R from "https://x.nest.land/rambda@7.1.0/mod.ts";
+import * as Ramda from "https://x.nest.land/ramda@0.28.0/mod.ts";
+
+R.add(1)('foo') // => will trigger warning in VSCode
+Ramda.add(1)('foo') // => will not trigger warning in VSCode
+```
 
 ### Smaller size
 
@@ -47,8 +65,10 @@ R.pick('a,b', {a: 1 , b: 2, c: 3} })
 
 **Rambda** is generally more performant than `Ramda` as the [benchmarks](#-benchmarks) can prove that.
 
+### Deno
+
 ### Support
 
-Most of the valid issues are fixed within 2-3 days.
+As the library is smaller than Ramda, issues are much faster resolved.
 
 Closing the issue is usually accompanied by publishing a new patch version of `Rambda` to NPM.
