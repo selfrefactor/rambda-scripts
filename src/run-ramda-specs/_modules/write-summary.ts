@@ -25,7 +25,7 @@ function withSingleMethod(method: string): FailingTest | false {
     .filter(line => line.includes('✓'))
     .map(line => remove('✓', line).trim())
 
-  const badTests = piped<string[]>(
+  const badTests = piped(
     content.split('passing'),
     ([first]) => first,
     x => x.split('\n'),
