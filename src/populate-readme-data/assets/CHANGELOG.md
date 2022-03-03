@@ -9,7 +9,7 @@
 - Add new methods after `Ramda` version upgrade to `0.28.0`:
 
 -- R.count
--- R.modifyPath(no arrays support)
+-- R.modifyPath
 -- R.on
 -- R.whereAny
 -- R.partialObject
