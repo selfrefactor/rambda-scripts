@@ -9,11 +9,12 @@ const LINT_STAGED_ONLY = process.env.LINT_STAGED_ONLY === 'ON'
 
 async function lintFile(filePath) {
   const relativeFilePath = remove(base, filePath)
-  console.log(`lint command -`, `run lintfile ${relativeFilePath}`)
+  const command = filePath.includes('/source/') || filePath.endsWith('rambda.js') ? 'ENABLE_FILE_EXTENSION_RULE=ON run': 'run'
+  // console.log(`lint command -`, `${command} lintfile ${relativeFilePath}`)
   console.time(relativeFilePath)
   await spawn({
     cwd: base,
-    command: 'run',
+    command,
     inputs: ['lintfile', relativeFilePath],
   })
   console.timeEnd(relativeFilePath)
