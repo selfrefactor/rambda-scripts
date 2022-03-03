@@ -27,7 +27,9 @@ async function getFiles() {
   if (!LINT_STAGED_ONLY) return files
 
   const stagedFilesRaw = await getStagedFiles(base)
+  console.log(`stagedFilesRaw`, stagedFilesRaw.length)
   const stagedFiles = stagedFilesRaw.filter(x => x.endsWith('.js'))
+  console.log(`stagedFiles`, stagedFiles.length)
 
   return intersection(stagedFiles, files)
 }

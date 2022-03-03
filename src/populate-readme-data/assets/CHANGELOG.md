@@ -6,6 +6,8 @@
 
 - Add new types as Typescript output for `R.type` - "Map", "WeakMap", "Generator", "GeneratorFunction", "BigInt", "ArrayBuffer"
 
+- Add `R.juxt`
+
 - Add new methods after `Ramda` version upgrade to `0.28.0`:
 
 -- R.count
