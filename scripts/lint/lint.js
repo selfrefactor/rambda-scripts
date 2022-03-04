@@ -37,19 +37,21 @@ const filterFn = (filePath) => {
 async function getFiles() {
   const filesRaw = await scanFolder({folder: `${base}/source`})
   const files = filesRaw.filter(x => x.endsWith('.js'))
-
+  
   if (!LINT_STAGED_ONLY) return files
-
+  
   const stagedFilesRaw = await getStagedFiles(base)
+  console.log(`stagedFilesRaw`, stagedFilesRaw.length)
   const stagedFiles = stagedFilesRaw.filter(filterFn)
+  console.log(`stagedFiles`, stagedFiles.length)
 
   return intersection(stagedFiles, files)
 }
 
 void (async function lint() {
   const sourceFiles = await getFiles()
+  console.log(`sourceFiles`, sourceFiles)
   console.log(`source files to lint`, sourceFiles.length)
   const allFiles = [...sourceFiles, `${base}/rambda.js`]
-  console.log(`all files to lint`, allFiles.length)
   await mapAsyncLimit(lintFile, 5, allFiles)
 })()

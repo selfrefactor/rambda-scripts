@@ -6,6 +6,7 @@ void (async function prepare() {
     command: 'ls',
   })
   const hasDependencies = lsResult.split('\n').includes('node_modules')
+  console.log(`hasDependencies`, hasDependencies)
   if (hasDependencies) return
   await exec({
     cwd: __dirname,
