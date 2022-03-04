@@ -31,7 +31,7 @@ const forbiddenPaths = [
 const filterFn = (filePath) => {
   if(!filePath.endsWith('.js')) return false
   const filtered = forbiddenPaths.filter(x => filePath.includes(x))
-  return filtered === 0
+  return filtered.length === 0
 }
 
 async function getFiles() {
