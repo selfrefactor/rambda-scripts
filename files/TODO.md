@@ -1,3 +1,5 @@
+## R.whereAny.spec.js cannot be linted
+
 ## R.equalsProps
 
 R.equalsProps(a,b,properties)

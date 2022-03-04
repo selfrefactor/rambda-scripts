@@ -30,7 +30,7 @@ async function getFiles() {
   console.log(`stagedFilesRaw`, stagedFilesRaw.length)
   const stagedFiles = stagedFilesRaw.filter(x => x.endsWith('.js'))
   console.log(`stagedFiles`, stagedFiles.length)
-
+  console.log(`{files, stagedFiles}`, {files, stagedFiles})
   return intersection(stagedFiles, files)
 }
 
