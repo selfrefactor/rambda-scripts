@@ -1,7 +1,3 @@
-## R.none
-
-why ramda testing missed it
-
 ## R.equalsProps
 
 R.equalsProps(a,b,properties)

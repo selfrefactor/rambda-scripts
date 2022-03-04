@@ -1,4 +1,6 @@
-8.1.0
+9.0.0
+
+- Braking change due to renaming of `R.partialCurry` to `R.partialObject`
 
 - Rambda's `pipe/compose` doesn't return proper length of composed function which leads to issue with `R.applySpec`. It was fixed by alligning Rambda's `pipe/compose` with Ramda logic - [Issue #627](https://github.com/selfrefactor/rambda/issues/627)
 
@@ -9,16 +11,23 @@
 - Add new methods after `Ramda` version upgrade to `0.28.0`:
 
 -- R.count
--- R.modifyPath(no arrays support)
+-- R.modifyPath
 -- R.on
 -- R.whereAny
--- R.partialObject
 
 - Replace `Async` with `Promise` as return type of `R.type`. 
 
 - Remove `isFunction` method
 
+- Add `R.juxt` method
+
 - Add `R.contains` method
+
+- Add `R.mapcat` method WIP
+
+- Add `R.flattenObject` method
+
+- Add `R.deletePath` method WIP
 
 - Change `R.count` logic to match the new `Ramda.count` method. Instead of counting for target value, the counting is done by predicate function.
 

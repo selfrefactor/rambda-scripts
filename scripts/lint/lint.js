@@ -29,7 +29,7 @@ const forbiddenPaths = [
 ]
 
 const filterFn = (filePath) => {
-  if(!filterFn.endsWith('.js')) return false
+  if(!filePath.endsWith('.js')) return false
   const filtered = forbiddenPaths.filter(x => filePath.includes(x))
   return filtered === 0
 }
@@ -48,7 +48,8 @@ async function getFiles() {
 
 void (async function lint() {
   const sourceFiles = await getFiles()
-  console.log(`to lint`, sourceFiles.length)
+  console.log(`source files to lint`, sourceFiles.length)
   const allFiles = [...sourceFiles, `${base}/rambda.js`]
+  console.log(`all files to lint`, allFiles.length)
   await mapAsyncLimit(lintFile, 5, allFiles)
 })()

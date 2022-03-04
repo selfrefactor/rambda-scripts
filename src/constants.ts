@@ -60,6 +60,11 @@ export const HAS_RAMBDAX = existsSync(
 export const GITHUB_README_LIMIT = 0.5
 
 export const BLACKLIST_METHODS = [
+  'on',
+  'unwind',
+  'whereAny',
+  'flattenObject',
+  'mapcat',
   'compose',
   'converge',
   'curry',
