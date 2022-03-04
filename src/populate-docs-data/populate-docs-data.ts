@@ -69,7 +69,7 @@ async function save(input: Save) {
   await outputJSON(categoriesOutput, categories, {spaces: 2})
 }
 
-const pipedMethod: any = piped 
+const pipedMethod: any = piped
 
 export async function populateDocsData(withRambdax: boolean) {
   const definitions = extractDefinition(withRambdax)

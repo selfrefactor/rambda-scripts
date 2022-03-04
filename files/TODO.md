@@ -1,12 +1,6 @@
-## Lint
+## R.none
 
- "node/file-extension-in-import": [
-    1,
-    "always",
-    {
-      "tryExtensions": [".js"],
-    }
-  ],
+why ramda testing missed it
 
 ## R.equalsProps
 

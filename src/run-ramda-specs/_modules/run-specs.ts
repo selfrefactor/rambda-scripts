@@ -42,8 +42,8 @@ function getNumberFailing(testOutput: string) {
 }
 
 export async function runSingleSpec(method: string) {
-  console.log({methodToRun: method})
   const {command, outputPath} = getCommand(method)
+  console.log({methodToRun: method, command})
 
   await exec({
     cwd: ramdaDir,
@@ -52,6 +52,12 @@ export async function runSingleSpec(method: string) {
   })
 
   const testOutput = readFileSync(outputPath).toString()
+  console.log(`testOutput`, testOutput)
+  if (testOutput.includes('TypeError')) {
+    log(`No possible to test 'R.${method}'`, 'error')
+
+    return false
+  }
   if (!testOutput.includes('failing')) {
     log(`All tests are passing for method 'R.${method}'`, 'success')
 

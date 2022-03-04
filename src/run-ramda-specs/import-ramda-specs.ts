@@ -27,7 +27,7 @@ async function cloneRamda() {
   })
 }
 
-async function replaceImports() {
+export async function replaceImports() {
   const rambdaMethods = await getRambdaMethods()
 
   // Because Ramda pattern for spec name has exception
@@ -50,7 +50,7 @@ async function replaceImports() {
   const replaceImport = async function(filePath: string) {
     const content = await readFile(filePath)
     const newContent = replace(
-      "require('../source')",
+      "require('../source/index.js')",
       "require('../../../../../rambda/dist/rambda')",
       content.toString()
     )

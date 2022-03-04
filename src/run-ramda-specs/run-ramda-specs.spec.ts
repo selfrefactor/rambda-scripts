@@ -6,7 +6,7 @@ import {runRamdaSpecs} from './run-ramda-specs'
 import {runSingleSpec} from './_modules/run-specs'
 
 jest.setTimeout(ms('12 minutes'))
-const RUN_ALL = true
+const RUN_ALL = false
 const WITH_INITIAL_STEP = true
 
 test('run single spec', async() => {
@@ -14,7 +14,7 @@ test('run single spec', async() => {
 
   await build()
   await importRamdaSpecs(WITH_INITIAL_STEP)
-  expect(await runSingleSpec('equals')).toBeTruthy()
+  expect(await runSingleSpec('none')).toBeTruthy()
 })
 
 test('run all specs', async() => {

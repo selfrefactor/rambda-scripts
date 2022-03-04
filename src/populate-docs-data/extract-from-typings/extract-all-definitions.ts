@@ -9,11 +9,7 @@ export function extractAllDefinitions(withRambdax: boolean) {
   ).map(init)
 
   const result = mapToObject<string, Record<string, string>>(singleMatch => {
-    const allTypings = piped(
-      singleMatch,
-      remove('// @SINGLE_MARKER'),
-      trim
-    )
+    const allTypings = piped(singleMatch, remove('// @SINGLE_MARKER'), trim)
 
     const name = piped(
       allTypings,

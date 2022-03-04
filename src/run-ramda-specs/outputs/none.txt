@@ -1,26 +1,37 @@
-/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/test/none.js:104
-undefined
-      ^
+/home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/node_modules/yargs/yargs.js:1163
+      else throw err
+           ^
 
-Error [ERR_REQUIRE_ESM]: require() of ES Module /home/deyan/repos/rambda/dist/rambda.js from /home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/test/none.js not supported.
-rambda.js is treated as an ES module file as it is a .js file whose nearest parent package.json contains "type": "module" which declares all .js files in that package scope as ES modules.
-Instead rename rambda.js to end in .cjs, change the requiring code to use dynamic import() which is available in all CommonJS modules, or change "type": "module" to "type": "commonjs" in /home/deyan/repos/rambda/package.json to treat all .js files as CommonJS (using .mjs for all ES modules instead).
-
-    at Object.newLoader [as .js] (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/pirates/lib/index.js:104:7)
-    at Object.<anonymous> (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/test/none.js:3:1)
-    at Module._compile (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/pirates/lib/index.js:99:24)
-    at Object.newLoader [as .js] (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/pirates/lib/index.js:104:7)
-    at /home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/mocha.js:330:36
+TypeError: R.into is not a function
+    at Suite.into (/home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/test/none.js:8:21)
+    at Object.create (/home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/interfaces/common.js:140:19)
+    at context.describe.context.context (/home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/interfaces/bdd.js:42:27)
+    at Object.describe (/home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/test/none.js:5:1)
+    at Module._compile (node:internal/modules/cjs/loader:1097:14)
+    at Module._compile (/home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/pirates/lib/index.js:99:24)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1151:10)
+    at Object.newLoader [as .js] (/home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/pirates/lib/index.js:104:7)
+    at Module.load (node:internal/modules/cjs/loader:975:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:999:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at /home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/mocha.js:330:36
     at Array.forEach (<anonymous>)
-    at Mocha.loadFiles (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/mocha.js:327:14)
-    at Mocha.run (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/mocha.js:804:10)
-    at Object.exports.singleRun (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/cli/run-helpers.js:207:16)
-    at exports.runMocha (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/cli/run-helpers.js:300:13)
-    at Object.exports.handler (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/cli/run.js:296:3)
-    at Object.runCommand (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/node_modules/yargs/lib/command.js:242:26)
-    at Object.parseArgs [as _parseArgs] (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/node_modules/yargs/yargs.js:1087:28)
-    at Object.parse (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/node_modules/yargs/yargs.js:566:25)
-    at Object.exports.main (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/cli/cli.js:63:6)
-    at Object.<anonymous> (/home/deyan/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/bin/_mocha:10:23) {
-  code: 'ERR_REQUIRE_ESM'
-}
+    at Mocha.loadFiles (/home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/mocha.js:327:14)
+    at Mocha.run (/home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/mocha.js:804:10)
+    at Object.exports.singleRun (/home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/cli/run-helpers.js:207:16)
+    at exports.runMocha (/home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/cli/run-helpers.js:300:13)
+    at Object.exports.handler (/home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/cli/run.js:296:3)
+    at Object.runCommand (/home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/node_modules/yargs/lib/command.js:242:26)
+    at Object.parseArgs [as _parseArgs] (/home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/node_modules/yargs/yargs.js:1087:28)
+    at Object.parse (/home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/node_modules/yargs/yargs.js:566:25)
+    at Object.exports.main (/home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/lib/cli/cli.js:63:6)
+    at Object.<anonymous> (/home/sr/repos/rambda-scripts/src/run-ramda-specs/ramda/node_modules/mocha/bin/_mocha:10:23)
+    at Module._compile (node:internal/modules/cjs/loader:1097:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1151:10)
+    at Module.load (node:internal/modules/cjs/loader:975:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)
+    at node:internal/main/run_main_module:17:47
+
+Node.js v17.5.0

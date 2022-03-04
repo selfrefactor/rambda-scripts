@@ -18,7 +18,7 @@
 
 7.0.3
 
-Rambda.none has wrong logic - [Issue #625](https://github.com/selfrefactor/rambda/issues/625)
+Rambda.none has wrong logic introduced in version `7.0.0` - [Issue #625](https://github.com/selfrefactor/rambda/issues/625)
 
 7.0.2
 
