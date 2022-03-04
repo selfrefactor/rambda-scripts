@@ -28,7 +28,7 @@ async function getFiles() {
 
   const stagedFilesRaw = await getStagedFiles(base)
   console.log(`stagedFilesRaw`, stagedFilesRaw.length)
-  const stagedFiles = stagedFilesRaw.filter(x => x.endsWith('.js'))
+  const stagedFiles = stagedFilesRaw.filter(x => x.endsWith('-spec.ts'))
   console.log(`stagedFiles`, stagedFiles.length)
   console.log(`{files, stagedFiles}`, {files, stagedFiles})
   return intersection(stagedFiles, files)
