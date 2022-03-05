@@ -1,7 +1,3 @@
-# Piped is not changed 
-
-when major TS change happened
-
 # Rambda scripts
 
 Contains most scripts required to build `Rambda/Rambdax` related files.
