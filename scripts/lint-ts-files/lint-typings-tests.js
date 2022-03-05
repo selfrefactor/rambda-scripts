@@ -30,12 +30,11 @@ async function getFiles() {
   console.log(`stagedFilesRaw`, stagedFilesRaw.length)
   const stagedFiles = stagedFilesRaw.filter(x => x.endsWith('-spec.ts'))
   console.log(`stagedFiles`, stagedFiles.length)
-  console.log(`{files, stagedFiles}`, {files, stagedFiles})
   return intersection(stagedFiles, files)
 }
 
 void (async function lintTypingsTests() {
   const allFiles = await getFiles()
-  console.log(`allFiles`, allFiles.length)
+  console.log(`allFiles`, allFiles, allFiles.length)
   await mapAsyncLimit(lintSingleFile, 5, allFiles)
 })()
