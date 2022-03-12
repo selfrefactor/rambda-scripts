@@ -135,9 +135,9 @@ async function getIntroBaseContent(
 
   return content
 }
-
+const MIN_TS_VERSION = '4.3.3'
 const typescriptInfoTemplate = `
-Important - {{library}} version \`{{version}}\`(or higher) requires Typescript version \`4.2.2\`(or higher).
+Important - {{library}} version \`{{version}}\`(or higher) requires Typescript version \`${MIN_TS_VERSION}\`(or higher).
 `
 
 async function getIntroContent(withRambdax: boolean) {
@@ -147,7 +147,7 @@ async function getIntroContent(withRambdax: boolean) {
     : `${__dirname}/assets/ADVANTAGES.md`
 
   const typescriptInfo = interpolate(typescriptInfoTemplate, {
-    version: withRambdax ? '8.0.0' : `7.0.0`,
+    version: withRambdax ? '9.0.0' : `7.1.0`,
     library: withRambdax ? 'Rambdax' : 'Rambda',
   })
 

@@ -1,10 +1,7 @@
-import {exec} from 'helpers-fn'
-import {mapAsync} from 'rambdax'
-import path from 'path'
-import {fileURLToPath} from 'url'
-import fse from 'fs-extra'
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const {exec} = require('helpers-fn')
+const {mapAsync} = require('rambdax')
+const path = require('path')
+const fse = require('fs-extra')
 
 const VERSIONS = [
   '3.9.4',
