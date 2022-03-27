@@ -8,9 +8,18 @@ R.equalsProps(a,b,properties)
 
 is removed
 
+## Lint files/index.d.ts
+## https://github.com/smartprocure/futil-js#compactobject
+## https://github.com/smartprocure/futil-js#unflattenobject
+## https://github.com/smartprocure/futil-js#commonkeys
+
 ## R.contains
 
 R.contains({a:1}, {a:1, b:2}) => true
+
+## Data first Rambda
+
+As it is hard to create so many files, just exporting `_` which will contain one file, much like the initial version of Rambda
 
 ## 0.28
 
