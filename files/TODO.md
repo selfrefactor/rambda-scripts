@@ -1,3 +1,5 @@
+## Documentation site doesn't have REPL link
+
 ## R.whereAny.spec.js cannot be linted
 
 ## R.equalsProps
