@@ -6,7 +6,7 @@
 
 R.equalsProps(a,b,properties)
 
-## R.merge
+## R.sum - as python
 
 is removed
 

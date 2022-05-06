@@ -24,11 +24,17 @@ Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on 
 
 `yarn github`
 
-6. Update documentation site
+5. Publish to Nest.land
+
+change version in `egg.json`
+
+`eggs publish`
+
+7. Update documentation site
 
 `yarn docsify`
 
-7. After NPM publish manual check
+8. After NPM publish manual check
 
 Manual check for Typescript definitions
 
