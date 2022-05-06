@@ -30,6 +30,8 @@ change version in `egg.json`
 
 `eggs publish`
 
+`eggs publish --release-type minor --yes`
+
 7. Update documentation site
 
 `yarn docsify`
