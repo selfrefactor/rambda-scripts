@@ -34,7 +34,7 @@ change version in `egg.json`
 
 7. Update documentation site
 
-`yarn docsify`
+`yarn docs`
 
 8. After NPM publish manual check
 
@@ -64,7 +64,7 @@ inside Rambda folder
 
 5. Update documentation site
 
-`yarn docsify`
+`yarn docs`
 
 ## Github releases
 
@@ -74,8 +74,6 @@ inside Rambda folder
 
 3. Run `gh config set prompt disabled`
 
-4. Now from `rambda` repo after NPM version is published, run `yarn release`
-
 ## Scripts
 
 ### Check before release
@@ -84,14 +82,10 @@ inside Rambda folder
 
 ### Add new method
 
-`yarn new gte`
+`yarn new foo`
 
 ### Update benchmark summary
 
 If benchmarks are changed, then their summary should also be updated.
 
 `yarn summary`
-
-## TODO
-
-Script to check which TS versions are supported
