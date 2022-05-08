@@ -31,6 +31,7 @@ change version in `egg.json`
 `eggs publish`
 
 `eggs publish --release-type minor --yes`
+`eggs publish --release-type patch --yes`
 
 7. Update documentation site
 
