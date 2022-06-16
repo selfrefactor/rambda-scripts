@@ -19,6 +19,10 @@ is removed
 
 R.contains({a:1}, {a:1, b:2}) => true
 
+## wrong export
+
+Revert `export` field changes in `package.json` due to https://github.com/ramda/ramda/issues/3236
+
 ## Data first Rambda
 
 As it is hard to create so many files, just exporting `_` which will contain one file, much like the initial version of Rambda

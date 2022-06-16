@@ -65,8 +65,6 @@ R.pick('a,b', {a: 1 , b: 2, c: 3} })
 
 **Rambda** is generally more performant than `Ramda` as the [benchmarks](#-benchmarks) can prove that.
 
-### Deno
-
 ### Support
 
 As the library is smaller than Ramda, issues are much faster resolved.
