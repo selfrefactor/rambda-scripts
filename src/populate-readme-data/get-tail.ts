@@ -33,6 +33,8 @@ function getAdditionalInfo() {
 
 - [Awesome functional Javascript programming libraries](https://github.com/stoeffel/awesome-fp-js#libraries)
 
+- [Overview of Rambda pros/cons](https://mobily.github.io/ts-belt/docs/#rambda-%EF%B8%8F)
+
 > Links to Rambda
 
 - [https://mailchi.mp/webtoolsweekly/web-tools-280](Web Tools Weekly)
