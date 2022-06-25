@@ -1,5 +1,10 @@
 7.2.0
 
+Add `R.uniqBy` with implementation coming from [Ramda MR#2641](https://github.com/ramda/ramda/pull/2641) - TODO
+
+Apply the following changes from `@types/rambda`:
+
+- [https://github.com/DefinitelyTyped/DefinitelyTyped/commit/bab47272d52fc7bb81e85da36dbe9c905a04d067](add `AnyFunction` and `AnyConstructor`)
 
 7.1.4
 
