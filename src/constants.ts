@@ -67,6 +67,7 @@ export const BLACKLIST_METHODS = [
   'compose',
   'concat',
   'cond',
+  'reduce',
   'converge',
   'count',
   'curry',
@@ -121,5 +122,6 @@ export const BLACKLIST_METHODS = [
   'type',
   'unwind',
   'whereAny',
+  'uniqBy',
   'xnor',
 ]
