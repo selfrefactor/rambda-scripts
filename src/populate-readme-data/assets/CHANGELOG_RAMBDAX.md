@@ -1,6 +1,6 @@
 8.1.0
 
-- Braking change due to renaming of `R.partialCurry` to `R.partialObject` - TODO duplicate
+- Breaking change due to renaming of `R.partialCurry` to `R.partialObject` - TODO duplicate
 
 - Rambda's `pipe/compose` doesn't return proper length of composed function which leads to issue with `R.applySpec`. It was fixed by alligning Rambda's `pipe/compose` with Ramda logic - [Issue #627](https://github.com/selfrefactor/rambda/issues/627)
 
@@ -37,7 +37,7 @@
 
 8.0.0
 
-- Braking change - sync `R.compose`/`R.pipe` with `@types/ramda`. That is significant change so as safeguard, it will lead a major bump. Important - this lead to raising required Typescript version to `4.2.2`. In other words, to use `Rambda` you'll need Typescript version `4.2.2` or newer.
+- Breaking change - sync `R.compose`/`R.pipe` with `@types/ramda`. That is significant change so as safeguard, it will lead a major bump. Important - this lead to raising required Typescript version to `4.2.2`. In other words, to use `Rambda` you'll need Typescript version `4.2.2` or newer.
 
 Related commit in `@types/ramda` - https://github.com/DefinitelyTyped/DefinitelyTyped/commit/286eff4f76d41eb8f091e7437eabd8a60d97fc1f#diff-4f74803fa83a81e47cb17a7d8a4e46a7e451f4d9e5ce2f1bd7a70a72d91f4bc1
 
@@ -69,7 +69,7 @@ There are several other changes in `@types/ramda` as stated in [this comment](ht
 
 -- R.toUpper
 
-- One more reason for the braking change is changing of export declarations in `package.json` based on [this blog post](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5-beta/#packagejson-exports-imports-and-self-referencing) and [this merged Ramda's PR](https://github.com/ramda/ramda/pull/2999). This also led to renaming of `babel.config.js` to `babel.config.cjs`. 
+- One more reason for the breaking change is changing of export declarations in `package.json` based on [this blog post](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5-beta/#packagejson-exports-imports-and-self-referencing) and [this merged Ramda's PR](https://github.com/ramda/ramda/pull/2999). This also led to renaming of `babel.config.js` to `babel.config.cjs`. 
 
 - Add `R.apply`, `R.bind` and `R.unapply`
 
