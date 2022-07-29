@@ -4,7 +4,7 @@
 
 - `R.modifyPath` not exported - [Issue #640](https://github.com/selfrefactor/rambda/issues/640)
 
-- Add `R.uniqBy` with implementation coming from [Ramda MR#2641](https://github.com/ramda/ramda/pull/2641) - TODO
+- Add `R.uniqBy` with implementation coming from [Ramda MR#2641](https://github.com/ramda/ramda/pull/2641)
 
 Apply the following changes from `@types/rambda`:
 
