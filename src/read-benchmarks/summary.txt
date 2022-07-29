@@ -57,7 +57,7 @@
  *test* | 🚀 Fastest | 82.34% slower | 🔳
  *type* | 🚀 Fastest | 48.6% slower | 🔳
  *uniq* | 🚀 Fastest | 90.24% slower | 🔳
- *uniqWith* | 25.38% slower | 🚀 Fastest | 🔳
+ *uniqWith* | 18.09% slower | 🚀 Fastest | 🔳
  *uniqWith* | 14.23% slower | 🚀 Fastest | 🔳
  *update* | 🚀 Fastest | 52.35% slower | 🔳
  *view* | 🚀 Fastest | 76.15% slower | 🔳
