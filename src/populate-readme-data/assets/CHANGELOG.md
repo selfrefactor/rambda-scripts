@@ -1,3 +1,5 @@
+7.3.0
+
 7.2.0
 
 - Wrong `R.update` if index is `-1` - [PR #593](https://github.com/selfrefactor/rambda/pull/593)
