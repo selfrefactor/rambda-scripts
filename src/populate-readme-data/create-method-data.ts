@@ -173,7 +173,7 @@ export function createMethodData(
   if (method.rambdaSource && isAllowed) {
     data.push(createRambdaSourceReadme(method))
   }
-  if (method.rambdaSpecs && isAllowed) {
+  if (method.rambdaSpecs && isAllowed && isRamdaOnly) {
     data.push(createRambdaSpecReadme(method))
   }
 
