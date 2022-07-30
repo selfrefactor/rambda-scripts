@@ -41,6 +41,8 @@ change version in `egg.json`
 
 Manual check for Typescript definitions
 
+`yarn check-ts`
+
 ## Rambdax release steps
 
 1. Build readme
