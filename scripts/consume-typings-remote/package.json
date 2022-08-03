@@ -1,0 +1,13 @@
+{
+	"scripts": {
+		"start": "npm install --force&&yarn test",
+		"test": "tsc --lib esnext,dom consume-typings.ts&&node consume-typings.js"
+	},
+	"dependencies": {
+		"rambda": "7.2.0",
+		"typescript": "4.7.4"
+	},
+	"devDependencies": {
+		
+	}
+}
