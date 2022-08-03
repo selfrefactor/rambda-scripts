@@ -28,10 +28,10 @@ Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on 
 
 change version in `egg.json`
 
-`eggs publish`
+eggs publish
 
-`eggs publish --release-type minor --yes`
-`eggs publish --release-type patch --yes`
+eggs publish --release-type minor --yes
+eggs publish --release-type patch --yes
 
 7. Update documentation site
 

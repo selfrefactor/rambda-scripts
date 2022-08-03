@@ -1,6 +1,6 @@
 {
 	"scripts": {
-		"start": "npm install --force&&yarn test",
+		"start": "yarn && yarn test",
 		"test": "tsc --lib esnext,dom consume-typings.ts&&node consume-typings.js"
 	},
 	"dependencies": {

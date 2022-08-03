@@ -1,4 +1,6 @@
-7.3.0
+7.2.1
+
+- Remove bad typings of `R.propIs` which caused the library to cannot be build with Typescript. 
 
 - Drop support for `Wallaby` as per [https://github.com/wallabyjs/public/issues/3037](https://github.com/wallabyjs/public/issues/3037)
 
