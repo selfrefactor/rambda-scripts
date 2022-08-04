@@ -1,7 +1,4 @@
-// import { add, applySpec, reject, and, transpose, move, union, reduce } from 'rambda/immutable'
-import { add, applySpec, reject, and, transpose, move, union, reduce } from 'rambdax'
-// import {sortByProps} from 'rambdax'
-// "rambda": "file:./../../../rambda/",
+import { add, applySpec, reject, and, transpose, move, union, reduce } from 'rambda'
 
 // const sortByPropsResult = sortByProps(['a.b', 'a.c'], [
 //   {a: {b: 2, c: 4}},
