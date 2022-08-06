@@ -9,4 +9,3 @@ const applySpecResult = applySpec({
 
 const transposeResult = transpose([[1,2],[],[1,2,3],[3]])
 console.log({applySpecResult, transposeResult, moveResult, unionResult})
-

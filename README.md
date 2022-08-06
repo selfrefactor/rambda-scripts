@@ -6,19 +6,27 @@ Contains most scripts required to build `Rambda/Rambdax` related files.
 
 Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on the same level in the file system.
 
-## Release steps
+## Release steps - short version
+
+1. `yarn out`
+
+2. `yarn publish minor`
+
+3. `yarn docs`
+
+## Release steps - full version
+
+1. Build readme
 
 1. Build readme
 
 `yarn out`
 
-2. Build output
+2. Publish to NPM
 
-`yarn build`
+`run bump minor`
 
-4. Publish to NPM
-
-`run bump minor/patch`
+`run bump patch`
 
 5. Publish to Github
 
@@ -53,7 +61,7 @@ Manual check for Typescript definitions
 
 inside Rambda folder
 
-`yarn`
+`yarn install`
 
 `yarn build`
 
@@ -82,10 +90,6 @@ inside Rambda folder
 ### Check before release
 
 `yarn consume`
-
-### Add new method
-
-`yarn new foo`
 
 ### Update benchmark summary
 
