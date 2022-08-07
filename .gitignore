@@ -14,3 +14,4 @@ coverage
 dist
 .idea
 standalone-benchmark-results/*.json
+.vscode/settings.json
