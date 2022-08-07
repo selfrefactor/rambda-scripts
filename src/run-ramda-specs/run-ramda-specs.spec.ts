@@ -9,19 +9,15 @@ import {runSingleSpec} from './_modules/run-specs'
 jest.setTimeout(ms('12 minutes'))
 const RUN_ALL = defaultTo('RUN_ALL', false, 'onoff') 
 const WITH_INITIAL_STEP = defaultTo('WITH_INITIAL_STEP', false, 'onoff') 
-const METHOD = defaultTo('METHOD', 'add', 'default') 
-console.log({
-  METHOD,
-  RUN_ALL,
-  WITH_INITIAL_STEP,
-})
+const METHOD = defaultTo('METHOD', 'modify', 'default') 
+console.log({RUN_ALL, WITH_INITIAL_STEP, METHOD})
 
 test('run single spec', async() => {
   if (RUN_ALL) return
 
   await build()
   await importRamdaSpecs(WITH_INITIAL_STEP)
-  expect(await runSingleSpec('modify')).toBeTruthy()
+  expect(await runSingleSpec(METHOD)).toBeTruthy()
 })
 
 test('run all specs', async() => {
