@@ -61,6 +61,7 @@ async function applyOldFormat(filePath, methodName) {
 }
 
 async function runSingleBenchmark(methodName, disableOldFormat = false) {
+  console.log(methodName, `methodName`)
   const filePath = `${benchmarksDir}/${methodName}.js`
   if (!existsSync(filePath)) {
     throw new Error(`!existsSync(filePath) ${filePath}`)

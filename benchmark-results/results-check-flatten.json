@@ -1,0 +1,107 @@
+{
+  "warnings": [
+    {
+      "firstResult": true,
+      "secondResult": false,
+      "labels": [
+        "Rambda",
+        "Ramda",
+        "Lodash"
+      ],
+      "index": 0
+    },
+    {
+      "firstResult": true,
+      "secondResult": false,
+      "labels": [
+        "Rambda",
+        "Ramda",
+        "Lodash"
+      ],
+      "index": 3
+    },
+    {
+      "firstResult": true,
+      "secondResult": false,
+      "labels": [
+        "Rambda",
+        "Ramda",
+        "Lodash"
+      ],
+      "index": 4
+    },
+    {
+      "firstResult": true,
+      "secondResult": false,
+      "labels": [
+        "Rambda",
+        "Ramda",
+        "Lodash"
+      ],
+      "index": 5
+    }
+  ],
+  "allResults": [
+    {
+      "firstResult": true,
+      "secondResult": false,
+      "labels": [
+        "Rambda",
+        "Ramda",
+        "Lodash"
+      ],
+      "index": 0
+    },
+    {
+      "firstResult": true,
+      "secondResult": true,
+      "labels": [
+        "Rambda",
+        "Ramda",
+        "Lodash"
+      ],
+      "index": 1
+    },
+    {
+      "firstResult": true,
+      "secondResult": true,
+      "labels": [
+        "Rambda",
+        "Ramda",
+        "Lodash"
+      ],
+      "index": 2
+    },
+    {
+      "firstResult": true,
+      "secondResult": false,
+      "labels": [
+        "Rambda",
+        "Ramda",
+        "Lodash"
+      ],
+      "index": 3
+    },
+    {
+      "firstResult": true,
+      "secondResult": false,
+      "labels": [
+        "Rambda",
+        "Ramda",
+        "Lodash"
+      ],
+      "index": 4
+    },
+    {
+      "firstResult": true,
+      "secondResult": false,
+      "labels": [
+        "Rambda",
+        "Ramda",
+        "Lodash"
+      ],
+      "index": 5
+    }
+  ],
+  "numWarnings": 4
+}
