@@ -6,38 +6,9 @@
     ✓ is not destructive
     ✓ ignores primitive value transformations
     ✓ ignores null transformations
-    1) adjust if `array` at the given key with the `transformation` function
-    2) ignores transformations if the input value is not Array and Object
+    ✓ adjust if `array` at the given key with the `transformation` function
+    ✓ ignores transformations if the input value is not Array and Object
 
 
-  5 passing (51ms)
-  2 failing
-
-  1) modify
-       adjust if `array` at the given key with the `transformation` function:
-
-      AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
-+ actual - expected
-
-+ '{"0": 100, "1": 1401}'
-- '[100, 1401]'
-      + expected - actual
-
-      -{"0": 100, "1": 1401}
-      +[100, 1401]
-      
-      at strictEqual (test/shared/eq.js:8:10)
-      at Context.eq (test/modify.js:39:5)
-      at processImmediate (node:internal/timers:471:21)
-
-  2) modify
-       ignores transformations if the input value is not Array and Object:
-     TypeError: Cannot read properties of undefined (reading 'a')
-      at modifyFn (/home/sr/repos/rambda/dist/rambda.js:1710:10)
-      at /home/sr/repos/rambda/dist/rambda.js:21:60
-      at Object.modify (/home/sr/repos/rambda/dist/rambda.js:21:90)
-      at Context.modify (test/modify.js:44:10)
-      at processImmediate (node:internal/timers:471:21)
-
-
+  7 passing (41ms)
 
