@@ -1,50 +1,9 @@
 {
-  "warnings": [
-    {
-      "firstResult": true,
-      "secondResult": false,
-      "labels": [
-        "Rambda",
-        "Ramda",
-        "Lodash"
-      ],
-      "index": 0
-    },
-    {
-      "firstResult": true,
-      "secondResult": false,
-      "labels": [
-        "Rambda",
-        "Ramda",
-        "Lodash"
-      ],
-      "index": 3
-    },
-    {
-      "firstResult": true,
-      "secondResult": false,
-      "labels": [
-        "Rambda",
-        "Ramda",
-        "Lodash"
-      ],
-      "index": 4
-    },
-    {
-      "firstResult": true,
-      "secondResult": false,
-      "labels": [
-        "Rambda",
-        "Ramda",
-        "Lodash"
-      ],
-      "index": 5
-    }
-  ],
+  "warnings": [],
   "allResults": [
     {
       "firstResult": true,
-      "secondResult": false,
+      "secondResult": true,
       "labels": [
         "Rambda",
         "Ramda",
@@ -74,7 +33,7 @@
     },
     {
       "firstResult": true,
-      "secondResult": false,
+      "secondResult": true,
       "labels": [
         "Rambda",
         "Ramda",
@@ -84,7 +43,7 @@
     },
     {
       "firstResult": true,
-      "secondResult": false,
+      "secondResult": true,
       "labels": [
         "Rambda",
         "Ramda",
@@ -94,7 +53,7 @@
     },
     {
       "firstResult": true,
-      "secondResult": false,
+      "secondResult": true,
       "labels": [
         "Rambda",
         "Ramda",
@@ -103,5 +62,5 @@
       "index": 5
     }
   ],
-  "numWarnings": 4
+  "numWarnings": 0
 }
