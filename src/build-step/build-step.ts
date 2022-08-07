@@ -19,6 +19,8 @@ const rambdaxMethodsAsInternals = ['isFunction', 'isPromise', 'maybe']
 const denoComment = '/// <reference types="./index.d.ts" />'
 
 async function createMainFile(allMethods: string[]) {
+  allMethods.sort((a, b) => a > b ? 1 : -1)
+
   const content = allMethods
     .map((x: string) => `export * from './src/${x}.js'`)
     .join('\n')
@@ -35,6 +37,9 @@ async function createMainFileRambdax({
   allMethods: string[],
   dir: string,
 }) {
+  rambdaMethods.sort((a, b) => a > b ? 1 : -1)
+  allMethods.sort((a, b) => a > b ? 1 : -1)
+
   const content = [...allMethods, ...rambdaMethods]
     .map(x => `export * from './src/${x}'`)
     .join('\n')
