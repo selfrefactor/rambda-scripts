@@ -1,20 +1,27 @@
 import {ms} from 'string-fn'
 
 import {build} from '../utils'
+import {defaultTo} from 'helpers-fn'
 import {importRamdaSpecs} from './import-ramda-specs'
 import {runRamdaSpecs} from './run-ramda-specs'
 import {runSingleSpec} from './_modules/run-specs'
 
 jest.setTimeout(ms('12 minutes'))
-const RUN_ALL = false
-const WITH_INITIAL_STEP = true
+const RUN_ALL = defaultTo('RUN_ALL', false, 'onoff') 
+const WITH_INITIAL_STEP = defaultTo('WITH_INITIAL_STEP', false, 'onoff') 
+const METHOD = defaultTo('METHOD', 'add', 'default') 
+console.log({
+  METHOD,
+  RUN_ALL,
+  WITH_INITIAL_STEP,
+})
 
 test('run single spec', async() => {
   if (RUN_ALL) return
 
   await build()
   await importRamdaSpecs(WITH_INITIAL_STEP)
-  expect(await runSingleSpec('none')).toBeTruthy()
+  expect(await runSingleSpec('modify')).toBeTruthy()
 })
 
 test('run all specs', async() => {

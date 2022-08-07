@@ -10,6 +10,7 @@
 		"check-benchmark": "node scripts/run-benchmarks/check-benchmark-spec.js",
 		"check-ts": "node scripts/find-lowest-ts-version/find-lowest-ts-version.js",
 		"build": "tsc -p tsconfig.json",
+		"run:ramda:test": "jest src/run-ramda-specs/run-ramda-specs.spec.ts",
 		"github": "node scripts/github-release/github-release.js",
 		"githubx": "WITH_RAMBDAX=ON node scripts/github-release/github-release.js",
 		"immutable": "yarn immutable:rambda && yarn immutable:rambdax",
