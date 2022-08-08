@@ -60,6 +60,9 @@ export const HAS_RAMBDAX = existsSync(
 export const GITHUB_README_LIMIT = 0.5
 
 export const BLACKLIST_METHODS = [
+  'add',
+  'always',
+  'assoc',
   'and',
   'clamp',
   'clone',

@@ -162,7 +162,7 @@ export function createMethodData(
   if (method.notes && !npmReadme) data.push(createNoteReadme(method))
   if (method.example && !npmReadme) data.push(createExampleReadme(method))
 
-  if (method.replLink && !npmReadme) {
+  if (method.replLink) {
     data.push(createReplReadme(method))
     data.push('\n')
   }
