@@ -1,9 +1,15 @@
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+    {
+      "name": "Sample benchmark",
+      "program": "${workspaceFolder}/scripts/run-benchmarks/run-sample-benchmarks-spec.js",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
     {
       "name": "Debug",
       "program": "${workspaceFolder}/scripts/lint/lint.js",
@@ -14,10 +20,10 @@
       "env": {
         "LINT_STAGED_ONLY": "ON"
       },
-      "type": "pwa-node"
+      "type": "node"
     },
     {
-      "type": "pwa-node",
+      "type": "node",
       "request": "launch",
       "name": "Benchmark",
       "skipFiles": [
@@ -33,7 +39,7 @@
       }
     },
     {
-      "type": "pwa-node",
+      "type": "node",
       "request": "launch",
       "name": "Check method",
       "skipFiles": [

@@ -1,6 +1,7 @@
 {
 	"name": "rambda-scripts",
 	"scripts": {
+		"bench:sample": "node scripts/run-benchmarks/run-sample-benchmarks-spec.js",
 		"dev": "jest src/populate-readme-data/rambda-repl.spec.ts --watch",
 		"piped": "node scripts/build-multiple-types/build-multiple-types piped",
 		"fast-equals": "node scripts/run-benchmarks/standalone/against-fast-equals.js",

@@ -2,9 +2,9 @@ const {add, complete, cycle, save, suite} = require('benny')
 const {ok} = require('rambdax')
 const {snakeCase, constantCase} = require('string-fn')
 
-const folder = 'benchmark-results'
+const defaultFolder = 'benchmark-results'
 
-async function createBenchmark(tests, suiteLabel) {
+async function createBenchmark(tests, suiteLabel, folder = defaultFolder) {
   ok(tests, suiteLabel)(
     [
       {
