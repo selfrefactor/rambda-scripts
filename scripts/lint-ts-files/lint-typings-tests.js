@@ -36,5 +36,5 @@ async function getFiles() {
 void (async function lintTypingsTests() {
   const allFiles = await getFiles()
   console.log(`allFiles`, allFiles, allFiles.length)
-  await mapAsyncLimit(lintSingleFile, 5, allFiles)
+  await mapAsyncLimit(lintSingleFile, 15, allFiles)
 })()
