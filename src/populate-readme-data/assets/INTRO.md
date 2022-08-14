@@ -8,6 +8,7 @@
 ![All contributors](https://img.shields.io/github/contributors/selfrefactor/rambda)
 ![Library size](https://img.shields.io/bundlephobia/minzip/rambda)
 [![install size](https://packagephobia.com/badge?p=rambda)](https://packagephobia.com/result?p=rambda)
+[![nest badge](https://nest.land/badge.svg)](https://nest.land/package/rambda)
 
 ## {{bullet}} Example use
 
