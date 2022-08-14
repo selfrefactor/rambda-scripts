@@ -22,11 +22,14 @@ function attachResultVariable(input: string) {
     .join('\n')
 }
 
-export function rambdaRepl(input: string) {
+export function rambdaRepl(input: string, methodName: string) {
   const consoleLogFlag = getConsoleLog(input)
   const resultVariableFlag = getResultVariableLog(input)
   const flag = resultVariableFlag || consoleLogFlag
   const code = when(() => !flag, attachResultVariable)(input)
+  if(!flag && !code.includes('console.log')){
+    console.warn(methodName, `repl error`)
+  }
   const encoded = encodeURIComponent(code.trim())
 
   return `${REPL_URL}?${encoded}`

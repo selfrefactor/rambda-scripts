@@ -62,9 +62,9 @@ export async function populateReadmeData(
   await buildStep(withRambdax)
   const methodsData = await getMethodsData(withRambdax)
 
-  const methods = map((x: any) => {
+  const methods = map((x: any, y: string) => {
     if (!x.example) return x
-    const replLink = rambdaRepl(x.example)
+    const replLink = rambdaRepl(x.example, y)
 
     return {
       ...x,
