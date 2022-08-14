@@ -1,6 +1,8 @@
 9.0.0
 
-- Breaking change due to renaming of `R.mapFastAsync` to `R.mapParallelAsync` and `R.mapAsyncLimit` to `R.mapParallelAsyncWithLimit`
+- Breaking change due to renaming of `R.mapFastAsync` to `R.mapParallelAsync` and `R.mapAsyncLimit` to `R.mapParallelAsyncWithLimit`.
+
+- Add `R.mapAllSettled`
 
 8.1.0
 
