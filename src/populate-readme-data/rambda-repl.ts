@@ -27,7 +27,7 @@ export function rambdaRepl(input: string, methodName: string) {
   const resultVariableFlag = getResultVariableLog(input)
   const flag = resultVariableFlag || consoleLogFlag
   const code = when(() => !flag, attachResultVariable)(input)
-  if(!flag && !code.includes('console.log')){
+  if(!flag && !code.includes('const result')){
     console.warn(methodName, `repl error`)
   }
   const encoded = encodeURIComponent(code.trim())
