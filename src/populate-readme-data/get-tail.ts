@@ -1,5 +1,5 @@
 import {readFile} from 'fs-extra'
-import {forEach, interpolate} from 'rambdax'
+import {forEach, head, interpolate, piped, remove, split, trim} from 'rambdax'
 import {BULLET} from '../constants'
 import {getSeparator} from '../utils'
 
@@ -65,6 +65,8 @@ const templateTail = `
 
 {{changelog}}
 
+> This is only part of the changelog. You can read the full text in [CHANGELOG.md](CHANGELOG.md) file.
+
 {{changelogSeparator}}
 
 {{additionalInfo}}
@@ -106,18 +108,32 @@ const myLibraries = `
 </table>
 `.trim()
 
-export async function getTail(withRambdax: boolean) {
+async function getChangelog(withRambdax){
   const changelogSource = withRambdax
     ? `${__dirname}/assets/CHANGELOG_RAMBDAX.md`
     : `${__dirname}/assets/CHANGELOG.md`
-
+  const marker = withRambdax
+    ? `7.3.0`
+    : `6.4.0`
+  
   const changelogContent = await readFile(changelogSource)
+  
+  return piped(
+    changelogContent.toString(),
+    split(marker),
+    head,
+    remove(marker),
+    trim
+  )
+}
 
+export async function getTail(withRambdax: boolean) {
+  const changelog = await getChangelog(withRambdax)
   return interpolate(templateTail, {
     additionalInfoSeparator: getSeparator('additional-info'),
     additionalInfo: getAdditionalInfo(),
     myLibraries,
     changelogSeparator: getSeparator('changelog'),
-    changelog: changelogContent.toString(),
+    changelog,
   })
 }
