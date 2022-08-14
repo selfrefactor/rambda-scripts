@@ -1,3 +1,7 @@
+9.0.0
+
+- Breaking change due to renaming of `R.mapFastAsync` to `R.mapParallelAsync` and `R.mapAsyncLimit` to `R.mapParallelAsyncWithLimit`
+
 8.1.0
 
 - Breaking change due to renaming of `R.partialCurry` to `R.partialObject`.
