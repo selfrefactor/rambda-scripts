@@ -59,14 +59,14 @@ export const HAS_RAMBDAX = existsSync(
 
 export const GITHUB_README_LIMIT = 0.5
 
-export const DISABLE_SOURCE = []
-export const DISABLE_SOURCE_RAMBDAX = []
+export const DISABLE_SOURCE = [`adjust`]
+export const DISABLE_SOURCE_RAMBDAX = [...DISABLE_SOURCE]
 export const DISABLE_SPEC = []
-export const DISABLE_SPEC_RAMBDAX = []
+export const DISABLE_SPEC_RAMBDAX = [...DISABLE_SPEC]
 export const DISABLE_TS_SPEC = []
-export const DISABLE_TS_SPEC_RAMBDAX = []
+export const DISABLE_TS_SPEC_RAMBDAX = [...DISABLE_TS_SPEC]
 export const DISABLE_TS = []
-export const DISABLE_TS_RAMBDAX = []
+export const DISABLE_TS_RAMBDAX = [...DISABLE_TS]
 
 export const BLACKLIST_METHODS = [
   'add',

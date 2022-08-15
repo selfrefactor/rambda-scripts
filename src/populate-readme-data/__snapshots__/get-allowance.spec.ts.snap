@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`happy add 1`] = `undefined`;
+
+exports[`happy adjust 1`] = `undefined`;
+
+exports[`happy pipe 1`] = `undefined`;

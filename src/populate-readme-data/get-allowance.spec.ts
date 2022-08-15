@@ -1,6 +1,12 @@
 import { getAllowance } from './get-allowance'
 
-test('happy', () => {
-  const result =  getAllowance('add', false)
-  console.log(result, `result`)
+describe('happy', () => {
+  ['add', 'adjust', `pipe`].forEach((method) => {
+    test((method), () => {
+      const result =  getAllowance(method, false)
+      expect(
+        result
+      ).toMatchSnapshot()
+    })
+  })
 })
