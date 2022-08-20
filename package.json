@@ -1,7 +1,7 @@
 {
 	"name": "rambda-scripts",
 	"scripts": {
-		"test": "jest --watch src/populate-readme-data/get-allowance.spec.ts",
+		"test": "jest -o -u --watch",
 		"bench:sample": "node scripts/run-benchmarks/run-sample-benchmarks-spec.js",
 		"dev": "jest src/populate-readme-data/rambda-repl.spec.ts --watch",
 		"piped": "node scripts/build-multiple-types/build-multiple-types piped",
