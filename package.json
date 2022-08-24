@@ -58,6 +58,7 @@
 		"rambda": "7.2.1",
 		"rambdax": "8.1.0",
 		"ramda": "0.28.0",
+		"get-folder-size":"4.0.0",
 		"string-fn": "3.1.0",
 		"ts-jest": "28.0.7",
 		"ts-loader": "9.3.1",
