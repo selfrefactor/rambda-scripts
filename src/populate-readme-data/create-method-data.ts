@@ -161,6 +161,7 @@ export function createMethodData(
 ) {
   const data = getIntro(method)
   // const allowance = getAllowance(method.methodName, withRambdax)
+  const isRambdaOnly = !withRambdax
   const isAllowed = !BLACKLIST_METHODS_RAMBDAX.includes(method.methodName)
   if (method.typing && isAllowed) data.push(attachTyping(method))
   if (method.explanation) {
