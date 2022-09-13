@@ -1,4 +1,23 @@
 import { add, applySpec, reject, and, transpose, move, union, reduce } from 'rambda'
+import * as R from 'remeda'
+
+const list = [ 1, 2, 3 ]
+const result1 = R.pipe(
+  list,
+  R.map((x) => {
+    return x+12
+  }), R.map((x) => {
+    return x+1
+  }), R.last
+)
+
+const result2 = R.createPipe(
+  R.map((x) => {
+    return x+1
+  }), R.map((x) => {
+    return x+1
+  }), R.last
+)(list)
 
 // const sortByPropsResult = sortByProps(['a.b', 'a.c'], [
 //   {a: {b: 2, c: 4}},

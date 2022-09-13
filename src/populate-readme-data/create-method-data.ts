@@ -10,7 +10,7 @@ import {BLACKLIST_METHODS, BLACKLIST_METHODS_RAMBDAX,
   DISABLE_TS_RAMBDAX
 } from '../constants'
 import {getMethodSeparator} from '../utils'
-import { getAllowance } from './getAllowance'
+import { getAllowance } from './get-allowance'
 
 function createFailedSpec(method: any) {
   const summaryTemplate = `
@@ -160,8 +160,8 @@ export function createMethodData(
   npmReadme: boolean
 ) {
   const data = getIntro(method)
-  const allowance = getAllowance(method.methodName, withRambdax)
-
+  // const allowance = getAllowance(method.methodName, withRambdax)
+  const isAllowed = !BLACKLIST_METHODS_RAMBDAX.includes(method.methodName)
   if (method.typing && isAllowed) data.push(attachTyping(method))
   if (method.explanation) {
     data.push(method.explanation)
