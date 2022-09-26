@@ -59,6 +59,15 @@ export const HAS_RAMBDAX = existsSync(
 
 export const GITHUB_README_LIMIT = 0.5
 
+export const DISABLE_SOURCE = [`adjust`]
+export const DISABLE_SOURCE_RAMBDAX = [...DISABLE_SOURCE]
+export const DISABLE_SPEC = []
+export const DISABLE_SPEC_RAMBDAX = [...DISABLE_SPEC]
+export const DISABLE_TS_SPEC = []
+export const DISABLE_TS_SPEC_RAMBDAX = [...DISABLE_TS_SPEC]
+export const DISABLE_TS = []
+export const DISABLE_TS_RAMBDAX = [...DISABLE_TS]
+
 export const BLACKLIST_METHODS = [
   'add',
   'always',
@@ -82,11 +91,7 @@ export const BLACKLIST_METHODS = [
   'dropWhile',
   'eqProps',
   'excludes',
-  'filterIndexed',
-  'findAsync',
-  'flattenObject',
   'flip',
-  'forEachIndexed',
   'fromPairs',
   'groupBy',
   'groupWith',
@@ -97,9 +102,6 @@ export const BLACKLIST_METHODS = [
   'intersection',
   'intersperse',
   'is',
-  'mapIndexed',
-  'mapObjIndexed',
-  'mapcat',
   'mathMod',
   'max',
   'maxBy',
@@ -114,18 +116,25 @@ export const BLACKLIST_METHODS = [
   'objOf',
   'on',
   'or',
-  'partitionIndexed',
   'pipe',
   'reduce',
-  'rejectIndexed',
   'subtract',
   'takeWhile',
   'tryCatch',
-  // 'tryCatchAsync',
   'type',
   'uniqBy',
   'unwind',
   'whereAny',
-  // 'xnor',
-  // 'partialCurry',
+]
+export const BLACKLIST_METHODS_RAMBDAX = [
+  'filterIndexed',
+  'findAsync',
+  'flattenObject',
+  'forEachIndexed',
+  'mapIndexed',
+  'mapObjIndexed',
+  'mapcat',
+  'partitionIndexed',
+  'rejectIndexed',
+  'tryCatchAsync',
 ]

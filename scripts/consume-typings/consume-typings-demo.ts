@@ -1,6 +1,7 @@
 import * as R from 'remeda'
 import * as Rambda from 'rambda'
 
+// const list = [ 1, 2, 3, 'foo' ]
 const list = [ 1, 2, 3 ]
 const resultPipe = R.pipe(
   list,
