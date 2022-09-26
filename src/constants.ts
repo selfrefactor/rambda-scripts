@@ -60,7 +60,6 @@ export const HAS_RAMBDAX = existsSync(
 export const GITHUB_README_LIMIT = 0.5
 
 export const BLACKLIST_METHODS = [
-  'add',
   'always',
   'assoc',
   'and',
@@ -103,7 +102,7 @@ export const BLACKLIST_METHODS = [
   'mathMod',
   'max',
   'maxBy',
-  'merge',
+  // 'merge',
   'mergeRight',
   'min',
   'minBy',
@@ -122,7 +121,7 @@ export const BLACKLIST_METHODS = [
   'takeWhile',
   'tryCatch',
   // 'tryCatchAsync',
-  'type',
+  // 'type',
   'uniqBy',
   'unwind',
   'whereAny',

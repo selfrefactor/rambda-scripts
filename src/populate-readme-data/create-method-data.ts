@@ -184,9 +184,9 @@ export function createMethodData(
   if (method.benchmarkInfo && isRamdaOnly) {
     data.push(createBenchmarkInfo(method))
   }
-  if (method.failedSpecsReasons && isAllowed){
-    data.push(createFailedSpec(method))
-  }
+  // if (method.failedSpecsReasons && isAllowed){
+  //   data.push(createFailedSpec(method))
+  // }
 
   data.push(`\n${getMethodSeparator(method.methodName)}\n`)
 
