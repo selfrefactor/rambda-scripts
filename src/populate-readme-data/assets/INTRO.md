@@ -9,6 +9,7 @@
 ![Library size](https://img.shields.io/bundlephobia/minzip/rambda)
 [![install size](https://packagephobia.com/badge?p=rambda)](https://packagephobia.com/result?p=rambda)
 [![nest badge](https://nest.land/badge.svg)](https://nest.land/package/rambda)
+[![HitCount](https://hits.dwyl.com/selfrefactor/rambda.svg?style=flat-square)](http://hits.dwyl.com/selfrefactor/rambda)
 
 ## {{bullet}} Example use
 

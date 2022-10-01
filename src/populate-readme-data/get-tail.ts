@@ -74,6 +74,10 @@ const templateTail = `
 {{additionalInfoSeparator}}
 
 {{myLibraries}}
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/selfrefactor/{{library}}.svg)](https://starchart.cc/selfrefactor/{{library}})
 `
 
 const myLibraries = `
@@ -130,6 +134,7 @@ async function getChangelog(withRambdax){
 export async function getTail(withRambdax: boolean) {
   const changelog = await getChangelog(withRambdax)
   return interpolate(templateTail, {
+    library: withRambdax : 'rambdax':'rambda',
     additionalInfoSeparator: getSeparator('additional-info'),
     additionalInfo: getAdditionalInfo(),
     myLibraries,
