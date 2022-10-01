@@ -2,6 +2,7 @@ const getFolderSize = require('get-folder-size')
 const { resolve } = require('path')
 const { exec } = require('helpers-fn')
 // const { resolve } = require('fs-extra')
+const { replace } = require('rambdax')
 
 const webpackDir = resolve(__dirname,'../tree-shaking-webpack' )
 const angularDir = resolve(__dirname,'../tree-shaking-angular' )
