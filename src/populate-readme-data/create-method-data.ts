@@ -1,6 +1,6 @@
 import {interpolate} from 'rambdax'
-import {BLACKLIST_METHODS} from '../constants'
 import {getMethodSeparator} from '../utils'
+import { getAllowance } from './get-allowance'
 
 function createFailedSpec(method: any) {
   const summaryTemplate = `
@@ -150,38 +150,37 @@ export function createMethodData(
   npmReadme: boolean
 ) {
   const data = getIntro(method)
-  const isAllowed = !BLACKLIST_METHODS.includes(method.methodName)
-  const isRamdaOnly = isAllowed && !withRambdax
+  const allowance = getAllowance(method.methodName, withRambdax)
 
-  if (method.typing && isAllowed) data.push(attachTyping(method))
+  if (method.typing && allowance.typing) data.push(attachTyping(method))
   if (method.explanation) {
     data.push(method.explanation)
     data.push('\n')
   }
 
   if (method.notes && !npmReadme) data.push(createNoteReadme(method))
-  if (method.example && !npmReadme) data.push(createExampleReadme(method))
+  if (method.example && !npmReadme && allowance.example ) data.push(createExampleReadme(method))
 
   if (method.replLink) {
     data.push(createReplReadme(method))
     data.push('\n')
   }
 
-  if (method.allTypings && isRamdaOnly) {
+  if (method.allTypings && allowance.allTypings) {
     data.push(attachAllTypings(method))
   }
-  if (method.rambdaSource && isAllowed) {
+  if (method.rambdaSource && allowance.source) {
     data.push(createRambdaSourceReadme(method))
   }
-  if (method.rambdaSpecs && isAllowed && isRamdaOnly) {
+  if (method.rambdaSpecs && allowance.specs) {
     data.push(createRambdaSpecReadme(method))
   }
 
-  if (method.typescriptDefinitionTest && isRamdaOnly) {
+  if (method.typescriptDefinitionTest && allowance.tsTest) {
     data.push(createTypescriptTest(method))
   }
 
-  if (method.benchmarkInfo && isRamdaOnly) {
+  if (method.benchmarkInfo && allowance.benchmark) {
     data.push(createBenchmarkInfo(method))
   }
   // if (method.failedSpecsReasons && isAllowed){

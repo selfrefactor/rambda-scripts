@@ -134,7 +134,7 @@ async function getChangelog(withRambdax){
 export async function getTail(withRambdax: boolean) {
   const changelog = await getChangelog(withRambdax)
   return interpolate(templateTail, {
-    library: withRambdax : 'rambdax':'rambda',
+    library: withRambdax ? 'rambdax':'rambda',
     additionalInfoSeparator: getSeparator('additional-info'),
     additionalInfo: getAdditionalInfo(),
     myLibraries,
