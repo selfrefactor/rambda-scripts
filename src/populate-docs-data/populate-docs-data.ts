@@ -1,6 +1,6 @@
 import {existsSync, outputJSON} from 'fs-extra'
 import {resolve} from 'path'
-import {map, piped} from 'rambdax'
+import {map, piped, sortObject} from 'rambdax'
 import {DESTINATIONS} from '../constants'
 
 import {extractAllDefinitions} from './extract-from-typings/extract-all-definitions'
@@ -71,6 +71,13 @@ async function save(input: Save) {
 
 const pipedMethod: any = piped
 
+function getSortedInput(pipedInput: any){
+  const predicate = (
+    propA, propB, valueA, valueB
+  ) => propA < propB ? -1 : 1
+  return sortObject(predicate, pipedInput)
+}
+
 export async function populateDocsData(withRambdax: boolean) {
   const definitions = extractDefinition(withRambdax)
   const categories = extractCategories(withRambdax)
@@ -87,9 +94,10 @@ export async function populateDocsData(withRambdax: boolean) {
   const failedSpecsCount = failedTestsCount()
 
   const pipedInput = initiateData(definitions, 'typing')
-
+  const sortedPipedInput = getSortedInput(pipedInput)
+  
   const toSave = pipedMethod(
-    pipedInput,
+    sortedPipedInput,
     input =>
       appendData({
         input,

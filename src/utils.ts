@@ -4,6 +4,11 @@ import {spawn} from 'helpers-fn'
 import {resolve} from 'path'
 import {PATHS} from './constants'
 
+export const sortFn = (a:any, b:any) => {
+  if(a === b) return 0
+  return a < b ? -1 :1
+}
+
 export function getSeparator(label: string) {
   return `[![---------------](https://raw.githubusercontent.com/selfrefactor/rambda/master/files/separator.png)](#-${label})`
 }
@@ -31,13 +36,13 @@ export async function getRambdaxData() {
 export async function getRambdaMethods() {
   const rambdaData = await getRambdaData()
 
-  return Object.keys(rambdaData)
+  return Object.keys(rambdaData).sort(sortFn)
 }
 
 export async function getRambdaxMethods() {
   const rambdaxData = await getRambdaxData()
 
-  return Object.keys(rambdaxData)
+  return Object.keys(rambdaxData).sort(sortFn)
 }
 
 export const BOTH_LIBRARIES = readFileSync(

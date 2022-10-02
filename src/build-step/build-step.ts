@@ -9,7 +9,7 @@ import {scanFolder} from 'helpers-fn'
 import {parse} from 'path'
 import {filter, mapAsync, pick, pipedAsync, remove} from 'rambdax'
 import {PATHS, X_PATHS, SOURCES} from '../constants'
-import {getRambdaMethods} from '../utils'
+import {getRambdaMethods, sortFn} from '../utils'
 import {createExportedTypings} from './create-exported-typings'
 
 // Rambdax methods which are used in creation of Rambda methods
@@ -19,7 +19,7 @@ const rambdaxMethodsAsInternals = ['isFunction', 'isPromise', 'maybe']
 const denoComment = '/// <reference types="./index.d.ts" />'
 
 async function createMainFile(allMethods: string[]) {
-  allMethods.sort((a, b) => a > b ? 1 : -1)
+  allMethods.sort(sortFn)
 
   const content = allMethods
     .map((x: string) => `export * from './src/${x}.js'`)
@@ -37,8 +37,8 @@ async function createMainFileRambdax({
   allMethods: string[],
   dir: string,
 }) {
-  rambdaMethods.sort((a, b) => a > b ? 1 : -1)
-  allMethods.sort((a, b) => a > b ? 1 : -1)
+  rambdaMethods.sort(sortFn)
+  allMethods.sort(sortFn)
 
   const content = [...allMethods, ...rambdaMethods]
     .map(x => `export * from './src/${x}'`)
@@ -164,8 +164,11 @@ async function syncChangelog(withRambdax: boolean) {
 export async function buildStep(withRambdax: boolean) {
   await createExportedTypings(withRambdax)
 
-  if (withRambdax) await rambdaxBuildStep()
-  await rambdaBuildStep()
+  if (withRambdax){
+    await rambdaxBuildStep()
+  } else{
+    await rambdaBuildStep()
+  }
 
   await syncChangelog(withRambdax)
 }
