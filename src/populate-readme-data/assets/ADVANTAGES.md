@@ -30,17 +30,7 @@ Ramda.add(1)('foo') // => will not trigger warning in VSCode
 
 The size of a library affects not only the build bundle size but also the dev bundle size and build time. This is important advantage, expecially for big projects.
 
-### Tree-shaking
-
-Currently **Rambda** is more tree-shakable than **Ramda** - proven in the following [repo](https://github.com/selfrefactor/rambda-tree-shaking).
-
-The repo holds two `Angular9` applications: one with small example code of *Ramda* and the other - same code but with *Rambda* as import library.
-
-The test shows that **Rambda** bundle size is **{{rambdaTreeShakingInfo}} MB** less than its **Ramda** counterpart.
-
-There is also [Webpack/Rollup/Parcel/Esbuild tree-shaking example including several libraries](https://github.com/mischnic/tree-shaking-example) including `Ramda`, `Rambda` and `Rambdax`. 
-
-> actually tree-shaking is the initial reason for creation of `Rambda`
+<!-- ### Tree-shaking -->
 
 ### Dot notation for `R.path`, `R.paths`, `R.assocPath` and `R.lensPath`
 
