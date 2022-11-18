@@ -15,6 +15,7 @@ Post fact manual test
   }
 }
 
+    "rambda": "file:./../../../rambda/",
 
 ```
     "rambda": "https://github.com/selfrefactor/rambda#7.0.0-alpha",
