@@ -67,15 +67,11 @@ inside Rambdax folder
 
 `yarn build`
 
-3. Test output
-
-`yarn consume`
-
-4. Publish to NPM
+3. Publish to NPM
 
 `run bump minor/patch`
 
-5. Update documentation site
+4. Update documentation site
 
 `yarn docs`
 

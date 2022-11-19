@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start": "npm install --force && yarn test",
-    "test": "tsc --lib esnext,dom consume-typings.ts&&node consume-typings.js"
+    "test": "tsc --lib esnext,dom consume-typings.ts&&node consume-typings.js",
+    "test:demo": "tsc --lib esnext,dom consume-typings-demo.ts&&node consume-typings-demo.js"
   },
   "dependencies": {
     "rambda": "file:./../../../rambda/",

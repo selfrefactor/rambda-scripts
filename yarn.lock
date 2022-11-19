@@ -3614,7 +3614,7 @@ regexpp@^3.0.0, regexpp@^3.2.0:
   resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-3.2.0.tgz#0425a2768d8f23bad70ca4b90461fa2f1213e1b2"
   integrity sha512-pq2bWo9mVD43nbts2wGv17XLiNLya+GklZ8kaDLV2Z08gDCsGpnKn9BFMepvWuHCbyVvY7J5o5+BVvoQbmlJLg==
 
-remeda@^1.1.0:
+remeda@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/remeda/-/remeda-1.1.0.tgz#7ace312bc69fe9250e3c04c082d1d269109be470"
   integrity sha512-dtPAM1fP1HEorGDYyJiZUYfgzswyey0S1sD1FpCOhfgmpTJmnLz32q2WeEB1EyNLMENJuXSKWY8Hrm1CKM9lpw==
@@ -3695,6 +3695,11 @@ rimraf@^3.0.0, rimraf@^3.0.2:
   integrity sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==
   dependencies:
     glob "^7.1.3"
+
+roza@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/roza/-/roza-0.0.2.tgz#92ea0257e79a37cea3480adfb8cf4b6ea402e868"
+  integrity sha512-oDs62muCI8bNOAlUbqodpe0//qU11EM7B74N3r2TMDGBUx/lVnabH1mlsnvwDFgjYli+r7MWuHl4rWAWpWthsA==
 
 run-parallel@^1.1.9:
   version "1.2.0"
