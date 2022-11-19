@@ -24,6 +24,8 @@ Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on 
 
 2. Publish to NPM
 
+> issue with 2fa
+
 `run bump minor`
 
 `run bump patch`
@@ -59,7 +61,7 @@ Manual check for Typescript definitions
 
 2. Build output
 
-inside Rambda folder
+inside Rambdax folder
 
 `yarn install`
 
