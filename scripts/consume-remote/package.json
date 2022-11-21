@@ -2,11 +2,10 @@
 	"scripts": {
 		"start": "run dep && yarn && yarn test:command",
 		"test": "yarn test:command",
-		"test:command": "tsc --lib esnext,dom consume-typings.ts&&node consume-typings.js"
+		"test:command": "node consume-remote.js"
 	},
 	"dependencies": {
-		"rambda": "7.4.0",
-		"typescript": "4.8.3"
+		"rambda": "7.4.0"
 	},
 	"devDependencies": {
 		

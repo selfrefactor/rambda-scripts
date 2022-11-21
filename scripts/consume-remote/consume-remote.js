@@ -1,4 +1,4 @@
-import { add, applySpec,  transpose, move, union } from 'rambda'
+const { add, applySpec,  transpose, move, union } = require('rambda')
 
 const moveResult = move(1,2, [1,2,3])
 const unionResult = union([1,2,4], [1,2,3])
