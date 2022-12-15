@@ -3696,7 +3696,7 @@ rimraf@^3.0.0, rimraf@^3.0.2:
   dependencies:
     glob "^7.1.3"
 
-roza@0.0.2:
+roza@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/roza/-/roza-0.0.2.tgz#92ea0257e79a37cea3480adfb8cf4b6ea402e868"
   integrity sha512-oDs62muCI8bNOAlUbqodpe0//qU11EM7B74N3r2TMDGBUx/lVnabH1mlsnvwDFgjYli+r7MWuHl4rWAWpWthsA==
