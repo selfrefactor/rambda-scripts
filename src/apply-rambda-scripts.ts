@@ -1,6 +1,5 @@
 import {existsSync} from 'fs'
 import {log} from 'helpers-fn'
-// import {filter} from 'roza'
 import {filter} from 'rambdax'
 import {PATHS, X_PATHS, MODES, WITH_RAMBDAX, NPM_README} from './constants'
 import {verifyUsedBy} from './verify-used-by/verify-used-by'
@@ -23,7 +22,7 @@ export function validatePaths() {
     wrongPaths.push(prop)
     return false
   }
-  const validPaths = filter(iterator, PATHS)
+  const validPaths = filter(iterator)(PATHS)
 
   if (Object.keys(validPaths).length !== Object.keys(PATHS).length) {
     throw new Error(`There are invalid paths ${wrongPaths}`)
