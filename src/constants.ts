@@ -114,6 +114,7 @@ export const BLACKLIST_METHODS = [
   'tryCatch',
   'type',
   'uniqBy',
+  'unnest',
   'unwind',
   'whereAny',
 ]

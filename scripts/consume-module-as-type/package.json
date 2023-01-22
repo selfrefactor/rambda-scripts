@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "start": "npm install --force&&yarn test",
+    "testx": "yarn install && yarn test",
+    "test": "node consume-module-as-type"
+  },
+  "type": "module",
+  "dependencies": {
+    "rambda": "file:./../../../rambda/",
+    "ramda": "0.28.0"
+  },
+  "devDependencies": {}
+}

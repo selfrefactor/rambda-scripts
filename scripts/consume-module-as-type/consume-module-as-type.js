@@ -1,4 +1,5 @@
 import { add, applySpec,  transpose, move, union } from 'rambda'
+// import { add, applySpec,  transpose, move, union } from 'ramda'
 
 const moveResult = move(1,2, [1,2,3])
 const unionResult = union([1,2,4], [1,2,3])
