@@ -19,6 +19,9 @@ const LETTERS = [
   'N',
 ]
 
+/**
+ * Obviously, it is used to generate multiple types for a method such as R.pipe
+ */
 function buildMultipleTypes(methodName, num) {
   return range(0, num).map(i => {
     const inferTypes = range(0, i + 2)
