@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "start": "npm install --force&&yarn test",
-    "testx": "yarn install && yarn test",
-    "test": "node consume-module-as-type"
+    "start": "npm install --force&&yarn testx",
+    "test": "npm install && yarn testx",
+    "testx": "node consume-module-as-type"
   },
   "type": "module",
   "dependencies": {
