@@ -91,7 +91,9 @@ async function rambdaxBuildStep() {
   await pipedAsync(
     files,
     filter((x: any) => {
+      // TODO this should be array of strings
       if (x.endsWith('/testUtils.js')) return false
+      if (x.endsWith('consumeTypings.js')) return false
       if (x.endsWith('.spec.js')) return false
       if (x.includes('benchmark')) return false
 
