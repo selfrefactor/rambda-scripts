@@ -1,3 +1,11 @@
+9.1.1
+
+Add missing fix for `type: module` imports.
+
+9.1.0
+
+- Sync with `Rambda` version `7.5.0`
+
 9.0.0
 
 From this release, CHANGELOG will simply refer to the `Rambda` version linked to the release, instead of listing `Rambda` changes here as well. In this case, the version referring to this release is `7.3.0`.
