@@ -4,7 +4,7 @@ import {filter} from 'rambdax'
 import {PATHS, X_PATHS, MODES, WITH_RAMBDAX, NPM_README} from './constants'
 import {verifyUsedBy} from './verify-used-by/verify-used-by'
 import {readonlyTask} from './readonly-task/readonly-task'
-import {populateDocsData} from './populate-docs-data/populate-docs-data'
+// import {populateDocsData} from './populate-docs-data/populate-docs-data'
 import {populateReadmeData} from './populate-readme-data/populate-readme-data'
 
 function getMode(mode: string) {
@@ -44,7 +44,7 @@ export async function applyRambdaScripts(modeInput: string) {
 
   if (mode === 'usedby') return verifyUsedBy()
   if (mode === 'readonly') return readonlyTask()
-  if (mode === 'populate:docs') return populateDocsData(WITH_RAMBDAX)
+  // if (mode === 'populate:docs') return populateDocsData(WITH_RAMBDAX)
   if (mode === 'populate:readme')
     return populateReadmeData(WITH_RAMBDAX, NPM_README)
 
