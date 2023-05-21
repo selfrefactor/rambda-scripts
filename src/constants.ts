@@ -3,23 +3,19 @@ import {resolve} from 'path'
 
 const base = resolve(__dirname, '../../rambda')
 const xBase = resolve(__dirname, '../../rambdax')
-// const docsBase = resolve(__dirname, '../../rambda-docs')
 
 export const BULLET = '❯' // ➤
 
 export const PATHS = {
   base,
-  // docsBase,
   documentationFile: `${base}/files/index.d.ts`,
   source: `${base}/source`,
   output: `${base}/src`,
   sourceDestination: `${base}/src`,
-  // docsDir: `${docsBase}/assets`,
 }
 
 export const X_PATHS = {
   xBase,
-  // docsDir: `${docsBase}/assets`,
   rambdaxDir: xBase,
 }
 
@@ -30,11 +26,6 @@ export const DESTINATIONS = {
   rambdaxDataSource: `${__dirname}/populate-docs-data/data-rambdax.json`,
   docsData: `${__dirname}/populate-docs-data/data.json`,
   rambdaxDocsData: `${__dirname}/populate-docs-data/data-rambdax.json`,
-  // docsFile: resolve(__dirname, '../../rambda-docs/assets/data.json'),
-  // rambdaxDocsFile: resolve(
-  //   __dirname,
-  //   '../../rambda-docs/assets/data-rambdax.json'
-  // ),
 }
 
 export const SOURCES = {
