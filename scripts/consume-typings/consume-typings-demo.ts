@@ -1,11 +1,40 @@
 // import * as R from 'remeda'
-import * as Roza from 'roza'
-import * as Rambda from 'rambda'
+import * as R from 'rambda'
+import * as Ramda from 'ramda'
 
-let rozaResult = Roza.pipe(1, x => x+1)
-console.log(rozaResult, `rozaResult`)
+type LastArrayElement<ValueType extends readonly unknown[]> =
+	ValueType extends readonly [infer ElementType]
+		? ElementType
+		: ValueType extends readonly [infer _, ...infer Tail]
+			? LastArrayElement<Tail>
+			: ValueType extends ReadonlyArray<infer ElementType>
+				? ElementType
+				: never;
+
+export function lastOf<V extends readonly any[]>(array: V): LastArrayElement<V>{
+	return array[array.length - 1];
+}
+
+
 // const list = [ 1, 2, 3, 'foo' ]
-const list = [ 1, 2, 3 ]
+const list = [ 1, 2, 3,'foo' ] as const
+const listx = [ 1, 2, 3,'foo' ]
+let a = Ramda.last(list)
+let xa = Ramda.last(listx)
+let aa = R.last(list)
+let aax = R.last(listx)
+let aay = lastOf(listx)
+let asd = lastOf(list)
+let bb: LastArrayElement<typeof listx> = list[0]
+console.log( {
+	a,
+		asd,
+		aax,
+		aay,
+	xa,
+	aa,
+	bb,
+} )
 // const resultPipe = R.pipe(
 //   list,
 //   R.map((x) => {

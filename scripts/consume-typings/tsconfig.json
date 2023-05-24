@@ -8,6 +8,7 @@
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
+    "strict": false,
     "target": "es2015"
   } 
 }    

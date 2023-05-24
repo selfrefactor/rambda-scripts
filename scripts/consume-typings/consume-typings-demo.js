@@ -1,11 +1,19 @@
 "use strict";
 exports.__esModule = true;
 // import * as R from 'remeda'
-var Roza = require("roza");
-var rozaResult = Roza.pipe(1, function (x) { return x + 1; });
-console.log(rozaResult, "rozaResult");
+var R = require("rambda");
+var Ramda = require("ramda");
 // const list = [ 1, 2, 3, 'foo' ]
-var list = [1, 2, 3];
+var list = [1, 2, 3, 'foo'];
+var listx = [1, 2, 3, 'foo'];
+var a = Ramda.last(list);
+var aa = R.last(listx);
+var bb = list[0];
+console.log({
+    a: a,
+    aa: aa,
+    bb: bb
+});
 // const resultPipe = R.pipe(
 //   list,
 //   R.map((x) => {
