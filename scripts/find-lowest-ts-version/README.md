@@ -19,3 +19,9 @@ Post fact manual test
 ```
     "rambda": "https://github.com/selfrefactor/rambda#7.0.0-alpha",
 ```
+
+## Test
+
+type A = Awaited<Promise<string>>;
+
+this is added in 4.5 so this can be used to test this script
