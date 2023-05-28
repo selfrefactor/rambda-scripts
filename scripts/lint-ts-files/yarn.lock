@@ -1283,8 +1283,6 @@ is-accessor-descriptor@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-accessor-descriptor/-/is-accessor-descriptor-1.0.0.tgz#169c2f6d3df1f992618072365c9b0ea1f6878656"
   integrity sha512-m5hnHTkcVsPfqx3AKlyttIPb7J+XykHvJP2B9bZDjlhLIoEq4XoK64Vg7boZlVWYK6LUY94dYPEE7Lh0ZkZKcQ==
-  dependencies:
-    kind-of "^6.0.0"
 
 is-buffer@^1.1.5:
   version "1.1.6"
@@ -1685,6 +1683,11 @@ rambdax@8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/rambdax/-/rambdax-8.0.1.tgz#8539d1c0cc6fb4d0d27d1994006362f3ddd0908a"
   integrity sha512-0hZag7A4PSSOG0P4AoluStiRMLFnM/1C/D7BdCBNvrqHfmeY7QDnxvkoXmTLmb6dXbnjS2SwyrXmlWCoq35Jlw==
+
+rambdax@^9.1.1:
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/rambdax/-/rambdax-9.1.1.tgz#7bcb0380556a9d4ac2c65ce5660f4597e509b774"
+  integrity sha512-JII09Nkwa2txg2jIMBrQ1MF9l5yQkFanp1SbRP9gxzmBPUH3WBgkQYTdz/ZLtCTxzoPk0vF95TPFBhMy0wrdYg==
 
 regexp-tree@~0.1.1:
   version "0.1.21"

@@ -3,7 +3,7 @@ const {resolve} = require('path')
 const {lintFn} = require('lint-fn')
 const {copy} = require('fs-extra')
 const {parse} = require('path')
-const {mapAsyncLimit, intersection} = require('rambdax')
+const {mapParallelAsyncWithLimit, intersection} = require('rambdax')
 const {getStagedFiles} = require('../_modules/get-staged-files')
 
 const LINT_STAGED_ONLY = process.env.LINT_STAGED_ONLY === 'ON'
@@ -36,5 +36,5 @@ async function getFiles() {
 void (async function lintTypingsTests() {
   const allFiles = await getFiles()
   console.log(`allFiles`, allFiles, allFiles.length)
-  await mapAsyncLimit(lintSingleFile, 15, allFiles)
+  await mapParallelAsyncWithLimit(lintSingleFile, 15, allFiles)
 })()
