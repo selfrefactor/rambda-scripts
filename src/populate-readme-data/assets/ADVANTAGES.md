@@ -26,12 +26,6 @@ R.add(1)('foo') // => will trigger warning in VSCode
 Ramda.add(1)('foo') // => will not trigger warning in VSCode
 ```
 
-### Smaller size
-
-The size of a library affects not only the build bundle size but also the dev bundle size and build time. This is important advantage, expecially for big projects.
-
-<!-- ### Tree-shaking -->
-
 ### Dot notation for `R.path`, `R.paths`, `R.assocPath` and `R.lensPath`
 
 Standard usage of `R.path` is `R.path(['a', 'b'], {a: {b: 1} })`.
