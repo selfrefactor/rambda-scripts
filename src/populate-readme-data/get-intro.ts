@@ -103,25 +103,6 @@ method | Rambda | Ramda | Lodash
 
 {{usedBySeparator}}
 `
-
-async function getTreeShakingInfo() {
-  const fallback = '2'
-  const comparedPath = resolve(
-    __dirname,
-    '../../../rambda-tree-shaking/compared.json'
-  )
-
-  if (!existsSync(comparedPath)) {
-    log('Using fallback in tree shaking info', 'box')
-
-    return fallback
-  }
-
-  const compared = await readJson(comparedPath)
-
-  return compared.ramdaVsRambda
-}
-
 async function getIntroBaseContent(
   withRambdax: boolean,
   advantages: string
@@ -141,7 +122,6 @@ Important - {{library}} version \`{{version}}\`(or higher) requires Typescript v
 `
 
 async function getIntroContent(withRambdax: boolean) {
-  const rambdaTreeShakingInfo = await getTreeShakingInfo()
   const advantagesFilePath = withRambdax
     ? `${__dirname}/assets/ADVANTAGES_RAMBDAX.md`
     : `${__dirname}/assets/ADVANTAGES.md`
@@ -154,13 +134,11 @@ async function getIntroContent(withRambdax: boolean) {
   const advantagesTemplate = (await readFile(advantagesFilePath)).toString()
 
   const advantages = interpolate(advantagesTemplate, {
-    rambdaTreeShakingInfo,
     rambdaTypescriptInfo: typescriptInfo,
   })
   const content = await getIntroBaseContent(withRambdax, advantages)
 
   return interpolate(content, {
-    rambdaTreeShakingInfo,
     advantages,
   })
 }

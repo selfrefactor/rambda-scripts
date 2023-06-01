@@ -11,7 +11,6 @@
 		"benchmark:all": "RAMBDA_UPDATE_NEW_BENCHMARKS=ON RAMBDA_UPDATE_ALL_BENCHMARKS=ON node scripts/run-benchmarks/run-complex-benchmarks-spec.js",
 		"check-benchmark": "node scripts/run-benchmarks/check-benchmark-spec.js",
 		"check-ts": "node scripts/find-lowest-ts-version/find-lowest-ts-version.js",
-		"tree-shaking": "node scripts/tree-shaking/tree-shaking.js",
 		"build": "tsc -p tsconfig.json",
 		"run:ramda:test": "jest src/run-ramda-specs/run-ramda-specs.spec.ts",
 		"github": "node scripts/github-release/github-release.js",
