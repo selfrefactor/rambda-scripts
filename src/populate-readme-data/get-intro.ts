@@ -1,4 +1,3 @@
-import {existsSync} from 'fs'
 import {readFile, readJson} from 'fs-extra'
 import {log} from 'helpers-fn'
 import {resolve} from 'path'

@@ -1,3 +1,5 @@
+- [ESLint plugin Mocha](https://www.npmjs.com/package/eslint-plugin-mocha)
+
 - [WatermelonDB](https://github.com/Nozbe/WatermelonDB)
 
 - [Walmart Canada](https://www.walmart.ca) reported by [w-b-dev](https://github.com/w-b-dev) 
