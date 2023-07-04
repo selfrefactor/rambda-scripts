@@ -24,8 +24,6 @@ export const DESTINATIONS = {
   rambdaxChangelog: `${xBase}/CHANGELOG.md`,
   dataSource: `${__dirname}/populate-docs-data/data.json`,
   rambdaxDataSource: `${__dirname}/populate-docs-data/data-rambdax.json`,
-  docsData: `${__dirname}/populate-docs-data/data.json`,
-  rambdaxDocsData: `${__dirname}/populate-docs-data/data-rambdax.json`,
 }
 
 export const SOURCES = {

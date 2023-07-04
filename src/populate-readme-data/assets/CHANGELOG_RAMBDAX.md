@@ -1,4 +1,4 @@
-9.2.0
+10.0.0
 
 - Sync with `Rambda` version `8.0.0`
 
