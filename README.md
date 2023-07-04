@@ -40,6 +40,7 @@ change version in `egg.json`
 
 eggs publish
 
+eggs publish --release-type major --yes
 eggs publish --release-type minor --yes
 eggs publish --release-type patch --yes
 
@@ -50,6 +51,8 @@ eggs publish --release-type patch --yes
 8. After NPM publish manual check
 
 Manual check for Typescript definitions
+
+> inside `rambda-scripts` folder
 
 `yarn check-ts`
 

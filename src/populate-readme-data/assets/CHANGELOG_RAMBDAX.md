@@ -4,6 +4,8 @@
 
 - Add `R.omitPaths` - [Issue #681](https://github.com/selfrefactor/rambda/issues/681)
 
+- Add `R.noop`
+
 9.1.1
 
 Add missing fix for `type: module` imports.
