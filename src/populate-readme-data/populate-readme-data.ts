@@ -27,8 +27,8 @@ function getFileSize(filePath: string) {
 
 async function getMethodsData(withRambdax: boolean) {
   const filePath = withRambdax
-    ? DESTINATIONS.rambdaxDocsData
-    : DESTINATIONS.docsData
+    ? DESTINATIONS.rambdaxDataSource
+    : DESTINATIONS.dataSource
 
   return readJson(filePath)
 }
