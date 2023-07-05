@@ -1,6 +1,10 @@
-import { add, applySpec,  transpose, move, union, path } from 'rambda'
-import {path as pathRamda} from 'ramda'
-
+import { add, applySpec,  transpose, move, union, path, propEq } from 'rambda'
+import {propEq as propEqR} from 'ramda'
+const alois = {name: 'Alois', age: 15, disposition: 'surly'};
+ const hasBrownHair = propEq('brown', 'age', alois);
+ const age = propEq(15, 'age', alois);
+console.log({hasBrownHair, age})
+process.exit(0)  
 const moveResult = move(1,2, [1,2,3])
 const unionResult = union([1,2,4], [1,2,3])
 
