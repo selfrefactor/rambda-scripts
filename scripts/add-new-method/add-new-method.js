@@ -149,7 +149,7 @@ async function addNewMethod(methodName) {
 
   await createMethodFile(methodName)
   await createTestFile(methodName, ramdaSpecs)
-  await createTypeScriptTestFile(methodName)
+  // await createTypeScriptTestFile(methodName)
   await outputFile(descriptionPath, newDescriptions)
   log(`${methodName} is created`, 'success')
 }
