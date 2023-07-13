@@ -101,7 +101,7 @@ const myLibraries = `
             </td>
             <td width="20%" align="center">
                 <h4>Useful Javascript libraries</h4>
-                <a href="https://github.com/selfrefactor/useful-javascript-libraries">Large collection of JavaScript,Typescript and Angular related repos links</a>
+                <a href="https://github.com/selfrefactor/useful-javascript-libraries">Large collection of JavaScript,TypeScript and Angular related repos links</a>
             </td>
             <td width="20%" align="center">
                 <h4>Run-fn</h4>

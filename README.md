@@ -50,7 +50,7 @@ eggs publish --release-type patch --yes
 
 8. After NPM publish manual check
 
-Manual check for Typescript definitions
+Manual check for TypeScript definitions
 
 > inside `rambda-scripts` folder
 

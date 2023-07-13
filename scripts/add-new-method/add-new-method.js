@@ -113,7 +113,7 @@ async function createTestFile(methodName, ramdaSpecs) {
   await outputFile(testPath, content)
 }
 
-async function createTypescriptTestFile(methodName) {
+async function createTypeScriptTestFile(methodName) {
   const typescriptTestPath = resolve(
     __dirname,
     `../../../rambda/source/${methodName}-spec.ts`
@@ -149,7 +149,7 @@ async function addNewMethod(methodName) {
 
   await createMethodFile(methodName)
   await createTestFile(methodName, ramdaSpecs)
-  await createTypescriptTestFile(methodName)
+  await createTypeScriptTestFile(methodName)
   await outputFile(descriptionPath, newDescriptions)
   log(`${methodName} is created`, 'success')
 }

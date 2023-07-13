@@ -117,7 +117,7 @@ async function getIntroBaseContent(
 }
 const MIN_TS_VERSION = '4.3.3'
 const typescriptInfoTemplate = `
-Important - {{library}} version \`{{version}}\`(or higher) requires Typescript version \`${MIN_TS_VERSION}\`(or higher).
+Important - {{library}} version \`{{version}}\`(or higher) requires TypeScript version \`${MIN_TS_VERSION}\`(or higher).
 `
 
 async function getIntroContent(withRambdax: boolean) {
@@ -133,7 +133,7 @@ async function getIntroContent(withRambdax: boolean) {
   const advantagesTemplate = (await readFile(advantagesFilePath)).toString()
 
   const advantages = interpolate(advantagesTemplate, {
-    rambdaTypescriptInfo: typescriptInfo,
+    rambdaTypeScriptInfo: typescriptInfo,
   })
   const content = await getIntroBaseContent(withRambdax, advantages)
 

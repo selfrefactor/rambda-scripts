@@ -20,7 +20,7 @@ test('run many scripts and generate readme', async () => {
   const withRambdax = defaultTo(false, process.env.WITH_RAMBDAX === 'ON')
 
   /*
-    If the change is regarding Typescript definitions
+    If the change is regarding TypeScript definitions
     or edit of method's examples or explanation
     then you should change `files/index.d.ts`.
   */

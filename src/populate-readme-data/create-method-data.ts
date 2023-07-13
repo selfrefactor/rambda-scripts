@@ -64,11 +64,11 @@ function createRambdaSourceReadme(method: any) {
   return interpolate(summaryTemplate, method)
 }
 
-function createTypescriptTest(method: any) {
+function createTypeScriptTest(method: any) {
   const summaryTemplate = `
 <details>
 
-<summary><strong>Typescript</strong> test</summary>
+<summary><strong>TypeScript</strong> test</summary>
 
 \`\`\`typescript
 {{typescriptDefinitionTest}}
@@ -100,7 +100,7 @@ function attachAllTypings(method: any) {
   const allTypingsTemplate = `
 <details>
 
-<summary>All Typescript definitions</summary>
+<summary>All TypeScript definitions</summary>
 
 \`\`\`typescript
 {{allTypings}}
@@ -177,7 +177,7 @@ export function createMethodData(
   }
 
   if (method.typescriptDefinitionTest && allowance.tsTest) {
-    data.push(createTypescriptTest(method))
+    data.push(createTypeScriptTest(method))
   }
 
   if (method.benchmarkInfo && allowance.benchmark) {

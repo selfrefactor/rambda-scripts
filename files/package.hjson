@@ -40,7 +40,7 @@ const VERSION = 6.5.3
     // Update `ts-toolbelt` dependency
     toolbelt: {{TOOLBELT}}
 
-    // It adds `readonly` to Typescript definitions
+    // It adds `readonly` to TypeScript definitions
     immutable: {{IMMUTABLE_LINT}}
 
     // Runs a script to check if all repos listed in `Used by` section are actually using Rambda or Rambdax

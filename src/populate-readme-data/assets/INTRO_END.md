@@ -16,7 +16,7 @@
 
 - Error handling, when wrong inputs are provided, may not be the same. This difference will be better documented once all brute force tests are completed.
 
-- Typescript definitions between `rambda` and `@types/ramda` may vary.
+- TypeScript definitions between `rambda` and `@types/ramda` may vary.
 
 {{suggestPR}}
 [![---------------](https://raw.githubusercontent.com/selfrefactor/rambda/master/files/separator.png)](#-differences-between-rambda-and-ramda)
