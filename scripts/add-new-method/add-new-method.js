@@ -69,8 +69,6 @@ Explanation:
 Example:
 
 \`\`\`
-const result = R.{{name}}()
-// => 
 \`\`\`
 
 Categories:
@@ -111,15 +109,6 @@ async function createTestFile(methodName, ramdaSpecs) {
     : interpolate(testTemplate, {name: methodName})
 
   await outputFile(testPath, content)
-}
-
-async function createTypeScriptTestFile(methodName) {
-  const typescriptTestPath = resolve(
-    __dirname,
-    `../../../rambda/source/${methodName}-spec.ts`
-  )
-  const content = interpolate(typescriptTestTemplate, {name: methodName})
-  await outputFile(typescriptTestPath, content)
 }
 
 async function addNewMethod(methodName) {
