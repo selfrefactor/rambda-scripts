@@ -1,3 +1,15 @@
+8.2.0
+
+Add the following methods:
+
+- addIndex
+- addIndexRight
+- ap
+- aperture
+- applyTo
+- ascend
+- descend
+
 8.1.0
 
 - Fix input order of TS definitions for `R.propEq` method  - [Issue #688](https://github.com/selfrefactor/rambda/issues/688). The issue was due to 8.0.0 was shipped with TS definitions of `7.5.0` release.
