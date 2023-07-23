@@ -1,6 +1,6 @@
-WIP 10.1.0
+10.1.0
 
-- Sync with `Rambda` version `8.1.0`
+- Sync with `Rambda` version `8.3.0`
 
 10.0.0
 
