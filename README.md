@@ -37,16 +37,6 @@ npm version minor
 
 `yarn github`
 
-5. Publish to Nest.land
-
-change version in `egg.json`
-
-eggs publish
-
-eggs publish --release-type major --yes
-eggs publish --release-type minor --yes
-eggs publish --release-type patch --yes
-
 7. Update documentation site
 
 `yarn docs`

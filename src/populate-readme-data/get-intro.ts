@@ -1,11 +1,8 @@
 import {readFile, readJson} from 'fs-extra'
-import {log} from 'helpers-fn'
 import {resolve} from 'path'
 import {interpolate} from 'rambdax'
-import * as Ramda from 'ramda'
 import {PATHS, BULLET} from '../constants'
-
-import {getRambdaMethods, getSeparator} from '../utils'
+import {getSeparator} from '../utils'
 
 function getInstallInfo(withRambdax: boolean) {
   const installInfoTemplate = `## ${BULLET} Install
@@ -21,7 +18,7 @@ https://unpkg.com/{{lib}}@CURRENT_VERSION/dist/{{lib}}.umd.js
 - with deno
 
 \`\`\`
-import {compose, add} from 'https://raw.githubusercontent.com/selfrefactor/{{lib}}/master/dist/{{lib}}.esm.js'
+import {add} from "https://deno.land/x/rambda/mod.ts";
 \`\`\`
 
 {{separator}}
@@ -34,13 +31,12 @@ import {compose, add} from 'https://raw.githubusercontent.com/selfrefactor/{{lib
 }
 
 async function getMissingMethods() {
-  const rambdaMethods = await getRambdaMethods()
   const missingMethodsTemplate = `
 ## ${BULLET} Missing Ramda methods
 
 <details>
 <summary>
-  Click to see the full list of {{counter}} Ramda methods not implemented in Rambda 
+  Click to see the full list of {{counter}} Ramda methods not implemented in Rambda and their status.
 </summary>
 
 {{missingMethods}}
@@ -50,15 +46,77 @@ async function getMissingMethods() {
   `
 
   let counter = 0
-  const missingMethods = Object.keys(Ramda)
-    .map(ramdaMethod => {
-      if (rambdaMethods.includes(ramdaMethod)) return false
-      counter++
+  const missingMethods = `
+- dissocPath
+- dropRepeatsBy
+- empty
+- eqBy
+- forEachObjIndexed
+- gt
+- gte
+- hasIn
+- innerJoin
+- insert
+- insertAll
+- into
+- invert
+- invertObj
+- invoker
+- isNotNil
+- keysIn
+- lift
+- liftN
+- lt
+- lte
+- mapAccum
+- mapAccumRight
+- memoizeWith
+- mergeDeepLeft
+- mergeDeepWith
+- mergeDeepWithKey
+- mergeWithKey
+- nAry
+- nthArg
+- o
+- otherwise
+- pair
+- partialRight
+- pathSatisfies
+- pickBy
+- pipeWith
+- project
+- promap
+- reduceBy
+- reduceRight
+- reduceWhile
+- reduced
+- remove
+- scan
+- sequence
+- sortWith
+- splitWhenever
+- swap
+- symmetricDifferenceWith
+- andThen
+- toPairsIn
+- unary
+- uncurryN
+- unfold
+- unionWith
+- until
+- useWith
+- valuesIn
+- xprod
+- thunkify
+- default
 
-      return `- ${ramdaMethod}\n`
-    })
-    .filter(Boolean)
-    .join('')
+  Most of above methods are in progress to be added to **Rambda**. The following methods are not going to be added:
+- __ - placeholder method allows user to further customize the method call. While, it seems useful initially, the price is too high in terms of complexity for TypeScript definitions. If it is not easy exressable in TypeScript, it is not worth it as **Rambda** is a TypeScript first library.
+- construct - Using classes is not very functional programming oriented.
+- constructN - same as above
+- transduce - currently is out of focus
+- traverse - same as above
+`.trim()
 
   return interpolate(missingMethodsTemplate, {
     missingMethods,

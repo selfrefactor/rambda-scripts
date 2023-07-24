@@ -19,10 +19,12 @@ import {add} from 'rambda/immutable'
 While `Ramda` is available for `Deno` users, `Rambda` provides you with included TS definitions:
 
 ```
-import * as R from "https://x.nest.land/rambda@7.1.0/mod.ts";
-import * as Ramda from "https://x.nest.land/ramda@0.28.0/mod.ts";
+// Deno extension(https://marketplace.visualstudio.com/items?itemName=denoland.vscode-deno)
+// is installed and initialized
+import * as R from "https://deno.land/x/rambda/mod.ts";
+import * as Ramda from "https://x.nest.land/ramda@0.29.0/mod.ts";
 
-R.add(1)('foo') // => will trigger warning in VSCode
+R.add(1)('foo') // => will trigger warning in VSCode as it should
 Ramda.add(1)('foo') // => will not trigger warning in VSCode
 ```
 
@@ -51,6 +53,4 @@ R.pick('a,b', {a: 1 , b: 2, c: 3} })
 
 ### Support
 
-As the library is smaller than Ramda, issues are much faster resolved.
-
-Closing the issue is usually accompanied by publishing a new patch version of `Rambda` to NPM.
+One of the main issues with `Ramda` is the slow process of releasing new versions. This is not the case with **Rambda** as releases are made on regular basis.
