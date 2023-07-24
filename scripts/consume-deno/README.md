@@ -1,1 +1,1 @@
-`deno run consume-deno.ts`
+deno run consume-deno.ts
