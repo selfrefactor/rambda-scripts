@@ -7,6 +7,7 @@ const mostInfluentialContributors = {
   farwayer:
     'improving performance in R.find, R.filter; give the idea how to make benchmarks more reliable;',
   thejohnfreeman: 'add R.assoc, R.chain;',
+  peeja: 'add several methods and fix mutiple issues; provides great MR documentation',
   helmuthdu: 'add R.clone; help improve code style;',
   jpgorman: 'add R.zip, R.reject, R.without, R.addIndex;',
   ku8ar:

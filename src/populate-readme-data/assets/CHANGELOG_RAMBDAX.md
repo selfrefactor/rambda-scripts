@@ -1,6 +1,6 @@
 10.1.0
 
-- Sync with `Rambda` version `8.3.0`
+- Sync with `Rambda` version `8.4.0`
 
 10.0.0
 
