@@ -24,7 +24,7 @@ function getAdditionalInfo() {
   const additionalInfoTemplate = `
 ## ${BULLET} Additional info
 
-> Most influential contributors
+> Most influential contributors(in alphabetical order)
 
 {{contributors}}
 
