@@ -24,8 +24,6 @@ Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on 
 
 2. Publish to NPM
 
-npm version minor
-
 `run bump minor`
 
 `run bump patch`
