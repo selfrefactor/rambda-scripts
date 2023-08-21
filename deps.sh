@@ -1,1 +1,1 @@
-run dep && yarn &run d chore: after updating dependencies
+run dep && yarn && run d chore: after updating dependencies
