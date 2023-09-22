@@ -1,14 +1,17 @@
 {
 	"scripts": {
-		"start": "run dep && yarn && yarn test:command",
+		"startx": "yarn && yarn test:command",
+		"start": "run dep && yarn startx",
 		"test": "yarn test:command",
 		"test:command": "tsc --lib esnext,dom consume-typings.ts&&node consume-typings.js"
 	},
 	"dependencies": {
-		"@types/ramda": "0.29.3",
-		"rambda": "8.1.0",
+		"@types/ramda": "0.29.4",
+		"rambda": "8.4.0",
 		"ramda": "0.29.0",
-		"typescript": "5.1.6"
+		"typescript": "5.0.2"
 	},
-	"devDependencies": {}
+	"devDependencies": {
+		
+	}
 }
