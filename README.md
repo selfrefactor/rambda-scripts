@@ -6,43 +6,19 @@ Contains most scripts required to build `Rambda/Rambdax` related files.
 
 Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on the same level in the file system.
 
-## Release steps - short version
+## Release steps
 
-1. `yarn out`
+1. `yarn before`
 
-2. `yarn publish minor`
+2. `npm version minor`
 
-3. `yarn docs`
+3. `npm publish`
 
-## Release steps - full version
+4. `yarn github` - might not work
 
-1. Build readme
+## After release checks
 
-1. Build readme
-
-`yarn out`
-
-2. Publish to NPM
-
-`run bump minor`
-
-`run bump patch`
-
-5. Publish to Github
-
-`yarn github`
-
-7. Update documentation site
-
-`yarn docs`
-
-8. After NPM publish manual check
-
-Manual check for TypeScript definitions
-
-> inside `rambda-scripts` folder
-
-`yarn check-ts`
+1. find-lowest-ts-version 
 
 ## Rambdax release steps
 
@@ -60,13 +36,14 @@ inside Rambdax folder
 
 3. Publish to NPM
 
-`run bump minor/patch`
-
 4. Update documentation site
 
 `yarn docs`
 
-## Github releases
+===
+# Other info
+
+## Github releases setup
 
 1. Install - For Arch linux: `yay -S github-cli`
 
@@ -85,3 +62,9 @@ inside Rambdax folder
 If benchmarks are changed, then their summary should also be updated.
 
 `yarn summary`
+
+### Manual check for TypeScript definitions
+
+> inside `rambda-scripts` folder
+
+`yarn check-ts`
