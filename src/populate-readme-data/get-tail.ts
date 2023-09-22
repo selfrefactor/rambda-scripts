@@ -122,7 +122,7 @@ async function getChangelog(withRambdax){
     : `6.4.0`
   
   const changelogContent = await readFile(changelogSource)
-  
+
   return piped(
     changelogContent.toString(),
     split(marker),

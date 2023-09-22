@@ -47,7 +47,6 @@ async function getMissingMethods() {
 
   let counter = 0
   const missingMethods = `
-- dissocPath
 - dropRepeatsBy
 - empty
 - eqBy

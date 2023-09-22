@@ -1,19 +1,19 @@
 {
-  "name": "ALL",
-  "date": "2023-09-10T10:48:46.251Z",
+  "name": "PIPE",
+  "date": "2023-09-10T17:33:12.754Z",
   "version": null,
   "results": [
     {
       "name": "Rambda",
-      "ops": 210137,
-      "margin": 1.37,
+      "ops": 86108,
+      "margin": 0.33,
       "percentSlower": 0
     },
     {
       "name": "Ramda",
-      "ops": 195047,
-      "margin": 2.16,
-      "percentSlower": 7.18
+      "ops": 86013,
+      "margin": 0.4,
+      "percentSlower": 0.11
     }
   ],
   "fastest": {

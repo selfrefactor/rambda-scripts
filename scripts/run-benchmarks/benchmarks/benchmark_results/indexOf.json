@@ -1,19 +1,19 @@
 {
   "name": "INDEX_OF",
-  "date": "2021-12-15T10:25:32.118Z",
+  "date": "2023-09-10T17:32:29.264Z",
   "version": null,
   "results": [
     {
       "name": "Rambda",
-      "ops": 14383,
-      "margin": 1.07,
+      "ops": 18978,
+      "margin": 0.19,
       "percentSlower": 0
     },
     {
       "name": "Ramda",
-      "ops": 3362,
-      "margin": 1.32,
-      "percentSlower": 76.63
+      "ops": 3763,
+      "margin": 0.63,
+      "percentSlower": 80.17
     }
   ],
   "fastest": {

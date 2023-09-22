@@ -1,0 +1,86 @@
+{
+  "warnings": [],
+  "allResults": [
+    {
+      "result": true,
+      "labels": [
+        "Rambda",
+        "Ramda"
+      ],
+      "allResults": [
+        {
+          "label": "Rambda"
+        },
+        {
+          "label": "Ramda"
+        }
+      ],
+      "index": 0
+    },
+    {
+      "result": true,
+      "labels": [
+        "Rambda",
+        "Ramda"
+      ],
+      "allResults": [
+        {
+          "label": "Rambda"
+        },
+        {
+          "label": "Ramda"
+        }
+      ],
+      "index": 1
+    },
+    {
+      "result": true,
+      "labels": [
+        "Rambda",
+        "Ramda"
+      ],
+      "allResults": [
+        {
+          "label": "Rambda"
+        },
+        {
+          "label": "Ramda"
+        }
+      ],
+      "index": 2
+    },
+    {
+      "result": true,
+      "labels": [
+        "Rambda",
+        "Ramda"
+      ],
+      "allResults": [
+        {
+          "label": "Rambda"
+        },
+        {
+          "label": "Ramda"
+        }
+      ],
+      "index": 3
+    },
+    {
+      "result": true,
+      "labels": [
+        "Rambda",
+        "Ramda"
+      ],
+      "allResults": [
+        {
+          "label": "Rambda"
+        },
+        {
+          "label": "Ramda"
+        }
+      ],
+      "index": 4
+    }
+  ],
+  "numWarnings": 0
+}

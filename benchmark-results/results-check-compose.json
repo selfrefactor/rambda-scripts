@@ -1,0 +1,47 @@
+{
+  "warnings": [
+    {
+      "firstResult": false,
+      "secondResult": false,
+      "labels": [
+        "Rambda",
+        "Ramda",
+        "Lodash"
+      ],
+      "index": 1
+    }
+  ],
+  "allResults": [
+    {
+      "firstResult": true,
+      "secondResult": true,
+      "labels": [
+        "Rambda",
+        "Ramda",
+        "Lodash"
+      ],
+      "index": 0
+    },
+    {
+      "firstResult": false,
+      "secondResult": false,
+      "labels": [
+        "Rambda",
+        "Ramda",
+        "Lodash"
+      ],
+      "index": 1
+    },
+    {
+      "firstResult": true,
+      "secondResult": true,
+      "labels": [
+        "Rambda",
+        "Ramda",
+        "Lodash"
+      ],
+      "index": 2
+    }
+  ],
+  "numWarnings": 1
+}

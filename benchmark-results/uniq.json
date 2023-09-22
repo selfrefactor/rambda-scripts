@@ -1,19 +1,19 @@
 {
-  "name": "ALL",
-  "date": "2023-09-10T10:48:46.251Z",
+  "name": "UNIQ",
+  "date": "2023-09-10T17:34:17.855Z",
   "version": null,
   "results": [
     {
       "name": "Rambda",
-      "ops": 210137,
-      "margin": 1.37,
+      "ops": 245,
+      "margin": 2.72,
       "percentSlower": 0
     },
     {
       "name": "Ramda",
-      "ops": 195047,
-      "margin": 2.16,
-      "percentSlower": 7.18
+      "ops": 37,
+      "margin": 0.62,
+      "percentSlower": 84.9
     }
   ],
   "fastest": {

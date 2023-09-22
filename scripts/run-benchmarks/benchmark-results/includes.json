@@ -1,74 +1,74 @@
 {
   "includes-0": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:20:34.165Z",
+    "date": "2023-09-10T10:52:52.535Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 6034965,
-        "margin": 1.26,
-        "percentSlower": 0
+        "ops": 4392348,
+        "margin": 1.13,
+        "percentSlower": 23.36
       },
       {
         "name": "Ramda",
-        "ops": 5533954,
-        "margin": 1.15,
-        "percentSlower": 8.3
+        "ops": 5730908,
+        "margin": 0.63,
+        "percentSlower": 0
       }
     ],
     "fastest": {
-      "name": "Rambda",
-      "index": 0
-    },
-    "slowest": {
       "name": "Ramda",
       "index": 1
+    },
+    "slowest": {
+      "name": "Rambda",
+      "index": 0
     }
   },
   "includes-1": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:20:45.153Z",
+    "date": "2023-09-10T10:53:03.551Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 5960320,
-        "margin": 0.99,
-        "percentSlower": 0
+        "ops": 5164030,
+        "margin": 0.79,
+        "percentSlower": 11.76
       },
       {
         "name": "Ramda",
-        "ops": 5795074,
-        "margin": 1.64,
-        "percentSlower": 2.77
+        "ops": 5852485,
+        "margin": 0.71,
+        "percentSlower": 0
       }
     ],
     "fastest": {
-      "name": "Rambda",
-      "index": 0
-    },
-    "slowest": {
       "name": "Ramda",
       "index": 1
+    },
+    "slowest": {
+      "name": "Rambda",
+      "index": 0
     }
   },
   "includes-2": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:20:56.063Z",
+    "date": "2023-09-10T10:53:14.490Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 7452833,
-        "margin": 1.14,
+        "ops": 8116114,
+        "margin": 0.78,
         "percentSlower": 0
       },
       {
         "name": "Ramda",
-        "ops": 26252,
-        "margin": 1.07,
-        "percentSlower": 99.65
+        "ops": 25537,
+        "margin": 0.61,
+        "percentSlower": 99.69
       }
     ],
     "fastest": {
@@ -82,47 +82,47 @@
   },
   "includes-3": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:21:07.184Z",
+    "date": "2023-09-10T10:53:25.467Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 9212437,
-        "margin": 1.1,
-        "percentSlower": 0
+        "ops": 8194353,
+        "margin": 0.77,
+        "percentSlower": 8.64
       },
       {
         "name": "Ramda",
-        "ops": 8334095,
-        "margin": 0.85,
-        "percentSlower": 9.53
+        "ops": 8969523,
+        "margin": 1.33,
+        "percentSlower": 0
       }
     ],
     "fastest": {
-      "name": "Rambda",
-      "index": 0
-    },
-    "slowest": {
       "name": "Ramda",
       "index": 1
+    },
+    "slowest": {
+      "name": "Rambda",
+      "index": 0
     }
   },
   "includes-4": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:21:18.226Z",
+    "date": "2023-09-10T10:53:36.564Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 5488626,
-        "margin": 1.43,
+        "ops": 7001846,
+        "margin": 3.69,
         "percentSlower": 0
       },
       {
         "name": "Ramda",
-        "ops": 26693,
-        "margin": 0.75,
-        "percentSlower": 99.51
+        "ops": 24981,
+        "margin": 1.11,
+        "percentSlower": 99.64
       }
     ],
     "fastest": {
@@ -136,46 +136,46 @@
   },
   "includes-5": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:21:29.262Z",
+    "date": "2023-09-10T10:53:47.584Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 5968505,
-        "margin": 1.12,
-        "percentSlower": 0
+        "ops": 3323400,
+        "margin": 1.77,
+        "percentSlower": 8.67
       },
       {
         "name": "Ramda",
-        "ops": 5533877,
-        "margin": 0.79,
-        "percentSlower": 7.28
+        "ops": 3638705,
+        "margin": 0.89,
+        "percentSlower": 0
       }
     ],
     "fastest": {
-      "name": "Rambda",
-      "index": 0
-    },
-    "slowest": {
       "name": "Ramda",
       "index": 1
+    },
+    "slowest": {
+      "name": "Rambda",
+      "index": 0
     }
   },
   "includes-6": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:21:40.318Z",
+    "date": "2023-09-10T10:53:58.496Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 9078338,
-        "margin": 1.08,
-        "percentSlower": 3.62
+        "ops": 6863786,
+        "margin": 0.84,
+        "percentSlower": 15.12
       },
       {
         "name": "Ramda",
-        "ops": 9419658,
-        "margin": 0.84,
+        "ops": 8086597,
+        "margin": 1.06,
         "percentSlower": 0
       }
     ],
@@ -190,20 +190,20 @@
   },
   "includes-7": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:21:51.407Z",
+    "date": "2023-09-10T10:54:09.582Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 5974921,
-        "margin": 1.47,
+        "ops": 7109092,
+        "margin": 0.84,
         "percentSlower": 0
       },
       {
         "name": "Ramda",
-        "ops": 25617,
-        "margin": 0.73,
-        "percentSlower": 99.57
+        "ops": 24103,
+        "margin": 0.83,
+        "percentSlower": 99.66
       }
     ],
     "fastest": {
@@ -217,19 +217,19 @@
   },
   "includes-8": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:22:02.723Z",
+    "date": "2023-09-10T10:54:20.486Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 2607398,
-        "margin": 1.3,
-        "percentSlower": 64.91
+        "ops": 7589224,
+        "margin": 1.27,
+        "percentSlower": 4.99
       },
       {
         "name": "Ramda",
-        "ops": 7431227,
-        "margin": 2.53,
+        "ops": 7987747,
+        "margin": 1.08,
         "percentSlower": 0
       }
     ],
@@ -244,19 +244,19 @@
   },
   "includes-9": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:22:14.107Z",
+    "date": "2023-09-10T17:29:11.747Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 2607935,
-        "margin": 3.03,
-        "percentSlower": 65.23
+        "ops": 6135024,
+        "margin": 37.57,
+        "percentSlower": 26.93
       },
       {
         "name": "Ramda",
-        "ops": 7500095,
-        "margin": 1.42,
+        "ops": 8395518,
+        "margin": 2.78,
         "percentSlower": 0
       }
     ],
@@ -271,19 +271,19 @@
   },
   "includes-10": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:22:25.299Z",
+    "date": "2023-09-10T17:29:22.778Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 2778858,
-        "margin": 2.09,
-        "percentSlower": 64.35
+        "ops": 8215319,
+        "margin": 0.83,
+        "percentSlower": 6.17
       },
       {
         "name": "Ramda",
-        "ops": 7794555,
-        "margin": 1.32,
+        "ops": 8755535,
+        "margin": 0.78,
         "percentSlower": 0
       }
     ],
@@ -298,20 +298,20 @@
   },
   "includes-11": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:22:36.321Z",
+    "date": "2023-09-10T17:29:33.699Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 7941540,
-        "margin": 0.69,
+        "ops": 9923486,
+        "margin": 0.39,
         "percentSlower": 0
       },
       {
         "name": "Ramda",
-        "ops": 7401850,
-        "margin": 0.99,
-        "percentSlower": 6.8
+        "ops": 9116251,
+        "margin": 1.47,
+        "percentSlower": 8.13
       }
     ],
     "fastest": {
@@ -325,20 +325,20 @@
   },
   "includes-12": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:22:47.313Z",
+    "date": "2023-09-10T17:29:44.605Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 7867612,
-        "margin": 3.42,
+        "ops": 9961599,
+        "margin": 0.43,
         "percentSlower": 0
       },
       {
         "name": "Ramda",
-        "ops": 6463234,
-        "margin": 4.14,
-        "percentSlower": 17.85
+        "ops": 9157040,
+        "margin": 0.97,
+        "percentSlower": 8.08
       }
     ],
     "fastest": {
@@ -352,19 +352,19 @@
   },
   "includes-13": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:22:58.493Z",
+    "date": "2023-09-10T17:29:55.627Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 382915,
-        "margin": 2.71,
-        "percentSlower": 92.18
+        "ops": 300568,
+        "margin": 1.56,
+        "percentSlower": 95.29
       },
       {
         "name": "Ramda",
-        "ops": 4893819,
-        "margin": 2.39,
+        "ops": 6379723,
+        "margin": 0.85,
         "percentSlower": 0
       }
     ],
@@ -379,20 +379,20 @@
   },
   "includes-14": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:23:09.485Z",
+    "date": "2023-09-10T17:30:06.695Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 305833,
-        "margin": 2.95,
+        "ops": 200178,
+        "margin": 0.75,
         "percentSlower": 0
       },
       {
         "name": "Ramda",
-        "ops": 21425,
-        "margin": 3.54,
-        "percentSlower": 92.99
+        "ops": 26330,
+        "margin": 1.19,
+        "percentSlower": 86.85
       }
     ],
     "fastest": {
@@ -406,20 +406,20 @@
   },
   "includes-15": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:23:20.524Z",
+    "date": "2023-09-10T17:30:17.551Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 22709,
-        "margin": 3.02,
+        "ops": 23453,
+        "margin": 0.58,
         "percentSlower": 0
       },
       {
         "name": "Ramda",
-        "ops": 4141,
-        "margin": 0.53,
-        "percentSlower": 81.76
+        "ops": 5275,
+        "margin": 1.28,
+        "percentSlower": 77.51
       }
     ],
     "fastest": {
@@ -433,20 +433,20 @@
   },
   "includes-16": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:23:31.439Z",
+    "date": "2023-09-10T17:30:28.314Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 4077972,
-        "margin": 1.06,
+        "ops": 3272275,
+        "margin": 1.67,
         "percentSlower": 0
       },
       {
         "name": "Ramda",
-        "ops": 3840144,
-        "margin": 0.94,
-        "percentSlower": 5.83
+        "ops": 3067872,
+        "margin": 0.74,
+        "percentSlower": 6.25
       }
     ],
     "fastest": {
@@ -460,20 +460,20 @@
   },
   "includes-17": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:23:42.341Z",
+    "date": "2023-09-10T17:30:39.087Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 7817254,
-        "margin": 1.35,
+        "ops": 8175496,
+        "margin": 1.14,
         "percentSlower": 0
       },
       {
         "name": "Ramda",
-        "ops": 7521242,
-        "margin": 1.33,
-        "percentSlower": 3.79
+        "ops": 7628805,
+        "margin": 1.2,
+        "percentSlower": 6.69
       }
     ],
     "fastest": {
@@ -487,20 +487,20 @@
   },
   "includes-18": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:23:53.245Z",
+    "date": "2023-09-10T17:30:49.956Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 30822,
-        "margin": 0.85,
+        "ops": 44910,
+        "margin": 0.29,
         "percentSlower": 0
       },
       {
         "name": "Ramda",
-        "ops": 6011,
-        "margin": 0.53,
-        "percentSlower": 80.5
+        "ops": 6448,
+        "margin": 0.99,
+        "percentSlower": 85.64
       }
     ],
     "fastest": {
@@ -514,47 +514,47 @@
   },
   "includes-19": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:24:03.981Z",
+    "date": "2023-09-10T17:31:00.965Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 7822475,
-        "margin": 1.29,
-        "percentSlower": 0
+        "ops": 6283367,
+        "margin": 2.38,
+        "percentSlower": 28.22
       },
       {
         "name": "Ramda",
-        "ops": 7290967,
-        "margin": 1.5,
-        "percentSlower": 6.79
+        "ops": 8753713,
+        "margin": 0.48,
+        "percentSlower": 0
       }
     ],
     "fastest": {
-      "name": "Rambda",
-      "index": 0
-    },
-    "slowest": {
       "name": "Ramda",
       "index": 1
+    },
+    "slowest": {
+      "name": "Rambda",
+      "index": 0
     }
   },
   "includes-20": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:24:14.847Z",
+    "date": "2023-09-10T17:31:11.783Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 28751,
-        "margin": 0.8,
+        "ops": 27376,
+        "margin": 2.55,
         "percentSlower": 0
       },
       {
         "name": "Ramda",
-        "ops": 5129,
-        "margin": 2.16,
-        "percentSlower": 82.16
+        "ops": 5528,
+        "margin": 3.12,
+        "percentSlower": 79.81
       }
     ],
     "fastest": {
@@ -568,20 +568,20 @@
   },
   "includes-ALL": {
     "name": "INCLUDES",
-    "date": "2021-12-15T10:24:25.732Z",
+    "date": "2023-09-10T17:31:22.500Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 8216,
-        "margin": 1.02,
+        "ops": 7313,
+        "margin": 2.05,
         "percentSlower": 0
       },
       {
         "name": "Ramda",
-        "ops": 1263,
-        "margin": 1.36,
-        "percentSlower": 84.63
+        "ops": 1343,
+        "margin": 0.66,
+        "percentSlower": 81.64
       }
     ],
     "fastest": {

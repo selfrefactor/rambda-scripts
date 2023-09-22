@@ -1,46 +1,19 @@
 {
-  "uniqWith-0": {
-    "name": "UNIQ_WITH",
-    "date": "2023-09-10T17:35:34.146Z",
+  "uniqBy-0": {
+    "name": "UNIQ_BY",
+    "date": "2023-09-10T17:34:28.851Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 550198,
-        "margin": 0.17,
-        "percentSlower": 5.88
-      },
-      {
-        "name": "Ramda",
-        "ops": 584587,
+        "ops": 167080,
         "margin": 0.18,
-        "percentSlower": 0
-      }
-    ],
-    "fastest": {
-      "name": "Ramda",
-      "index": 1
-    },
-    "slowest": {
-      "name": "Rambda",
-      "index": 0
-    }
-  },
-  "uniqWith-1": {
-    "name": "UNIQ_WITH",
-    "date": "2023-09-10T17:35:45.102Z",
-    "version": null,
-    "results": [
-      {
-        "name": "Rambda",
-        "ops": 22564,
-        "margin": 0.2,
-        "percentSlower": 5.7
+        "percentSlower": 47.34
       },
       {
         "name": "Ramda",
-        "ops": 23929,
-        "margin": 0.17,
+        "ops": 317304,
+        "margin": 0.21,
         "percentSlower": 0
       }
     ],
@@ -53,20 +26,47 @@
       "index": 0
     }
   },
-  "uniqWith-2": {
-    "name": "UNIQ_WITH",
-    "date": "2023-09-10T17:35:55.995Z",
+  "uniqBy-1": {
+    "name": "UNIQ_BY",
+    "date": "2023-09-10T17:34:39.784Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 286677,
+        "ops": 169793,
+        "margin": 0.23,
+        "percentSlower": 56.32
+      },
+      {
+        "name": "Ramda",
+        "ops": 388695,
+        "margin": 0.22,
+        "percentSlower": 0
+      }
+    ],
+    "fastest": {
+      "name": "Ramda",
+      "index": 1
+    },
+    "slowest": {
+      "name": "Rambda",
+      "index": 0
+    }
+  },
+  "uniqBy-2": {
+    "name": "UNIQ_BY",
+    "date": "2023-09-10T17:34:50.596Z",
+    "version": null,
+    "results": [
+      {
+        "name": "Rambda",
+        "ops": 174983,
         "margin": 0.19,
-        "percentSlower": 11.5
+        "percentSlower": 55.6
       },
       {
         "name": "Ramda",
-        "ops": 323933,
+        "ops": 394097,
         "margin": 0.18,
         "percentSlower": 0
       }
@@ -80,21 +80,21 @@
       "index": 0
     }
   },
-  "uniqWith-3": {
-    "name": "UNIQ_WITH",
-    "date": "2023-09-10T17:36:06.755Z",
+  "uniqBy-3": {
+    "name": "UNIQ_BY",
+    "date": "2023-09-10T17:35:01.540Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 662160,
-        "margin": 0.18,
-        "percentSlower": 17.64
+        "ops": 170373,
+        "margin": 0.23,
+        "percentSlower": 48.66
       },
       {
         "name": "Ramda",
-        "ops": 804007,
-        "margin": 0.66,
+        "ops": 331878,
+        "margin": 0.23,
         "percentSlower": 0
       }
     ],
@@ -107,21 +107,21 @@
       "index": 0
     }
   },
-  "uniqWith-4": {
-    "name": "UNIQ_WITH",
-    "date": "2023-09-10T17:36:17.424Z",
+  "uniqBy-4": {
+    "name": "UNIQ_BY",
+    "date": "2023-09-10T17:35:12.421Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 589026,
-        "margin": 0.39,
-        "percentSlower": 9.22
+        "ops": 172471,
+        "margin": 1.25,
+        "percentSlower": 54
       },
       {
         "name": "Ramda",
-        "ops": 648869,
-        "margin": 2.18,
+        "ops": 374968,
+        "margin": 0.22,
         "percentSlower": 0
       }
     ],
@@ -134,21 +134,21 @@
       "index": 0
     }
   },
-  "uniqWith-ALL": {
-    "name": "UNIQ_WITH",
-    "date": "2023-09-10T17:36:28.328Z",
+  "uniqBy-ALL": {
+    "name": "UNIQ_BY",
+    "date": "2023-09-10T17:35:23.400Z",
     "version": null,
     "results": [
       {
         "name": "Rambda",
-        "ops": 17780,
-        "margin": 1.54,
-        "percentSlower": 8.29
+        "ops": 34597,
+        "margin": 0.23,
+        "percentSlower": 51.93
       },
       {
         "name": "Ramda",
-        "ops": 19388,
-        "margin": 1.35,
+        "ops": 71971,
+        "margin": 0.26,
         "percentSlower": 0
       }
     ],

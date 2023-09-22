@@ -1,19 +1,19 @@
 {
   "name": "INCLUDES",
-  "date": "2021-12-15T10:24:25.732Z",
+  "date": "2023-09-10T17:31:22.500Z",
   "version": null,
   "results": [
     {
       "name": "Rambda",
-      "ops": 8216,
-      "margin": 1.02,
+      "ops": 7313,
+      "margin": 2.05,
       "percentSlower": 0
     },
     {
       "name": "Ramda",
-      "ops": 1263,
-      "margin": 1.36,
-      "percentSlower": 84.63
+      "ops": 1343,
+      "margin": 0.66,
+      "percentSlower": 81.64
     }
   ],
   "fastest": {

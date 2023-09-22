@@ -1,27 +1,27 @@
 {
   "name": "PIPE",
-  "date": "2021-12-16T09:17:37.623Z",
+  "date": "2023-09-10T17:33:12.754Z",
   "version": null,
   "results": [
     {
       "name": "Rambda",
-      "ops": 88919,
-      "margin": 0.65,
-      "percentSlower": 0.87
+      "ops": 86108,
+      "margin": 0.33,
+      "percentSlower": 0
     },
     {
       "name": "Ramda",
-      "ops": 89699,
-      "margin": 0.6,
-      "percentSlower": 0
+      "ops": 86013,
+      "margin": 0.4,
+      "percentSlower": 0.11
     }
   ],
   "fastest": {
-    "name": "Ramda",
-    "index": 1
-  },
-  "slowest": {
     "name": "Rambda",
     "index": 0
+  },
+  "slowest": {
+    "name": "Ramda",
+    "index": 1
   }
 }
