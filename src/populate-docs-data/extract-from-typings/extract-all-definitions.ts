@@ -14,7 +14,7 @@ export function extractAllDefinitions(withRambdax: boolean) {
     const name = piped(
       allTypings,
       match(/export function [a-zA-Z]+/),
-      head,
+      head as any,
       trim,
       remove('export function ')
     )

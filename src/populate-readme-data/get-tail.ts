@@ -126,7 +126,7 @@ async function getChangelog(withRambdax){
   return piped(
     changelogContent.toString(),
     split(marker),
-    head,
+    head  as any,
     remove(marker),
     trim
   )
