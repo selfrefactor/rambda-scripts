@@ -14,7 +14,7 @@ Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on 
 
 3. `npm publish`
 
-4. `yarn github` - might not work
+4. `yarn github`  - `git push origin v8.5.0` once `gh release create v8.5.0` is executed
 
 ## After release checks
 
