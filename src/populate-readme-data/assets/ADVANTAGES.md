@@ -24,7 +24,7 @@ Also, `Rambda` provides you with included TS definitions:
 // Deno extension(https://marketplace.visualstudio.com/items?itemName=denoland.vscode-deno)
 // is installed and initialized
 import * as R from "https://deno.land/x/rambda/mod.ts";
-import * as Ramda from "https://x.nest.land/ramda@0.27.2/mod.ts";
+import * as Ramda from "https://deno.land/x/ramda/mod.ts";
 
 R.add(1)('foo') // => will trigger warning in VSCode as it should
 Ramda.add(1)('foo') // => will not trigger warning in VSCode

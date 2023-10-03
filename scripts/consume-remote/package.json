@@ -5,7 +5,7 @@
 		"test:command": "node consume-remote.js"
 	},
 	"dependencies": {
-		"rambda": "8.4.0"
+		"rambda": "8.5.0"
 	},
 	"devDependencies": {
 		

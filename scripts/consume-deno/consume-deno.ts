@@ -1,7 +1,5 @@
 // import * as Ramda from "https://x.nest.land/ramda@0.27.2/mod.ts";
-import * as R from "https://deno.land/x/rambda@v8.4.0/mod.ts";
-// not very usable as it doesn't auto update
-// import * as R from "https://deno.land/x/rambda/mod.ts";
+import * as R from "https://deno.land/x/rambda@v8.5.0/mod.ts";
 
 // let a=R.add(1)(2) // => will trigger warning in VSCode
 // console.log({a})
@@ -15,5 +13,5 @@ const rEquals = R.equals(
   {
     a: { b: 1 },
   },
-);
-console.log(rEquals);
+  );
+  console.log(rEquals);
