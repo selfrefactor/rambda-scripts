@@ -1,8 +1,8 @@
-import {readFile, readJson} from 'fs-extra'
-import {resolve} from 'path'
-import {interpolate} from 'rambdax'
-import {PATHS, BULLET} from '../constants'
-import {getSeparator} from '../utils'
+import { readFile, readJson } from 'fs-extra'
+import { resolve } from 'path'
+import { interpolate } from 'rambdax'
+import { PATHS, BULLET } from '../constants'
+import { getSeparator } from '../utils'
 
 function getInstallInfo(withRambdax: boolean) {
   const installInfoTemplate = `## ${BULLET} Install
@@ -47,10 +47,6 @@ async function getMissingMethods() {
 
   let counter = 0
   const missingMethods = `
-- dropRepeatsBy
-- empty
-- eqBy
-- forEachObjIndexed
 - gt
 - gte
 - hasIn
@@ -161,14 +157,17 @@ method | Rambda | Ramda | Lodash
 `
 async function getIntroBaseContent(
   withRambdax: boolean,
-  advantages: string
+  advantages: string,
 ) {
   const filePath = withRambdax
     ? `${__dirname}/assets/INTRO_RAMBDAX.md`
     : `${__dirname}/assets/INTRO.md`
 
   const template = (await readFile(filePath)).toString()
-  const content = interpolate(template, {bullet: BULLET, advantages})
+  const content = interpolate(template, {
+    bullet: BULLET,
+    advantages,
+  })
 
   return content
 }
@@ -187,7 +186,9 @@ async function getIntroContent(withRambdax: boolean) {
     library: withRambdax ? 'Rambdax' : 'Rambda',
   })
 
-  const advantagesTemplate = (await readFile(advantagesFilePath)).toString()
+  const advantagesTemplate = (
+    await readFile(advantagesFilePath)
+  ).toString()
 
   const advantages = interpolate(advantagesTemplate, {
     rambdaTypeScriptInfo: typescriptInfo,
@@ -214,14 +215,18 @@ async function getIntroEnd(withRambdax: boolean) {
 
 export async function getIntro(withRambdax: boolean) {
   const introContent = await getIntroContent(withRambdax)
-  const usedByContent = await readFile(`${__dirname}/assets/USED_BY.md`)
+  const usedByContent = await readFile(
+    `${__dirname}/assets/USED_BY.md`,
+  )
   const summaryContent = await readFile(
-    resolve(__dirname, '../read-benchmarks/summary.txt')
+    resolve(__dirname, '../read-benchmarks/summary.txt'),
   )
   const introEndContent = await getIntroEnd(withRambdax)
   const missingMethods = await getMissingMethods()
   const installInfo = getInstallInfo(withRambdax)
-  const {devDependencies} = await readJson(`${PATHS.base}/package.json`)
+  const { devDependencies } = await readJson(
+    `${PATHS.base}/package.json`,
+  )
 
   return interpolate(templateIntro, {
     benchmarksSeparator: getSeparator('benchmarks'),

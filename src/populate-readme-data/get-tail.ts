@@ -1,13 +1,22 @@
-import {readFile} from 'fs-extra'
-import {forEach, head, interpolate, piped, remove, split, trim} from 'rambdax'
-import {BULLET} from '../constants'
-import {getSeparator} from '../utils'
+import { readFile } from 'fs-extra'
+import {
+  forEach,
+  head,
+  interpolate,
+  piped,
+  remove,
+  split,
+  trim,
+} from 'rambdax'
+import { BULLET } from '../constants'
+import { getSeparator } from '../utils'
 
 const mostInfluentialContributors = {
   farwayer:
     'improving performance in R.find, R.filter; give the idea how to make benchmarks more reliable;',
   thejohnfreeman: 'add R.assoc, R.chain;',
-  peeja: 'add several methods and fix mutiple issues; provides great MR documentation',
+  peeja:
+    'add several methods and fix mutiple issues; provides great MR documentation',
   helmuthdu: 'add R.clone; help improve code style;',
   jpgorman: 'add R.zip, R.reject, R.without, R.addIndex;',
   ku8ar:
@@ -55,10 +64,11 @@ function getAdditionalInfo() {
   let contributors = ''
 
   forEach((reason, contributor) => {
-    contributors += `- [@${contributor}](https://github.com/${contributor}) - ${reason}\n\n`
+    // contributors += `- [@${contributor}](https://github.com/${contributor}) - ${reason}\n\n`
+    contributors += `- ![${contributor} avatar](https://avatars.githubusercontent.com/${contributor}) [@${contributor}](https://github.com/${contributor}) - ${reason}\n\n`
   }, mostInfluentialContributors)
 
-  return interpolate(additionalInfoTemplate, {contributors})
+  return interpolate(additionalInfoTemplate, { contributors })
 }
 
 const templateTail = `
@@ -113,29 +123,27 @@ const myLibraries = `
 </table>
 `.trim()
 
-async function getChangelog(withRambdax){
+async function getChangelog(withRambdax) {
   const changelogSource = withRambdax
     ? `${__dirname}/assets/CHANGELOG_RAMBDAX.md`
     : `${__dirname}/assets/CHANGELOG.md`
-  const marker = withRambdax
-    ? `7.3.0`
-    : `6.4.0`
-  
+  const marker = withRambdax ? `7.3.0` : `6.4.0`
+
   const changelogContent = await readFile(changelogSource)
 
   return piped(
     changelogContent.toString(),
     split(marker),
-    head  as any,
+    head as any,
     remove(marker),
-    trim
+    trim,
   )
 }
 
 export async function getTail(withRambdax: boolean) {
   const changelog = await getChangelog(withRambdax)
   return interpolate(templateTail, {
-    library: withRambdax ? 'rambdax':'rambda',
+    library: withRambdax ? 'rambdax' : 'rambda',
     additionalInfoSeparator: getSeparator('additional-info'),
     additionalInfo: getAdditionalInfo(),
     myLibraries,
