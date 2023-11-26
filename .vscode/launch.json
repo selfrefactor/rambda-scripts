@@ -11,7 +11,7 @@
       "type": "node"
     },
     {
-      "name": "Debug",
+      "name": "Debug lint",
       "program": "${workspaceFolder}/scripts/lint/lint.js",
       "request": "launch",
       "skipFiles": [
@@ -41,7 +41,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Check method",
+      "name": "Check method in benchmark",
       "skipFiles": [
         "<node_internals>/**"
       ],

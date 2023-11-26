@@ -1,4 +1,3 @@
-//populate-docs-data
 import { outputJSON} from 'fs-extra'
 import {map, piped, sortObject} from 'rambdax'
 
@@ -56,7 +55,7 @@ const pipedMethod: any = piped
 
 function getSortedInput(pipedInput: any){
   const predicate = (
-    propA, propB, valueA, valueB
+    propA, propB
   ) => propA < propB ? -1 : 1
   return sortObject(predicate, pipedInput)
 }

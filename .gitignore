@@ -17,3 +17,4 @@ standalone-benchmark-results/*.json
 .vscode/settings.json
 scripts/tree-shaking-webpack/output/*
 scripts/compare-size/dist.ramda.custom.js
+src/debug.json

@@ -2,7 +2,7 @@
 
 - Simplify logic of R.pipeAsync/R.composeAsync/R.pipedAsync - [MR #698](https://github.com/selfrefactor/rambda/pull/698)
 
-- Sync with `Rambda` version `8.4.0`
+- Sync with `Rambda` version `8.6.0`
 
 10.0.0
 

@@ -47,9 +47,9 @@ function getAdditionalInfo() {
 
 > Links to Rambda
 
-- [https://mailchi.mp/webtoolsweekly/web-tools-280](Web Tools Weekly)
-
 - [https://github.com/stoeffel/awesome-fp-js](awesome-fp-js)
+
+- [ https://mailchi.mp/webtoolsweekly/web-tools-280 ]( Web Tools Weekly #280 )
 
 - [https://github.com/docsifyjs/awesome-docsify](awesome-docsify)
 
@@ -57,9 +57,6 @@ function getAdditionalInfo() {
 
 - [SAP's Cloud SDK](https://github.com/SAP/cloud-sdk) - This repo doesn't uses \`Rambda\` since *October/2020* [commit that removes Rambda](https://github.com/SAP/cloud-sdk/commit/b29b4f915c4e4e9c2441e7b6b67cf83dac1fdac3)
 
-> Releases
-
-[Rambda's releases](https://github.com/selfrefactor/rambda/releases) before **6.4.0** were used mostly for testing purposes.
 `
   let contributors = ''
 
