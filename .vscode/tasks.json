@@ -12,6 +12,15 @@
     },
     {
       "type": "shell",
+      "label": "Second build process rambdax",
+      "command": "yarn debug:clean && yarn populate:readme:rambdax",
+      "group": {
+        "kind": "none",
+        "isDefault": false
+      }
+    },
+    {
+      "type": "shell",
       "label": "First build process - creates JSON file",
       "command": "yarn debug:clean && yarn populate:docs",
       "group": {

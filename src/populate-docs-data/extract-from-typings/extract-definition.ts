@@ -1,4 +1,4 @@
-import {head, mapToObject, match, piped, remove, trim} from 'rambdax'
+import {head, mapToObject, match, piped, remove, trim,} from 'rambdax'
 
 import {getOrigin} from '../../utils'
 import { debugExit } from '../../debug'
@@ -8,8 +8,9 @@ export function extractDefinition(withRambdax: boolean) {
     /\/\/ @SINGLE_MARKER\nexport function[^;]+/gm,
     getOrigin(withRambdax)
   )
-  debugExit(matches)
   const result = mapToObject<string, Record<string, string>>(singleMatch => {
+    const count = match(/\/\/ @SINGLE_MARKER/gm, singleMatch).length
+    if(count !== 1) throw new Error(`Wrong count ${count}`)
     const typing = remove('// @SINGLE_MARKER', singleMatch)
 
     const name = piped(
@@ -22,6 +23,7 @@ export function extractDefinition(withRambdax: boolean) {
 
     return {[name]: remove('export function ', typing)}
   }, matches)
+  debugExit(matches)
 
   return result
 }

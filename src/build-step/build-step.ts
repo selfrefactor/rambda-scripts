@@ -11,7 +11,7 @@ import {filter, mapAsync, pick, pipedAsync, remove} from 'rambdax'
 import {PATHS, X_PATHS, SOURCES} from '../constants'
 import {getRambdaMethods, sortFn} from '../utils'
 import {createExportedTypings} from './create-exported-typings'
-import { debugExit } from '../debug'
+import {debug, debugExit} from '../debug'
 
 // Rambdax methods which are used in creation of Rambda methods
 // ============================================
@@ -34,9 +34,9 @@ async function createMainFileRambdax({
   rambdaMethods,
   dir,
 }: {
-  rambdaMethods: string[],
-  allMethods: string[],
-  dir: string,
+  rambdaMethods: string[]
+  allMethods: string[]
+  dir: string
 }) {
   rambdaMethods.sort(sortFn)
   allMethods.sort(sortFn)
@@ -99,7 +99,7 @@ async function rambdaxBuildStep() {
 
       return x.endsWith('.js')
     }),
-    mapAsync(async(x: any) => {
+    mapAsync(async (x: any) => {
       const {name} = parse(x)
       const isValidMethod =
         !x.includes('internals') && !rambdaMethods.includes(name)
@@ -109,7 +109,7 @@ async function rambdaxBuildStep() {
       await copy(x, `${X_PATHS.xBase}/src/${fileName}`)
     })
   )
-
+  // debug(allMethods)
   await createMainFileRambdax({
     allMethods,
     rambdaMethods,
@@ -133,13 +133,13 @@ async function rambdaBuildStep() {
 
       return x.endsWith('.js')
     }),
-    mapAsync(async(x: any) => {
+    mapAsync(async (x: any) => {
       const {name} = parse(x)
 
       const shouldSkip =
         x.includes('benchmarks') ||
-        !rambdaMethods.includes(name) &&
-          !rambdaxMethodsAsInternals.includes(name)
+        (!rambdaMethods.includes(name) &&
+          !rambdaxMethodsAsInternals.includes(name))
 
       if (shouldSkip && !x.includes('internals')) return
 
@@ -166,9 +166,9 @@ async function syncChangelog(withRambdax: boolean) {
 export async function buildStep(withRambdax: boolean) {
   await createExportedTypings(withRambdax)
 
-  if (withRambdax){
+  if (withRambdax) {
     await rambdaxBuildStep()
-  } else{
+  } else {
     await rambdaBuildStep()
   }
 
