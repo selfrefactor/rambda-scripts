@@ -4,7 +4,7 @@
     {
       "type": "shell",
       "label": "Second build process",
-      "command": "yarn populate:readme:npm",
+      "command": "yarn debug:clean && yarn populate:readme:npm",
       "group": {
         "kind": "none",
         "isDefault": false
@@ -13,7 +13,16 @@
     {
       "type": "shell",
       "label": "First build process - creates JSON file",
-      "command": "yarn populate:docs",
+      "command": "yarn debug:clean && yarn populate:docs",
+      "group": {
+        "kind": "none",
+        "isDefault": false
+      }
+    },
+    {
+      "type": "shell",
+      "label": "First build process - creates JSON file rambdax",
+      "command": "yarn debug:clean && yarn populate:docs:rambdax",
       "group": {
         "kind": "none",
         "isDefault": false

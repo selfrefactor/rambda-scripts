@@ -1,12 +1,14 @@
 import {head, mapToObject, match, piped, remove, trim} from 'rambdax'
 
 import {getOrigin} from '../../utils'
+import { debugExit } from '../../debug'
 
 export function extractDefinition(withRambdax: boolean) {
   const matches = match(
     /\/\/ @SINGLE_MARKER\nexport function[^;]+/gm,
     getOrigin(withRambdax)
   )
+  debugExit(matches)
   const result = mapToObject<string, Record<string, string>>(singleMatch => {
     const typing = remove('// @SINGLE_MARKER', singleMatch)
 

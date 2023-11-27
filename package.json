@@ -39,7 +39,8 @@
 		"run:ramda:test": "jest src/run-ramda-specs/run-ramda-specs.spec.ts",
 		"summary": "jest src/read-benchmarks/benchmark-summary.spec.ts",
 		"test": "jest -o -u --watch",
-		"usedby": "RAMBDA_SCRIPTS_MODE=usedby jest src/apply-rambda-scripts.spec.ts"
+		"usedby": "RAMBDA_SCRIPTS_MODE=usedby jest src/apply-rambda-scripts.spec.ts",
+		"debug:clean": "rm -f src/debug.json"
 	},
 	"main": "index.js",
 	"version": "1.0.0",
