@@ -109,7 +109,7 @@ async function rambdaxBuildStep() {
       await copy(x, `${X_PATHS.xBase}/src/${fileName}`)
     })
   )
-  // debug(allMethods)
+  
   await createMainFileRambdax({
     allMethods,
     rambdaMethods,

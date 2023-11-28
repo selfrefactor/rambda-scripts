@@ -1,7 +1,6 @@
 import {head, mapToObject, match, piped, remove, trim,} from 'rambdax'
 
 import {getOrigin} from '../../utils'
-import { debugExit } from '../../debug'
 
 export function extractDefinition(withRambdax: boolean) {
   const matches = match(
@@ -23,7 +22,6 @@ export function extractDefinition(withRambdax: boolean) {
 
     return {[name]: remove('export function ', typing)}
   }, matches)
-  debugExit(matches)
 
   return result
 }
