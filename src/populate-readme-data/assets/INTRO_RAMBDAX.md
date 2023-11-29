@@ -8,7 +8,6 @@ Extended version of Rambda(utility library) - [Documentation](https://selfrefact
 [![codecov](https://codecov.io/gh/selfrefactor/rambda/branch/master/graph/badge.svg)](https://codecov.io/gh/selfrefactor/rambda)
 ![Library size](https://img.shields.io/bundlephobia/minzip/rambdax)
 [![install size](https://packagephobia.com/badge?p=rambdax)](https://packagephobia.com/result?p=rambdax)
-[![HitCount](https://hits.dwyl.com/selfrefactor/rambdax.svg?style=flat-square)](http://hits.dwyl.com/selfrefactor/rambdax)
 
 ## {{bullet}} Differences between Rambda and Rambdax
 
