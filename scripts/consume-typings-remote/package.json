@@ -6,10 +6,11 @@
 		"test:command": "tsc --lib esnext,dom consume-typings.ts&&node consume-typings.js"
 	},
 	"dependencies": {
-		"@types/ramda": "0.29.4",
-		"rambda": "8.4.0",
-		"ramda": "0.29.0",
-		"typescript": "5.0.2"
+		"@types/ramda": "0.29.9",
+		"rambda": "8.6.0",
+		"rambdax": "10.1.0",
+		"ramda": "0.29.1",
+		"typescript": "5.3.2"
 	},
 	"devDependencies": {
 		

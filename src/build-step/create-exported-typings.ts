@@ -8,8 +8,8 @@ function attachExports({
   methodName,
   allTypings,
 }: {
-  methodName: string,
-  allTypings: string,
+  methodName: string
+  allTypings: string
 }) {
   return allTypings
     .split('\n')
@@ -29,7 +29,7 @@ export async function createExportedTypings(withRambdax = false) {
     })
 
     if (!x.explanation) {
-      return toSave += `\n${allTypings}\n`
+      return (toSave += `\n${allTypings}\n`)
     }
 
     const explanation = x.explanation
@@ -40,7 +40,7 @@ export async function createExportedTypings(withRambdax = false) {
 
     const methodData = `/**\n${explanation}\n */\n${allTypings}`
 
-    return toSave += `\n${methodData}\n`
+    return (toSave += `\n${methodData}\n`)
   }
 
   const methodsData = withRambdax

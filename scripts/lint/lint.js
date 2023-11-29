@@ -25,11 +25,12 @@ async function lintFile(filePath) {
 }
 
 const forbiddenPaths = [
-  'run-rambda-specs/failing_tests', 'run-rambda-specs/ramda'
+  'run-rambda-specs/failing_tests',
+  'run-rambda-specs/ramda',
 ]
 
-const filterFn = (filePath) => {
-  if(!filePath.endsWith('.js')) return false
+const filterFn = filePath => {
+  if (!filePath.endsWith('.js')) return false
   const filtered = forbiddenPaths.filter(x => filePath.includes(x))
   return filtered.length === 0
 }
@@ -37,9 +38,9 @@ const filterFn = (filePath) => {
 async function getFiles() {
   const filesRaw = await scanFolder({folder: `${base}/source`})
   const files = filesRaw.filter(x => x.endsWith('.js'))
-  
+
   if (!LINT_STAGED_ONLY) return files
-  
+
   const stagedFilesRaw = await getStagedFiles(base)
   console.log(`stagedFilesRaw`, stagedFilesRaw.length)
   const stagedFiles = stagedFilesRaw.filter(filterFn)

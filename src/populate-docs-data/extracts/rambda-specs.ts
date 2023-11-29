@@ -5,7 +5,7 @@ import {PATHS} from '../../constants'
 import {getMethods} from '../extract-from-typings/get-methods'
 
 export async function rambdaSpecs(withRambdax: boolean) {
-  const result = await mapToObjectAsync(async(method: string) => {
+  const result = await mapToObjectAsync(async (method: string) => {
     const filePath = `${PATHS.source}/${method}.spec.js`
     if (!existsSync(filePath)) return false
     const rambdaSpec = await readFile(filePath)

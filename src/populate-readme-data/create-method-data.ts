@@ -1,6 +1,6 @@
 import {interpolate} from 'rambdax'
 import {getMethodSeparator} from '../utils'
-import { getAllowance } from './get-allowance'
+import {getAllowance} from './get-allowance'
 
 function createFailedSpec(method: any) {
   const summaryTemplate = `
@@ -138,8 +138,8 @@ function createReplReadme({
   replLink,
   methodName,
 }: {
-  replLink: string,
-  methodName: string,
+  replLink: string
+  methodName: string
 }) {
   return `\n<a title="redirect to Rambda Repl site" href="${replLink}">Try this <strong>R.${methodName}</strong> example in Rambda REPL</a>`
 }
@@ -159,7 +159,8 @@ export function createMethodData(
   }
 
   if (method.notes && !npmReadme) data.push(createNoteReadme(method))
-  if (method.example && !npmReadme && allowance.example ) data.push(createExampleReadme(method))
+  if (method.example && !npmReadme && allowance.example)
+    data.push(createExampleReadme(method))
 
   if (method.replLink) {
     data.push(createReplReadme(method))

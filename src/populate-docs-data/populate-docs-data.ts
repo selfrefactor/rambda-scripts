@@ -1,4 +1,4 @@
-import { outputJSON} from 'fs-extra'
+import {outputJSON} from 'fs-extra'
 import {map, piped, sortObject} from 'rambdax'
 
 import {extractAllDefinitions} from './extract-from-typings/extract-all-definitions'
@@ -20,9 +20,9 @@ function initiateData(definitions: Record<string, string>, key: string) {
 }
 
 interface AppendData {
-  hash: Record<string, any>,
-  prop: string,
-  input: Record<string, any>,
+  hash: Record<string, any>
+  prop: string
+  input: Record<string, any>
 }
 
 function appendData(appendDataInput: AppendData): Record<string, string> {
@@ -38,8 +38,8 @@ function appendData(appendDataInput: AppendData): Record<string, string> {
 }
 
 interface Save {
-  toSave: Record<string, any>,
-  withRambdax: boolean,
+  toSave: Record<string, any>
+  withRambdax: boolean
 }
 
 async function save(input: Save) {
@@ -53,10 +53,8 @@ async function save(input: Save) {
 
 const pipedMethod: any = piped
 
-function getSortedInput(pipedInput: any){
-  const predicate = (
-    propA, propB
-  ) => propA < propB ? -1 : 1
+function getSortedInput(pipedInput: any) {
+  const predicate = (propA, propB) => (propA < propB ? -1 : 1)
   return sortObject(predicate, pipedInput)
 }
 
@@ -77,7 +75,7 @@ export async function populateDocsData(withRambdax: boolean) {
 
   const pipedInput = initiateData(definitions, 'typing')
   const sortedPipedInput = getSortedInput(pipedInput)
-  
+
   const toSave = pipedMethod(
     sortedPipedInput,
     input =>

@@ -47,7 +47,7 @@ export async function replaceImports() {
     return rambdaMethods.includes(name)
   })
 
-  const replaceImport = async function(filePath: string) {
+  const replaceImport = async function (filePath: string) {
     const content = await readFile(filePath)
     const newContent = replace(
       "require('../source/index.js')",

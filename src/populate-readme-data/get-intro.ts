@@ -1,8 +1,8 @@
-import { readFile, readJson } from 'fs-extra'
-import { resolve } from 'path'
-import { interpolate } from 'rambdax'
-import { PATHS, BULLET } from '../constants'
-import { getSeparator } from '../utils'
+import {readFile, readJson} from 'fs-extra'
+import {resolve} from 'path'
+import {interpolate} from 'rambdax'
+import {PATHS, BULLET} from '../constants'
+import {getSeparator} from '../utils'
 
 function getInstallInfo(withRambdax: boolean) {
   const installInfoTemplate = `## ${BULLET} Install
@@ -45,8 +45,7 @@ async function getMissingMethods() {
 {{separator}}
   `
 
-  let counter = 0
-  const missingMethods = `
+  const missingMethodsList = `
 - gt
 - gte
 - hasIn
@@ -103,7 +102,10 @@ async function getMissingMethods() {
 - valuesIn
 - xprod
 - thunkify
-- default
+- default`.trim()
+
+  const missingMethods = `
+${missingMethodsList}
 
   Most of above methods are in progress to be added to **Rambda**. The following methods are not going to be added:
 - __ - placeholder method allows user to further customize the method call. While, it seems useful initially, the price is too high in terms of complexity for TypeScript definitions. If it is not easy exressable in TypeScript, it is not worth it as **Rambda** is a TypeScript first library.
@@ -115,7 +117,7 @@ async function getMissingMethods() {
 
   return interpolate(missingMethodsTemplate, {
     missingMethods,
-    counter,
+    counter: missingMethodsList.split('\n').length,
     separator: getSeparator('missing-ramda-methods'),
   })
 }
@@ -157,7 +159,7 @@ method | Rambda | Ramda | Lodash
 `
 async function getIntroBaseContent(
   withRambdax: boolean,
-  advantages: string,
+  advantages: string
 ) {
   const filePath = withRambdax
     ? `${__dirname}/assets/INTRO_RAMBDAX.md`
@@ -186,9 +188,7 @@ async function getIntroContent(withRambdax: boolean) {
     library: withRambdax ? 'Rambdax' : 'Rambda',
   })
 
-  const advantagesTemplate = (
-    await readFile(advantagesFilePath)
-  ).toString()
+  const advantagesTemplate = (await readFile(advantagesFilePath)).toString()
 
   const advantages = interpolate(advantagesTemplate, {
     rambdaTypeScriptInfo: typescriptInfo,
@@ -215,18 +215,14 @@ async function getIntroEnd(withRambdax: boolean) {
 
 export async function getIntro(withRambdax: boolean) {
   const introContent = await getIntroContent(withRambdax)
-  const usedByContent = await readFile(
-    `${__dirname}/assets/USED_BY.md`,
-  )
+  const usedByContent = await readFile(`${__dirname}/assets/USED_BY.md`)
   const summaryContent = await readFile(
-    resolve(__dirname, '../read-benchmarks/summary.txt'),
+    resolve(__dirname, '../read-benchmarks/summary.txt')
   )
   const introEndContent = await getIntroEnd(withRambdax)
   const missingMethods = await getMissingMethods()
   const installInfo = getInstallInfo(withRambdax)
-  const { devDependencies } = await readJson(
-    `${PATHS.base}/package.json`,
-  )
+  const {devDependencies} = await readJson(`${PATHS.base}/package.json`)
 
   return interpolate(templateIntro, {
     benchmarksSeparator: getSeparator('benchmarks'),

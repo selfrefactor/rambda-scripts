@@ -1,4 +1,4 @@
-import { readFile } from 'fs-extra'
+import {readFile} from 'fs-extra'
 import {
   forEach,
   head,
@@ -8,8 +8,8 @@ import {
   split,
   trim,
 } from 'rambdax'
-import { BULLET } from '../constants'
-import { getSeparator } from '../utils'
+import {BULLET} from '../constants'
+import {getSeparator} from '../utils'
 
 const mostInfluentialContributors = {
   farwayer:
@@ -65,7 +65,7 @@ function getAdditionalInfo() {
     contributors += `- ![${contributor} avatar](https://avatars.githubusercontent.com/${contributor}) [@${contributor}](https://github.com/${contributor}) - ${reason}\n\n`
   }, mostInfluentialContributors)
 
-  return interpolate(additionalInfoTemplate, { contributors })
+  return interpolate(additionalInfoTemplate, {contributors})
 }
 
 const templateTail = `
@@ -133,7 +133,7 @@ async function getChangelog(withRambdax) {
     split(marker),
     head as any,
     remove(marker),
-    trim,
+    trim
   )
 }
 

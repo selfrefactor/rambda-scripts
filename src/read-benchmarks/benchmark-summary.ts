@@ -18,8 +18,8 @@ function parseMethodName(input: string) {
 }
 
 function readResults(file: string): {
-  name: string,
-  results: {name: string}[],
+  name: string
+  results: {name: string}[]
 } {
   const {results, name} = readJsonSync(`${resultsDir}/${file}`)
 
@@ -27,9 +27,9 @@ function readResults(file: string): {
 }
 
 interface SummaryCounter {
-  ramda: number,
-  rambda: number,
-  lodash: number,
+  ramda: number
+  rambda: number
+  lodash: number
 }
 
 export async function benchmarkSummary() {

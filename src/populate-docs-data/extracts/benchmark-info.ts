@@ -51,7 +51,7 @@ export async function benchmarkInfo() {
     await readFile(resolve(__dirname, '../../read-benchmarks/summary.txt'))
   ).toString()
 
-  const result = await mapToObjectAsync(async(method: string) => {
+  const result = await mapToObjectAsync(async (method: string) => {
     const filePath = `${PATHS.source}/benchmarks/${method}.js`
     const okExists = existsSync(filePath)
 

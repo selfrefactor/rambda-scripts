@@ -28,8 +28,12 @@ async function applyRunBenchmark({methodName, length, index, filePath}) {
       },
     }
   })
-  await createBenchmark(applyableTests, methodName, 'scripts/run-benchmarks/assets-sample-benchmarks')
-  
+  await createBenchmark(
+    applyableTests,
+    methodName,
+    'scripts/run-benchmarks/assets-sample-benchmarks'
+  )
+
   const outputFilePath = `${benchmarksDir}/${snakeCase(methodName)}.json`
   const benchmarkResult = await readJson(outputFilePath)
   return {

@@ -1,5 +1,5 @@
 import {benchmarkSummary} from './benchmark-summary'
 
-test('happy', async() => {
+test('happy', async () => {
   await benchmarkSummary()
 })

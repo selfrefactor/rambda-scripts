@@ -1,9 +1,18 @@
 import { add, applySpec,  transpose, move, union, path, propEq, sortBy, prop, map } from 'ramda'
-// import { add, applySpec,  transpose, move, union, path, propEq, sortBy, prop, map } from 'rambda'
+import { partial } from 'rambdax'
+
+
 const alois = {name: 'Alois', age: 15, disposition: 'surly'};
- const hasBrownHair = propEq('brown', 'age', alois);
+ const hasBrownHair = propEq(12, 'age', alois);
  const age = propEq(15, 'age', alois);
 console.log({hasBrownHair, age})
+
+ function foo(a:any,b:any,c:any) {
+}
+
+console.log(partial(foo, [1,2]), `partial(foo, [1,2])`)
+console.log(partial(foo, [1,2])(3), `partial(foo, [1,2])(3)`)
+
 const arr = [{ id: 1 }, { id: 2 }, { id: 3 }];
 
 const sortWithRProp = sortBy(prop('id'), arr);
@@ -11,7 +20,10 @@ const sortWithoutRProp = sortBy((item) => item.id, arr);
 
 const mapWithRProp = map(prop('id'), arr);
 const mapWithoutRProp = map((item) => item.id, arr);
-
+console.log('sortWithRProp', sortWithRProp)
+console.log('sortWithoutRProp', sortWithoutRProp)
+console.log('mapWithRProp', mapWithRProp)
+console.log('mapWithoutRProp', mapWithoutRProp)
 process.exit(0)  
 const moveResult = move(1,2, [1,2,3])
 const unionResult = union([1,2,4], [1,2,3])

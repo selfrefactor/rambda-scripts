@@ -5,7 +5,7 @@ jest.setTimeout(ms('3 minutes'))
 
 const testMode = 'populate:docs'
 
-test('happy', async() => {
+test('happy', async () => {
   const mode = process.env.RAMBDA_SCRIPTS_MODE
     ? process.env.RAMBDA_SCRIPTS_MODE
     : testMode

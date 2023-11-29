@@ -80,7 +80,7 @@ export async function runSingleSpec(method: string) {
 
 export async function runSpecs(methodsWithSpecs: string[]) {
   return mapAsync(
-    async(method: string) => runSingleSpec(method),
+    async (method: string) => runSingleSpec(method),
     methodsWithSpecs
   )
 }

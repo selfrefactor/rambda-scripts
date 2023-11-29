@@ -5,7 +5,7 @@ import {importRamdaSpecs, replaceImports} from './import-ramda-specs'
 
 const WITH_INITIAL_STEP = true
 
-test('happy', async() => {
+test('happy', async () => {
   // await replaceImports()
   await importRamdaSpecs(WITH_INITIAL_STEP)
 })

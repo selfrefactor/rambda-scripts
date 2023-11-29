@@ -11,7 +11,7 @@ const VERSIONS = [
   '4.5.2',
   '4.6.2',
   '5.0.2',
-  '5.2.0'
+  '5.2.0',
 ]
 
 async function checkVersion(versionToCheck) {

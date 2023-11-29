@@ -1,5 +1,5 @@
 // import * as Ramda from "https://x.nest.land/ramda@0.27.2/mod.ts";
-import * as R from "https://deno.land/x/rambda@v8.5.0/mod.ts";
+import * as R from 'https://deno.land/x/rambda@v8.5.0/mod.ts'
 
 // let a=R.add(1)(2) // => will trigger warning in VSCode
 // console.log({a})
@@ -8,10 +8,10 @@ import * as R from "https://deno.land/x/rambda@v8.5.0/mod.ts";
 
 const rEquals = R.equals(
   {
-    a: { b: 1 },
+    a: {b: 1},
   },
   {
-    a: { b: 1 },
-  },
-  );
-  console.log(rEquals);
+    a: {b: 1},
+  }
+)
+console.log(rEquals)

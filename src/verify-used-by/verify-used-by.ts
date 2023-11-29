@@ -11,7 +11,7 @@ const links = [
   'https://raw.githubusercontent.com/G07cha/MineflayerArmorManager/master/package.json',
 ]
 
-const iterator = async(url: string) => {
+const iterator = async (url: string) => {
   // const {body} = await got(url)
   // const {dependencies, devDependencies} = JSON.parse(body)
 

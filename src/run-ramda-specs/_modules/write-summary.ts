@@ -47,20 +47,20 @@ function withSingleMethod(method: string): FailingTest | false {
       holder.push(line)
       flagBad = true
 
-      return flag = false
+      return (flag = false)
     }
 
     if (goodTests[counter] && line.includes(goodTests[counter])) {
       indentCount = getIndent(line)
 
-      return flag = true
+      return (flag = true)
     }
 
     if (line === `${indent('});', indentCount)}` && !flagBad) {
       counter++
       flagBad = false
 
-      return flag = false
+      return (flag = false)
     }
 
     if (line === `${indent('});', indentCount)}` && flagBad) {
@@ -69,7 +69,7 @@ function withSingleMethod(method: string): FailingTest | false {
       badCounter++
       flagBad = false
 
-      return flag = false
+      return (flag = false)
     }
 
     if (!flag) {
@@ -106,9 +106,9 @@ function withSingleMethod(method: string): FailingTest | false {
 }
 
 interface FailingTest {
-  content: string,
-  method: string,
-  diffReason?: string,
+  content: string
+  method: string
+  diffReason?: string
 }
 
 function failingTestPredicate(x: FailingTest | false): x is FailingTest {
