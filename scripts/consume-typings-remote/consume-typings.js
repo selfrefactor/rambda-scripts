@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var ramda_1 = require("ramda");
 var rambdax_1 = require("rambdax");
+var pipeResult = (0, ramda_1.without)(['abc'], ['abc']);
+console.log(pipeResult, "pipeResult");
 var alois = { name: 'Alois', age: 15, disposition: 'surly' };
 var hasBrownHair = (0, ramda_1.propEq)(12, 'age', alois);
 var age = (0, ramda_1.propEq)(15, 'age', alois);

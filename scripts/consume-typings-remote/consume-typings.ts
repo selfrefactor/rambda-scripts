@@ -1,6 +1,9 @@
-import { add, applySpec,  transpose, move, union, path, propEq, sortBy, prop, map } from 'ramda'
+import { add, applySpec,  transpose, move, union, path, propEq, sortBy, prop, map, without } from 'ramda'
 import { partial } from 'rambdax'
 
+let pipeResult = without(['abc'], ['abc'])
+
+console.log(pipeResult, `pipeResult`)
 
 const alois = {name: 'Alois', age: 15, disposition: 'surly'};
  const hasBrownHair = propEq(12, 'age', alois);

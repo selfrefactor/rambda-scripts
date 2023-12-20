@@ -52,6 +52,9 @@ export const GITHUB_README_LIMIT = 0.5
  * Added to reduce difference between Rambda and Ramda
  */
 let newMethods = [
+  'gt',
+  'gte',
+  'reduceBy',
   'dissocPath',
   'dropRepeatsBy',
   'empty',
@@ -127,7 +130,7 @@ let newMethods = [
   'addIndex',
   'addIndexRight',
 ]
-export const BLACKLIST_METHODS = [
+export const METHODS_TO_SKIP = [
   ...newMethods,
   'add',
   'always',
@@ -191,8 +194,8 @@ export const BLACKLIST_METHODS = [
   'whereAny',
 ]
 
-export const BLACKLIST_METHODS_RAMBDAX = [
-  ...BLACKLIST_METHODS,
+export const METHODS_TO_SKIP_RAMBDAX = [
+  ...METHODS_TO_SKIP,
   'filterIndexed',
   'findAsync',
   'flattenObject',

@@ -1,4 +1,4 @@
-import {BLACKLIST_METHODS, BLACKLIST_METHODS_RAMBDAX} from '../constants'
+import {METHODS_TO_SKIP, METHODS_TO_SKIP_RAMBDAX} from '../constants'
 
 interface Allowance {
   typing: boolean
@@ -15,7 +15,7 @@ export function getAllowance(
   withRambdax: boolean
 ): Allowance {
   if (withRambdax) {
-    const allowed = !BLACKLIST_METHODS_RAMBDAX.includes(methodName)
+    const allowed = !METHODS_TO_SKIP_RAMBDAX.includes(methodName)
     return {
       typing: allowed,
       example: allowed,
@@ -26,7 +26,7 @@ export function getAllowance(
       benchmark: false,
     }
   }
-  const allowed = !BLACKLIST_METHODS.includes(methodName)
+  const allowed = !METHODS_TO_SKIP.includes(methodName)
   return {
     typing: allowed,
     example: allowed,
