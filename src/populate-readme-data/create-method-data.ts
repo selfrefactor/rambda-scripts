@@ -2,19 +2,6 @@ import {interpolate} from 'rambdax'
 import {getMethodSeparator} from '../utils'
 import {getAllowance} from './get-allowance'
 
-  const shortSummaryTemplate = `
-*{{failedSpecsCount}} failed Ramda.{{methodName}} specs*
-
-> :boom: Reason for the failure: {{failedSpecsReasons}}
-`
-
-  const templateToUse = method.failedRamdaSpecs
-    ? summaryTemplate
-    : shortSummaryTemplate
-
-  return interpolate(templateToUse, method)
-}
-
 function createRambdaSpecReadme(method: any) {
   const summaryTemplate = `
 <details>
@@ -167,9 +154,6 @@ export function createMethodData(
   if (method.benchmarkInfo && allowance.benchmark) {
     data.push(createBenchmarkInfo(method))
   }
-  // if (method.failedSpecsReasons && isAllowed){
-  //   data.push(createFailedSpec(method))
-  // }
 
   data.push(`\n${getMethodSeparator(method.methodName)}\n`)
 
