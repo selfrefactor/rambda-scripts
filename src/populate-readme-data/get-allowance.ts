@@ -26,7 +26,7 @@ export function getAllowance(
       benchmark: false,
     }
   }
-  const allowed = !METHODS_TO_SKIP.includes(methodName)
+  const allowed = !METHODS_TO_SKIP.includes(methodName) && !EXAMPLE_ONLY_METHODS.includes(methodName)
   const exampleIsAllowed = EXAMPLE_ONLY_METHODS.includes(methodName)
   
   return {
