@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "CodeSignal - Debug Jest",
+      "name": "Populate docs",
       "type": "node",
       "stopOnEntry": true ,
       "request": "launch",
@@ -15,7 +15,29 @@
         "src/apply-rambda-scripts.spec.ts"
       ],
       "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
+      "internalConsoleOptions": "neverOpen",
+      "env":{
+        "RAMBDA_SCRIPTS_MODE": "populate:docs"
+      }
+    },
+    {
+      "name": "Populate readme",
+      "type": "node",
+      "stopOnEntry": true ,
+      "request": "launch",
+      "runtimeArgs": [
+        "--inspect-brk",
+        "${workspaceRoot}/node_modules/.bin/jest",
+        "--runInBand",
+        "--coverage",
+        "false",
+        "src/apply-rambda-scripts.spec.ts"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env":{
+        "RAMBDA_SCRIPTS_MODE": "populate:readme"
+      }
     },
     {
       "name": "Sample benchmark",
