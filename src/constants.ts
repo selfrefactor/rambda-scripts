@@ -49,6 +49,7 @@ export const HAS_RAMBDAX = existsSync(
 export const GITHUB_README_LIMIT = 0.5
 
 let newMethods = [
+  // new methods above
   'addIndex',
   'addIndexRight',
   'andThen',
