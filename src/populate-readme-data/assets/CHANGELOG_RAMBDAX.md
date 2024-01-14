@@ -1,3 +1,7 @@
+11.0.0
+
+- Sync with `Rambda` version `9.0.0`
+
 10.1.0
 
 - Simplify TypeScript logic of `R.pipeAsync/R.composeAsync/R.pipedAsync` - [MR #698](https://github.com/selfrefactor/rambda/pull/698)

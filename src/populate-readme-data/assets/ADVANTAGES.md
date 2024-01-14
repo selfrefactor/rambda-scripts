@@ -6,7 +6,15 @@ Still, you need to be aware that functional programming features in `TypeScript`
 
 {{rambdaTypeScriptInfo}}
 
-#### Immutable TS definitions
+### Understandable source code due to little usage of internals
+
+`Ramda` uses a lot of internals, which hides a lot of logic. Reading the full source code of a method can be challenging.
+
+### Better VSCode experience
+
+If the project is written in Javascript, then `go to source definition` action will lead you to actual implementation of the method.
+
+### Immutable TS definitions
 
 You can use immutable version of Rambda definitions, which is linted with ESLint `functional/prefer-readonly-type` plugin.
 
