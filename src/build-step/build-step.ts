@@ -11,7 +11,6 @@ import {filter, mapAsync, pick, pipedAsync, remove} from 'rambdax'
 import {PATHS, X_PATHS, SOURCES} from '../constants'
 import {getRambdaMethods, sortFn} from '../utils'
 import {createExportedTypings} from './create-exported-typings'
-import {debug, debugExit} from '../debug'
 
 // Rambdax methods which are used in creation of Rambda methods
 // ============================================

@@ -46,10 +46,6 @@ async function getMissingMethods() {
   `
 
   const missingMethodsList = `
-- gt
-- gte
-- hasIn
-- innerJoin
 - insert
 - insertAll
 - into
@@ -80,14 +76,12 @@ async function getMissingMethods() {
 - pipeWith
 - project
 - promap
-- reduceBy
 - reduceRight
 - reduceWhile
 - reduced
 - remove
 - scan
 - sequence
-- sortWith
 - splitWhenever
 - swap
 - symmetricDifferenceWith

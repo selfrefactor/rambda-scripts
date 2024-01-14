@@ -2,23 +2,6 @@ import {interpolate} from 'rambdax'
 import {getMethodSeparator} from '../utils'
 import {getAllowance} from './get-allowance'
 
-function createFailedSpec(method: any) {
-  const summaryTemplate = `
-<details>
-
-<summary>{{failedSpecsCount}} failed <italic>Ramda.{{methodName}}</italic> specs
-
-> :boom: Reason for the failure: {{failedSpecsReasons}}
-</summary>
-
-\`\`\`javascript
-{{failedRamdaSpecs}}
-\`\`\`
-
-
-</details>
-`
-
   const shortSummaryTemplate = `
 *{{failedSpecsCount}} failed Ramda.{{methodName}} specs*
 

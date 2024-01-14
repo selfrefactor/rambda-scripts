@@ -1,4 +1,4 @@
-import {METHODS_TO_SKIP, METHODS_TO_SKIP_RAMBDAX} from '../constants'
+import {EXAMPLE_ONLY_METHODS, METHODS_TO_SKIP, METHODS_TO_SKIP_RAMBDAX} from '../constants'
 
 interface Allowance {
   typing: boolean
@@ -27,9 +27,11 @@ export function getAllowance(
     }
   }
   const allowed = !METHODS_TO_SKIP.includes(methodName)
+  const exampleIsAllowed = EXAMPLE_ONLY_METHODS.includes(methodName)
+  
   return {
     typing: allowed,
-    example: allowed,
+    example: allowed|| exampleIsAllowed,
     allTypings: allowed,
     source: allowed,
     specs: allowed,
