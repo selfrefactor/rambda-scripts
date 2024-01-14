@@ -4,7 +4,7 @@
     {
       "name": "Populate docs",
       "type": "node",
-      "stopOnEntry": true ,
+      "stopOnEntry": true,
       "request": "launch",
       "runtimeArgs": [
         "--inspect-brk",
@@ -16,14 +16,14 @@
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
-      "env":{
+      "env": {
         "RAMBDA_SCRIPTS_MODE": "populate:docs"
       }
     },
     {
       "name": "Populate readme",
       "type": "node",
-      "stopOnEntry": true ,
+      "stopOnEntry": true,
       "request": "launch",
       "runtimeArgs": [
         "--inspect-brk",
@@ -35,9 +35,25 @@
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
-      "env":{
+      "env": {
         "RAMBDA_SCRIPTS_MODE": "populate:readme"
       }
+    },
+    {
+      "name": "Current test(.spec) file",
+      "type": "node",
+      "stopOnEntry": true,
+      "request": "launch",
+      "runtimeArgs": [
+        "--inspect-brk",
+        "${workspaceRoot}/node_modules/.bin/jest",
+        "--runInBand",
+        "--coverage",
+        "false",
+        "${file}"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
     },
     {
       "name": "Sample benchmark",
