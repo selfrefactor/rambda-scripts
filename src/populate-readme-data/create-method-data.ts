@@ -120,9 +120,6 @@ export function createMethodData(
   withRambdax: boolean,
   npmReadme: boolean
 ) {
-  if(method.methodName === 'when'){
-    log('default method', 'back')
-  }
   const data = getIntro(method)
   const allowance = getAllowance(method.methodName, withRambdax)
   if (method.typing && allowance.typing) data.push(attachTyping(method))

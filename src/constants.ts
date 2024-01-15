@@ -50,6 +50,8 @@ export const GITHUB_README_LIMIT = 0.5
 
 export const EXAMPLE_ONLY_METHODS = [
   'composeWith',
+  'binary',
+  'call',
   'dec',
   'dropRepeatsBy',
   'empty',
@@ -62,6 +64,7 @@ export const EXAMPLE_ONLY_METHODS = [
 ]
 
 let newMethodsToSkip = [
+  'collectBy',
   'addIndex',
   'addIndexRight',
   'andThen',
