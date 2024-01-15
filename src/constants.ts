@@ -49,11 +49,19 @@ export const HAS_RAMBDAX = existsSync(
 export const GITHUB_README_LIMIT = 0.5
 
 export const EXAMPLE_ONLY_METHODS = [
+  'composeWith',
+  'dec',
+  'dropRepeatsBy',
+  'empty',
+  'gt',
+  'gte',
+  'inc',
+  'innerJoin',
+  'reduceBy',
   'sortWith',
 ]
 
-let newMethods = [
-  // new methods above
+let newMethodsToSkip = [
   'addIndex',
   'addIndexRight',
   'andThen',
@@ -75,7 +83,6 @@ let newMethods = [
   'gt',
   'gte',
   'hasIn',
-  'innerJoin',
   'insert',
   'insertAll',
   'into',
@@ -135,7 +142,7 @@ let newMethods = [
   'xprod',
 ]
 export const METHODS_TO_SKIP = [
-  ...newMethods,
+  ...newMethodsToSkip,
   'add',
   'always',
   'assoc',

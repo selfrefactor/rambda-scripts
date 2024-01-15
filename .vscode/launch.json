@@ -2,6 +2,25 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Populate readme(generates data)",
+      "type": "node",
+      "stopOnEntry": true,
+      "request": "launch",
+      "runtimeArgs": [
+        "--inspect-brk",
+        "${workspaceRoot}/node_modules/.bin/jest",
+        "--runInBand",
+        "--coverage",
+        "false",
+        "src/apply-rambda-scripts.spec.ts"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "RAMBDA_SCRIPTS_MODE": "populate:readme"
+      }
+    },
+    {
       "name": "Populate docs",
       "type": "node",
       "stopOnEntry": true,
@@ -18,25 +37,6 @@
       "internalConsoleOptions": "neverOpen",
       "env": {
         "RAMBDA_SCRIPTS_MODE": "populate:docs"
-      }
-    },
-    {
-      "name": "Populate readme",
-      "type": "node",
-      "stopOnEntry": true,
-      "request": "launch",
-      "runtimeArgs": [
-        "--inspect-brk",
-        "${workspaceRoot}/node_modules/.bin/jest",
-        "--runInBand",
-        "--coverage",
-        "false",
-        "src/apply-rambda-scripts.spec.ts"
-      ],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "env": {
-        "RAMBDA_SCRIPTS_MODE": "populate:readme"
       }
     },
     {
