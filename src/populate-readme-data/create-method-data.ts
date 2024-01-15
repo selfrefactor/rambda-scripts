@@ -129,9 +129,9 @@ export function createMethodData(
   }
 
   if (method.notes && !npmReadme) data.push(createNoteReadme(method))
-  if(!method.example){
-    log(method.methodName + ' no example', 'back')
-  }
+  // if(!method.example){
+  //   log(method.methodName + ' no example', 'back')
+  // }
   if (method.example && !npmReadme && allowance.example)
     data.push(createExampleReadme(method))
 
