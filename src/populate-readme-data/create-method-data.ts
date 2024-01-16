@@ -1,7 +1,6 @@
 import {interpolate} from 'rambdax'
 import {getMethodSeparator} from '../utils'
 import {getAllowance} from './get-allowance'
-import { log } from 'helpers-fn'
 
 function createRambdaSpecReadme(method: any) {
   const summaryTemplate = `
@@ -129,9 +128,6 @@ export function createMethodData(
   }
 
   if (method.notes && !npmReadme) data.push(createNoteReadme(method))
-  // if(!method.example){
-  //   log(method.methodName + ' no example', 'back')
-  // }
   if (method.example && !npmReadme && allowance.example)
     data.push(createExampleReadme(method))
 
