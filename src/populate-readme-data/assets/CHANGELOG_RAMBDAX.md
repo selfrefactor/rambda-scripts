@@ -1,6 +1,8 @@
 11.0.0
 
-- Sync with `Rambda` version `9.0.0`
+- Sync with `Rambda` version `9.0.1`
+
+- Change typings of `R.lensEq` to match `Rambda-adjust` typings
 
 10.1.0
 

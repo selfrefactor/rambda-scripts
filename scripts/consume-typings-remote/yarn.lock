@@ -9,10 +9,10 @@
   dependencies:
     types-ramda "^0.29.6"
 
-rambda@8.6.0:
-  version "8.6.0"
-  resolved "https://registry.yarnpkg.com/rambda/-/rambda-8.6.0.tgz#1c5d79c3c780b63f349e37103d08f88ff30d3865"
-  integrity sha512-Ax+/bAcV2h4wINXx6wm0792G5uXZAl78rzhei+FqmHezg45vbeTUyDAmDNbSdjNOL6LGN8AUEvzaYD7oO5eYrw==
+rambda@9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/rambda/-/rambda-9.0.0.tgz#897d3f8a47b9225cc0332c1d2cd82487c2af51d8"
+  integrity sha512-1LXuIFbLcI/QYpKw5RmBwQTrhre4TsV4vSorLUhYzBNnP4ETsta9lqYebroIiwEEr2m0TwyC8pOgr4il2QaCxA==
 
 rambdax@10.1.0:
   version "10.1.0"

@@ -1,4 +1,4 @@
-import { add, applySpec,  transpose, move, union, path, propEq, sortBy, prop, map, without } from 'ramda'
+import { add, applySpec,  transpose, move, union, path, propEq, sortBy, prop, map, without } from 'rambda'
 import { partial } from 'rambdax'
 
 let pipeResult = without(['abc'], ['abc'])

@@ -7,7 +7,7 @@
 	},
 	"dependencies": {
 		"@types/ramda": "0.29.9",
-		"rambda": "8.6.0",
+		"rambda": "9.0.0",
 		"rambdax": "10.1.0",
 		"ramda": "0.29.1",
 		"typescript": "5.3.3"
