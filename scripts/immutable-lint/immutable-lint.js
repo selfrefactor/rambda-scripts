@@ -4,8 +4,6 @@ const {copy, outputFile} = require('fs-extra')
 
 const WITH_RAMBDAX = process.env.WITH_RAMBDAX === 'ON'
 
-function getJsContent(withRambdax) {}
-
 void (async function immutableLint() {
   const filePath = resolve(
     __dirname,

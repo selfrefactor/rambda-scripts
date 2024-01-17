@@ -13,7 +13,6 @@ async function lintFile(filePath) {
     filePath.includes('/source/') || filePath.endsWith('rambda.js')
       ? 'ENABLE_FILE_EXTENSION_RULE=ON run'
       : 'run'
-  // console.log(`lint command -`, `${command} lintfile ${relativeFilePath}`)
 
   console.time(relativeFilePath)
   await spawn({
