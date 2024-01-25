@@ -5,20 +5,14 @@ const {getStagedFiles} = require('../_modules/get-staged-files')
 
 const base = resolve(__dirname, '../../../rambda/')
 
-const LINT_STAGED_ONLY = process.env.LINT_STAGED_ONLY === 'ON'
-
 async function lintFile(filePath) {
   const relativeFilePath = remove(base, filePath)
-  const command =
-    filePath.includes('/source/') || filePath.endsWith('rambda.js')
-      ? 'ENABLE_FILE_EXTENSION_RULE=ON run'
-      : 'run'
 
   console.time(relativeFilePath)
   await spawn({
     cwd: base,
-    command,
-    inputs: ['lintfile', relativeFilePath],
+    command: `run`,
+    inputs: ['lint:file:unsafe', relativeFilePath],
   })
   console.timeEnd(relativeFilePath)
 }
@@ -30,6 +24,7 @@ const forbiddenPaths = [
 
 const filterFn = filePath => {
   if (!filePath.endsWith('.js')) return false
+  if(filePath.includes('files/index.d.ts')) return false
   const filtered = forbiddenPaths.filter(x => filePath.includes(x))
   return filtered.length === 0
 }
@@ -37,9 +32,6 @@ const filterFn = filePath => {
 async function getFiles() {
   const filesRaw = await scanFolder({folder: `${base}/source`})
   const files = filesRaw.filter(x => x.endsWith('.js'))
-
-  if (!LINT_STAGED_ONLY) return files
-
   const stagedFilesRaw = await getStagedFiles(base)
   console.log(`stagedFilesRaw`, stagedFilesRaw.length)
   const stagedFiles = stagedFilesRaw.filter(filterFn)
@@ -49,9 +41,6 @@ async function getFiles() {
 }
 
 void (async function lint() {
-  const sourceFiles = await getFiles()
-  console.log(`sourceFiles`, sourceFiles)
-  console.log(`source files to lint`, sourceFiles.length)
-  const allFiles = [...sourceFiles, `${base}/rambda.js`]
+  const allFiles = await getFiles()
   await mapParallelAsyncWithLimit(lintFile, 5, allFiles)
 })()
