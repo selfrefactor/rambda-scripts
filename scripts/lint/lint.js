@@ -1,12 +1,11 @@
 const {spawn, scanFolder} = require('helpers-fn')
 const {resolve} = require('path')
-const {mapParallelAsyncWithLimit, remove, intersection} = require('rambdax')
+const {mapParallelAsyncWithLimit, intersection} = require('rambdax')
 const {getStagedFiles} = require('../_modules/get-staged-files')
 
 const base = resolve(__dirname, '../../../rambda/')
 
 async function lintFile(filePath) {
-  // const relativeFilePath = remove(base, filePath)
   console.log(filePath, 'filePath')
   console.time(filePath)
   await spawn({
