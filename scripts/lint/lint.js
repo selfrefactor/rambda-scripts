@@ -6,15 +6,15 @@ const {getStagedFiles} = require('../_modules/get-staged-files')
 const base = resolve(__dirname, '../../../rambda/')
 
 async function lintFile(filePath) {
-  const relativeFilePath = remove(base, filePath)
-
-  console.time(relativeFilePath)
+  // const relativeFilePath = remove(base, filePath)
+  console.log(filePath, 'filePath')
+  console.time(filePath)
   await spawn({
     cwd: base,
     command: `run`,
-    inputs: ['lint:file:unsafe', relativeFilePath],
+    inputs: ['lint:file:unsafe', filePath],
   })
-  console.timeEnd(relativeFilePath)
+  console.timeEnd(filePath)
 }
 
 const forbiddenPaths = [
