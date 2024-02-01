@@ -46,22 +46,16 @@ async function getMissingMethods() {
   `
 
   const missingMethodsList = `
-- insert
-- insertAll
 - into
 - invert
 - invertObj
 - invoker
-- isNotNil
 - keysIn
 - lift
 - liftN
-- lt
-- lte
 - mapAccum
 - mapAccumRight
 - memoizeWith
-- mergeDeepLeft
 - mergeDeepWith
 - mergeDeepWithKey
 - mergeWithKey
@@ -72,7 +66,6 @@ async function getMissingMethods() {
 - pair
 - partialRight
 - pathSatisfies
-- pickBy
 - pipeWith
 - project
 - promap
@@ -83,7 +76,6 @@ async function getMissingMethods() {
 - scan
 - sequence
 - splitWhenever
-- swap
 - symmetricDifferenceWith
 - andThen
 - toPairsIn
