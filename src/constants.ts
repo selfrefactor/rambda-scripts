@@ -48,7 +48,19 @@ export const HAS_RAMBDAX = existsSync(
 
 export const GITHUB_README_LIMIT = 0.5
 
-export const EXAMPLE_ONLY_METHODS = [
+export const EXAMPLE_ONLY_METHODS: string[] = [
+]
+
+let newMethodsToSkip = [
+  'negate',
+  'nAry',
+  'multiply',
+  'move',
+  'modulo',
+  'modifyPath',
+  'min',
+  'max',
+  // temps
   'composeWith',
   'binary',
   'call',
@@ -73,9 +85,7 @@ export const EXAMPLE_ONLY_METHODS = [
   'mergeDeepLeft',
   'gt',
   'gte',
-]
-
-let newMethodsToSkip = [
+  // move above to EXAMPLE_ONLY_METHODS
   'collectBy',
   'addIndex',
   'addIndexRight',
