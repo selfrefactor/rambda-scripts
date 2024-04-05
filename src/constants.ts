@@ -52,6 +52,7 @@ export const EXAMPLE_ONLY_METHODS: string[] = [
 ]
 
 let newMethodsToSkip = [
+	'memoize',
   'negate',
   'nAry',
   'multiply',
