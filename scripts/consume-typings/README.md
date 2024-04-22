@@ -15,6 +15,10 @@ Post fact manual test
   }
 }
 
+
+    "rambda": "9.2.0",
+    "rambdax": "11.1.0",
+
     "rambda": "file:./../../../rambda/",
 
 ```

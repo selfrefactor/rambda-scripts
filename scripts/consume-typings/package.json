@@ -6,7 +6,8 @@
   },
   "dependencies": {
     "rambda": "file:./../../../rambda/",
-    "typescript": "5.2.0"
+    "rambdax": "file:./../../../rambdax/",
+    "typescript": "5.4.5"
   },
   "devDependencies": {
     "remeda": "1.1.0"
