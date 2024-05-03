@@ -1,16 +1,17 @@
 {
 	"scripts": {
+		"dev": "npm install --force && yarn test",
 		"startx": "yarn && yarn test:command",
 		"start": "run dep && yarn startx",
 		"test": "yarn test:command",
 		"test:command": "tsc --lib esnext,dom consume-typings.ts&&node consume-typings.js"
 	},
 	"dependencies": {
-		"@types/ramda": "0.29.9",
-		"rambda": "9.0.0",
-		"rambdax": "10.1.0",
-		"ramda": "0.29.1",
-		"typescript": "5.3.3"
+		"@types/ramda": "0.29.12",
+		"rambda": "9.2.0",
+		"rambdax": "11.1.1",
+		"ramda": "0.30.0",
+		"typescript": "5.4.5"
 	},
 	"devDependencies": {
 		

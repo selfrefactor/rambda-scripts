@@ -1,5 +1,8 @@
-import { add, applySpec,  transpose, move, union, path, propEq, sortBy, prop, map, without } from 'rambda'
-import { partial } from 'rambdax'
+import { add, applySpec,  transpose, move, union, path, propEq, sortBy, prop, map, without } from 'rambdax'
+// import { partial } from 'rambdax'
+// import { T, when } from "rambda/immutable";
+
+// when(T, (v) => console.log(v))("Hello, World!")
 
 let pipeResult = without(['abc'], ['abc'])
 
@@ -8,13 +11,14 @@ console.log(pipeResult, `pipeResult`)
 const alois = {name: 'Alois', age: 15, disposition: 'surly'};
  const hasBrownHair = propEq(12, 'age', alois);
  const age = propEq(15, 'age', alois);
+
 console.log({hasBrownHair, age})
 
  function foo(a:any,b:any,c:any) {
 }
 
-console.log(partial(foo, [1,2]), `partial(foo, [1,2])`)
-console.log(partial(foo, [1,2])(3), `partial(foo, [1,2])(3)`)
+// console.log(partial(foo, [1,2]), `partial(foo, [1,2])`)
+// console.log(partial(foo, [1,2])(3), `partial(foo, [1,2])(3)`)
 
 const arr = [{ id: 1 }, { id: 2 }, { id: 3 }];
 
