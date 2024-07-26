@@ -46,59 +46,58 @@ async function getMissingMethods() {
   `
 
   const missingMethodsList = `
-- into
-- invert
+- construct - Using classes is not very functional programming oriented.
+- constructN - same as above
+- into - no support for transducer as it is overly complex to implement, understand and read.
+- invert - overly complicated and limited use case
 - invertObj
 - invoker
-- keysIn
+- keysIn - we shouldn't encourage extending object with \`.prototype\` 
 - lift
 - liftN
-- mapAccum
+- mapAccum - \`Ramda\` example doesn't looks convincing
 - mapAccumRight
-- memoizeWith
-- mergeDeepWith
+- memoizeWith - hard to imagine its usage in context of \`R.pipe\`/\`R.compose\`
+- mergeDeepWith - limited use case
 - mergeDeepWithKey
 - mergeWithKey
-- nAry
-- nthArg
-- o
-- otherwise
-- pair
-- partialRight
-- pathSatisfies
+- nAry - hard to argument about and hard to create meaningful TypeScript definitions
+- nthArg - limited use case
+- o - enough TypeScript issues with \`R.pipe\`/\`R.compose\` to add more composition methods
+- otherwise - naming is confusing
+- pair - \`left-pad\` types of debacles happens partially because of such methods that should not be hidden, bur rather part of your code base even if they need to exist.
+- partialRight - I dislike \`R.partial\`, so I don't want to add more methods that are based on it
 - pipeWith
-- project
+- project - naming is confusing, but also limited use case
 - promap
-- reduceRight
-- reduceWhile
+- reduceRight - I find \`right/left\` methods confusing so I added them only where it makes sense.
+- reduceWhile - functions with 4 inputs - I think that even 3 is too much
 - reduced
-- remove
-- scan
+- remove - nice name but it is too generic. Also, \`Rambdax\` has such method and there it works very differently
+- scan - hard to explain
 - sequence
 - splitWhenever
 - symmetricDifferenceWith
 - andThen
 - toPairsIn
+- transduce - currently is out of focus
+- traverse - same as above
 - unary
 - uncurryN
-- unfold
-- unionWith
+- unfold - similar to \`R.scan\` and I find that it doesn't help with readability
+- unionWith - why it has its usage, I want to limit number of methods that accept more than 2 arguments
 - until
-- useWith
+- useWith - hard to explain
 - valuesIn
-- xprod
+- xprod - limited use case
 - thunkify
-- default`.trim()
+- __ - placeholder method allows user to further customize the method call. While, it seems useful initially, the price is too high in terms of complexity for TypeScript definitions. If it is not easy exressable in TypeScript, it is not worth it as **Rambda** is a TypeScript first library.
+`.trim()
 
   const missingMethods = `
 ${missingMethodsList}
 
-  Most of above methods are in progress to be added to **Rambda**. The following methods are not going to be added:
-- __ - placeholder method allows user to further customize the method call. While, it seems useful initially, the price is too high in terms of complexity for TypeScript definitions. If it is not easy exressable in TypeScript, it is not worth it as **Rambda** is a TypeScript first library.
-- construct - Using classes is not very functional programming oriented.
-- constructN - same as above
-- transduce - currently is out of focus
-- traverse - same as above
+The following methods are not going to be added(reason for exclusion is provided as a comment):
 `.trim()
 
   return interpolate(missingMethodsTemplate, {

@@ -1,4 +1,4 @@
-import { add, applySpec, reject, and, transpose, move, union, reduce } from 'rambdax/immutable'
+import { add, applySpec,gte,lt, reject, and, transpose, move, union, reduce } from 'rambdax/immutable'
 // import * as R from 'remeda'
 
 const list = [ 1, 2, 3 ]
