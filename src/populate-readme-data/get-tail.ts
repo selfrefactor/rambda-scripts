@@ -47,11 +47,11 @@ function getAdditionalInfo() {
 
 > Links to Rambda
 
-- [https://github.com/stoeffel/awesome-fp-js](awesome-fp-js)
+- [awesome-fp-js](https://github.com/stoeffel/awesome-fp-js)
 
-- [ https://mailchi.mp/webtoolsweekly/web-tools-280 ]( Web Tools Weekly #280 )
+- [Web Tools Weekly #280](https://mailchi.mp/webtoolsweekly/web-tools-280)
 
-- [https://github.com/docsifyjs/awesome-docsify](awesome-docsify)
+- [awesome-docsify](https://github.com/docsifyjs/awesome-docsify)
 
 > Deprecated from \`Used by\` section
 

@@ -1,6 +1,9 @@
-9.2.2
+9.3.0
 
-- Broken `Deno` build - [Issue #731](https://github.com/selfrefactor/rambda/issues/731)
+- Breaking change in relation to TS typings of `assoc, dissoc, and modify` - https://github.com/ramda/types/pull/37
+
+- Add `R.isNotEmpty` as it is new method in `Ramda`
+
 
 9.2.1
 
