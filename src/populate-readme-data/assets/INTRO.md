@@ -10,6 +10,7 @@
 [![install size](https://packagephobia.com/badge?p=rambda)](https://packagephobia.com/result?p=rambda)
 [![nest badge](https://nest.land/badge.svg)](https://nest.land/package/rambda)
 [![PR's Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](https://github.com/selfrefactor/rambda/pulls)
+[![GitHub contributors](https://img.shields.io/github/contributors/selfrefactor/rambda.svg)](https://github.com/selfrefactor/rambda/graphs/contributors)
 
 ## {{bullet}} Example use
 

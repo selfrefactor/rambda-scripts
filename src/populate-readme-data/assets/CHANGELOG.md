@@ -1,9 +1,10 @@
 9.3.0
 
-- Breaking change in relation to TS typings of `assoc, dissoc, and modify` - https://github.com/ramda/types/pull/37
+- Breaking change in relation to TS typings of `R.assoc`, `R.dissoc` and `R.modify` - https://github.com/ramda/types/pull/37
 
 - Add `R.isNotEmpty` as it is new method in `Ramda`
 
+- Fix `R.head`/`R.last` TS definition - It returns `undefined` if array has length of 0. Before 
 
 9.2.1
 
