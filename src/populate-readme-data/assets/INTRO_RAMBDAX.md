@@ -4,10 +4,10 @@ Extended version of Rambda(utility library) - [Documentation](https://selfrefact
 
 `Rambda` is smaller and faster  alternative to the popular functional programming library **Ramda**. - [Documentation](https://selfrefactor.github.io/rambda/#/)
 
-[![CircleCI](https://circleci.com/gh/selfrefactor/rambda/tree/master.svg?style=svg)](https://circleci.com/gh/selfrefactor/rambda/tree/master)
+[![install size](https://packagephobia.com/badge?p=rambdax)](https://packagephobia.com/result?p=rambdax)
+[![GitHub contributors](https://img.shields.io/github/contributors/selfrefactor/rambdax.svg)](https://github.com/selfrefactor/rambdax/graphs/contributors)
 [![codecov](https://codecov.io/gh/selfrefactor/rambda/branch/master/graph/badge.svg)](https://codecov.io/gh/selfrefactor/rambda)
 ![Library size](https://img.shields.io/bundlephobia/minzip/rambdax)
-[![install size](https://packagephobia.com/badge?p=rambdax)](https://packagephobia.com/result?p=rambdax)
 
 ## {{bullet}} Differences between Rambda and Rambdax
 

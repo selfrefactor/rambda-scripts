@@ -37,6 +37,12 @@ R.pick('a,b', {a: 1 , b: 2, c: 3} })
 
 If the project is written in Javascript, then `go to source definition` action will lead you to actual implementation of the method.
 
+### Deno support
+
+```
+import * as R from "https://deno.land/x/rambdax/mod.ts";
+```
+
 ### Alternative TS definitions
 
 Alternative TS definitions are available as `rambdax/immutable`. These are Rambdax definitions linted with ESLint `functional/prefer-readonly-type` plugin.
