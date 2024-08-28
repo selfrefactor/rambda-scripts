@@ -45,6 +45,8 @@ inside Rambdax folder
 
 ## Github releases setup
 
+> !important - if it is done manual, version title should be `v8.5.0` and not `8.5.0`, while tag value itself is `8.5.0`
+
 1. Install - For Arch linux: `yay -S github-cli`
 
 2. Run `gh auth login`
