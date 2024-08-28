@@ -41,7 +41,7 @@ async function createMainFileRambdax({
   allMethods.sort(sortFn)
 
   const content = [...allMethods, ...rambdaMethods]
-    .map(x => `export * from './src/${x}'`)
+    .map(x => `export * from './src/${x}.js'`)
     .join('\n')
 
   await outputFile(`${dir}/rambdax.js`, `${content}\n`)

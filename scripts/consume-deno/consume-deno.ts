@@ -1,5 +1,5 @@
 // import * as Ramda from "https://x.nest.land/ramda@0.27.2/mod.ts";
-import * as R from 'https://deno.land/x/rambdax/mod.ts'
+import * as R from 'https://deno.land/x/rambdax@11.2.1/mod.ts'
 // import * as R from 'https://deno.land/x/rambda@9.3.0/mod.ts'
 // import * as R from 'https://deno.land/x/rambda@v9.1.0/mod.ts'
 
