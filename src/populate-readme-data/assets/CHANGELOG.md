@@ -1,3 +1,8 @@
+10.0.0
+
+- Allow path input to not be transformed when string numbers are there - [Issue #750](https://github.com/selfrefactor/rambda/issues/750)
+
+
 9.4.0
 
 - Fix `deno` release
