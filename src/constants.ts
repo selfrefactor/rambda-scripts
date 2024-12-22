@@ -2,6 +2,7 @@ import {existsSync} from 'fs'
 import {resolve} from 'path'
 
 const base = resolve(__dirname, '../../rambda')
+export const docsifyBase = resolve(__dirname, '../docsify-readme')
 const xBase = resolve(__dirname, '../../rambdax')
 
 export const BULLET = '❯' // ➤

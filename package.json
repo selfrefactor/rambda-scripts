@@ -23,7 +23,7 @@
 		"populate:docs": "RAMBDA_SCRIPTS_MODE=populate:docs jest src/apply-rambda-scripts.spec.ts",
 		"populate:docs:rambdax": "WITH_RAMBDAX=ON RAMBDA_SCRIPTS_MODE=populate:docs jest src/apply-rambda-scripts.spec.ts",
 		"populate:readme": "yarn populate:readme:npm && yarn populate:readme:github",
-		"populate:readme:docsify": "DOCSIFY_SCRIPTS_MODE=populate:readme jest src/apply-rambda-scripts.spec.ts",
+		"populate:readme:docsify": "DOCSIFY_SCRIPTS_MODE=ON RAMBDA_SCRIPTS_MODE=populate:readme jest src/apply-rambda-scripts.spec.ts",
 		"populate:readme:github": "RAMBDA_SCRIPTS_MODE=populate:readme jest src/apply-rambda-scripts.spec.ts",
 		"populate:readme:npm": "NPM_README=ON RAMBDA_SCRIPTS_MODE=populate:readme jest src/apply-rambda-scripts.spec.ts",
 		"populate:readme:rambdax": "WITH_RAMBDAX=ON RAMBDA_SCRIPTS_MODE=populate:readme jest src/apply-rambda-scripts.spec.ts",

@@ -40,7 +40,7 @@ export function validatePaths() {
 
 export async function applyRambdaScripts(modeInput: string) {
   const mode = getMode(modeInput)
-
+	console.log('mode', mode, modeInput)
   if (mode === 'usedby') return verifyUsedBy()
   if (mode === 'readonly') return readonlyTask()
   if (mode === 'populate:docs') return populateDocsData(WITH_RAMBDAX)

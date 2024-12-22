@@ -12,6 +12,7 @@ import {
   X_PATHS,
   DESTINATIONS,
   GITHUB_README_LIMIT,
+	docsifyBase,
 } from '../constants'
 
 function getFileSize(filePath: string) {
@@ -45,7 +46,10 @@ const readmeTemplate = `
 {{tail}}
 `
 
-function getOutputPath(withRambdax: boolean, npmReadme: boolean) {
+function getOutputPath(withRambdax: boolean, npmReadme: boolean, docsifyMode: boolean) {
+	if (docsifyMode) {
+		return `${docsifyBase}/README.md`
+	}
   if (withRambdax) {
     return `${X_PATHS.xBase}/README.md`
   }
@@ -60,6 +64,7 @@ export async function populateReadmeData(
   npmReadme: boolean,
 	docsifyMode: boolean
 ) {
+	console.log({docsifyMode})
   await buildStep(withRambdax)
   const methodsData = await getMethodsData(withRambdax)
 
@@ -92,10 +97,12 @@ export async function populateReadmeData(
   }
 
   const readme = interpolate(readmeTemplate, templateData).trim()
-  const output = getOutputPath(withRambdax, npmReadme)
-
+  const output = getOutputPath(withRambdax, npmReadme, docsifyMode)
+	console.log('output', output)
   const finalReadme = removeDoubleNewLines(readme)
   await outputFile(output, finalReadme)
-  getFileSize(output)
+	if(!docsifyMode){
+		getFileSize(output)
+	}
   return finalReadme
 }
