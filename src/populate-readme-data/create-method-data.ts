@@ -117,10 +117,11 @@ function createReplReadme({
 export function createMethodData(
   method: any,
   withRambdax: boolean,
-  npmReadme: boolean
+  npmReadme: boolean,
+	docsifyMode: boolean
 ) {
   const data = getIntro(method)
-  const allowance = getAllowance(method.methodName, withRambdax)
+  const allowance = getAllowance(method.methodName, withRambdax, docsifyMode)
   if (method.typing && allowance.typing) data.push(attachTyping(method))
   if (method.explanation) {
     data.push(method.explanation)

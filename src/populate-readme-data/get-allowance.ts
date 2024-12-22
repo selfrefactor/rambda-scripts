@@ -12,22 +12,25 @@ interface Allowance {
 
 export function getAllowance(
   methodName: string,
-  withRambdax: boolean
+  withRambdax: boolean,
+	docsifyMode: boolean
 ): Allowance {
   if (withRambdax) {
-    const allowed = !METHODS_TO_SKIP_RAMBDAX.includes(methodName)
+    const allowed = docsifyMode ? true : !METHODS_TO_SKIP_RAMBDAX.includes(methodName)
+		let allTypings = docsifyMode	
+
     return {
       typing: allowed,
       example: allowed,
-      allTypings: false,
+      allTypings: allTypings,
       source: allowed,
       specs: allowed,
       tsTest: false,
       benchmark: false,
     }
   }
-  const allowed = !METHODS_TO_SKIP.includes(methodName) && !EXAMPLE_ONLY_METHODS.includes(methodName)
-  const exampleIsAllowed = EXAMPLE_ONLY_METHODS.includes(methodName)
+  const allowed = docsifyMode ? true : !METHODS_TO_SKIP.includes(methodName) && !EXAMPLE_ONLY_METHODS.includes(methodName)
+  const exampleIsAllowed = docsifyMode ? true : EXAMPLE_ONLY_METHODS.includes(methodName)
   
   return {
     typing: allowed,

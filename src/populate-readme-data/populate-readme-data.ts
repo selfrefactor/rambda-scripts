@@ -57,7 +57,8 @@ function getOutputPath(withRambdax: boolean, npmReadme: boolean) {
 
 export async function populateReadmeData(
   withRambdax: boolean,
-  npmReadme: boolean
+  npmReadme: boolean,
+	docsifyMode: boolean
 ) {
   await buildStep(withRambdax)
   const methodsData = await getMethodsData(withRambdax)
@@ -80,7 +81,7 @@ export async function populateReadmeData(
     .sort((x, y) =>
       x.methodName.toLowerCase() > y.methodName.toLowerCase() ? 1 : -1
     )
-    .map(method => createMethodData(method, withRambdax, npmReadme))
+    .map(method => createMethodData(method, withRambdax, npmReadme, docsifyMode))
 
   const intro = await getIntro(withRambdax)
   const tail = await getTail(withRambdax)

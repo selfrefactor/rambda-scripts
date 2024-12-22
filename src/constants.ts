@@ -41,6 +41,7 @@ export const MODES = [
 
 export const WITH_RAMBDAX = process.env.WITH_RAMBDAX === 'ON'
 export const NPM_README = process.env.NPM_README === 'ON'
+export const DOCSIFY_SCRIPTS_MODE = process.env.DOCSIFY_SCRIPTS_MODE === 'ON'
 
 export const HAS_RAMBDAX = existsSync(
   resolve(__dirname, '../../rambdax/package.json')
