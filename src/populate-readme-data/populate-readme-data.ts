@@ -64,7 +64,6 @@ export async function populateReadmeData(
   npmReadme: boolean,
 	docsifyMode: boolean
 ) {
-	console.log({docsifyMode})
   await buildStep(withRambdax)
   const methodsData = await getMethodsData(withRambdax)
 
