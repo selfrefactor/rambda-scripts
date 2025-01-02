@@ -27,10 +27,10 @@ void (async function main() {
 	const fixed = replace(/Document/g, `${titleCase(library)} documentation`, content);
 	const withPlugin = replace(/<\/body>/, plugin, fixed);
 	const withPluginSecond = replace(`repo: ''`, pluginSecond, withPlugin);
-	await outputFile(location, withPluginSecond);
+	await outputFile(localDocsifyPath, withPluginSecond);
 
 	// move `localDocsifyDirectory` to
 	// `libraryDirectory` overwriting in case that there
-	// is existing folder | use fs-extra.move
-	await move(localDocsifyDirectory, libraryDirectory)
+	// is existing folder 
+	await move(localDocsifyDirectory, libraryDirectory, {overwrite: true});
 })();
