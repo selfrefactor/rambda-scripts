@@ -1,3 +1,4 @@
 # yarn populate:readme:docsify
 # yarn docs
-yarn fix-docsify:local
+yarn fix-docsify:rambda
+# yarn create-docsify

@@ -3984,6 +3984,11 @@ rambdax@10.0.0:
   resolved "https://registry.yarnpkg.com/rambdax/-/rambdax-10.0.0.tgz#c1dc9c28132ea6ecf0b43a08bd50530f94c8a56a"
   integrity sha512-yNlWz9g4h6C2+49r1L+L9WZLcw3b3mQnxZQfcyqon8hy52Ie6hsWeuxO9/MNXTbqWB2RuSzO5MM3rVSsPKsqfw==
 
+rambdax@11.3.0:
+  version "11.3.0"
+  resolved "https://registry.yarnpkg.com/rambdax/-/rambdax-11.3.0.tgz#1439408c310d674efbb853262033927303584733"
+  integrity sha512-3zj6gv1qXMlr/p90pV2psu+bK68lG+2JS0WoH0mHbPU8RZnLrCq9rsRq/gezsTYpbvhM+A3pfX0/5eSr1C0pFQ==
+
 rambdax@7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/rambdax/-/rambdax-7.0.1.tgz#6a1b3184abcf4cf6df5dffc27fc0d71100aa21ec"
@@ -4240,6 +4245,13 @@ string-fn@3.1.0:
   integrity sha512-LFje5UeJH6t0XILNbwjUWctL5aU9yDKz8ILPzKVHDgw6ZGR8ebulvRD0zjUVEGKzCNxi1IzJK63/HR+7Q9HQQQ==
   dependencies:
     rambdax "7.0.1"
+
+string-fn@^3.6.3:
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/string-fn/-/string-fn-3.6.3.tgz#952203a4c512f013fb419fe3bcf52e3715075068"
+  integrity sha512-TOuTWUnWZt3EYPIyRJ7DWByKpxgZv1CIP/hLjT+8c3kIAS/14MAypz2olew9XmVNSDE98X/QYiMt8PKGZ9mDXQ==
+  dependencies:
+    rambdax "11.3.0"
 
 string-length@^4.0.1:
   version "4.0.2"
