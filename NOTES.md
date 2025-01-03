@@ -1,0 +1,6 @@
+		"benchmark": "cd ../rambda-scripts && RAMBDA_RUN_ALL=ON RAMBDA_RUN_INDEXES=ON yarn benchmark",
+		"benchmark:all": "yarn build:step && cd ../rambda-scripts && yarn benchmark:all",
+		"benchmark:check": "yarn build:step && METHOD=compose yarn benchmark:check:apply",
+		"benchmark:check:apply": "cd ../rambda-scripts && yarn check-benchmark",
+		"build:step": "yarn populatereadme && yarn build:main",
+		"usedby": "cd ../rambda-scripts && yarn usedby",

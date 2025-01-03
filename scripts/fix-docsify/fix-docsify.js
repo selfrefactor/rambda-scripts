@@ -1,4 +1,4 @@
-const { readFile, outputFile, move } = require('fs-extra');
+const { readFile, outputFile, copy } = require('fs-extra');
 const { resolve } = require('node:path');
 const { replace } = require('rambdax');
 const { titleCase } = require('string-fn');
@@ -21,7 +21,6 @@ const localDocsifyPath = resolve(__dirname, '../../docsify-readme/docs/index.htm
 const localDocsifyDirectory = resolve(__dirname, '../../docsify-readme/docs');
 
 void (async function main() {
-	// const location = localDocsify ? localDocsifyPath : resolve(__dirname, `../../../${library}/docs/index.html`)
 	const libraryDirectory = resolve(__dirname, `../../../${library}`);
 	const content = (await readFile(localDocsifyPath)).toString();
 	const fixed = replace(/Document/g, `${titleCase(library)} documentation`, content);
@@ -32,5 +31,5 @@ void (async function main() {
 	// move `localDocsifyDirectory` to
 	// `libraryDirectory` overwriting in case that there
 	// is existing folder 
-	await move(localDocsifyDirectory, libraryDirectory, {overwrite: true});
+	await copy(localDocsifyDirectory, libraryDirectory, {overwrite: true});
 })();
