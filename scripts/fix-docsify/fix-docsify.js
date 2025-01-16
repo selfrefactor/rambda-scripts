@@ -1,4 +1,4 @@
-const { readFile, outputFile, copy } = require('fs-extra');
+const { readFile, outputFile, copy, remove, unlink } = require('fs-extra');
 const { resolve } = require('node:path');
 const { replace } = require('rambdax');
 const { titleCase } = require('string-fn');
@@ -18,7 +18,7 @@ const pluginSecond = `
 `.trim();
 
 const localDocsifyPath = resolve(__dirname, '../../docsify-readme/docs/index.html');
-const localDocsifyDirectory = resolve(__dirname, '../../docsify-readme/docs');
+const localDocsifyDirectory = resolve(__dirname, '../../docsify-readme');
 
 void (async function main() {
 	const libraryDirectory = resolve(__dirname, `../../../${library}`);
@@ -27,9 +27,10 @@ void (async function main() {
 	const withPlugin = replace(/<\/body>/, plugin, fixed);
 	const withPluginSecond = replace(`repo: ''`, pluginSecond, withPlugin);
 	await outputFile(localDocsifyPath, withPluginSecond);
-
+	// console.log({libraryDirectory, localDocsifyDirectory})
 	// move `localDocsifyDirectory` to
 	// `libraryDirectory` overwriting in case that there
 	// is existing folder 
+	await unlink(`${ localDocsifyDirectory }/README.md`)
 	await copy(localDocsifyDirectory, libraryDirectory, {overwrite: true});
 })();
