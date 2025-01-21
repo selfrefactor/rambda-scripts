@@ -29,12 +29,14 @@ export function getAllowance(
       benchmark: false,
     }
   }
-  const allowed = docsifyMode ? true : !METHODS_TO_SKIP.includes(methodName) && !EXAMPLE_ONLY_METHODS.includes(methodName)
-  const exampleIsAllowed = docsifyMode ? true : EXAMPLE_ONLY_METHODS.includes(methodName)
+	const allowed = docsifyMode ? true : !METHODS_TO_SKIP.includes(methodName)
+
+  // const allowed = docsifyMode ? true : !METHODS_TO_SKIP.includes(methodName) && !EXAMPLE_ONLY_METHODS.includes(methodName)
+  // const exampleIsAllowed = docsifyMode ? true : EXAMPLE_ONLY_METHODS.includes(methodName)
   
   return {
     typing: allowed,
-    example: allowed|| exampleIsAllowed,
+    example: allowed,
     allTypings: allowed,
     source: allowed,
     specs: allowed,

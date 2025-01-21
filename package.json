@@ -1,6 +1,7 @@
 {
 	"name": "rambda-scripts",
 	"scripts": {
+		"x": "yarn populate:docs:rambdax && yarn populate:readme:rambdax && yarn immutable:rambdax && yarn create-docsify:rambdax",
 		"bench:sample": "node scripts/run-benchmarks/run-sample-benchmarks-spec.js",
 		"benchmark": "node scripts/run-benchmarks/run-complex-benchmarks-spec.js",
 		"benchmark:all": "RAMBDA_UPDATE_NEW_BENCHMARKS=ON RAMBDA_UPDATE_ALL_BENCHMARKS=ON node scripts/run-benchmarks/run-complex-benchmarks-spec.js",
