@@ -87,17 +87,24 @@ const createExampleReadme = ({example}: {example: string}) => `
 ${example}
 \`\`\`
 `
+let TS_PIPE_NOTE = `Typescript Note: Pass explicit type annotation when used with **R.pipe/R.compose** for better type inference`
 
 let handleSpecialCaseOfNote = (notes: string) => {
-	if(notes.trim() === 'pipe') {
-		return `Typescript Note: This method requires explicit type annotation when used with **R.pipe**.`
+	if(notes.trim().startsWith('pipe')) {
+		
+		if(notes.trim() === 'pipe'){
+			return TS_PIPE_NOTE
+		}
+		let [,noteContent] = notes.split('pipe |')
+
+		return `${TS_PIPE_NOTE}\n\n${noteContent}`
 	}
 	return notes
 }
 
 const createNoteReadme = ({notes}: {notes: string}) => `
 
-> :boom: ${notes}
+> :boom: ${handleSpecialCaseOfNote(notes)}
 `
 
 const attachTyping = ({typing}: {typing: string}) => `
