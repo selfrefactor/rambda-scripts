@@ -88,6 +88,13 @@ ${example}
 \`\`\`
 `
 
+let handleSpecialCaseOfNote = (notes: string) => {
+	if(notes.trim() === 'pipe') {
+		return `Typescript Note: This method requires explicit type annotation when used with **R.pipe**.`
+	}
+	return notes
+}
+
 const createNoteReadme = ({notes}: {notes: string}) => `
 
 > :boom: ${notes}
@@ -128,7 +135,9 @@ export function createMethodData(
     data.push('\n')
   }
 
-  if (method.notes && !npmReadme) data.push(createNoteReadme(method))
+  if (method.notes && !npmReadme) {
+		data.push(createNoteReadme(method))
+	}
   if (method.example && allowance.example)
     data.push(createExampleReadme(method))
 
