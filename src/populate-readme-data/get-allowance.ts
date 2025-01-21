@@ -36,7 +36,7 @@ export function getAllowance(
   
   return {
     typing: allowed,
-    example: allowed,
+    example: true,
     allTypings: allowed,
     source: allowed,
     specs: allowed,

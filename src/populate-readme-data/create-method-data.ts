@@ -129,7 +129,7 @@ export function createMethodData(
   }
 
   if (method.notes && !npmReadme) data.push(createNoteReadme(method))
-  if (method.example && !npmReadme && allowance.example)
+  if (method.example && allowance.example)
     data.push(createExampleReadme(method))
 
   if (method.replLink) {
