@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "@rambda/rambda": "jsr:@rambda/rambda@^9.4.2"
+  }
+}

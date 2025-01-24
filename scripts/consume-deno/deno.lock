@@ -1,0 +1,16 @@
+{
+  "version": "4",
+  "specifiers": {
+    "jsr:@rambda/rambda@^9.4.2": "9.4.2"
+  },
+  "jsr": {
+    "@rambda/rambda@9.4.2": {
+      "integrity": "c1b5e092cc0bc4fd486dcbeb3809c6700840e5b5db79b1dd28e3db20f5b49bcf"
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@rambda/rambda@^9.4.2"
+    ]
+  }
+}

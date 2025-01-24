@@ -1,6 +1,6 @@
 // import * as R from 'https://deno.land/x/rambda@9.4.1/mod.ts'
 // import * as R from 'https://deno.land/x/rambda@9.4.1/mod.ts'
-import * as R from 'https://deno.land/x/rambdax@11.3.0/mod.ts'
+import * as R from "@rambda/rambda";
 
 const rEquals = R.equals(
 	{
