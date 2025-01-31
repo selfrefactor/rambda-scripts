@@ -53,8 +53,8 @@ export const GITHUB_README_LIMIT = 0.5
 export const EXAMPLE_ONLY_METHODS: string[] = [
 ]
 
-let newMethodsToSkip = [
-	'memoize',
+export const METHODS_TO_SKIP = [
+  'memoize',
   'negate',
   'nAry',
   'multiply',
@@ -63,7 +63,6 @@ let newMethodsToSkip = [
   'modifyPath',
   'min',
   'max',
-  // temps
   'composeWith',
   'binary',
   'call',
@@ -88,7 +87,6 @@ let newMethodsToSkip = [
   'mergeDeepLeft',
   'gt',
   'gte',
-  // move above to EXAMPLE_ONLY_METHODS
   'collectBy',
   'addIndex',
   'addIndexRight',
@@ -157,10 +155,8 @@ let newMethodsToSkip = [
   'useWith',
   'valuesIn',
   'xprod',
-]
-export const METHODS_TO_SKIP = [
-  ...newMethodsToSkip,
   'add',
+  'piped',
   'always',
   'assoc',
   'and',
