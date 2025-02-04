@@ -1,3 +1,17 @@
+12.0.0
+
+- Remove the following methods:
+
+-- `mapArray` - now `R.map` supports only list in TypeScript context.
+
+-- `partialCurry`
+
+-- `partialObject`
+
+-- `on`
+
+- Sync with `Rambda` version `10.0.0`
+
 11.3.1
 
 - Sync with `Rambda` version `9.4.2`
