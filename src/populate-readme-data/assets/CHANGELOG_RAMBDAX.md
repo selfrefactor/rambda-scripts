@@ -10,7 +10,10 @@
 -- `on`
 -- `contains`
 
-- `mapcat` now supports only curried version; fixed TS typings
+Following methods now supports only curried version
+
+- `mapcat` - also fixed TS typings
+- `xor`
 
 - Sync with `Rambda` version `10.0.0`
 
