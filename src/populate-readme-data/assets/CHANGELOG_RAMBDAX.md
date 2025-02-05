@@ -1,14 +1,16 @@
 12.0.0
 
+- Improve `unwind` typings
+
 - Remove the following methods:
 
--- `mapArray` - now `R.map` supports only list in TypeScript context.
-
+-- `mapArray` - now `map` supports only list in TypeScript context.
 -- `partialCurry`
-
 -- `partialObject`
-
 -- `on`
+-- `contains`
+
+- `mapcat` now supports only curried version; fixed TS typings
 
 - Sync with `Rambda` version `10.0.0`
 
