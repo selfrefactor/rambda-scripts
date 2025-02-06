@@ -1,8 +1,7 @@
 # Rambda
 
-`Rambda` is smaller and faster alternative to the popular functional programming library **Ramda**. - [Documentation](https://selfrefactor.github.io/rambda/#/)
+`Rambda` is TypeScript-focused alternative to the popular functional programming library **Ramda** alternative. It also has better speed and smaller size. - [Documentation](https://selfrefactor.github.io/rambda/#/)
 
-[![codecov](https://codecov.io/gh/selfrefactor/rambda/branch/master/graph/badge.svg)](https://codecov.io/gh/selfrefactor/rambda)
 ![Commit activity](https://img.shields.io/github/commit-activity/y/selfrefactor/rambda)
 ![Library size](https://img.shields.io/bundlephobia/minzip/rambda)
 [![install size](https://packagephobia.com/badge?p=rambda)](https://packagephobia.com/result?p=rambda)
@@ -12,12 +11,13 @@
 ## {{bullet}} Example use
 
 ```javascript
-import { compose, map, filter } from 'rambda'
+import { piped, map, filter } from 'rambda'
 
-const result = compose(
+const result = piped(
+	[1, 2, 3, 4],
+  filter(x => x > 2),
   map(x => x * 2),
-  filter(x => x > 2)
-)([1, 2, 3, 4])
+)
 // => [6, 8]
 ```
 
