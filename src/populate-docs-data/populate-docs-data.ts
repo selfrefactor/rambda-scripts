@@ -39,14 +39,11 @@ function appendData(appendDataInput: AppendData): Record<string, string> {
 
 interface Save {
   toSave: Record<string, any>
-  withRambdax: boolean
 }
 
 async function save(input: Save) {
-  const {withRambdax, toSave} = input
-  const output = withRambdax
-    ? `${__dirname}/data-rambdax.json`
-    : `${__dirname}/data.json`
+  const { toSave} = input
+  const output = `${__dirname}/data.json`
 
   await outputJSON(output, toSave, {spaces: 2})
 }
@@ -58,17 +55,17 @@ function getSortedInput(pipedInput: any) {
   return sortObject(predicate, pipedInput)
 }
 
-export async function populateDocsData(withRambdax: boolean) {
-  const definitions = extractDefinition(withRambdax)
-  const categories = extractCategories(withRambdax)
-  const allDefinitions = extractAllDefinitions(withRambdax)
-  const rambdaSource = await rambdaSourceMethod(withRambdax)
-  const rambdaSpecs = await rambdaSpecsMethod(withRambdax)
-  const typingsTests = await typingsTestsMethod(withRambdax)
+export async function populateDocsData() {
+  const definitions = extractDefinition()
+  const categories = extractCategories()
+  const allDefinitions = extractAllDefinitions()
+  const rambdaSource = await rambdaSourceMethod()
+  const rambdaSpecs = await rambdaSpecsMethod()
+  const typingsTests = await typingsTestsMethod()
   const benchmarkInfo = await benchmarkInfoMethod()
-  const examples = extractExample(withRambdax)
-  const explanations = extractExplanation(withRambdax)
-  const notes = extractNotes(withRambdax)
+  const examples = extractExample()
+  const explanations = extractExplanation()
+  const notes = extractNotes()
   const failedRamdaSpecs = failedRamdaTests()
   const failedSpecsReasons = failedTestsReasons()
   const failedSpecsCount = failedTestsCount()
@@ -153,7 +150,7 @@ export async function populateDocsData(withRambdax: boolean) {
   )
 
   await save({
-    withRambdax,
+    ,
     toSave: toSave as Record<string, any>,
   })
 

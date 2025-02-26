@@ -1,8 +1,8 @@
 import {outputFile} from 'fs-extra'
 import {map, trim} from 'rambdax'
-import {PATHS, X_PATHS} from '../constants'
+import {PATHS} from '../constants'
 
-import {getRambdaData, getRambdaxData, intro} from '../utils'
+import {getRambdaData, intro} from '../utils'
 
 function attachExports({
   methodName,
@@ -19,7 +19,7 @@ function attachExports({
     .join('\n')
 }
 
-export async function createExportedTypings(withRambdax = false) {
+export async function createExportedTypings() {
   let toSave = intro
 
   const applyForSingleMethod = (x: any, methodName: string) => {
@@ -43,15 +43,11 @@ export async function createExportedTypings(withRambdax = false) {
     return (toSave += `\n${methodData}\n`)
   }
 
-  const methodsData = withRambdax
-    ? await getRambdaxData()
-    : await getRambdaData()
+  const methodsData =  await getRambdaData()
 
   map(applyForSingleMethod, methodsData)
 
-  const output = withRambdax
-    ? `${X_PATHS.xBase}/index.d.ts`
-    : `${PATHS.base}/index.d.ts`
+  const output =  `${PATHS.base}/index.d.ts`
 
   await outputFile(output, toSave)
 

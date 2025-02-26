@@ -120,11 +120,9 @@ const myLibraries = `
 </table>
 `.trim()
 
-async function getChangelog(withRambdax) {
-  const changelogSource = withRambdax
-    ? `${__dirname}/assets/CHANGELOG_RAMBDAX.md`
-    : `${__dirname}/assets/CHANGELOG.md`
-  const marker = withRambdax ? `7.3.0` : `6.4.0`
+async function getChangelog() {
+  const changelogSource = `${__dirname}/assets/CHANGELOG.md`
+  const marker = `6.4.0`
 
   const changelogContent = await readFile(changelogSource)
 
@@ -137,10 +135,10 @@ async function getChangelog(withRambdax) {
   )
 }
 
-export async function getTail(withRambdax: boolean) {
-  const changelog = await getChangelog(withRambdax)
+export async function getTail() {
+  const changelog = await getChangelog()
   return interpolate(templateTail, {
-    library: withRambdax ? 'rambdax' : 'rambda',
+    library: 'rambda',
     additionalInfoSeparator: getSeparator('additional-info'),
     additionalInfo: getAdditionalInfo(),
     myLibraries,

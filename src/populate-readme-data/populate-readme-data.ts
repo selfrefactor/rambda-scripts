@@ -26,10 +26,8 @@ function getFileSize(filePath: string) {
   }
 }
 
-async function getMethodsData(withRambdax: boolean) {
-  const filePath = withRambdax
-    ? DESTINATIONS.rambdaxDataSource
-    : DESTINATIONS.dataSource
+async function getMethodsData() {
+  const filePath = DESTINATIONS.dataSource
 
   return readJson(filePath)
 }
@@ -46,13 +44,10 @@ const readmeTemplate = `
 {{tail}}
 `
 
-function getOutputPath(withRambdax: boolean, npmReadme: boolean, docsifyMode: boolean) {
+function getOutputPath(npmReadme: boolean, docsifyMode: boolean) {
 	if (docsifyMode) {
 		return `${docsifyBase}/README.md`
 	}
-  if (withRambdax) {
-    return `${X_PATHS.xBase}/README.md`
-  }
 
   return npmReadme
     ? `${PATHS.base}/README.md`
@@ -60,12 +55,11 @@ function getOutputPath(withRambdax: boolean, npmReadme: boolean, docsifyMode: bo
 }
 
 export async function populateReadmeData(
-  withRambdax: boolean,
   npmReadme: boolean,
 	docsifyMode: boolean
 ) {
-  await buildStep(withRambdax)
-  const methodsData = await getMethodsData(withRambdax)
+  await buildStep()
+  const methodsData = await getMethodsData()
 
   const methods = map((x: any, y: string) => {
     if (!x.example) return x
@@ -85,10 +79,10 @@ export async function populateReadmeData(
     .sort((x, y) =>
       x.methodName.toLowerCase() > y.methodName.toLowerCase() ? 1 : -1
     )
-    .map(method => createMethodData(method, withRambdax, npmReadme, docsifyMode))
+    .map(method => createMethodData(method, npmReadme, docsifyMode))
 
-  const intro = await getIntro(withRambdax)
-  const tail = await getTail(withRambdax)
+  const intro = await getIntro()
+  const tail = await getTail()
   const templateData = {
     intro,
     tail,
@@ -96,7 +90,7 @@ export async function populateReadmeData(
   }
 
   const readme = interpolate(readmeTemplate, templateData).trim()
-  const output = getOutputPath(withRambdax, npmReadme, docsifyMode)
+  const output = getOutputPath(npmReadme, docsifyMode)
 	console.log('output', output)
   const finalReadme = removeDoubleNewLines(readme)
   await outputFile(output, finalReadme)

@@ -4,14 +4,14 @@ import {PATHS} from '../../constants'
 
 import {getMethods} from '../extract-from-typings/get-methods'
 
-export async function typingsTests(withRambdax: boolean) {
+export async function typingsTests() {
   const result = await mapToObjectAsync(async method => {
     const filePath = `${PATHS.source}/${method}-spec.ts`
     if (!existsSync(filePath)) return false
     const rambdaSpec = await readFile(filePath)
 
     return {[method]: remove(/readonly\s/g, rambdaSpec.toString().trim())}
-  }, getMethods(withRambdax))
+  }, getMethods())
 
   return result as Record<string, string>
 }

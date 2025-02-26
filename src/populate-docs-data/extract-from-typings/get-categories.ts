@@ -3,9 +3,9 @@ import {anyFalse, forEach, match, remove, trim} from 'rambdax'
 import {extractName} from './extract-name'
 import {extractRawInfo} from './extract-raw-info'
 
-export function getCategories(withRambdax: boolean) {
+export function getCategories() {
   const hash: Record<string, string[]> = {}
-  const rawInfo = extractRawInfo(withRambdax)
+  const rawInfo = extractRawInfo()
 
   forEach(x => {
     const name = extractName(x)

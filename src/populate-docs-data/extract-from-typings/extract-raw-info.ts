@@ -2,6 +2,6 @@ import {match} from 'rambdax'
 
 import {getOrigin} from '../../utils'
 
-export function extractRawInfo(withRambdax = false) {
-  return match(/\/\*(\n|[^@])+/gm, getOrigin(withRambdax))
+export function extractRawInfo() {
+  return match(/\/\*(\n|[^@])+/gm, getOrigin())
 }

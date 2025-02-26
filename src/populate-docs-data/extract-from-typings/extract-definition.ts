@@ -2,10 +2,10 @@ import {head, mapToObject, match, piped, remove, trim} from 'rambdax'
 
 import {getOrigin} from '../../utils'
 
-export function extractDefinition(withRambdax: boolean) {
+export function extractDefinition() {
   const matches = match(
     /\/\/ @SINGLE_MARKER\nexport function[^;]+/gm,
-    getOrigin(withRambdax)
+    getOrigin()
   )
   const result = mapToObject<string, Record<string, string>>(singleMatch => {
     const count = match(/\/\/ @SINGLE_MARKER/gm, singleMatch).length

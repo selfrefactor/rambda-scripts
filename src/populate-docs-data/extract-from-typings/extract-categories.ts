@@ -3,8 +3,8 @@ import {anyFalse, mapToObject, match, remove, trim} from 'rambdax'
 import {extractName} from './extract-name'
 import {extractRawInfo} from './extract-raw-info'
 
-export function extractCategories(withRambdax: boolean) {
-  const rawInfo = extractRawInfo(withRambdax)
+export function extractCategories() {
+  const rawInfo = extractRawInfo()
 
   return mapToObject<string, any>(x => {
     const name = extractName(x)
