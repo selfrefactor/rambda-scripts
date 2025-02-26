@@ -150,7 +150,6 @@ export async function populateDocsData() {
   )
 
   await save({
-    ,
     toSave: toSave as Record<string, any>,
   })
 

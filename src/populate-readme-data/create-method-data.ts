@@ -131,7 +131,7 @@ function createReplReadme({
 export function createMethodData(
   method: any,
   npmReadme: boolean,
-	docsifyMode: boolean
+	docsifyMode?: boolean
 ) {
   const data = getIntro(method)
   const allowance = getAllowance(method.methodName, docsifyMode)

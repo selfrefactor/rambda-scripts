@@ -12,7 +12,7 @@ interface Allowance {
 
 export function getAllowance(
   methodName: string,
-	docsifyMode: boolean
+	docsifyMode?: boolean
 ): Allowance {
 	const allowed = docsifyMode ? true : !METHODS_TO_SKIP.includes(methodName)
 

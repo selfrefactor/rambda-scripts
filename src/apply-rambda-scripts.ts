@@ -27,24 +27,15 @@ export function validatePaths() {
   if (Object.keys(validPaths).length !== Object.keys(PATHS).length) {
     throw new Error(`There are invalid paths ${wrongPaths}`)
   }
-  if (!WITH_RAMBDAX) return
-
-  const validRambdaxPaths = filter(iterator, X_PATHS)
-
-  if (
-    Object.keys(validRambdaxPaths).length !== Object.keys(X_PATHS).length
-  ) {
-    throw new Error(`There are invalid paths ${wrongPaths}`)
-  }
 }
 
 export async function applyRambdaScripts(modeInput: string) {
   const mode = getMode(modeInput)
   if (mode === 'usedby') return verifyUsedBy()
   if (mode === 'readonly') return readonlyTask()
-  if (mode === 'populate:docs') return populateDocsData(WITH_RAMBDAX)
+  if (mode === 'populate:docs') return populateDocsData()
   if (mode === 'populate:readme') {
-    return populateReadmeData(WITH_RAMBDAX, NPM_README, DOCSIFY_SCRIPTS_MODE)
+    return populateReadmeData( NPM_README, DOCSIFY_SCRIPTS_MODE)
   }
 
   log(`Such mode '${mode}' doesn't exists`, 'error')

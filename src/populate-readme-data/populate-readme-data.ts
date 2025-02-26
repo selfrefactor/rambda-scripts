@@ -44,7 +44,7 @@ const readmeTemplate = `
 {{tail}}
 `
 
-function getOutputPath(npmReadme: boolean, docsifyMode: boolean) {
+function getOutputPath(npmReadme: boolean, docsifyMode?: boolean) {
 	if (docsifyMode) {
 		return `${docsifyBase}/README.md`
 	}
@@ -56,7 +56,7 @@ function getOutputPath(npmReadme: boolean, docsifyMode: boolean) {
 
 export async function populateReadmeData(
   npmReadme: boolean,
-	docsifyMode: boolean
+	docsifyMode?: boolean
 ) {
   await buildStep()
   const methodsData = await getMethodsData()
