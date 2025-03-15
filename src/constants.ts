@@ -1,28 +1,22 @@
-import {existsSync} from 'fs'
 import {resolve} from 'path'
 
 const base = resolve(__dirname, '../../rambda')
 export const docsifyBase = resolve(__dirname, '../docsify-readme')
-const xBase = resolve(__dirname, '../../rambdax')
 
 export const BULLET = '❯' // ➤
 
 export const PATHS = {
   base,
   documentationFile: `${base}/files/index.d.ts`,
+  introReadme: `${base}/files/README_START.md`,
   source: `${base}/source`,
   output: `${base}/src`,
   sourceDestination: `${base}/src`,
 }
 
-export const X_PATHS = {
-  xBase,
-  rambdaxDir: xBase,
-}
 
 export const DESTINATIONS = {
   changelog: `${base}/CHANGELOG.md`,
-  rambdaxChangelog: `${xBase}/CHANGELOG.md`,
   dataSource: `${__dirname}/populate-docs-data/data.json`,
   rambdaxDataSource: `${__dirname}/populate-docs-data/data-rambdax.json`,
 }
@@ -39,14 +33,8 @@ export const MODES = [
   'populate:readme',
   'ramda:specs',
 ]
-
-export const WITH_RAMBDAX = process.env.WITH_RAMBDAX === 'ON'
 export const NPM_README = process.env.NPM_README === 'ON'
 export const DOCSIFY_SCRIPTS_MODE = process.env.DOCSIFY_SCRIPTS_MODE === 'ON'
-
-export const HAS_RAMBDAX = existsSync(
-  resolve(__dirname, '../../rambdax/package.json')
-)
 
 export const GITHUB_README_LIMIT = 0.5
 
@@ -216,18 +204,4 @@ export const METHODS_TO_SKIP = [
   'unnest',
   'unwind',
   'whereAny',
-]
-
-export const METHODS_TO_SKIP_RAMBDAX = [
-  ...METHODS_TO_SKIP,
-  'filterIndexed',
-  'findAsync',
-  'flattenObject',
-  'forEachIndexed',
-  'mapIndexed',
-  'mapObjIndexed',
-  'mapcat',
-  'partitionIndexed',
-  'rejectIndexed',
-  'tryCatchAsync',
 ]

@@ -9,7 +9,6 @@ import {getTail} from './get-tail'
 import {rambdaRepl} from './rambda-repl'
 import {
   PATHS,
-  X_PATHS,
   DESTINATIONS,
   GITHUB_README_LIMIT,
 	docsifyBase,

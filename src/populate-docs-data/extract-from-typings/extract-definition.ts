@@ -9,7 +9,10 @@ export function extractDefinition() {
   )
   const result = mapToObject<string, Record<string, string>>(singleMatch => {
     const count = match(/\/\/ @SINGLE_MARKER/gm, singleMatch).length
-    if (count !== 1) throw new Error(`Wrong count ${count}`)
+    if (count !== 1){
+			console.log(singleMatch, `Wrong count ${count}`)
+			throw new Error(`Wrong count ${count}`)
+		} 
     const typing = remove('// @SINGLE_MARKER', singleMatch)
 
     const name = piped(
