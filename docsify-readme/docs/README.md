@@ -1,6 +1,8 @@
 # Rambda
 
-`Rambda` is TypeScript-focused alternative to the popular functional programming library **Ramda** alternative. It also has better speed and smaller size. - [Documentation](https://selfrefactor.github.io/rambda/#/)
+`Rambda` is TypeScript-focused utility library similar to `Remeda` and `Lodash`. 
+
+Initially it started as faster alternative to functional programming library `Ramda`, but in order to address many TypeScript issues, now `Rambda` takes a separate path. - [Documentation](https://selfrefactor.github.io/rambda/#/)
 
 ![Commit activity](https://img.shields.io/github/commit-activity/y/selfrefactor/rambda)
 ![Library size](https://img.shields.io/bundlephobia/minzip/rambda)
@@ -11,9 +13,9 @@
 ## ❯ Example use
 
 ```javascript
-import { piped, map, filter } from 'rambda'
+import { pipe, map, filter } from 'rambda'
 
-const result = piped(
+const result = pipe(
 	[1, 2, 3, 4],
   filter(x => x > 2),
   map(x => x * 2),
@@ -23,66 +25,109 @@ const result = piped(
 
 You can test this example in <a href="https://rambda.now.sh?const%20result%20%3D%20R.compose(%0A%20%20R.map(x%20%3D%3E%20x%20*%202)%2C%0A%20%20R.filter(x%20%3D%3E%20x%20%3E%202)%0A)(%5B1%2C%202%2C%203%2C%204%5D)%0A%0A%2F%2F%20%3D%3E%20%5B6%2C%208%5D">Rambda's REPL</a>
 
-* [Differences between Rambda and Ramda](#differences-between-rambda-and-ramda)
 * [API](#api)
 * [Changelog](#-changelog)
 
 [![---------------](https://raw.githubusercontent.com/selfrefactor/rambda/master/files/separator.png)](#-example-use)
 
-## ❯ Rambda's advantages
+## ❯ Rambda's features
 
-### TypeScript included
+## ❯ Goals
 
-TypeScript definitions are included in the library, in comparison to **Ramda**, where you need to additionally install `@types/ramda`.
+### Typescript focus
 
-Still, you need to be aware that functional programming features in `TypeScript` are in development, which means that using **R.compose/R.pipe** can be problematic.
+Mixing `Functional Programming` and `TypeScript` is not easy.
 
-undefined
+One way to solve this is to focus what can be actually achieved and refrain from what is not possible.
 
-### Understandable source code due to little usage of internals
+### `R.pipe` as the main way to use Rambda
 
-`Ramda` uses a lot of internals, which hides a lot of logic. Reading the full source code of a method can be challenging.
+- All methods are meant to be used as part of `R.pipe` chain
 
-### Better VSCode experience
+- This is the main purpose of functional programming, i.e. to pass data through a chain of functions.
 
-If the project is written in Javascript, then `go to source definition` action will lead you to actual implementation of the method.
+- Having `R.pipe(input, ...fns)` helps TypeScript to infer the types of the input and the output.
+
+Here is one example why `R.pipe` is better than `Ramda.pipe`:
+
+```ts
+const list = [1, 2, 3];
+
+it('within pipe', () => {
+	const result = pipe(
+		list,
+		filter((x) => {
+			x; // $ExpectType number
+			return x > 1;
+		}),
+	);
+	result; // $ExpectType number[]
+});
+it('within Ramda.pipe requires explicit types', () => {
+	Ramda.pipe(
+		(x) => x,
+		filter<number>((x) => {
+			x; // $ExpectType number
+			return x > 1;
+		}),
+		filter((x: number) => {
+			x; // $ExpectType number
+			return x > 1;
+		}),
+	)(list);
+});
+```
+
+### Keep only the most useful methods
+
+The idea is to give `TypeScript` users only the most useful methods and let them implement the rest. No magic logic methods that are hard to remember. You shouldn't need to read the documentation to understand what a method does. Its name and signature should be enough.
+
+- Methods that are simply to remember only by its name. Complex logic shouldn't be part of utility library, but part of your codebase.
+
+- Keep only methods which are both useful and which behaviour is obvious from its name. For example, `R.innerJoin` is kept, but `R.identical`, `R.move` is removed. Methods such as `R.toLower`, `R.length` provide little value. Such method are omitted from Rambda on purpose.
+
+- Some generic methods such as `curry` and `assoc` is not easy to be expressed in TypeScript. For this reason `Rambda` omits such methods.
+
+- No `R.cond` or `R.ifElse` as they make the chain less readable.
+
+- No `R.length` as it adds very little value.
+
+- No `R.difference` as user must remember the order of the inputs, i.e. which is compared to and which is compared against.
+
+### One way to use each method
+
+Because of the focus on `R.pipe`, there is only one way to use each method. This helps with testing and also with TypeScript definitions.
+
+- All methods that 2 inputs, will have to be called with `R.methodName(input1)(input2)`
+- All methods that 3 inputs, will have to be called with `R.methodName(input1, input2)(input3)`
 
 ### Immutable TS definitions
 
 You can use immutable version of Rambda definitions, which is linted with ESLint `functional/prefer-readonly-type` plugin.
 
 ```
-import {add} from 'rambda/immutable'
+import {filter} from 'rambda/immutable'
 ```
 
-### Deno support
-
-Latest version of **Ramba** available for `Deno` users is 3 years old. This is not the case with **Rambda** as most of recent releases are available for `Deno` users.
-
-Also, `Rambda` provides you with included TS definitions:
+### Deno support 
 
 ```
-// Deno extension(https://marketplace.visualstudio.com/items?itemName=denoland.vscode-deno)
-// is installed and initialized
 import * as R from "https://deno.land/x/rambda/mod.ts";
-import * as Ramda from "https://deno.land/x/ramda/mod.ts";
 
-R.add(1)('foo') // => will trigger warning in VSCode as it should
-Ramda.add(1)('foo') // => will not trigger warning in VSCode
+R.filter(x => x > 1)([1, 2, 3])
 ```
 
-### Dot notation for `R.path`, `R.paths`, `R.assocPath` and `R.lensPath`
+### Dot notation for `R.path`
 
-Standard usage of `R.path` is `R.path(['a', 'b'], {a: {b: 1} })`.
+Standard usage of `R.path` is `R.path(['a', 'b'])({a: {b: 1} })`.
 
 In **Rambda** you have the choice to use dot notation(which is arguably more readable):
 
 ```
-R.path('a.b', {a: {b: 1} })
+R.path('a.b')({a: {b: 1} })
 ```
 
-Please note that since path input is turned into array, i.e. if you want `R.path(['a','1', 'b'], {a: {'1': {b: 2}}})` to return `2`, you will have to pass array path, not string path. If you pass `a.1.b`, it will turn path input to `['a', 1, 'b']`.
-The other side effect is in `R.assocPath` and `R.dissocPath`, where inputs such as `['a', '1', 'b']` will be turned into `['a', 1, 'b']`.
+Please note that since path input is turned into array, i.e. if you want `R.path(['a','1', 'b'])({a: {'1': {b: 2}}})` to return `2`, you will have to pass array path, not string path. If you pass `a.1.b`, it will turn path input to `['a', 1, 'b']`.
 
 ### Comma notation for `R.pick` and `R.omit`
 
@@ -93,93 +138,14 @@ R.pick('a,b', {a: 1 , b: 2, c: 3} })
 // No space allowed between properties
 ```
 
-### Speed
+### Fast performance compared to Ramda
 
-**Rambda** is generally more performant than `Ramda` as the [benchmarks](#-benchmarks) can prove that.
+Since `Rambda` methods doesn't use so many internals, it is faster than `Ramda`.
+Prior to version `10`, benchmark summary was included, but now the main selling point is the TypeScript focus, not performance so this is no longer included.
 
-### Support
-
-One of the main issues with `Ramda` is the slow process of releasing new versions. This is not the case with **Rambda** as releases are made on regular basis.
-
-[![---------------](https://raw.githubusercontent.com/selfrefactor/rambda/master/files/separator.png)](#-rambdas-advantages)
-
-## ❯ Install
-
-- **yarn add rambda**
-
-- For UMD usage either use `./dist/rambda.umd.js` or the following CDN link:
-
-```
-https://unpkg.com/rambda@CURRENT_VERSION/dist/rambda.umd.js
-```
-
-- with deno
-
-```
-import {add} from "https://deno.land/x/rambda/mod.ts";
-```
-
-[![---------------](https://raw.githubusercontent.com/selfrefactor/rambda/master/files/separator.png)](#-install)
-
-## Differences between Rambda and Ramda
-
-- Rambda's **type** detects async functions and unresolved `Promises`. The returned values are `'Async'` and `'Promise'`.
-
-- Rambda's **type** handles *NaN* input, in which case it returns `NaN`.
-
-- Rambda's **forEach** can iterate over objects not only arrays.
-
-- Rambda's **map**, **filter**, **partition** when they iterate over objects, they pass property and input object as predicate's argument.
-
-- Rambda's **filter** returns empty array with bad input(`null` or `undefined`), while Ramda throws.
-
-- Ramda's **clamp** work with strings, while Rambda's method work only with numbers.
-
-- Ramda's **indexOf/lastIndexOf** work with strings and lists, while Rambda's method work only with lists as iterable input.
-
-- Error handling, when wrong inputs are provided, may not be the same. This difference will be better documented once all brute force tests are completed.
-
-- TypeScript definitions between `rambda` and `@types/ramda` may vary.
-
-{{suggestPR}}
-[![---------------](https://raw.githubusercontent.com/selfrefactor/rambda/master/files/separator.png)](#-differences-between-rambda-and-ramda)
-
-## Benchmarks
-TODO
+[![---------------](https://raw.githubusercontent.com/selfrefactor/rambda/master/files/separator.png)](#-rambdas-features)
 
 ## API
-
-### add
-
-```typescript
-
-add(a: number): (b: number) => number
-```
-
-It adds `a` and `b`.
-
-> :boom: It doesn't work with strings, as the inputs are parsed to numbers before calculation.
-
-```javascript
-const result = R.pipe(
-	2,
-	R.add(3)
-) // =>  5
-```
-
-<a title="redirect to Rambda Repl site" href="https://rambda.now.sh?const%20result%20%3D%20R.pipe(%0A%092%2C%0A%09R.add(3)%0A)%20%2F%2F%20%3D%3E%20%205">Try this <strong>R.add</strong> example in Rambda REPL</a>
-
-<details>
-
-<summary>All TypeScript definitions</summary>
-
-```typescript
-add(a: number): (b: number) => number;
-```
-
-</details>
-
-[![---------------](https://raw.githubusercontent.com/selfrefactor/rambda/master/files/separator.png)](#add)
 
 ### all
 
@@ -394,11 +360,11 @@ It returns `true`, if at least one member of `list` returns true, when passed to
 ```javascript
 const list = [1, 2, 3]
 const predicate = x => x * x > 8
-R.any(fn, list)
+R.any(fn)(list)
 // => true
 ```
 
-<a title="redirect to Rambda Repl site" href="https://rambda.now.sh?const%20list%20%3D%20%5B1%2C%202%2C%203%5D%0Aconst%20predicate%20%3D%20x%20%3D%3E%20x%20*%20x%20%3E%208%0Aconst%20result%20%3D%20R.any(fn%2C%20list)%0A%2F%2F%20%3D%3E%20true">Try this <strong>R.any</strong> example in Rambda REPL</a>
+<a title="redirect to Rambda Repl site" href="https://rambda.now.sh?const%20list%20%3D%20%5B1%2C%202%2C%203%5D%0Aconst%20predicate%20%3D%20x%20%3D%3E%20x%20*%20x%20%3E%208%0Aconst%20result%20%3D%20R.any(fn)(list)%0A%2F%2F%20%3D%3E%20true">Try this <strong>R.any</strong> example in Rambda REPL</a>
 
 <details>
 
@@ -897,16 +863,16 @@ It returns `inverted` version of `origin` function that accept `input` as argume
 The return value of `inverted` is the negative boolean value of `origin(input)`.
 
 ```javascript
-const origin = x => x > 5
-const inverted = complement(origin)
+const fn = x => x > 5
+const inverted = complement(fn)
 
 const result = [
-  origin(7),
+  fn(7),
   inverted(7)
 ] => [ true, false ]
 ```
 
-<a title="redirect to Rambda Repl site" href="https://rambda.now.sh?const%20origin%20%3D%20x%20%3D%3E%20x%20%3E%205%0Aconst%20inverted%20%3D%20complement(origin)%0A%0Aconst%20result%20%3D%20%5B%0A%20%20origin(7)%2C%0A%20%20inverted(7)%0A%5D%20%3D%3E%20%5B%20true%2C%20false%20%5D">Try this <strong>R.complement</strong> example in Rambda REPL</a>
+<a title="redirect to Rambda Repl site" href="https://rambda.now.sh?const%20fn%20%3D%20x%20%3D%3E%20x%20%3E%205%0Aconst%20inverted%20%3D%20complement(fn)%0A%0Aconst%20result%20%3D%20%5B%0A%20%20fn(7)%2C%0A%20%20inverted(7)%0A%5D%20%3D%3E%20%5B%20true%2C%20false%20%5D">Try this <strong>R.complement</strong> example in Rambda REPL</a>
 
 <details>
 
@@ -2210,6 +2176,7 @@ export function equals(a) {
 
 ```javascript
 import {equalsFn } from './equals.js'
+import {equalsFn } from 'ramda'
 
 test('compare functions', () => {
   function foo() {}
@@ -3357,11 +3324,11 @@ It maps `fn` over `list` and then flatten the result by one-level.
 const duplicate = n => [ n, n ]
 const list = [ 1, 2, 3 ]
 
-const result = R.flatMap(duplicate, list)
+const result = R.flatMap(duplicate)(list)
 // => [ 1, 1, 2, 2, 3, 3 ]
 ```
 
-<a title="redirect to Rambda Repl site" href="https://rambda.now.sh?const%20duplicate%20%3D%20n%20%3D%3E%20%5B%20n%2C%20n%20%5D%0Aconst%20list%20%3D%20%5B%201%2C%202%2C%203%20%5D%0A%0Aconst%20result%20%3D%20R.flatMap(duplicate%2C%20list)%0A%2F%2F%20%3D%3E%20%5B%201%2C%201%2C%202%2C%202%2C%203%2C%203%20%5D">Try this <strong>R.flatMap</strong> example in Rambda REPL</a>
+<a title="redirect to Rambda Repl site" href="https://rambda.now.sh?const%20duplicate%20%3D%20n%20%3D%3E%20%5B%20n%2C%20n%20%5D%0Aconst%20list%20%3D%20%5B%201%2C%202%2C%203%20%5D%0A%0Aconst%20result%20%3D%20R.flatMap(duplicate)(list)%0A%2F%2F%20%3D%3E%20%5B%201%2C%201%2C%202%2C%202%2C%203%2C%203%20%5D">Try this <strong>R.flatMap</strong> example in Rambda REPL</a>
 
 <details>
 
@@ -3602,11 +3569,8 @@ groupBy<T, K extends string = string>(fn: (a: T) => K): (list: T[]) => Partial<R
 <summary><strong>R.groupBy</strong> source</summary>
 
 ```javascript
-export function groupBy(groupFn, list) {
-  if (arguments.length === 1) {
-    return _list => groupBy(groupFn, _list)
-  }
-
+export function groupBy(groupFn) {
+	return list => {
   const result = {}
   for (let i = 0; i < list.length; i++) {
     const item = list[i]
@@ -3620,6 +3584,7 @@ export function groupBy(groupFn, list) {
   }
 
   return result
+}
 }
 ```
 
@@ -3676,7 +3641,6 @@ test('groupBy', () => {
   }
 
   expect(groupBy(prop('age'))(list)).toEqual(expectedResult)
-  expect(groupBy(prop('age'), list)).toEqual(expectedResult)
 })
 ```
 
@@ -5443,7 +5407,7 @@ mathMod(x: number): (y: number) => number;
 
 ```typescript
 
-max<T extends Ord>(x: T, y: T): T
+max<T extends Ord>(x: T): (y: T) => T
 ```
 
 It returns the greater value between `x` and `y`.
@@ -5463,7 +5427,6 @@ const result = [
 <summary>All TypeScript definitions</summary>
 
 ```typescript
-max<T extends Ord>(x: T, y: T): T;
 max<T extends Ord>(x: T): (y: T) => T;
 ```
 
@@ -5475,7 +5438,7 @@ max<T extends Ord>(x: T): (y: T) => T;
 
 ```typescript
 
-maxBy<T>(compareFn: (input: T) => Ord, x: T, y: T): T
+maxBy<T>(compareFn: (input: T) => Ord, x: T): (y: T) => T
 ```
 
 It returns the greater value between `x` and `y` according to `compareFn` function.
@@ -5493,9 +5456,7 @@ R.maxBy(compareFn, 5, -7) // => -7
 <summary>All TypeScript definitions</summary>
 
 ```typescript
-maxBy<T>(compareFn: (input: T) => Ord, x: T, y: T): T;
 maxBy<T>(compareFn: (input: T) => Ord, x: T): (y: T) => T;
-maxBy<T>(compareFn: (input: T) => Ord): (x: T) => (y: T) => T;
 ```
 
 </details>
@@ -5874,230 +5835,6 @@ modify<K extends string, A, P>(
 </details>
 
 [![---------------](https://raw.githubusercontent.com/selfrefactor/rambda/master/files/separator.png)](#modify)
-
-### modifyPath
-
-```typescript
-
-modifyPath<U, T>(path: [], fn: (value: U) => T): (obj: U) => T
-```
-
-It changes a property of object on the base of provided path and transformer function.
-
-```javascript
-const result = R.modifyPath('a.b.c', x=> x+1, {a:{b: {c:1}}})
-// => {a:{b: {c:2}}}
-```
-
-<a title="redirect to Rambda Repl site" href="https://rambda.now.sh?const%20result%20%3D%20R.modifyPath('a.b.c'%2C%20x%3D%3E%20x%2B1%2C%20%7Ba%3A%7Bb%3A%20%7Bc%3A1%7D%7D%7D)%0A%2F%2F%20%3D%3E%20%7Ba%3A%7Bb%3A%20%7Bc%3A2%7D%7D%7D">Try this <strong>R.modifyPath</strong> example in Rambda REPL</a>
-
-<details>
-
-<summary>All TypeScript definitions</summary>
-
-```typescript
-modifyPath<U, T>(path: [], fn: (value: U) => T): (obj: U) => T;
-modifyPath<
-  K0 extends keyof U,
-  U,
-  T
->(path: [K0], fn: (value: U[K0]) => T): (obj: U) => DeepModify<[K0], U, T>;
-modifyPath<
-  K0 extends keyof U,
-  U,
-  T
->(path: `${K0}`, fn: (value: U[K0]) => T): (obj: U) => DeepModify<[K0], U, T>;
-modifyPath<
-  K0 extends keyof U,
-  K1 extends keyof U[K0],
-  U,
-  T
->(path: [K0, K1], fn: (value: U[K0][K1]) => T): (obj: U) => DeepModify<[K0, K1], U, T>;
-modifyPath<
-  K0 extends keyof U,
-  K1 extends keyof U[K0],
-  U,
-  T
->(path: `${K0}.${K1}`, fn: (value: U[K0][K1]) => T): (obj: U) => DeepModify<[K0, K1], U, T>;
-modifyPath<
-  K0 extends keyof U,
-  K1 extends keyof U[K0],
-  K2 extends keyof U[K0][K1],
-  U,
-  T
->(path: [K0, K1, K2], fn: (value: U[K0][K1][K2]) => T): (obj: U) => DeepModify<[K0, K1, K2], U, T>;
-modifyPath<
-  K0 extends keyof U,
-  K1 extends keyof U[K0],
-  K2 extends keyof U[K0][K1],
-  U,
-  T
->(path: `${K0}.${K1}.${K2}`, fn: (value: U[K0][K1][K2]) => T): (obj: U) => DeepModify<[K0, K1, K2], U, T>;
-modifyPath<
-  K0 extends keyof U,
-  K1 extends keyof U[K0],
-  K2 extends keyof U[K0][K1],
-  K3 extends keyof U[K0][K1][K2],
-  U,
-  T
->(path: [K0, K1, K2, K3], fn: (value: U[K0][K1][K2][K3]) => T): (obj: U) => DeepModify<[K0, K1, K2, K3], U, T>;
-modifyPath<
-  K0 extends keyof U,
-  K1 extends keyof U[K0],
-  K2 extends keyof U[K0][K1],
-  K3 extends keyof U[K0][K1][K2],
-  U,
-  T
->(path: `${K0}.${K1}.${K2}.${K3}`, fn: (value: U[K0][K1][K2][K3]) => T): (obj: U) => DeepModify<[K0, K1, K2, K3], U, T>;
-modifyPath<
-  K0 extends keyof U,
-  K1 extends keyof U[K0],
-  K2 extends keyof U[K0][K1],
-  K3 extends keyof U[K0][K1][K2],
-  K4 extends keyof U[K0][K1][K2][K3],
-  U,
-  T
->(path: [K0, K1, K2, K3, K4], fn: (value: U[K0][K1][K2][K3][K4]) => T): (obj: U) => DeepModify<[K0, K1, K2, K3, K4], U, T>;
-modifyPath<
-  K0 extends keyof U,
-  K1 extends keyof U[K0],
-  K2 extends keyof U[K0][K1],
-  K3 extends keyof U[K0][K1][K2],
-  K4 extends keyof U[K0][K1][K2][K3],
-  U,
-  T
->(path: `${K0}.${K1}.${K2}.${K3}.${K4}`, fn: (value: U[K0][K1][K2][K3][K4]) => T): (obj: U) => DeepModify<[K0, K1, K2, K3, K4], U, T>;
-modifyPath<
-  K0 extends keyof U,
-  K1 extends keyof U[K0],
-  K2 extends keyof U[K0][K1],
-  K3 extends keyof U[K0][K1][K2],
-  K4 extends keyof U[K0][K1][K2][K3],
-  K5 extends keyof U[K0][K1][K2][K3][K4],
-  U,
-  T
->(path: [K0, K1, K2, K3, K4, K5], fn: (value: U[K0][K1][K2][K3][K4][K5]) => T): (obj: U) => DeepModify<[K0, K1, K2, K3, K4, K5], U, T>;
-modifyPath<
-  K0 extends keyof U,
-  K1 extends keyof U[K0],
-  K2 extends keyof U[K0][K1],
-  K3 extends keyof U[K0][K1][K2],
-  K4 extends keyof U[K0][K1][K2][K3],
-  K5 extends keyof U[K0][K1][K2][K3][K4],
-  U,
-  T
->(path: `${K0}.${K1}.${K2}.${K3}.${K4}.${K5}`, fn: (value: U[K0][K1][K2][K3][K4][K5]) => T): (obj: U) => DeepModify<[K0, K1, K2, K3, K4, K5], U, T>;
-modifyPath<
-  K0 extends keyof U,
-  K1 extends keyof U[K0],
-  K2 extends keyof U[K0][K1],
-  K3 extends keyof U[K0][K1][K2],
-  K4 extends keyof U[K0][K1][K2][K3],
-  K5 extends keyof U[K0][K1][K2][K3][K4],
-  K6 extends keyof U[K0][K1][K2][K3][K4][K5],
-  U,
-  T
->(path: [K0, K1, K2, K3, K4, K5, K6], fn: (value: U[K0][K1][K2][K3][K4][K5][K6]) => T): (obj: U) => DeepModify<[K0, K1, K2, K3, K4, K5, K6], U, T>;
-modifyPath<
-  K0 extends keyof U,
-  K1 extends keyof U[K0],
-  K2 extends keyof U[K0][K1],
-  K3 extends keyof U[K0][K1][K2],
-  K4 extends keyof U[K0][K1][K2][K3],
-  K5 extends keyof U[K0][K1][K2][K3][K4],
-  K6 extends keyof U[K0][K1][K2][K3][K4][K5],
-  U,
-  T
->(path: `${K0}.${K1}.${K2}.${K3}.${K4}.${K5}.${K6}`, fn: (value: U[K0][K1][K2][K3][K4][K5][K6]) => T): (obj: U) => DeepModify<[K0, K1, K2, K3, K4, K5, K6], U, T>;
-modifyPath<B, A = any>(path: Path, fn: (a: any) => any): (obj: A) => B;
-```
-
-</details>
-
-<details>
-
-<summary><strong>R.modifyPath</strong> source</summary>
-
-```javascript
-import { createPath } from './_internals/createPath.js'
-import { path as pathModule } from './path.js'
-
-function assoc(prop, newValue) {
-  return obj => Object.assign({}, obj, { [prop]: newValue })
-}
-
-function modifyPathFn(pathInput, fn, obj) {
-    const path = createPath(pathInput)
-    if (path.length === 1) {
-      return {
-        ...obj,
-        [path[0]]: fn(obj[path[0]]),
-      }
-    }
-    if (pathModule(path)(obj) === undefined) {
-      return obj
-    }
-
-    const val = modifyPathFn(Array.prototype.slice.call(path, 1), fn, obj[path[0]])
-    if (val === obj[path[0]]) {
-      return obj
-    }
-
-    return assoc(path[0], val)(obj)
-}
-
-export function modifyPath(pathInput, fn) {
-  return obj => modifyPathFn(pathInput, fn, obj)
-}
-```
-
-</details>
-
-<details>
-
-<summary><strong>Tests</strong></summary>
-
-```javascript
-import { modifyPath } from './modifyPath.js'
-
-test('happy', () => {
-  const result = modifyPath('a.b.c', x => x + 1)({ a: { b: { c: 1 } } })
-  expect(result).toEqual({ a: { b: { c: 2 } } })
-})
-```
-
-</details>
-
-<details>
-
-<summary><strong>TypeScript</strong> test</summary>
-
-```typescript
-import { modifyPath, pipe } from 'rambda'
-
-const obj = { a: { b: { c: 1 } } }
-
-describe('R.modifyPath', () => {
-  it('array path', () => {
-    const result = pipe(
-      obj,
-      modifyPath(['a', 'b', 'c'], (x: number) => String(x)),
-    )
-    result.a.b.c // $ExpectType string
-  })
-  it('string path', () => {
-    const result = pipe(
-      obj,
-      modifyPath('a.b.c', (x: number) => String(x)),
-    )
-    result.a.b.c // $ExpectType string
-  })
-})
-```
-
-</details>
-
-[![---------------](https://raw.githubusercontent.com/selfrefactor/rambda/master/files/separator.png)](#modifyPath)
 
 ### none
 
@@ -6662,7 +6399,7 @@ describe('R.partition', () => {
 
 ```typescript
 
-path<S, K0 extends keyof S>(path: [K0]): (obj: S) => S[K0]
+path<S, K0 extends string & keyof S>(path: `${K0}`): (obj: S) => S[K0]
 ```
 
 If `pathToSearch` is `'a.b'` then it will return `1` if `obj` is `{a:{b:1}}`.
@@ -6691,22 +6428,169 @@ const result = [
 <summary>All TypeScript definitions</summary>
 
 ```typescript
+path<S, K0 extends string & keyof S>(path: `${K0}`): (obj: S) => S[K0];
+path<S, K0 extends string & keyof S, K1 extends string & keyof S[K0]>(path: `${K0}.${K1}`): (obj: S) => S[K0][K1];
+path<
+  S,
+  K0 extends keyof S,
+  K1 extends keyof S[K0],
+  K2 extends keyof S[K0][K1]
+>(path: [K0, K1, K2]): (obj: S) => S[K0][K1][K2];
+path<
+  S,
+  K0 extends string & keyof S,
+  K1 extends string & keyof S[K0],
+  K2 extends string & keyof S[K0][K1]
+>(path: `${K0}.${K1}.${K2}`): (obj: S) => S[K0][K1][K2];
+path<
+  S,
+  K0 extends keyof S,
+  K1 extends keyof S[K0],
+  K2 extends keyof S[K0][K1],
+  K3 extends keyof S[K0][K1][K2]
+>(path: [K0, K1, K2, K3]): (obj: S) => S[K0][K1][K2][K3];
+path<
+  S,
+  K0 extends string & keyof S,
+  K1 extends string & keyof S[K0],
+  K2 extends string & keyof S[K0][K1],
+  K3 extends string & keyof S[K0][K1][K2]
+>(path: `${K0}.${K1}.${K2}.${K3}`): (obj: S) => S[K0][K1][K2][K3];
+path<
+  S,
+  K0 extends keyof S,
+  K1 extends keyof S[K0],
+  K2 extends keyof S[K0][K1],
+  K3 extends keyof S[K0][K1][K2],
+  K4 extends keyof S[K0][K1][K2][K3]
+>(path: [K0, K1, K2, K3, K4]): (obj: S) => S[K0][K1][K2][K3][K4];
+path<
+  S,
+  K0 extends string & keyof S,
+  K1 extends string & keyof S[K0],
+  K2 extends string & keyof S[K0][K1],
+  K3 extends string & keyof S[K0][K1][K2],
+  K4 extends string & keyof S[K0][K1][K2][K3]
+>(path: `${K0}.${K1}.${K2}.${K3}.${K4}`): (obj: S) => S[K0][K1][K2][K3][K4];
+path<
+  S,
+  K0 extends keyof S,
+  K1 extends keyof S[K0],
+  K2 extends keyof S[K0][K1],
+  K3 extends keyof S[K0][K1][K2],
+  K4 extends keyof S[K0][K1][K2][K3]
+>(path: [K0, K1, K2, K3, K4], obj: S): S[K0][K1][K2][K3][K4];
+path<
+  S,
+  K0 extends keyof S,
+  K1 extends keyof S[K0],
+  K2 extends keyof S[K0][K1],
+  K3 extends keyof S[K0][K1][K2],
+  K4 extends keyof S[K0][K1][K2][K3],
+  K5 extends keyof S[K0][K1][K2][K3][K4]
+>(path: [K0, K1, K2, K3, K4, K5]): (obj: S) => S[K0][K1][K2][K3][K4][K5];
+path<
+  S,
+  K0 extends string & keyof S,
+  K1 extends string & keyof S[K0],
+  K2 extends string & keyof S[K0][K1],
+  K3 extends string & keyof S[K0][K1][K2],
+  K4 extends string & keyof S[K0][K1][K2][K3],
+  K5 extends string & keyof S[K0][K1][K2][K3][K4]
+>(path: `${K0}.${K1}.${K2}.${K3}.${K4}.${K5}`): (obj: S) => S[K0][K1][K2][K3][K4][K5];
+path<
+  S,
+  K0 extends keyof S,
+  K1 extends keyof S[K0],
+  K2 extends keyof S[K0][K1],
+  K3 extends keyof S[K0][K1][K2],
+  K4 extends keyof S[K0][K1][K2][K3],
+  K5 extends keyof S[K0][K1][K2][K3][K4]
+>(path: [K0, K1, K2, K3, K4, K5], obj: S): S[K0][K1][K2][K3][K4][K5];
+path<
+  S,
+  K0 extends keyof S,
+  K1 extends keyof S[K0],
+  K2 extends keyof S[K0][K1],
+  K3 extends keyof S[K0][K1][K2],
+  K4 extends keyof S[K0][K1][K2][K3],
+  K5 extends keyof S[K0][K1][K2][K3][K4],
+  K6 extends keyof S[K0][K1][K2][K3][K4][K5]
+>(path: [K0, K1, K2, K3, K4, K5, K6]): (obj: S) => S[K0][K1][K2][K3][K4][K5][K6];
+path<
+  S,
+  K0 extends string & keyof S,
+  K1 extends string & keyof S[K0],
+  K2 extends string & keyof S[K0][K1],
+  K3 extends string & keyof S[K0][K1][K2],
+  K4 extends string & keyof S[K0][K1][K2][K3],
+  K5 extends string & keyof S[K0][K1][K2][K3][K4],
+  K6 extends string & keyof S[K0][K1][K2][K3][K4][K5]
+>(path: `${K0}.${K1}.${K2}.${K3}.${K4}.${K5}.${K6}`): (obj: S) => S[K0][K1][K2][K3][K4][K5][K6];
+path<
+  S,
+  K0 extends keyof S,
+  K1 extends keyof S[K0],
+  K2 extends keyof S[K0][K1],
+  K3 extends keyof S[K0][K1][K2],
+  K4 extends keyof S[K0][K1][K2][K3],
+  K5 extends keyof S[K0][K1][K2][K3][K4],
+  K6 extends keyof S[K0][K1][K2][K3][K4][K5]
+>(path: [K0, K1, K2, K3, K4, K5, K6], obj: S): S[K0][K1][K2][K3][K4][K5][K6];
+path<
+  S,
+  K0 extends keyof S,
+  K1 extends keyof S[K0],
+  K2 extends keyof S[K0][K1],
+  K3 extends keyof S[K0][K1][K2],
+  K4 extends keyof S[K0][K1][K2][K3],
+  K5 extends keyof S[K0][K1][K2][K3][K4],
+  K6 extends keyof S[K0][K1][K2][K3][K4][K5],
+  K7 extends keyof S[K0][K1][K2][K3][K4][K5][K6]
+>(path: [K0, K1, K2, K3, K4, K5, K6, K7]): (obj: S) => S[K0][K1][K2][K3][K4][K5][K6][K7];
+path<
+  S,
+  K0 extends string & keyof S,
+  K1 extends string & keyof S[K0],
+  K2 extends string & keyof S[K0][K1],
+  K3 extends string & keyof S[K0][K1][K2],
+  K4 extends string & keyof S[K0][K1][K2][K3],
+  K5 extends string & keyof S[K0][K1][K2][K3][K4],
+  K6 extends string & keyof S[K0][K1][K2][K3][K4][K5],
+  K7 extends string & keyof S[K0][K1][K2][K3][K4][K5][K6]
+>(path: `${K0}.${K1}.${K2}.${K3}.${K4}.${K5}.${K6}.${K7}`): (obj: S) => S[K0][K1][K2][K3][K4][K5][K6][K7];
+path<
+  S,
+  K0 extends keyof S,
+  K1 extends keyof S[K0],
+  K2 extends keyof S[K0][K1],
+  K3 extends keyof S[K0][K1][K2],
+  K4 extends keyof S[K0][K1][K2][K3],
+  K5 extends keyof S[K0][K1][K2][K3][K4],
+  K6 extends keyof S[K0][K1][K2][K3][K4][K5],
+  K7 extends keyof S[K0][K1][K2][K3][K4][K5][K6],
+  K8 extends keyof S[K0][K1][K2][K3][K4][K5][K6][K7]
+>(path: [K0, K1, K2, K3, K4, K5, K6, K7, K8]): (obj: S) => S[K0][K1][K2][K3][K4][K5][K6][K7][K8];
+path<
+  S,
+  K0 extends string & keyof S,
+  K1 extends string & keyof S[K0],
+  K2 extends string & keyof S[K0][K1],
+  K3 extends string & keyof S[K0][K1][K2],
+  K4 extends string & keyof S[K0][K1][K2][K3],
+  K5 extends string & keyof S[K0][K1][K2][K3][K4],
+  K6 extends string & keyof S[K0][K1][K2][K3][K4][K5],
+  K7 extends string & keyof S[K0][K1][K2][K3][K4][K5][K6],
+  K8 extends string & keyof S[K0][K1][K2][K3][K4][K5][K6][K7]
+>(path: `${K0}.${K1}.${K2}.${K3}.${K4}.${K5}.${K6}.${K7}.${K8}`): (obj: S) => S[K0][K1][K2][K3][K4][K5][K6][K7][K8];
 path<S, K0 extends keyof S>(path: [K0]): (obj: S) => S[K0];
-path<S, K0 extends keyof S>(path: `${K0}`): (obj: S) => S[K0];
 path<S, K0 extends keyof S, K1 extends keyof S[K0]>(path: [K0, K1]): (obj: S) => S[K0][K1];
-path<S, K0 extends keyof S, K1 extends keyof S[K0]>(path: `${K0}.${K1}`): (obj: S) => S[K0][K1];
 path<
     S,
     K0 extends keyof S,
     K1 extends keyof S[K0],
     K2 extends keyof S[K0][K1]
 >(path: [K0, K1, K2]): (obj: S) => S[K0][K1][K2];
-path<
-    S,
-    K0 extends keyof S,
-    K1 extends keyof S[K0],
-    K2 extends keyof S[K0][K1]
->(path: `${K0}.${K1}.${K2}`): (obj: S) => S[K0][K1][K2];
 path<
     S,
     K0 extends keyof S,
@@ -6719,24 +6603,9 @@ path<
     K0 extends keyof S,
     K1 extends keyof S[K0],
     K2 extends keyof S[K0][K1],
-    K3 extends keyof S[K0][K1][K2]
->(path: `${K0}.${K1}.${K2}.${K3}`): (obj: S) => S[K0][K1][K2][K3];
-path<
-    S,
-    K0 extends keyof S,
-    K1 extends keyof S[K0],
-    K2 extends keyof S[K0][K1],
     K3 extends keyof S[K0][K1][K2],
     K4 extends keyof S[K0][K1][K2][K3]
 >(path: [K0, K1, K2, K3, K4]): (obj: S) => S[K0][K1][K2][K3][K4];
-path<
-    S,
-    K0 extends keyof S,
-    K1 extends keyof S[K0],
-    K2 extends keyof S[K0][K1],
-    K3 extends keyof S[K0][K1][K2],
-    K4 extends keyof S[K0][K1][K2][K3]
->(path: `${K0}.${K1}.${K2}.${K3}.${K4}`): (obj: S) => S[K0][K1][K2][K3][K4];
 path<
     S,
     K0 extends keyof S,
@@ -6762,15 +6631,6 @@ path<
     K3 extends keyof S[K0][K1][K2],
     K4 extends keyof S[K0][K1][K2][K3],
     K5 extends keyof S[K0][K1][K2][K3][K4]
->(path: `${K0}.${K1}.${K2}.${K3}.${K4}.${K5}`): (obj: S) => S[K0][K1][K2][K3][K4][K5];
-path<
-    S,
-    K0 extends keyof S,
-    K1 extends keyof S[K0],
-    K2 extends keyof S[K0][K1],
-    K3 extends keyof S[K0][K1][K2],
-    K4 extends keyof S[K0][K1][K2][K3],
-    K5 extends keyof S[K0][K1][K2][K3][K4]
 >(path: [K0, K1, K2, K3, K4, K5], obj: S): S[K0][K1][K2][K3][K4][K5];
 path<
     S,
@@ -6782,16 +6642,6 @@ path<
     K5 extends keyof S[K0][K1][K2][K3][K4],
     K6 extends keyof S[K0][K1][K2][K3][K4][K5]
 >(path: [K0, K1, K2, K3, K4, K5, K6]): (obj: S) => S[K0][K1][K2][K3][K4][K5][K6];
-path<
-    S,
-    K0 extends keyof S,
-    K1 extends keyof S[K0],
-    K2 extends keyof S[K0][K1],
-    K3 extends keyof S[K0][K1][K2],
-    K4 extends keyof S[K0][K1][K2][K3],
-    K5 extends keyof S[K0][K1][K2][K3][K4],
-    K6 extends keyof S[K0][K1][K2][K3][K4][K5]
->(path: `${K0}.${K1}.${K2}.${K3}.${K4}.${K5}.${K6}`): (obj: S) => S[K0][K1][K2][K3][K4][K5][K6];
 path<
     S,
     K0 extends keyof S,
@@ -6822,32 +6672,9 @@ path<
     K4 extends keyof S[K0][K1][K2][K3],
     K5 extends keyof S[K0][K1][K2][K3][K4],
     K6 extends keyof S[K0][K1][K2][K3][K4][K5],
-    K7 extends keyof S[K0][K1][K2][K3][K4][K5][K6]
->(path: `${K0}.${K1}.${K2}.${K3}.${K4}.${K5}.${K6}.${K7}`): (obj: S) => S[K0][K1][K2][K3][K4][K5][K6][K7];
-path<
-    S,
-    K0 extends keyof S,
-    K1 extends keyof S[K0],
-    K2 extends keyof S[K0][K1],
-    K3 extends keyof S[K0][K1][K2],
-    K4 extends keyof S[K0][K1][K2][K3],
-    K5 extends keyof S[K0][K1][K2][K3][K4],
-    K6 extends keyof S[K0][K1][K2][K3][K4][K5],
     K7 extends keyof S[K0][K1][K2][K3][K4][K5][K6],
     K8 extends keyof S[K0][K1][K2][K3][K4][K5][K6][K7]
 >(path: [K0, K1, K2, K3, K4, K5, K6, K7, K8]): (obj: S) => S[K0][K1][K2][K3][K4][K5][K6][K7][K8];
-path<
-    S,
-    K0 extends keyof S,
-    K1 extends keyof S[K0],
-    K2 extends keyof S[K0][K1],
-    K3 extends keyof S[K0][K1][K2],
-    K4 extends keyof S[K0][K1][K2][K3],
-    K5 extends keyof S[K0][K1][K2][K3][K4],
-    K6 extends keyof S[K0][K1][K2][K3][K4][K5],
-    K7 extends keyof S[K0][K1][K2][K3][K4][K5][K6],
-    K8 extends keyof S[K0][K1][K2][K3][K4][K5][K6][K7]
->(path: `${K0}.${K1}.${K2}.${K3}.${K4}.${K5}.${K6}.${K7}.${K8}`): (obj: S) => S[K0][K1][K2][K3][K4][K5][K6][K7][K8];
 ```
 
 </details>
@@ -11771,9 +11598,10 @@ describe('R.zip', () => {
   it('happy', () => {
     const array1 = [1, 2, 3]
     const array2 = ['A', 'B', 'C']
-
+		let a : Partial<any>
     const result = zip(array1)(array2)
-    result // $ExpectType KeyValuePair<number, string>[]
+    result[0][0] // $ExpectType number
+    result[0][1] // $ExpectType string
   })
 })
 ```
@@ -11891,19 +11719,90 @@ describe('R.zipWith', () => {
 
 10.0.0
 
-- Optimize many methods to better work in TS context with `R.pipe/R.compose`. The focus was passing objects through the `pipe/compose` chain.
+CHANGELOG - 10.0.0
 
-- Add `R.piped` method from `Rambdax` since it works better with TS than `R.pipe` and `R.compose`. It supports up to 20 function inputs.
+This is major revamp of `Rambda` library:
 
-_ Regarding using object as input `R.map` and `R.filter` in TypeScript - this is no longer supported in TypeScript as it has multiple issues when using inside pipes. Instead `R.mapObject` and `R.filterObject` are taken from `Rambdax` so users can migrate their code.
+- `R.pipe` is the recommended method for TypeScript chaining.
 
-- Regarding using string as path input in `R.omit`, `R.pick` and `R.path` - now it require explicit definition of expected return type.
+- All methods should be useful to work inside `R.pipe` chain. If method doesn't have clear use case inside `R.pipe`, it is removed as part of this revamp.
+
+- There will be only one way to use each method. For example, `R.add` can be used only with `R.add(1)(2)`, i.e. it doesn't support `R.add(1, 2)`. This helps with testing and also with TypeScript definitions. This aligns with TypeScript focused approach of this library.
+
+- Confusing methods are removed. For example, `R.cond` and `R.ifElse` are removed as their usage inside `R.piped` makes the whole chain less readable. Such logic should be part of your codebase, not part of external library.
+
+- All methods that expect more than 1 input, will have to be called with `R.methodName(input1)(input2)` or `R.methodName(input1, input2)(input3)`. This is to make TypeScript definitions easier to maintain. 
+
+-- sortBy
+
+- Optimize many methods to better work in TypeScript context with `R.pipe`. The focus was passing objects through the `R.pipe` chain.
+
+- Add `R.pipe` supports up to 20 functions, i.e. chain can be 20 functions long.
+
+- `R.chain` is renamed to `R.flatMap`
+- `R.comparator` is renamed to `R.sortingFn`
+
+- Remove following methods:
+
+-- Lenses - `R.lens`, `R.lensProp`, `R.lensPath`, `R.view`, `R.set`, `R.over`
+-- T, F
+-- add
+-- addIndex, addIndexRight
+-- always
+-- ap
+-- applySpec
+-- applyTo
+-- assoc, assocPath, dissoc, dissocPath
+-- binary
+-- bind
+-- call
+-- collectBy
+-- compose
+-- composeWith
+-- cond
+-- converge
+-- curry
+-- difference, differenceWith
+-- divide, multiply, subtract
+-- endsWith/startsWith
+-- flip
+-- forEachObjIndexed
+-- fromPairs
+-- gte, lte, lt, gt
+-- identical
+-- ifElse
+-- insert
+-- juxt
+-- length
+-- mapObjIndexed
+-- mergeAll, mergeLeft, mergeDeepLeft, mergeDeepRight
+-- move
+-- partitionIndexed
+-- pickAll
+-- pickBy
+-- repeat
+-- splitWhen
+-- toLower/toUpper
+-- unapply
+-- unnest
+-- update
+-- without
+
+Rename:
+
+-- replaceItemAtIndex -> adjust
+-- checkObjectWithSpec -> where 
+
+_ Regarding using object as input with TypeScript in methods such as `R.map/filter` - this feature is no longer supported in TypeScript as it has multiple issues when using inside pipes. In JS, it still works as before. Following methods are affected:
+
+-- R.map
+-- R.mapIndexed
+-- R.filter
+-- R.reject
+
+- Regarding using string as path input in `R.omit`, `R.pick` and `R.path` with TypeScript - now it require explicit definition of expected return type.
 
 - Revert adding stopper logic in `R.reduce` - https://github.com/selfrefactor/rambda/pull/630
-
-- Take typings of `R.filter/R.map` from `Remeda`.
-
-- Simplify typing for non-curried methods. The goal is to make typings more readable and easier to understand and maintain. The main goal of Rambda methods is to be used inside `R.piped` chain. 
 
 - Remove use of `Dictionary` custom interface and use more appropriate `Record<PropertyType, ...>`
 
@@ -11916,10 +11815,14 @@ _ Regarding using object as input `R.map` and `R.filter` in TypeScript - this is
 - head/last - empty array as input will return `undefined`, but `never`
 - assocPath - stop supporting curring of type `(x)(y)(z)`
 
-- Require explicit output type(s) as it is very hard to pick up the correct type in many cases.
+- For some methods, it is very hard to pick up the correct type in many cases. In these cases, explicit output type is expected.
 
 -- assocPath
--- dissocPath 
+-- dissocPath
+
+- Stop support string inputs for some methods, since it was hard to correctly type them in TypeScript.
+
+-- append/prepend
 
 - Sync with typing of `@types/ramda`:
 
@@ -11936,26 +11839,46 @@ _ Regarding using object as input `R.map` and `R.filter` in TypeScript - this is
 -- forEach
 -- keys
 -- map
--- mapObjIndexed
 -- mergeAll
--- mergeWith
 -- modify
 -- modifyPath
 -- omit
 -- partition
+-- pluck
 -- prepend
+-- propEq
 -- where
 -- whereAny
 
 - Sync with typing of `remeda`:
 
 -- filter
+-- reject
 -- map
+-- mapObject
 -- toPairs
+-- partition
 
 - Publish to JSR registry - https://jsr.io/@rambda/rambda
 
 - Replace Record<string> with Record<PropertyKey>
+
+- Improve TypeScript definitions of:
+
+-- objOf
+-- pluck
+-- mergeWith
+
+- Change `Jest` with `Vitest`.
+
+- Remove `Babel` dependency in `Rollup` build setup.
+
+- Revert adding stopper logic in `R.reduce` - https://github.com/selfrefactor/rambda/pull/630
+
+- Renamed methods: 
+
+-- `chain` to `flatMap`
+-- `mapObjIndexed` to `mapObject`
 
 9.4.2
 
