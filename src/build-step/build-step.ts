@@ -67,17 +67,8 @@ async function rambdaBuildStep() {
   )
 }
 
-async function syncChangelog() {
-  const source = SOURCES.changelog
-  const destinationBase = PATHS.base
-
-  await copy(source, `${destinationBase}/CHANGELOG.md`)
-}
-
 export async function buildStep() {
   await createExportedTypings()
 
 	await rambdaBuildStep()
-
-  await syncChangelog()
 }

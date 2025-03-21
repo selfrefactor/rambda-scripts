@@ -16,14 +16,12 @@ export const PATHS = {
 
 
 export const DESTINATIONS = {
-  changelog: `${base}/CHANGELOG.md`,
-  dataSource: `${__dirname}/populate-docs-data/data.json`,
+	dataSource: `${__dirname}/populate-docs-data/data.json`,
   rambdaxDataSource: `${__dirname}/populate-docs-data/data-rambdax.json`,
 }
 
 export const SOURCES = {
-  changelog: `${__dirname}/populate-readme-data/assets/CHANGELOG.md`,
-  rambdaxChangelog: `${__dirname}/populate-readme-data/assets/CHANGELOG_RAMBDAX.md`,
+	changelog: `${base}/CHANGELOG.md`,
 }
 
 export const MODES = [

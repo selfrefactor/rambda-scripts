@@ -8,7 +8,7 @@ import {
   split,
   trim,
 } from 'rambdax'
-import {BULLET} from '../constants'
+import {BULLET, SOURCES} from '../constants'
 import {getSeparator} from '../utils'
 
 const mostInfluentialContributors = {
@@ -121,7 +121,7 @@ const myLibraries = `
 `.trim()
 
 async function getChangelog() {
-  const changelogSource = `${__dirname}/assets/CHANGELOG.md`
+  const changelogSource = SOURCES.changelog
   const marker = `6.4.0`
 
   const changelogContent = await readFile(changelogSource)
