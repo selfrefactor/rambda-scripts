@@ -105,11 +105,6 @@ _ Regarding using object as input with TypeScript in methods such as `R.map/filt
 - head/last - empty array as input will return `undefined`, but `never`
 - assocPath - stop supporting curring of type `(x)(y)(z)`
 
-- For some methods, it is very hard to pick up the correct type in many cases. In these cases, explicit output type is expected.
-
--- assocPath
--- dissocPath
-
 - Stop support string inputs for some methods, since it was hard to correctly type them in TypeScript.
 
 -- append/prepend

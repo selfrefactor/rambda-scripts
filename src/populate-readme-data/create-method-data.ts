@@ -130,10 +130,13 @@ function createReplReadme({
 
 export function createMethodData(
   method: any,
-  npmReadme: boolean,
 	docsifyMode?: boolean
 ) {
   const data = getIntro(method)
+	if(method.methodName === 'path'){
+		1
+		let a = 1
+	}
   const allowance = getAllowance(method.methodName, docsifyMode)
   if (method.typing && allowance.typing) data.push(attachTyping(method))
   if (method.explanation) {
@@ -141,7 +144,7 @@ export function createMethodData(
     data.push('\n')
   }
 
-  if (method.notes && !npmReadme) {
+  if (method.notes) {
 		data.push(createNoteReadme(method))
 	}
   if (method.example && allowance.example)

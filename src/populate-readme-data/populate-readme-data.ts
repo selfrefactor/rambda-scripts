@@ -54,7 +54,6 @@ function getOutputPath(npmReadme: boolean, docsifyMode?: boolean) {
 }
 
 export async function populateReadmeData(
-  npmReadme: boolean,
 	docsifyMode?: boolean
 ) {
   await buildStep()
@@ -78,7 +77,7 @@ export async function populateReadmeData(
     .sort((x, y) =>
       x.methodName.toLowerCase() > y.methodName.toLowerCase() ? 1 : -1
     )
-    .map(method => createMethodData(method, npmReadme, docsifyMode))
+    .map(method => createMethodData(method, docsifyMode))
 
   const intro = await getIntro()
   const tail = await getTail()
