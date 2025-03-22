@@ -3,7 +3,6 @@ import {log} from 'helpers-fn'
 import {filter} from 'rambdax'
 import {PATHS, MODES, DOCSIFY_SCRIPTS_MODE} from './constants'
 import {verifyUsedBy} from './verify-used-by/verify-used-by'
-import {readonlyTask} from './readonly-task/readonly-task'
 import {populateReadmeData} from './populate-readme-data/populate-readme-data'
 import {populateDocsData} from './populate-docs-data/populate-docs-data'
 
@@ -32,7 +31,6 @@ export function validatePaths() {
 export async function applyRambdaScripts(modeInput: string) {
   const mode = getMode(modeInput)
   if (mode === 'usedby') return verifyUsedBy()
-  if (mode === 'readonly') return readonlyTask()
   if (mode === 'populate:docs') return populateDocsData()
   if (mode === 'populate:readme') {
     return populateReadmeData( DOCSIFY_SCRIPTS_MODE)

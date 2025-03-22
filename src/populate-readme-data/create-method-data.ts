@@ -1,6 +1,6 @@
 import {interpolate} from 'rambdax'
 import {getMethodSeparator} from '../utils'
-import {getAllowance} from './get-allowance'
+import { count } from 'string-fn'
 
 function createRambdaSpecReadme(method: any) {
   const summaryTemplate = `
@@ -50,23 +50,12 @@ function createTypeScriptTest(method: any) {
   return interpolate(summaryTemplate, method)
 }
 
-function createBenchmarkInfo(method: any) {
-  const summaryTemplate = `
-<details>
-
-<summary>{{methodSummary}}</summary>
-
-\`\`\`text
-{{benchmarkContent}}
-\`\`\`
-
-</details>
-`
-
-  return interpolate(summaryTemplate, method.benchmarkInfo)
-}
-
 function attachAllTypings(method: any) {
+	if(count(method.allTypings, ';') >=4){
+		let displayTypings = method.allTypings.split(';').slice(0, 4).join(';')
+		displayTypings = `${displayTypings};\n...\n...`
+		method.allTypings = displayTypings
+	}
   const allTypingsTemplate = `
 <details>
 
@@ -130,15 +119,13 @@ function createReplReadme({
 
 export function createMethodData(
   method: any,
-	docsifyMode?: boolean
 ) {
   const data = getIntro(method)
-	if(method.methodName === 'path'){
-		1
-		let a = 1
-	}
-  const allowance = getAllowance(method.methodName, docsifyMode)
-  if (method.typing && allowance.typing) data.push(attachTyping(method))
+	// if(method.methodName === 'path'){
+	// 	1
+	// 	let a = 1
+	// }
+  if (method.typing) data.push(attachTyping(method))
   if (method.explanation) {
     data.push(method.explanation)
     data.push('\n')
@@ -147,7 +134,7 @@ export function createMethodData(
   if (method.notes) {
 		data.push(createNoteReadme(method))
 	}
-  if (method.example && allowance.example)
+  if (method.example )
     data.push(createExampleReadme(method))
 
   if (method.replLink) {
@@ -155,22 +142,19 @@ export function createMethodData(
     data.push('\n')
   }
 
-  if (method.allTypings && allowance.allTypings) {
+  if (method.allTypings) {
+
     data.push(attachAllTypings(method))
   }
-  if (method.rambdaSource && allowance.source) {
+  if (method.rambdaSource ) {
     data.push(createRambdaSourceReadme(method))
   }
-  if (method.rambdaSpecs && allowance.specs) {
+  if (method.rambdaSpecs) {
     data.push(createRambdaSpecReadme(method))
   }
 
-  if (method.typescriptDefinitionTest && allowance.tsTest) {
+  if (method.typescriptDefinitionTest) {
     data.push(createTypeScriptTest(method))
-  }
-
-  if (method.benchmarkInfo && allowance.benchmark) {
-    data.push(createBenchmarkInfo(method))
   }
 
   data.push(`\n${getMethodSeparator(method.methodName)}\n`)

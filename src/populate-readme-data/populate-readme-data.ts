@@ -43,14 +43,12 @@ const readmeTemplate = `
 {{tail}}
 `
 
-function getOutputPath(npmReadme: boolean, docsifyMode?: boolean) {
+function getOutputPath(docsifyMode?: boolean) {
 	if (docsifyMode) {
 		return `${docsifyBase}/README.md`
 	}
 
-  return npmReadme
-    ? `${PATHS.base}/README.md`
-    : `${PATHS.base}/.github/README.md`
+  return `${PATHS.base}/README.md`
 }
 
 export async function populateReadmeData(
@@ -77,7 +75,7 @@ export async function populateReadmeData(
     .sort((x, y) =>
       x.methodName.toLowerCase() > y.methodName.toLowerCase() ? 1 : -1
     )
-    .map(method => createMethodData(method, docsifyMode))
+    .map(method => createMethodData(method))
 
   const intro = await getIntro()
   const tail = await getTail()
@@ -88,7 +86,7 @@ export async function populateReadmeData(
   }
 
   const readme = interpolate(readmeTemplate, templateData).trim()
-  const output = getOutputPath(npmReadme, docsifyMode)
+  const output = getOutputPath(docsifyMode)
 	console.log('output', output)
   const finalReadme = removeDoubleNewLines(readme)
   await outputFile(output, finalReadme)
