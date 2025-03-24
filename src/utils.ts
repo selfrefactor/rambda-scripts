@@ -25,8 +25,30 @@ export async function getRambdaData() {
   return rambdaData
 }
 
+
 export async function getRambdaMethods() {
   const rambdaData = await getRambdaData()
 
   return Object.keys(rambdaData).sort(sortFn)
+}
+
+export const documentationFile = readFileSync(
+  PATHS.documentationFile
+).toString()
+
+export const [intro] = documentationFile.split('// API_MARKER')
+
+export const getOrigin = () => documentationFile
+
+export async function build() {
+  await spawn({
+    cwd: resolve(__dirname, '../'),
+    command: 'yarn',
+    inputs: ['out'],
+  })
+  await spawn({
+    cwd: resolve(__dirname, '../'),
+    command: 'yarn',
+    inputs: ['build'],
+  })
 }
