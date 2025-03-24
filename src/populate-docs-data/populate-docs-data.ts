@@ -7,10 +7,6 @@ import {extractDefinition} from './extract-from-typings/extract-definition'
 import {extractExample} from './extract-from-typings/extract-example'
 import {extractExplanation} from './extract-from-typings/extract-explanation'
 import {extractNotes} from './extract-from-typings/extract-notes'
-import {benchmarkInfo as benchmarkInfoMethod} from './extracts/benchmark-info'
-import {failedRamdaTests} from './extracts/failed-ramda-tests'
-import {failedTestsCount} from './extracts/failed-tests-count'
-import {failedTestsReasons} from './extracts/failed-tests-reasons'
 import {rambdaSource as rambdaSourceMethod} from './extracts/rambda-source'
 import {rambdaSpecs as rambdaSpecsMethod} from './extracts/rambda-specs'
 import {typingsTests as typingsTestsMethod} from './extracts/typings-tests'
@@ -62,13 +58,9 @@ export async function populateDocsData() {
   const rambdaSource = await rambdaSourceMethod()
   const rambdaSpecs = await rambdaSpecsMethod()
   const typingsTests = await typingsTestsMethod()
-  const benchmarkInfo = await benchmarkInfoMethod()
   const examples = extractExample()
   const explanations = extractExplanation()
   const notes = extractNotes()
-  const failedRamdaSpecs = failedRamdaTests()
-  const failedSpecsReasons = failedTestsReasons()
-  const failedSpecsCount = failedTestsCount()
 
   const pipedInput = initiateData(definitions, 'typing')
   const sortedPipedInput = getSortedInput(pipedInput)
@@ -108,12 +100,6 @@ export async function populateDocsData() {
     input =>
       appendData({
         input,
-        prop: 'benchmarkInfo',
-        hash: benchmarkInfo,
-      }),
-    input =>
-      appendData({
-        input,
         prop: 'explanation',
         hash: explanations,
       }),
@@ -129,24 +115,6 @@ export async function populateDocsData() {
         prop: 'typescriptDefinitionTest',
         hash: typingsTests,
       }),
-    input =>
-      appendData({
-        input,
-        prop: 'failedRamdaSpecs',
-        hash: failedRamdaSpecs,
-      }),
-    input =>
-      appendData({
-        input,
-        prop: 'failedSpecsReasons',
-        hash: failedSpecsReasons,
-      }),
-    input =>
-      appendData({
-        input,
-        prop: 'failedSpecsCount',
-        hash: failedSpecsCount,
-      })
   )
 
   await save({

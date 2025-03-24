@@ -121,10 +121,6 @@ export function createMethodData(
   method: any,
 ) {
   const data = getIntro(method)
-	// if(method.methodName === 'path'){
-	// 	1
-	// 	let a = 1
-	// }
   if (method.typing) data.push(attachTyping(method))
   if (method.explanation) {
     data.push(method.explanation)
@@ -143,7 +139,6 @@ export function createMethodData(
   }
 
   if (method.allTypings) {
-
     data.push(attachAllTypings(method))
   }
   if (method.rambdaSource ) {
