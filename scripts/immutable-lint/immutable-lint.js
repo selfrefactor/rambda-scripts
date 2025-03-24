@@ -2,26 +2,22 @@ const {resolve} = require('path')
 const {exec, log} = require('helpers-fn')
 const {copy, outputFile} = require('fs-extra')
 
-const WITH_RAMBDAX = process.env.WITH_RAMBDAX === 'ON'
-
 void (async function immutableLint() {
   const filePath = resolve(
     __dirname,
-    `../../../${WITH_RAMBDAX ? 'rambdax' : 'rambda'}/immutable.d.ts`
+    `../../../rambda/immutable.d.ts`
   )
   const jsFilePath = resolve(
     __dirname,
-    `../../../${WITH_RAMBDAX ? 'rambdax' : 'rambda'}/immutable.js`
+    `../../../rambda/immutable.js`
   )
   const filePathOrigin = resolve(
     __dirname,
-    `../../../${WITH_RAMBDAX ? 'rambdax' : 'rambda'}/index.d.ts`
+    `../../../rambda/index.d.ts`
   )
   await outputFile(
     jsFilePath,
-    `module.exports = require('./dist/${
-      WITH_RAMBDAX ? 'rambdax' : 'rambda'
-    }.js')`
+    `module.exports = require('./dist/rambda.js')`
   )
   await copy(filePathOrigin, filePath)
   const cwd = resolve(__dirname, '../../')
