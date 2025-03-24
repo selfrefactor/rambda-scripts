@@ -1,1 +1,0 @@
-[31mError: No test files found: "test/Maybe.js"[39m

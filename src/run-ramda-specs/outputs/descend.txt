@@ -1,8 +1,0 @@
-
-
-  descend
-    ✓ builds a descending comparator function out of the identity function
-
-
-  1 passing (31ms)
-

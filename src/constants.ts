@@ -29,7 +29,6 @@ export const MODES = [
   'readonly',
   'populate:docs',
   'populate:readme',
-  'ramda:specs',
 ]
 export const DOCSIFY_SCRIPTS_MODE = process.env.DOCSIFY_SCRIPTS_MODE === 'ON'
 

@@ -1,9 +1,0 @@
-
-
-  partialRight
-    ✓ caches the initially supplied arguments
-    ✓ correctly reports the arity of the new function
-
-
-  2 passing (40ms)
-

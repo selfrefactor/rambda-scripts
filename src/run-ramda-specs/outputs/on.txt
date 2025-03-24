@@ -1,8 +1,0 @@
-
-
-  on
-    ✓ transforms and combines two values
-
-
-  1 passing (44ms)
-

@@ -1,8 +1,0 @@
-
-
-  gte
-    ✓ reports whether one item is greater than or equal to another
-
-
-  1 passing (34ms)
-

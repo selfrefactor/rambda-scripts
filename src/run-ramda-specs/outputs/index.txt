@@ -1,9 +1,0 @@
-
-
-  API surface
-    ✓ both APIs are in sync
-    ✓ list of not exported API methods is empty
-
-
-  2 passing (39ms)
-

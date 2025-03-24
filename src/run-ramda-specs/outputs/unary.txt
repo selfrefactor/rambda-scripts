@@ -1,9 +1,0 @@
-
-
-  unary
-    ✓ turns multiple-argument function into unary one
-    ✓ initial argument is passed through normally
-
-
-  2 passing (55ms)
-

@@ -1,9 +1,0 @@
-
-
-  xprod
-    ✓ returns an empty list if either input list is empty
-    ✓ creates the collection of all cross-product pairs of its parameters
-
-
-  2 passing (54ms)
-

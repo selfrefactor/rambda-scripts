@@ -1,1 +1,0 @@
-[31mError: No test files found: "test/eq.js"[39m

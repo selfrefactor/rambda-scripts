@@ -1,9 +1,0 @@
-
-
-  binary
-    ✓ turns multiple-argument function into binary one
-    ✓ initial arguments are passed through normally
-
-
-  2 passing (33ms)
-

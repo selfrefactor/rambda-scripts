@@ -1,8 +1,0 @@
-
-
-  gt
-    ✓ reports whether one item is greater than another
-
-
-  1 passing (36ms)
-

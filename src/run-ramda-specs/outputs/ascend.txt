@@ -1,8 +1,0 @@
-
-
-  ascend
-    ✓ builds an ascending comparator function out of the identity function
-
-
-  1 passing (34ms)
-

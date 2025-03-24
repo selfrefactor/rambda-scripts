@@ -1,8 +1,0 @@
-
-
-  lt
-    ✓ reports whether one item is less than another
-
-
-  1 passing (37ms)
-

@@ -1,9 +1,0 @@
-
-
-  mapAccum
-    ✓ map and accumulate simple functions over arrays with the supplied accumulator
-    ✓ returns the list and accumulator for an empty array
-
-
-  2 passing (41ms)
-

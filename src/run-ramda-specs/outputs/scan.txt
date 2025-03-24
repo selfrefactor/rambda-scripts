@@ -1,9 +1,0 @@
-
-
-  scan
-    ✓ scans simple functions over arrays with the supplied accumulator
-    ✓ returns the accumulator for an empty array
-
-
-  2 passing (47ms)
-

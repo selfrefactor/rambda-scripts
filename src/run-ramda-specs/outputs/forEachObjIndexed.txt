@@ -1,9 +1,0 @@
-
-
-  forEachObjIndexed
-    ✓ performs the passed in function on each key and value of the object
-    ✓ returns the original object
-
-
-  2 passing (34ms)
-

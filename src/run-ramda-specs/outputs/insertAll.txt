@@ -1,9 +1,0 @@
-
-
-  insertAll
-    ✓ inserts a list of elements into the given list
-    ✓ appends to the end of the list if the index is too large
-
-
-  2 passing (42ms)
-

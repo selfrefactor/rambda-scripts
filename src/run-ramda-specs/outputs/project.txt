@@ -1,9 +1,0 @@
-
-
-  project
-    ✓ selects the chosen properties from each element in a list
-    ✓ has an undefined property on the output tuple for any input tuple that does not have the property
-
-
-  2 passing (56ms)
-
