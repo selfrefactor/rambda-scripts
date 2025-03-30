@@ -5,7 +5,6 @@
 		"check-ts": "node scripts/find-lowest-ts-version/find-lowest-ts-version.js",
 		"dev": "jest src/populate-readme-data/rambda-repl.spec.ts --watch",
 		"fix-docsify": "node scripts/fix-docsify/fix-docsify.js",
-		"immutable": "node scripts/immutable-lint/immutable-lint.js",
 		"populate:docs": "RAMBDA_SCRIPTS_MODE=populate:docs jest src/apply-rambda-scripts.spec.ts",
 		"populate:readme:docsify": "DOCSIFY_SCRIPTS_MODE=ON RAMBDA_SCRIPTS_MODE=populate:readme jest src/apply-rambda-scripts.spec.ts",
 		"create-docsify": "rm -rf docsify-readme && yarn populate:readme:docsify && yarn docs && yarn fix-docsify",

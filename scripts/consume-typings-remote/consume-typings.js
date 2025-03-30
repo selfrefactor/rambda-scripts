@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var rambdax_1 = require("rambdax");
 // import { partial } from 'rambdax'
-// import { T, when } from "rambda/immutable";
 // when(T, (v) => console.log(v))("Hello, World!")
 var pipeResult = (0, rambdax_1.without)(['abc'], ['abc']);
 console.log(pipeResult, "pipeResult");
