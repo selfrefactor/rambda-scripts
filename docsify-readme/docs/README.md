@@ -7808,10 +7808,7 @@ const expected = [
 
 ```typescript
 pick<K extends PropertyKey>(propsToPick: K[]): <T>(input: T) => MergeTypes<Pick<T, Exclude<keyof T, Exclude<keyof T, K>>>>;
-pick<
-	S extends string,
-	K extends PickStringToPickPath<K>
->(propsToPick: S): <T>(input: T) => MergeTypes<Pick<T, Exclude<keyof T, Exclude<keyof T, K>>>>;
+pick<S extends string>(propsToPick: S): <T>(input: T) => MergeTypes<Pick<T, Exclude<keyof T, Exclude<keyof T, ElementOf<PickStringToPickPath<S>>>>>>;
 ```
 
 </details>
@@ -8222,6 +8219,7 @@ function assertType<T, U extends T>(fn: (x: T) => x is U) {
 function convertToType<T>() {
   return <U>(x: U) => x as unknown as T
 }
+const convertToType = <T>(x: unknown)=> x as unknown as T
 
 function tapFn<T, U>(
   transformFn: (x: T) => U,
@@ -9541,6 +9539,8 @@ shuffle<T>(list: T[]): T[];
 <summary><strong>R.shuffle</strong> source</summary>
 
 ```javascript
+import { cloneList } from './_internals/cloneList.js'
+
 export function shuffle(listInput) {
   const list = cloneList(listInput)
   let counter = list.length
@@ -12154,7 +12154,7 @@ describe('R.unless', () => {
 
 ```typescript
 
-unwind<S extends string>(prop: S): <T>(obj: T) => MergeTypes<Omit<T, S> & { [K in S]: T[S][number] }>
+unwind<S extends string>(prop: S): <T extends Record<S, readonly any[]>>(obj: T) => Array<MergeTypes<Omit<T, S> & { [K in S]: T[S][number] }>>
 ```
 
 It takes an object and a property name. The method will return a list of objects, where each object is a shallow copy of the input object, but with the property array unwound.
@@ -12176,7 +12176,7 @@ const expected = [{a:1, b:2}, {a:1, b:3}]
 <summary>All TypeScript definitions</summary>
 
 ```typescript
-unwind<S extends string>(prop: S): <T>(obj: T) => MergeTypes<Omit<T, S> & { [K in S]: T[S][number] }>;
+unwind<S extends string>(prop: S): <T extends Record<S, readonly any[]>>(obj: T) => Array<MergeTypes<Omit<T, S> & { [K in S]: T[S][number] }>>;
 ```
 
 </details>
@@ -12244,12 +12244,12 @@ const obj = {
 
 describe('R.unwind', () => {
   it('happy', () => {
-    const result = unwind('b')(obj)
+    const [result] = unwind('b')(obj)
     result.a // $ExpectType number
     result.b // $ExpectType number
   })
   it('inside pipe', () => {
-    const result = pipe(obj, unwind('b'))
+    const [result] = pipe(obj, unwind('b'))
     result.a // $ExpectType number
     result.b // $ExpectType number
   })
@@ -12706,9 +12706,11 @@ describe('R.zipWith', () => {
 
 ## ❯ CHANGELOG
 
-10.0.0
+10.0.1
 
-CHANGELOG - 10.0.0
+- Fix issue with `R.unwind`/`R.pick` typings - [Issue #766](https://github.com/selfrefactor/rambda/issues/766)
+
+10.0.0
 
 This is major revamp of `Rambda` library:
 
@@ -12832,6 +12834,8 @@ _ Regarding using object as input with TypeScript in methods such as `R.map/filt
 
 - Change `R.range` to work with descending order.
 
+- Remove `rambda/immutable` as import option as it is hard to support in the new context.
+
 - Sync with typing of `@types/ramda`:
 
 -- allPass
@@ -12902,7 +12906,7 @@ const result = piped(
 
 9.4.1
 
-- Fix bug with `R.differenceWith` when two arrays has same length - [Issue #750](https://github.com/selfrefactor/rambda/issues/757)
+- Fix bug with `R.differenceWith` when two arrays has same length - [Issue #757](https://github.com/selfrefactor/rambda/issues/757)
 
 - Allow path input to not be transformed when string numbers are there - [Issue #750](https://github.com/selfrefactor/rambda/issues/750)
 

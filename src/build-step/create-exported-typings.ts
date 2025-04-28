@@ -48,8 +48,10 @@ export async function createExportedTypings() {
   map(applyForSingleMethod, methodsData)
 
   const output =  `${PATHS.base}/index.d.ts`
+  const outputCts =  `${PATHS.base}/index.d.cts`
 
   await outputFile(output, toSave)
+  await outputFile(outputCts, toSave)
 
   return toSave
 }

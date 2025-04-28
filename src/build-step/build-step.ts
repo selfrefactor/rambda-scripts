@@ -8,12 +8,10 @@ import {
 import {scanFolder} from 'helpers-fn'
 import {parse} from 'path'
 import {filter, mapAsync, pipedAsync, remove} from 'rambdax'
-import {PATHS, SOURCES} from '../constants'
+import {PATHS} from '../constants'
 import {getRambdaMethods, sortFn} from '../utils'
 import {createExportedTypings} from './create-exported-typings'
 
-// Rambdax methods which are used in creation of Rambda methods
-// ============================================
 const rambdaxMethodsAsInternals = ['isFunction', 'isPromise', 'maybe']
 
 const denoComment = '/// <reference types="./index.d.ts" />'
