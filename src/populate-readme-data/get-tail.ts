@@ -61,8 +61,8 @@ function getAdditionalInfo() {
   let contributors = ''
 
   forEach((reason, contributor) => {
-    // contributors += `- [@${contributor}](https://github.com/${contributor}) - ${reason}\n\n`
-    contributors += `- ![${contributor} avatar](https://avatars.githubusercontent.com/${contributor}) [@${contributor}](https://github.com/${contributor}) - ${reason}\n\n`
+    contributors += `- [@${contributor}](https://github.com/${contributor}) - ${reason}\n\n`
+    // contributors += `- ![${contributor} avatar](https://avatars.githubusercontent.com/${contributor}) [@${contributor}](https://github.com/${contributor}) - ${reason}\n\n`
   }, mostInfluentialContributors)
 
   return interpolate(additionalInfoTemplate, {contributors})
