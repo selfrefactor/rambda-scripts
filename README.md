@@ -16,26 +16,6 @@ Both repos `selfrefactor/rambda` and `selfrefactor/rambda-scripts` should be on 
 
 1. find-lowest-ts-version 
 
-## Rambdax release steps
-
-1. Build readme
-
-`yarn x`
-
-2. Build output
-
-inside Rambdax folder
-
-`yarn install`
-
-`yarn build`
-
-3. Publish to NPM
-
-4. Update documentation site
-
-`yarn docs`
-
 ===
 # Other info
 
