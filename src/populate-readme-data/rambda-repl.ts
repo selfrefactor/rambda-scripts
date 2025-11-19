@@ -1,5 +1,6 @@
 import {either, includes, when} from 'rambdax'
-const REPL_URL = 'https://rambda.now.sh'
+const REPL_URL = 'https://rambda.netlify.app'
+// const REPL_URL = 'https://rambda.now.sh'
 
 const getConsoleLog = includes('console.log')
 const getResultVariableLog = either(

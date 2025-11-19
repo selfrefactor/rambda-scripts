@@ -6493,11 +6493,13 @@ it('R.mapObjectAsync', async () => {
 ```typescript
 
 mapParallelAsync<T extends IterableContainer, U>(
-  fn: (value: T[number], index: number) => Promise<U>,
+  fn: (value: T[number]) => Promise<U>,
+	batchSize?: number,
 ): (data: T) => Promise<Mapped<T, U>>
 ```
 
 Wrapper around `Promise.all` for asynchronous mapping with `fn` over members of `list`.
+There is optional `batchSize` parameter to allow parallel execution to run in batches. In this case, the whole batch must complete before the next batch starts.
 
 <details>
 
@@ -6505,10 +6507,8 @@ Wrapper around `Promise.all` for asynchronous mapping with `fn` over members of 
 
 ```typescript
 mapParallelAsync<T extends IterableContainer, U>(
-  fn: (value: T[number], index: number) => Promise<U>,
-): (data: T) => Promise<Mapped<T, U>>;
-mapParallelAsync<T extends IterableContainer, U>(
   fn: (value: T[number]) => Promise<U>,
+	batchSize?: number,
 ): (data: T) => Promise<Mapped<T, U>>;
 ```
 
@@ -6519,8 +6519,18 @@ mapParallelAsync<T extends IterableContainer, U>(
 <summary><strong>R.mapParallelAsync</strong> source</summary>
 
 ```javascript
-export function mapParallelAsync(fn) {
-  return async list =>  Promise.all(list.map((x, i) => fn(x, i)))
+export function mapParallelAsync(fn, batchSize){
+	if(!batchSize) return async list =>  Promise.all(list.map(fn))
+
+	return async list => {
+		const result = []
+		for(let i = 0; i < list.length; i += batchSize){
+			const batch = list.slice(i, i + batchSize)
+			const batchResult = await Promise.all(batch.map((x, j) => fn(x, i + j)))
+			result.push(...batchResult)
+		}
+		return result
+	}	
 }
 ```
 
@@ -6555,6 +6565,17 @@ test('pipeAsync', async () => {
     })
 	)
   expect(result).toEqual([ 2,3,4 ])
+})
+
+test('with batchSize', async () => {
+	const fn = async (x, i) => {
+		await delay(100)
+		return `${x}:${i}`
+	}
+	const result = await mapParallelAsync(fn, 2)([1, 2, 3, 4, 5])
+	expect(result).toEqual(
+		['1:0', '2:1', '3:2', '4:3', '5:4']
+	)
 })
 ```
 
@@ -10542,7 +10563,7 @@ describe('R.sortBy', () => {
 
 ```typescript
 
-sortByDescending<T>(sortFn: (a: T, b: T) => number): (list: T[]) => T[]
+sortByDescending<T>(sortFn: (x: T) => Ord): (list: T[]) => T[]
 ```
 
 ```javascript
@@ -10569,7 +10590,7 @@ const expected = [
 <summary>All TypeScript definitions</summary>
 
 ```typescript
-sortByDescending<T>(sortFn: (a: T, b: T) => number): (list: T[]) => T[];
+sortByDescending<T>(sortFn: (x: T) => Ord): (list: T[]) => T[];
 ```
 
 </details>
@@ -10584,6 +10605,24 @@ import { sortByFn } from "./sortBy.js";
 export function sortByDescending(sortFn) {
   return list => sortByFn(sortFn, list, true)
 }
+```
+
+</details>
+
+<details>
+
+<summary><strong>Tests</strong></summary>
+
+```javascript
+import { sortByDescending } from './sortByDescending.js'
+import { path } from './path.js'
+
+const list = [{ a: { b: 3 } }, { a: { b: 1 } }, { a: { b: 2 } }]
+const sorted = [{ a: { b: 3 } }, { a: { b: 2 } }, { a: { b: 1 } }]
+
+test('happy', () => {
+  expect(sortByDescending(path('a.b'))(list)).toEqual(sorted)
+})
 ```
 
 </details>
@@ -13541,6 +13580,12 @@ describe('R.zipWith', () => {
 [![---------------](https://raw.githubusercontent.com/selfrefactor/rambda/master/files/separator.png)](#zipWith)
 
 ## ❯ CHANGELOG
+
+10.3.4
+
+- Fix wrong typing for `R.sortByDescending` - [Issue #797](https://github.com/selfrefactor/rambda/issues/797)
+
+- Improve `R.mapParallelAsync` typings to allow optional `batchSize` parameter.
 
 10.3.3
 
