@@ -34,22 +34,6 @@ function createRambdaSourceReadme(method: any) {
   return interpolate(summaryTemplate, method)
 }
 
-function createTypeScriptTest(method: any) {
-  const summaryTemplate = `
-<details>
-
-<summary><strong>TypeScript</strong> test</summary>
-
-\`\`\`typescript
-{{typescriptDefinitionTest}}
-\`\`\`
-
-</details>
-`
-
-  return interpolate(summaryTemplate, method)
-}
-
 function attachAllTypings(method: any) {
 	if(count(method.allTypings, ';') >=4){
 		let displayTypings = method.allTypings.split(';').slice(0, 4).join(';')
@@ -148,9 +132,6 @@ export function createMethodData(
     data.push(createRambdaSpecReadme(method))
   }
 
-  if (method.typescriptDefinitionTest) {
-    data.push(createTypeScriptTest(method))
-  }
 
   data.push(`\n${getMethodSeparator(method.methodName)}\n`)
   return data.join('')

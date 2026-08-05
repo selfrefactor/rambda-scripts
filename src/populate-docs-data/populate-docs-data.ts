@@ -57,7 +57,6 @@ export async function populateDocsData() {
   const allDefinitions = extractAllDefinitions()
   const rambdaSource = await rambdaSourceMethod()
   const rambdaSpecs = await rambdaSpecsMethod()
-  const typingsTests = await typingsTestsMethod()
   const examples = extractExample()
   const explanations = extractExplanation()
   const notes = extractNotes()
@@ -108,12 +107,6 @@ export async function populateDocsData() {
         input,
         prop: 'example',
         hash: examples,
-      }),
-    input =>
-      appendData({
-        input,
-        prop: 'typescriptDefinitionTest',
-        hash: typingsTests,
       }),
   )
 
